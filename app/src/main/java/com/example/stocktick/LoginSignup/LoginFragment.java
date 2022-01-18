@@ -71,22 +71,30 @@ public class LoginFragment extends Fragment {
         View view = binding.getRoot();
         String phone = binding.phoneEdit.getText().toString();
 
+
+
         binding.submitPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(false){
-                    Fragment fragment = new SignupFragment();
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.login_signup_activity, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                    //getActivity().getFragmentManager().beginTransaction().replace(R.id.login_fragment, new SignupFragment()).commit();
+                if(phone.length()!=10){
+                    binding.phoneEdit.setError("Please enter a correct number");
                 }
                 else{
-                    binding.otpCard.setVisibility(View.VISIBLE);
-                    binding.phoneCard.setVisibility(View.GONE);
+                    if(false){
+                        Fragment fragment = new SignupFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.login_signup_activity, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        //getActivity().getFragmentManager().beginTransaction().replace(R.id.login_fragment, new SignupFragment()).commit();
+                    }
+                    else{
+                        binding.otpCard.setVisibility(View.VISIBLE);
+                        binding.phoneCard.setVisibility(View.GONE);
+                    }
                 }
+
             }
         });
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
