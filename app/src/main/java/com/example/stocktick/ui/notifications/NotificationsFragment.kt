@@ -12,14 +12,12 @@ import com.example.stocktick.databinding.FragmentNotificationsBinding
 class NotificationsFragment : Fragment() {
     private lateinit var notificationsViewModel: NotificationsViewModel
     private lateinit var binding: FragmentNotificationsBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        notificationsViewModel = ViewModelProvider(this).get(
-            NotificationsViewModel::class.java
-        )
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+
+        val viewModelFactory = NotificationsViewModelFactory(requireContext())
+        notificationsViewModel = ViewModelProvider(this,viewModelFactory).get(NotificationsViewModel::class.java)
 
         val textView = binding.textNotifications
         notificationsViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })

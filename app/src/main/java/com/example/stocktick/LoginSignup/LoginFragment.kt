@@ -10,6 +10,8 @@ import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentLoginBinding
 //TODO() Cleanup the generic fragment files into usable formats- Discuss.
+//Not added ViewModelFactory to this as no ViewModel in this yet.
+
 /**
  * A simple [Fragment] subclass.
  * Use the [LoginFragment.newInstance] factory method to
