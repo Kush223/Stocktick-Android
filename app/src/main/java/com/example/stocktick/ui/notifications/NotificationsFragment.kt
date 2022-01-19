@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.stocktick.databinding.FragmentNotificationsBinding
-//Add Viewmodel Factory to MVVM structures?? for all fragments?
 
 class NotificationsFragment : Fragment() {
     private lateinit var notificationsViewModel: NotificationsViewModel
@@ -17,12 +16,12 @@ class NotificationsFragment : Fragment() {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
         val viewModelFactory = NotificationsViewModelFactory(requireContext())
-        notificationsViewModel = ViewModelProvider(this,viewModelFactory).get(NotificationsViewModel::class.java)
+        notificationsViewModel = ViewModelProvider(
+            this,viewModelFactory).get(NotificationsViewModel::class.java)
 
         val textView = binding.textNotifications
         notificationsViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
         return binding.root
-
-
+        //anything non view related preferred in some other functions.
     }
 }

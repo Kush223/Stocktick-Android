@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.stocktick.databinding.FragmentDashboardBinding
+import com.example.stocktick.ui.notifications.DashboardViewModelFactory
 
 class DashboardFragment : Fragment() {
     private lateinit var dashboardViewModel: DashboardViewModel
@@ -15,9 +16,11 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
-
+        val viewModelFactory = DashboardViewModelFactory(requireContext())
+        dashboardViewModel = ViewModelProvider(
+            this, viewModelFactory
+        ).get(DashboardViewModel::class.java)
         val textView = binding.textDashboard
         dashboardViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
         return binding.root
