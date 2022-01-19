@@ -9,8 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
-//TODOs
-//setup the navgraph -- thus the bottomnav configuration
+//TODO(): setup the navgraph -- thus the bottomnav configuration
+//TODO(): setup viewmodel factory for each of the viewmodels.
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
