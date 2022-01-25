@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val viewModelFactory = DashboardViewModelFactory(requireContext())
+        val viewModelFactory = HomeViewModelFactory(requireContext())
 
         homeViewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
 

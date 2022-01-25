@@ -7,6 +7,7 @@ import com.example.stocktick.R
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
 //TODO(): setup the navgraph -- thus the bottomnav configuration
@@ -23,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
             .build()
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
     }
