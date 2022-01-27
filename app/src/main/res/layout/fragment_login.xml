@@ -26,7 +26,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/phone_edit"
+                    android:id="@+id/et_phone_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -36,10 +36,34 @@
                     android:textColorHint="@color/black" />
 
                 <Button
-                    android:id="@+id/submit_phone"
+                    android:id="@+id/bt_submit_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Submit"
+                    android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/bt_skip_to_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skip to Home Page"
+                    android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/bt_skip_to_signin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skip to Sign-In Page"
+                    android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/bt_skip_to_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skip to Sign-Up Page"
+                    android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/bt_skip_to_verify_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skip to Verify-OTP Page"
                     android:textColor="@color/black" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -57,7 +81,7 @@
         android:gravity="center"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/enter_otp"
+            android:id="@+id/et_enter_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
