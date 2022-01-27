@@ -27,7 +27,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//TODO() Cleanup the generic fragment files into usable formats- Discuss.
 //Not added ViewModelFactory to this as no ViewModel in this yet.
 
 /**
@@ -43,17 +42,9 @@ class LoginFragment : Fragment() {
     private var phone: String? = null
     private var otp: String? = null
 
-    // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         startSmartUserConsent()
-        if (arguments != null) {
-            mParam1 = requireArguments().getString(ARG_PARAM1)
-            mParam2 = requireArguments().getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -76,11 +67,6 @@ class LoginFragment : Fragment() {
                         call: Call<GetOtpModel>,
                         response: Response<GetOtpModel>
                     ) {
-//                        val str : String? = response.body()?.message
-//                        if (str != null) {
-//                            Log.d("cdc",str)
-//                        }
-                        //Toast.makeText(requireActivity(),response.body()?.message,Toast.LENGTH_SHORT).show()
                         if (response.code() == 200) {
                             binding!!.otpCard.visibility = View.VISIBLE
                             binding!!.phoneCard.visibility = View.GONE
@@ -222,37 +208,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-//    private fun getOtpFromMessage(message: String?) {
-//
-//    }
 
     override fun onStop() {
         super.onStop()
         requireActivity().unregisterReceiver(smsBroadCastReceiver)
-    }
-
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String?, param2: String?): LoginFragment {
-            val fragment = LoginFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
     }
 }
