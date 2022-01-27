@@ -19,13 +19,4 @@ interface JsonPlaceholderApi {
 
     @POST("update/userinfo/")
     fun updateInfo(@Header("authToken") authToken: String,@Body profileModel: ProfileModel) : Call<GetOtpModel>
-//
-//    @GET("posts/{num}")
-//    suspend fun getPostById(@Path("num") num : Int): Response
-//
-//    @GET("comments")
-//    suspend fun getCommentsByPost(@Query("postId") postId : Int): Response>
-//
-//    @POST("posts")
-//    suspend fun createPost(@Body post: Post): Response
 }
