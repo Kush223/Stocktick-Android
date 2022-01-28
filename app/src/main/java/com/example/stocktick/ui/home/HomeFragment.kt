@@ -7,7 +7,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
 import com.example.stocktick.databinding.FragmentHomeBinding
-import com.example.stocktick.ui.notifications.DashboardViewModelFactory
 
 class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel

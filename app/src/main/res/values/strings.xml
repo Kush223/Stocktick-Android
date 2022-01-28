@@ -5,6 +5,12 @@
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loan_title">LOAN is a Necessity</string>
+    <string name="loan_body">An insurance plan that provides financial protection to your family and offers you the flexibility to choose the plan that suits your need.</string>
+    <string name="loan_list_title">Top Insurance policies</string>
+    <string name="Category">CATEGORY</string>
+    <string name="Interest">INTEREST</string>
+    <string name="Know_more">KNOW MORE</string>
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>

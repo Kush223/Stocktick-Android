@@ -95,7 +95,7 @@ class LoginFragment : Fragment() {
         }
         binding!!.loginButton.setOnClickListener {
             otp = binding!!.enterOtp.text.toString()
-            Toast.makeText(requireActivity(), otp!!.length.toString(),Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireActivity(), otp!!.length.toString(),Toast.LENGTH_SHORT).show()
             if(otp!!.length==6){
                 val phoneModel = PhoneModel(phone,otp)
                 val call : Call<GetOtpModel> = RetrofitClientInstance.getClient.validateOtp(phoneModel)
