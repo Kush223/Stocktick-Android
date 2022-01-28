@@ -37,21 +37,21 @@ import retrofit2.Response
 class LoginFragment : Fragment() {
     private lateinit var _binding: FragmentLoginBinding
     private val binding get() = _binding
-    private lateinit var submitPhone: Button, phoneEdit : EditText,
 
 
-//    xml variables submitPhone = button = bt_login_request_otp
+
+    //xml variables submitPhone = button = bt_login_request_otp
     //edit text = phoneEdit = et_login_phone
+    //otp card and phone card are crazy...they are visibility toggles have to find a way to integrate that into ui
 
     private lateinit var mButtonSubmitPhone: Button
     private lateinit var mEditTextPhoneEdit: EditText
     private lateinit var mCountryCodePicker: CountryCodePicker
 
-    private var phonePattern = Regex("^[6789]\\d{9}$")
-    private var smsBroadCastReceiver: SmsBroadcastReceiver? = null
+    private var phoneREGEXPattern = Regex("^[6789]\\d{9}$")
+    private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
     private val REQ_USER_CONSENT = 200
-    private var phone: String? = null
-    private var otp: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,18 +61,19 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //Assign variables
         mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
         mCountryCodePicker = _binding.loginCountryCodePicker
 
 
         // Inflate the layout for this fragment
         val view: View = _binding.root
-        _binding.submitPhone.setOnClickListener {
-            phone = _binding.phoneEdit.text.toString()
-            if (!phone.matches(phonePattern)) {
-                _binding.phoneEdit.error = "Please enter a correct number"
+        mButtonSubmitPhone.setOnClickListener {
+            phone = mEditTextPhoneEdit.toString()
+            if (!phone.matches(phoneREGEXPattern)) {
+                mEditTextPhoneEdit.error = "Please enter a correct number"
             } else {
                 //Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
@@ -85,6 +86,7 @@ class LoginFragment : Fragment() {
                         if (response.code() == 200) {
                             _binding.otpCard.visibility = View.VISIBLE
                             _binding.phoneCard.visibility = View.GONE
+                            //something have to do with regarding fragment calling here.
                         } else {
                             Toast.makeText(
                                 requireActivity(),
@@ -103,6 +105,7 @@ class LoginFragment : Fragment() {
                 })
             }
         }
+        //Both enter otp and loginbutton are from OTP fragment page uska alag binding lagega.
         _binding.loginButton.setOnClickListener {
             otp = _binding.enterOtp.text.toString()
             Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
