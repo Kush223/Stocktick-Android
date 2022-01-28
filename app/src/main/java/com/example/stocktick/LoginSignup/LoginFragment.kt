@@ -23,6 +23,7 @@ import com.example.stocktick.R
 import com.example.stocktick.SmsBroadcastReceiver
 import com.example.stocktick.databinding.FragmentLoginBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import com.hbb20.CountryCodePicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,7 +36,16 @@ import retrofit2.Response
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private var binding: FragmentLoginBinding? = null
+    private lateinit var _binding: FragmentLoginBinding
+//    private val binding get() = _binding
+
+//    xml variables submitPhone = button = bt_login_request_otp
+    //edit text = phoneEdit = et_login_phone
+
+    private lateinit var mButtonSubmitPhone : Button
+    private lateinit var mEditTextPhoneEdit : EditText
+    private lateinit var mCountryCodePicker: CountryCodePicker
+
     private var phonePattern = Regex("^[6789]\\d{9}$")
     private var smsBroadCastReceiver: SmsBroadcastReceiver? = null
     private val REQ_USER_CONSENT = 200
@@ -51,15 +61,22 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Assign variables
+//        mButtonSubmitPhone
+                mCountryCodePicker = _binding.loginCountryCodePicker
+
+
+
+
+
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val view: View = binding!!.root
-        binding!!.submitPhone.setOnClickListener {
-            phone = binding!!.phoneEdit.text.toString()
-            if (!phone!!.matches(phonePattern)) {
-                binding!!.phoneEdit.error = "Please enter a correct number"
+        val view: View = _binding.root
+        _binding.submitPhone.setOnClickListener {
+            phone = _binding.phoneEdit.text.toString()
+            if (!phone.matches(phonePattern)) {
+                _binding.phoneEdit.error = "Please enter a correct number"
             } else {
-                //Log.d("abc", phone!!)
+                //Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
                 val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
@@ -68,8 +85,8 @@ class LoginFragment : Fragment() {
                         response: Response<GetOtpModel>
                     ) {
                         if (response.code() == 200) {
-                            binding!!.otpCard.visibility = View.VISIBLE
-                            binding!!.phoneCard.visibility = View.GONE
+                            _binding.otpCard.visibility = View.VISIBLE
+                            _binding.phoneCard.visibility = View.GONE
                         } else {
                             Toast.makeText(
                                 requireActivity(),
@@ -88,10 +105,10 @@ class LoginFragment : Fragment() {
                 })
             }
         }
-        binding!!.loginButton.setOnClickListener {
-            otp = binding!!.enterOtp.text.toString()
-            Toast.makeText(requireActivity(), otp!!.length.toString(), Toast.LENGTH_SHORT).show()
-            if (otp!!.length == 6) {
+        _binding.loginButton.setOnClickListener {
+            otp = _binding.enterOtp.text.toString()
+            Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
+            if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
                 val call: Call<GetOtpModel> =
                     RetrofitClientInstance.getClient.validateOtp(phoneModel)
@@ -164,7 +181,7 @@ class LoginFragment : Fragment() {
 
                 })
             } else {
-                binding!!.enterOtp.error = "Otp should be of 6 digits"
+                _binding.enterOtp.error = "Otp should be of 6 digits"
             }
 
         }
@@ -173,7 +190,7 @@ class LoginFragment : Fragment() {
 
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
-        smsBroadCastReceiver!!.smsBroadCastReceiverListener =
+        smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
                     startActivityForResult(intent, REQ_USER_CONSENT)
