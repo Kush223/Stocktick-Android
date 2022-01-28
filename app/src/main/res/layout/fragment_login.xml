@@ -59,7 +59,7 @@
         <!--contains only the edit text as a single layout-->
         <LinearLayout
             android:id="@+id/login_canvas2"
-            android:layout_width="match_parent"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="13dp"
@@ -71,22 +71,23 @@
 
             <com.hbb20.CountryCodePicker
                 android:id="@+id/login_country_code_picker"
-                android:layout_width="64dp"
+                android:layout_width="52dp"
                 android:layout_height="match_parent"
-                android:layout_margin="6dp"
-                app:ccp_textSize="26sp"
-                app:ccp_arrowSize="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="11dp"
                 android:background="#FF6565"
                 android:clickable="true"
                 android:focusable="true"
                 app:ccp_arrowColor="@color/black"
+                app:ccp_arrowSize="2dp"
                 app:ccp_autoDetectCountry="true"
                 app:ccp_contentColor="@color/black"
                 app:ccp_countryPreference="IN"
                 app:ccp_defaultLanguage="ENGLISH"
                 app:ccp_defaultNameCode="IN"
                 app:ccp_hintExampleNumber="true"
-                app:ccp_showFlag="false" />
+                app:ccp_showFlag="false"
+                app:ccp_textSize="26sp" />
 
             <View
                 android:id="@+id/et_login_divider"
@@ -98,8 +99,8 @@
 
             <EditText
                 android:id="@+id/et_login_phone_number"
-                android:layout_width="351dp"
-                android:layout_height="46dp"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="left"
                 android:fontFamily="sans-serif"
