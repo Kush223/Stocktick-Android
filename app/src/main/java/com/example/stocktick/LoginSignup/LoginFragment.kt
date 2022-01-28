@@ -28,7 +28,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//Not added ViewModelFactory to this as no ViewModel in this yet.
 
 /**
  * A simple [Fragment] subclass.
@@ -37,13 +36,15 @@ import retrofit2.Response
  */
 class LoginFragment : Fragment() {
     private lateinit var _binding: FragmentLoginBinding
-//    private val binding get() = _binding
+    private val binding get() = _binding
+    private lateinit var submitPhone: Button, phoneEdit : EditText,
+
 
 //    xml variables submitPhone = button = bt_login_request_otp
     //edit text = phoneEdit = et_login_phone
 
-    private lateinit var mButtonSubmitPhone : Button
-    private lateinit var mEditTextPhoneEdit : EditText
+    private lateinit var mButtonSubmitPhone: Button
+    private lateinit var mEditTextPhoneEdit: EditText
     private lateinit var mCountryCodePicker: CountryCodePicker
 
     private var phonePattern = Regex("^[6789]\\d{9}$")
@@ -62,11 +63,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Assign variables
-//        mButtonSubmitPhone
-                mCountryCodePicker = _binding.loginCountryCodePicker
-
-
-
+        mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mCountryCodePicker = _binding.loginCountryCodePicker
 
 
         // Inflate the layout for this fragment
