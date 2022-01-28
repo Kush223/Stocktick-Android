@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  res/drawable/rounded_edittext.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:padding="10dp">
+<!--   Divider vertical:  https://stackoverflow.com/questions/34541433/android-edittext-draw-a-divider-line-between-its-drawable-and-its-text-->
+    <solid android:color="#0FFF7666" />
+    <corners
+        android:bottomRightRadius="51dp"
+        android:bottomLeftRadius="51dp"
+        android:topLeftRadius="51dp"
+        android:topRightRadius="51dp" />
+</shape>
+<!--  for rounded shapes blog  https://stackoverflow.com/questions/3646415/how-to-create-edittext-with-rounded-corners#:~:text=Modify%20each%20to%20have%20more,background%20for%20your%20EditText%20widget-->
+<!--  for colour hex  https://stackoverflow.com/questions/11285961/how-to-make-a-background-20-transparent-on-android-->

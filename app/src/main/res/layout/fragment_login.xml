@@ -1,103 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginSignup.LoginFragment">
 
+    <!-- Login/Signup TextView-->
     <LinearLayout
+        android:id="@+id/canvas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!-- Login/Signup -->
+        <TextView
+            android:id="@+id/login_signup"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/phone_card"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/et_phone_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="Enter phone number"
-                    android:inputType="number"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-                <Button
-                    android:id="@+id/bt_submit_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Submit"
-                    android:textColor="@color/black" />
-                <Button
-                    android:id="@+id/bt_skip_to_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Skip to Home Page"
-                    android:textColor="@color/black" />
-                <Button
-                    android:id="@+id/bt_skip_to_signin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Skip to Sign-In Page"
-                    android:textColor="@color/black" />
-                <Button
-                    android:id="@+id/bt_skip_to_signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Skip to Sign-Up Page"
-                    android:textColor="@color/black" />
-                <Button
-                    android:id="@+id/bt_skip_to_verify_otp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Skip to Verify-OTP Page"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/otp_card"
-        android:visibility="gone"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/et_enter_otp"
-            android:layout_width="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="75dp"
+            android:gravity="top"
+            android:text="@string/login_signup"
+            android:textAppearance="@style/login_signup"
+            android:textSize="21sp"
+            android:textColor="#000000"
+            tools:ignore="MissingConstraints" />
+        <!-- Hello, welcome back to your account -->
+        <TextView
+            android:id="@+id/hello_welcome"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Enter otp"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="13dp"
+            android:gravity="top"
+            android:text="@string/hello_welcome"
+            android:textAppearance="@style/hello_welcome" />
+        <!-- Phone Number -->
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textColor="@color/black" />
-    </LinearLayout>
-    </androidx.cardview.widget.CardView>
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="21dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:text="@string/phone_number"
+            android:textAppearance="@style/phone_number"
+            android:gravity="top"
+            />
+
     </LinearLayout>
 
-</FrameLayout>
+
+
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <EditText-->
+        <!--                    android:id="@+id/et_phone_edit"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:height="@dimen/login_et_height"-->
+        <!--                    android:width="@dimen/login_et_width"-->
+        <!--                    android:background="@drawable/fragment_login_et_phone_edit"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:hint="Enter phone number"-->
+        <!--                    android:inputType="number"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textColorHint="@color/black" />-->
+
+        <!--                                <Button-->
+
+        <!--                                    android:layout_width="351dp"-->
+        <!--                                    android:layout_height="46dp"-->
+        <!--                                    android:layout_alignParentLeft="true"-->
+        <!--                                    android:layout_marginLeft="19dp"-->
+        <!--                                    android:layout_alignParentTop="true"-->
+        <!--                                    android:layout_marginTop="264dp"-->
+        <!--                                    android:text="Request OTP"-->
+        <!--                                    android:textSize="22dp"-->
+        <!--                                    android:background="@drawable/fragment_login_bt_submit_phone"-->
+        <!--                                    android:textColor="#FFFFFF" />-->
+        <!--                &lt;!&ndash;                <Button&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:id="@+id/bt_skip_to_home"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:text="Skip to Home Page"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:textColor="@color/black" />&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <Button&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:id="@+id/bt_skip_to_signin"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:text="Skip to Sign-In Page"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:textColor="@color/black" />&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <Button&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:id="@+id/bt_skip_to_signup"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:text="Skip to Sign-Up Page"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:textColor="@color/black" />&ndash;&gt;-->
+        <!--                &lt;!&ndash;                <Button&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:id="@+id/bt_skip_to_verify_otp"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:text="Skip to Verify-OTP Page"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:textColor="@color/black" />&ndash;&gt;-->
+        <!--            </LinearLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:id="@+id/otp_card"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:cardCornerRadius="10dp">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <EditText-->
+        <!--                    android:id="@+id/et_enter_otp"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:hint="Enter otp"-->
+        <!--                    android:inputType="number"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textColorHint="@color/black" />-->
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/login_button"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--&lt;!&ndash;                    android:text="Login"&ndash;&gt;-->
+        <!--                    android:textColor="@color/black" />-->
+        <!--            </LinearLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+        <!--    </LinearLayout>-->
+
+        <!--</FrameLayout>-->
