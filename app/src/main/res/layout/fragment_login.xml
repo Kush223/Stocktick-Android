@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraint_parent"
+    android:id="@+id/phone_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E5E5E5"
@@ -124,9 +125,10 @@
             android:textAppearance="@style/request_otp"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
-            app:layout_constraintBaseline_toBottomOf="@id/constraint_parent"
+            app:layout_constraintBaseline_toBottomOf="@id/phone_card"
             app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
     </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
