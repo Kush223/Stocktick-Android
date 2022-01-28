@@ -1,13 +1,16 @@
 package com.example.stocktick.Network
 
 import android.util.JsonToken
-import com.example.stocktick.LoginSignup.GetOtpModel
-import com.example.stocktick.LoginSignup.PhoneModel
-import com.example.stocktick.LoginSignup.ProfileModel
+import com.example.stocktick.LoginSignup.Models.GetOtpModel
+import com.example.stocktick.LoginSignup.Models.PhoneModel
+import com.example.stocktick.LoginSignup.Models.ProfileModel
+
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
-import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface JsonPlaceholderApi {
 
@@ -15,7 +18,7 @@ interface JsonPlaceholderApi {
     fun getOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
 
     @POST("auth/validateotp/")
-    fun validateOtp(@Body phoneModel: PhoneModel) : Call<GetOtpModel>
+    fun validateOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
 
 
     @POST("update/userinfo/")

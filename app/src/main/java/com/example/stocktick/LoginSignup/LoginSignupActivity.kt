@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.ActivityLoginSignupBinding
+
 //TODO : Change fragment transactions to navgraph format
 class LoginSignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginSignupBinding

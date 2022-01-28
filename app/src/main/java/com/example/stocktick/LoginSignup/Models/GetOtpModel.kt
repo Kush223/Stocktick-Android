@@ -1,7 +1,8 @@
-package com.example.stocktick.LoginSignup
+package com.example.stocktick.LoginSignup.Models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+
 
 data class GetOtpModel (
     @Expose
@@ -16,3 +17,4 @@ data class GetOtpModel (
     @SerializedName("Old_User")
     val old_user : Boolean ?= null
 )
+
