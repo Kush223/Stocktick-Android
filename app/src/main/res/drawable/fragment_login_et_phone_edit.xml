@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--  res/drawable/rounded_edittext.xml -->
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
     android:padding="10dp">
 <!--   Divider vertical:  https://stackoverflow.com/questions/34541433/android-edittext-draw-a-divider-line-between-its-drawable-and-its-text-->
     <solid android:color="#0FFF7666" />
-    <corners
-        android:bottomRightRadius="51dp"
-        android:bottomLeftRadius="51dp"
-        android:topLeftRadius="51dp"
-        android:topRightRadius="51dp" />
+    <stroke android:width="2.5dip" android:color="#FF7666" />
+    <padding android:left="10dip" android:top="10dip" android:right="10dip"  android:bottom="10dip" />
+    <corners android:radius="51dp"/>
 </shape>
+<!--font family roboto = sans serif, how to use https://stackoverflow.com/questions/34444616/how-to-use-roboto-in-xml-layout-->
+<!-- will have to use this articles for country code picker - https://stackoverflow.com/questions/62466452/how-to-add-country-code-picker-into-material-design-edit-text-layout-->
+<!--   for overall this file and divider in xml file -  https://stackoverflow.com/questions/34541433/android-edittext-draw-a-divider-line-between-its-drawable-and-its-text-->
 <!--  for rounded shapes blog  https://stackoverflow.com/questions/3646415/how-to-create-edittext-with-rounded-corners#:~:text=Modify%20each%20to%20have%20more,background%20for%20your%20EditText%20widget-->
-<!--  for colour hex  https://stackoverflow.com/questions/11285961/how-to-make-a-background-20-transparent-on-android-->
+<!--  for colour hex opacity https://stackoverflow.com/questions/11285961/how-to-make-a-background-20-transparent-on-android-->
