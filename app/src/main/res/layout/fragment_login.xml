@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/login_canvas1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#E5E5E5"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +78,7 @@
                 android:background="#FF6565"
                 android:clickable="true"
                 android:focusable="true"
+                android:layout_marginLeft="4dp"
                 app:ccp_arrowColor="@color/black"
                 app:ccp_arrowSize="2dp"
                 app:ccp_autoDetectCountry="true"
