@@ -10,8 +10,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
-//TODO(): setup the navgraph -- thus the bottomnav configuration
-//TODO(): setup viewmodel factory for each of the viewmodels.
+//TODO() - bottom nav of fragments.
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
