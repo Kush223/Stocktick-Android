@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.media.MediaFragment"
     android:background="#E5E5E5">
 
     <LinearLayout
@@ -49,7 +52,7 @@
             android:layout_marginRight="9dp"
             android:layout_marginBottom="32dp"
             tools:listitem="@layout/loan_item"
-            android:id="@+id/edu_list"/>
+            android:id="@+id/media_list"/>
 
     </LinearLayout>
 </ScrollView>

@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Stocktick</string>
-    <string name="title_home">Home</string>
+    <string name="title_education">Education</string>
     <string name="title_loan">Loan</string>
+    <string name="title_media">Media</string>
     <string name="title_insurance">Insurance</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loan_title">LOAN is a Necessity</string>
+    <string name="media_title">Media is a Necessity</string>
     <string name="insurance_title">Insurance is a Necessity</string>
     <string name="loan_body">An insurance plan that provides financial protection to your family and offers you the flexibility to choose the plan that suits your need.</string>
     <string name="loan_list_title">Top Insurance policies</string>
