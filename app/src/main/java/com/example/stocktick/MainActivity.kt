@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         val navView = binding.navView
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-            .build()
+//        val appBarConfiguration = AppBarConfiguration.Builder(
+//            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_insurance)
+//            .build()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)

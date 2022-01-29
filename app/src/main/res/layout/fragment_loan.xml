@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="?attr/actionBarSize"
+    android:background="#E5E5E5"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E5E5E5"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="37dp"
     android:orientation="vertical"
     tools:context=".ui.loan.LoanFragment">
     <ImageView
@@ -48,6 +49,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginLeft="9dp"
         android:layout_marginRight="9dp"
+        android:layout_marginBottom="32dp"
         tools:listitem="@layout/loan_item"
         android:id="@+id/loan_list"/>
 

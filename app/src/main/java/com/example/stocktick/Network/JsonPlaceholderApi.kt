@@ -20,12 +20,14 @@ interface JsonPlaceholderApi {
     @POST("auth/validateotp/")
     fun validateOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
 
-
     @POST("update/userinfo/")
     fun updateInfo(@Header("authToken") authToken: String,@Body profileModel: ProfileModel) : Call<GetOtpModel>
 
     @GET("get/loans/")
     fun getLoans(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+
+    @GET("get/Insurance/")
+    fun getInsurances(@Header("authToken") authToken: String) : Call<List<LoanItem>>
 //
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response

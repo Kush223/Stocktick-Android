@@ -1,4 +1,4 @@
-package com.example.stocktick.Education
+package com.example.stocktick.ui.Education
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

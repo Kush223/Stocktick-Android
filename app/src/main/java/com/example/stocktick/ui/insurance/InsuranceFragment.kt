@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.loan
+package com.example.stocktick.ui.insurance
 
 import android.app.Activity
 import android.content.SharedPreferences
@@ -12,50 +12,50 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
-import com.example.stocktick.databinding.FragmentLoanBinding
-import com.example.stocktick.ui.loan.LoanViewModelFactory
+import com.example.stocktick.databinding.FragmentInsuranceBinding
+import com.example.stocktick.ui.loan.LoanAdapter
+import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoanFragment : Fragment() {
-    private lateinit var loanViewModel: LoanViewModel
-    private lateinit var binding: FragmentLoanBinding
-    private val loanList: ArrayList<LoanItem> = ArrayList()
+
+class InsuranceFragment : Fragment() {
+    private lateinit var insuranceViewModel: InsuranceViewModel
+    private lateinit var binding: FragmentInsuranceBinding
+    private val insuranceList: ArrayList<LoanItem> = ArrayList()
     private lateinit var recyclerView : RecyclerView
-    private lateinit var loanAdapter: LoanAdapter
+    private lateinit var insuranceAdapter: LoanAdapter
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoanBinding.inflate(inflater, container, false)
-        val viewModelFactory = LoanViewModelFactory(requireContext())
-        loanViewModel = ViewModelProvider(
+        binding = FragmentInsuranceBinding.inflate(inflater, container, false)
+        val viewModelFactory = InsuranceViewModelFactory(requireContext())
+        insuranceViewModel = ViewModelProvider(
                 this, viewModelFactory
-        )[LoanViewModel::class.java]
-        (activity as AppCompatActivity).supportActionBar?.title = "Loan"
-        recyclerView = binding.loanList
-        loanAdapter = LoanAdapter(loanList,requireActivity())
+        )[InsuranceViewModel::class.java]
+        (activity as AppCompatActivity).supportActionBar?.title = "Insurance"
+        recyclerView = binding.insuranceList
+        insuranceAdapter = LoanAdapter(insuranceList,requireActivity())
         val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-        //recyclerView.isNestedScrollingEnabled = false;
-        //object : LinearLayoutManager(activity){ override fun canScrollVertically(): Boolean { return false } }
         recyclerView.layoutManager = linearLayoutManager
 //        val textView = binding.textDashboard
 //        loanViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getLoans(token!!)
+        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getInsurances(token!!)
         call.enqueue(object : Callback<List<LoanItem>> {
             override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
                 if(response.code()==200){
-                    val loanItemList : List<LoanItem> = response.body()!!
-                    for(loanItem in loanItemList){
-                        loanList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+                    val insuranceItemList : List<LoanItem> = response.body()!!
+                    for(insuranceItem in insuranceItemList){
+                        insuranceList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
                     }
-                    recyclerView.adapter = loanAdapter
+                    recyclerView.adapter = insuranceAdapter
                 }
                 else{
-                    Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()
                 }
             }
 
