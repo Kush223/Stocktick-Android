@@ -23,7 +23,7 @@
             #000000
         </item>
     </style>
-    <!--    Hello welcome to account textview -- Trust is investment text view-->
+    <!--    Hello welcome to account textview- Trust is investment text view-->
     <style name="hello_welcome">
         <item name="android:textSize">
             18sp

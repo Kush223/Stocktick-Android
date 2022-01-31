@@ -15,16 +15,17 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_signup.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/login_dialog.xml" value="0.12590579710144928" />
+        <entry key="app/src/main/res/drawable/create_account_et.xml" value="0.13703703703703704" />
         <entry key="app/src/main/res/drawable/fragment_login_bt_submit_phone.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/drawable/fragment_login_et_phone_edit.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/drawable/otp_arrow_back.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1541372351160444" />
-        <entry key="app/src/main/res/layout/fragment_create_account.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/fragment_create_account.xml" value="0.2817028985507246" />
         <entry key="app/src/main/res/layout/fragment_education.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_educationn.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/fragment_loan.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.18691588785046728" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4" />
       </map>
     </option>
   </component>
