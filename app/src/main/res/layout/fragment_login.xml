@@ -6,7 +6,7 @@
     android:id="@+id/phone_card"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E5E5"
+    android:background="@color/canvas_background"
     tools:context=".LoginSignup.LoginFragment">
 
     <!-- Login/Signup TextView-->
@@ -14,7 +14,7 @@
         android:id="@+id/login_canvas1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E5E5E5"
+        android:background="@color/canvas_background"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +30,7 @@
             android:gravity="top"
             android:text="@string/login_signup"
             android:textAppearance="@style/login_signup"
-            android:textColor="#000000" />
+            android:textColor="@color/black_000000" />
         <!-- Hello, welcome back to your account -->
         <TextView
             android:id="@+id/tv_login_hello_welcome"
@@ -60,16 +60,14 @@
         <!--contains only the edit text as a single layout-->
         <LinearLayout
             android:id="@+id/login_canvas2"
-            android:layout_width="351dp"
-            android:layout_height="53dp"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="14dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/fragment_login_et_phone_edit"
             android:orientation="horizontal">
             <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
-
-
             <com.hbb20.CountryCodePicker
                 android:id="@+id/login_country_code_picker"
                 android:layout_width="52dp"
@@ -94,7 +92,7 @@
             <View
                 android:id="@+id/et_login_divider"
                 android:layout_width="2dp"
-                android:layout_height="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="8dp"
                 android:background="#FF7666" />
@@ -109,21 +107,22 @@
                 android:gravity="left"
                 android:hint="@string/login_enter_phone_number"
                 android:inputType="number"
-                android:textColorHint="#A5A5A5" />
+                android:textColorHint="@color/gray_A5A5A5" />
         </LinearLayout>
 
         <Button
             android:id="@+id/bt_login_request_otp"
-            android:layout_width="351dp"
+            android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="19dp"
             android:layout_marginTop="36dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/fragment_login_bt_submit_phone"
             android:text="@string/request_otp"
             android:textAppearance="@style/request_otp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white_FFFFFF"
             android:textSize="22sp"
             app:layout_constraintBaseline_toBottomOf="@id/phone_card"
             app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />

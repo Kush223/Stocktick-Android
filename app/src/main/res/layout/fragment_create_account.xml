@@ -13,7 +13,7 @@
         android:id="@+id/create_account_canvas1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E5E5E5"
+        android:background="@color/canvas_background"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -57,22 +57,23 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="78dp"
+                android:layout_marginTop="76dp"
                 android:gravity="top"
                 android:text="EMAIL ADDRESS"
                 android:textAppearance="@style/phone_number" />
             <!--Email address edit text-->
             <EditText
                 android:id="@+id/et_create_account_email_address"
-                android:layout_width="349dp"
-                android:layout_height="46dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="21dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="13dp"
                 android:background="@drawable/create_account_et"
                 android:fontFamily="sans-serif"
-                android:hint="Enter email address"
+                android:hint="@string/create_account_hint_enter_email_address"
                 android:inputType="textEmailAddress"
                 android:textColorHint="#A5A5A5" />
             <!--Phone number -->
@@ -85,39 +86,79 @@
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="44dp"
                 android:gravity="top"
-                android:text="PHONE NUMBER"
+                android:text="@string/phone_number"
                 android:textAppearance="@style/phone_number" />
-            <!--Email address edit text-->
-            <EditText
-                android:id="@+id/et_create_account_phone_number"
-                android:layout_width="349dp"
-                android:layout_height="46dp"
+
+            <LinearLayout
+                android:id="@+id/create_account_phone_number_canvas"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/create_account_et"
+                android:orientation="horizontal">
+                <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+
+                <!--put canvas colour as background later-->
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/login_country_code_picker"
+                    android:layout_width="52dp"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="11dp"
+                    android:background="#FF6565"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:ccp_arrowColor="@color/black"
+                    app:ccp_arrowSize="2dp"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_contentColor="@color/black"
+                    app:ccp_countryPreference="IN"
+                    app:ccp_defaultLanguage="ENGLISH"
+                    app:ccp_defaultNameCode="IN"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_textSize="26sp" />
+                <View
+                    android:id="@+id/et_login_divider"
+                    android:layout_width="1dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/black_000000" />
+
+                <EditText
+                    android:id="@+id/et_login_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="left"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:hint="@string/login_enter_phone_number"
+                    android:inputType="number"
+                    android:textColorHint="#A5A5A5" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_login_request_otp"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/create_account_et"
-                android:fontFamily="sans-serif"
-                android:hint="Enter phone number"
-                android:inputType="number"
-                android:textColorHint="#A5A5A5" />
-
-        <Button
-            android:id="@+id/bt_login_request_otp"
-            android:layout_width="351dp"
-            android:layout_height="47dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/fragment_login_bt_submit_phone"
-            android:text="@string/request_otp"
-            android:textAppearance="@style/request_otp"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:layout_constraintBaseline_toBottomOf="@id/phone_card"
-            app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
-    </LinearLayout>
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/fragment_login_bt_submit_phone"
+                android:text="@string/request_otp"
+                android:textAppearance="@style/request_otp"
+                android:textColor="@color/white_FFFFFF"
+                android:textSize="22sp"
+                app:layout_constraintBaseline_toBottomOf="@id/phone_card"
+                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+        </LinearLayout>
     </LinearLayout>
 
 
