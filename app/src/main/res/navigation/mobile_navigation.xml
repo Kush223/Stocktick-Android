@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_education">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.stocktick.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_education"
+        android:name="com.example.stocktick.ui.education.EducationFragment"
+        android:label="@string/title_education"
+        tools:layout="@layout/fragment_education" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.stocktick.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_loan"
+        android:name="com.example.stocktick.ui.loan.LoanFragment"
+        android:label="@string/title_loan"
+        tools:layout="@layout/fragment_loan" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.stocktick.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_insurance"
+        android:name="com.example.stocktick.ui.insurance.InsuranceFragment"
+        android:label="@string/insurance_title"
+        tools:layout="@layout/fragment_insurance" />
+
+    <fragment
+        android:id="@+id/navigation_media"
+        android:name="com.example.stocktick.ui.media.MediaFragment"
+        android:label="@string/media_title"
+        tools:layout="@layout/fragment_media" />
 </navigation>

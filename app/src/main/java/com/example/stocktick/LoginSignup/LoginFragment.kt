@@ -69,11 +69,20 @@ class LoginFragment : Fragment() {
 
 
         // Inflate the layout for this fragment
+<<<<<<< HEAD
         val view: View = _binding.root
         mButtonSubmitPhone.setOnClickListener {
             phone = mEditTextPhoneEdit.toString()
             if (!phone.matches(phoneREGEXPattern)) {
                 mEditTextPhoneEdit.error = "Please enter a correct number"
+=======
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val view: View = binding!!.root
+        binding!!.btSubmitPhone.setOnClickListener {
+            phone = binding!!.etPhoneEdit.text.toString()
+            if (!phone!!.matches(phonePattern)) {
+                binding!!.etPhoneEdit.error = "Please enter a correct number"
+>>>>>>> 2e1cddefb0c0d61ed563975872e6a0a43bcfb32a
             } else {
                 //Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
@@ -105,6 +114,7 @@ class LoginFragment : Fragment() {
                 })
             }
         }
+<<<<<<< HEAD
         //Both enter otp and loginbutton are from OTP fragment page uska alag binding lagega.
         _binding.loginButton.setOnClickListener {
             otp = _binding.enterOtp.text.toString()
@@ -119,6 +129,16 @@ class LoginFragment : Fragment() {
                         response: Response<GetOtpModel>
                     ) {
                         if (response.code() == 200) {
+=======
+        binding!!.loginButton.setOnClickListener {
+            otp = binding!!.etEnterOtp.text.toString()
+         if(otp!!.length==6){
+                val phoneModel = PhoneModel(phone,otp)
+                val call : Call<GetOtpModel> = RetrofitClientInstance.getClient.validateOtp(phoneModel)
+                call.enqueue(object : Callback<GetOtpModel>{
+                    override fun onResponse(call: Call<GetOtpModel>, response: Response<GetOtpModel>) {
+                        if(response.code()==200){
+>>>>>>> 2e1cddefb0c0d61ed563975872e6a0a43bcfb32a
                             val res = response.body()
                             val old = res?.old_user
                             val sharedPreferences: SharedPreferences =
@@ -182,7 +202,11 @@ class LoginFragment : Fragment() {
 
                 })
             } else {
+<<<<<<< HEAD
                 _binding.enterOtp.error = "Otp should be of 6 digits"
+=======
+                binding!!.etEnterOtp.error = "Otp should be of 6 digits"
+>>>>>>> 2e1cddefb0c0d61ed563975872e6a0a43bcfb32a
             }
 
         }

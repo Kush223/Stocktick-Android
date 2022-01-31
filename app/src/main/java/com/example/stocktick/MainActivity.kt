@@ -2,15 +2,10 @@ package com.example.stocktick
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.stocktick.R
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
-//TODO() - bottom nav of fragments.
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         val navView = binding.navView
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-            .build()
+//        val appBarConfiguration = AppBarConfiguration.Builder(
+//            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_insurance)
+//            .build()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)

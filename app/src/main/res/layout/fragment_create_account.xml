@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,18 +8,18 @@
     android:background="#E5E5E5"
     tools:context=".LoginSignup.LoginFragment">
 
-    <!-- Login/Signup TextView-->
+    <!-- Create an account TextView-->
     <LinearLayout
-        android:id="@+id/login_canvas1"
+        android:id="@+id/create_account_canvas1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E5E5E5"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <!-- Login/Signup -->
+        <!-- Create an account -->
         <TextView
-            android:id="@+id/tv_login_signup"
+            android:id="@+id/tv_create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -28,12 +27,11 @@
             android:layout_marginLeft="21dp"
             android:layout_marginTop="75dp"
             android:gravity="top"
-            android:text="@string/login_signup"
-            android:textAppearance="@style/login_signup"
-            android:textColor="#000000" />
-        <!-- Hello, welcome back to your account -->
+            android:text="Create an account"
+            android:textAppearance="@style/login_signup" />
+        <!--        Trust is the greatest investment-->
         <TextView
-            android:id="@+id/tv_login_hello_welcome"
+            android:id="@+id/tv_create_account_trust"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -42,9 +40,9 @@
             android:layout_marginTop="13dp"
             android:fontFamily="sans-serif-light"
             android:gravity="top"
-            android:text="@string/hello_welcome"
+            android:text="Trust is the greatest investment"
             android:textAppearance="@style/hello_welcome" />
-        <!-- Phone Number -->
+        <!-- Email Address -->
         <TextView
             android:id="@+id/tv_phone_number"
             android:layout_width="wrap_content"
@@ -52,9 +50,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="21dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="78dp"
             android:gravity="top"
-            android:text="@string/phone_number"
+            android:text="EMAIL ADDRESS"
             android:textAppearance="@style/phone_number" />
 
         <!--contains only the edit text as a single layout-->
@@ -74,12 +72,12 @@
                 android:id="@+id/login_country_code_picker"
                 android:layout_width="52dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="11dp"
                 android:background="#FF6565"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginLeft="4dp"
                 app:ccp_arrowColor="@color/black"
                 app:ccp_arrowSize="2dp"
                 app:ccp_autoDetectCountry="true"
@@ -107,7 +105,7 @@
                 android:layout_gravity="left"
                 android:fontFamily="sans-serif"
                 android:gravity="left"
-                android:hint="@string/login_enter_phone_number"
+                android:hint="Enter phone number"
                 android:inputType="number"
                 android:textColorHint="#A5A5A5" />
         </LinearLayout>
@@ -131,4 +129,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
