@@ -1,20 +1,40 @@
 <resources>
     <string name="app_name">Stocktick</string>
-    <string name="title_education">Education</string>
+    <!--    LOAN PAGE-->
     <string name="title_loan">Loan</string>
-    <string name="title_media">Media</string>
-    <string name="title_insurance">Insurance</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loan_title">LOAN is a Necessity</string>
-    <string name="media_title">Media is a Necessity</string>
+    <string name="loan_list_title">Top Insurance policies</string>
+
+    <!--INSURANCE-->
+    <string name="title_insurance">Insurance</string>
     <string name="insurance_title">Insurance is a Necessity</string>
     <string name="loan_body">An insurance plan that provides financial protection to your family and offers you the flexibility to choose the plan that suits your need.</string>
-    <string name="loan_list_title">Top Insurance policies</string>
-    <string name="Category">CATEGORY</string>
+    <!--MEDIA-->
+    <string name="media_title">Media is a Necessity</string>
+    <string name="title_media">Media</string>
+    <!--EDUCATION-->
+    <string name="title_education">Education</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--    INTEREST-->
     <string name="Interest">INTEREST</string>
+
+    <!--login page strings-->
+    <string name="login_signup">Login/Signup</string>
+    <string name="hello_welcome">Hello, welcome back to your account</string>
+    <string name="phone_number">PHONE NUMBER</string>
+    <string name="request_otp">Request OTP</string>
+
+    <!--CATEGORY-->
+    <string name="Category">CATEGORY</string>
+    <!--    KNOW MORE-->
     <string name="Know_more">KNOW MORE</string>
+    <!--    HELP-->
     <string name="help">Help</string>
+    <string name="login_enter_phone_number">Enter phone number</string>
+    <string name="create_account_hint_enter_email_address">Enter email address</string>
+    <string name="enter_otp">Enter OTP</string>
+    <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
