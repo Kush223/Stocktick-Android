@@ -21,7 +21,7 @@ import com.example.stocktick.MainActivity
 import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.SmsBroadcastReceiver
-import com.example.stocktick.databinding.FragmentLoginBinding
+import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.hbb20.CountryCodePicker
 import retrofit2.Call
@@ -35,7 +35,7 @@ import retrofit2.Response
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private lateinit var _binding: FragmentLoginBinding
+    private lateinit var _binding: FragmentLoginOtpBinding
     private val binding get() = _binding
 
 
@@ -112,7 +112,7 @@ class LoginFragment : Fragment() {
         Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
 
         _binding.loginButton.setOnClickListener {
-            otp = _binding.etEnterOtp.text.toString()
+            otp = _binding.pinview.text.toString()
             if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
                 val call: Call<GetOtpModel> =
@@ -186,7 +186,7 @@ class LoginFragment : Fragment() {
 
                 })
             } else {
-                _binding.etEnterOtp.error = "Otp should be of 6 digits"
+                _binding.pinview.error = "Otp should be of 6 digits"
             }
 
         }
