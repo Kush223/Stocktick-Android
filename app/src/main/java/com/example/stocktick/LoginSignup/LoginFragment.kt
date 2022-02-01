@@ -112,7 +112,7 @@ class LoginFragment : Fragment() {
         Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
 
         _binding.loginButton.setOnClickListener {
-            otp = _binding.pinview.text.toString()
+            otp = _binding.pinview.toString()
             if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
                 val call: Call<GetOtpModel> =
@@ -134,12 +134,6 @@ class LoginFragment : Fragment() {
                                 val intent = Intent(activity, MainActivity::class.java)
                                 startActivity(intent)
                             } else {
-//                                val fragment: Fragment = SignupFragment()
-//                                val fragmentManager = requireActivity().supportFragmentManager
-//                                val fragmentTransaction = fragmentManager.beginTransaction()
-//                                fragmentTransaction.replace(R.id.login_signup_activity, fragment)
-//                                fragmentTransaction.addToBackStack(null)
-//                                fragmentTransaction.commit()
                                 val dialog = Dialog(requireActivity())
                                 dialog.setTitle("Information")
                                 dialog.setCancelable(false)

@@ -51,7 +51,7 @@
                     android:text="OTP"
                     android:textAppearance="@style/otp" />
             </LinearLayout>
-            <!-- Verification Code -->
+            <!-- Verification Code TV-->
             <TextView
                 android:id="@+id/verification_code"
                 android:layout_width="wrap_content"
@@ -213,6 +213,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
+        android:visibility="gone"
         tools:context=".LoginSignup.LoginFragment">
 
         <!-- Login/Signup TextView-->
