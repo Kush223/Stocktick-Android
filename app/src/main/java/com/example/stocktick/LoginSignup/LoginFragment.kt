@@ -28,7 +28,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+//TODO() -- check the transfer using actual OTP pin
+//TODO() -- check the back button work
+//TODO() -- check the Resend OTP tv work --- should we change it to button?
+//TODO() -- reformat the login code to not use deprecated method?
 /**
  * A simple [Fragment] subclass.
  * Use the [LoginFragment.newInstance] factory method to
@@ -185,7 +188,7 @@ class LoginFragment : Fragment() {
 
                     })
                 } else {
-                    _binding.pinview.error = "Otp should be of 6 digits"
+                    Toast.makeText(requireActivity(), "Otp should be of 6 digits",Toast.LENGTH_SHORT).show()
                 }
 
             }
