@@ -35,6 +35,7 @@ import retrofit2.Response
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
+
     private lateinit var _binding: FragmentLoginOtpBinding
     private val binding get() = _binding
 
@@ -46,6 +47,7 @@ class LoginFragment : Fragment() {
     private lateinit var mButtonSubmitPhone: Button
     private lateinit var mEditTextPhoneEdit: EditText
     private lateinit var mCountryCodePicker: CountryCodePicker
+    private lateinit var  mButtonSubmitOtp: Button
 
     private var phoneREGEXPattern = Regex("^[6789]\\d{9}$")
     private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
@@ -66,6 +68,8 @@ class LoginFragment : Fragment() {
         mButtonSubmitPhone = _binding.btLoginRequestOtp
         mEditTextPhoneEdit = _binding.etLoginPhoneNumber
         mCountryCodePicker = _binding.loginCountryCodePicker
+
+        mButtonSubmitOtp = _binding.btOtpSubmit
 
 
         // Inflate the layout for this fragment
@@ -111,79 +115,80 @@ class LoginFragment : Fragment() {
 
         Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
 
-        _binding.loginButton.setOnClickListener {
-            otp = _binding.pinview.toString()
-            if (otp.length == 6) {
-                val phoneModel = PhoneModel(phone, otp)
-                val call: Call<GetOtpModel> =
-                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
-                call.enqueue(object : Callback<GetOtpModel> {
-                    override fun onResponse(
-                        call: Call<GetOtpModel>,
-                        response: Response<GetOtpModel>
-                    ) {
-                        if (response.code() == 200) {
-                            val res = response.body()
-                            val old = res?.old_user
-                            val sharedPreferences: SharedPreferences =
-                                requireActivity().getSharedPreferences("USER", MODE_PRIVATE)
-                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                            editor.putString("token", res?.authToken)
-                            editor.apply()
-                            if (old == true) {
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                            } else {
-                                val dialog = Dialog(requireActivity())
-                                dialog.setTitle("Information")
-                                dialog.setCancelable(false)
-                                dialog.setContentView(R.layout.login_dialog)
-                                val name = dialog.findViewById(R.id.name_signup) as EditText
-                                val email = dialog.findViewById(R.id.email_signup) as EditText
-                                val submitBtn = dialog.findViewById(R.id.signup_button) as Button
-                                val skipBtn = dialog.findViewById(R.id.skip_button) as Button
-                                submitBtn.setOnClickListener {
-                                    if (name.text.isNotEmpty()) {
-                                        name.error = "Please enter your name"
-                                    } else if (!email.text.isEmpty()) {
-                                        email.error = "Please enter your email id"
-                                    } else {
+            mButtonSubmitOtp.setOnClickListener {
+                otp = _binding.pinview.toString()
+                if (otp.length == 6) {
+                    val phoneModel = PhoneModel(phone, otp)
+                    val call: Call<GetOtpModel> =
+                        RetrofitClientInstance.getClient.validateOtp(phoneModel)
+                    call.enqueue(object : Callback<GetOtpModel> {
+                        override fun onResponse(
+                            call: Call<GetOtpModel>,
+                            response: Response<GetOtpModel>
+                        ) {
+                            if (response.code() == 200) {
+                                val res = response.body()
+                                val old = res?.old_user
+                                val sharedPreferences: SharedPreferences =
+                                    requireActivity().getSharedPreferences("USER", MODE_PRIVATE)
+                                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                                editor.putString("token", res?.authToken)
+                                editor.apply()
+                                if (old == true) {
+                                    val intent = Intent(activity, MainActivity::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    val dialog = Dialog(requireActivity())
+                                    dialog.setTitle("Information")
+                                    dialog.setCancelable(false)
+                                    dialog.setContentView(R.layout.login_dialog)
+                                    val name = dialog.findViewById(R.id.name_signup) as EditText
+                                    val email = dialog.findViewById(R.id.email_signup) as EditText
+                                    val submitBtn =
+                                        dialog.findViewById(R.id.signup_button) as Button
+                                    val skipBtn = dialog.findViewById(R.id.skip_button) as Button
+                                    submitBtn.setOnClickListener {
+                                        if (name.text.isNotEmpty()) {
+                                            name.error = "Please enter your name"
+                                        } else if (!email.text.isEmpty()) {
+                                            email.error = "Please enter your email id"
+                                        } else {
+                                            val intent = Intent(activity, MainActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                    }
+                                    skipBtn.setOnClickListener {
                                         val intent = Intent(activity, MainActivity::class.java)
                                         startActivity(intent)
                                     }
+                                    dialog.show()
+                                    val metrics: DisplayMetrics = resources.displayMetrics;
+                                    val width = metrics.widthPixels;
+                                    val height = metrics.heightPixels;
+                                    //yourDialog.getWindow().setLayout((6 * width)/7, )
+                                    dialog.window?.setLayout(width, (4 * height) / 5);
                                 }
-                                skipBtn.setOnClickListener {
-                                    val intent = Intent(activity, MainActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                dialog.show()
-                                val metrics: DisplayMetrics = resources.displayMetrics;
-                                val width = metrics.widthPixels;
-                                val height = metrics.heightPixels;
-                                //yourDialog.getWindow().setLayout((6 * width)/7, )
-                                dialog.window?.setLayout(width, (4 * height) / 5);
+                            } else {
+                                Toast.makeText(
+                                    requireActivity(),
+                                    "Request not sent",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                        } else {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Request not sent",
-                                Toast.LENGTH_SHORT
-                            ).show()
+
                         }
 
-                    }
+                        override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
+                            Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
+                                .show()
+                        }
 
-                    override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
-                        Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                    })
+                } else {
+                    _binding.pinview.error = "Otp should be of 6 digits"
+                }
 
-                })
-            } else {
-                _binding.pinview.error = "Otp should be of 6 digits"
             }
-
-        }
         return view
     }
 
