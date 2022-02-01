@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_education"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_education" />
 
     <item
         android:id="@+id/navigation_loan"
@@ -15,5 +15,10 @@
         android:id="@+id/navigation_insurance"
         android:icon="@drawable/insurance_icon"
         android:title="@string/title_insurance" />
+
+    <item
+        android:id="@+id/navigation_media"
+        android:icon="@drawable/insurance_icon"
+        android:title="@string/title_media" />
 
 </menu>

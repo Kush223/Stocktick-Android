@@ -28,6 +28,12 @@ interface JsonPlaceholderApi {
 
     @GET("get/Insurance/")
     fun getInsurances(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+
+    @GET("get/education")
+    fun getEducations(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+
+    @GET("get/media")
+    fun getMedias(@Header("authToken") authToken: String) : Call<List<LoanItem>>
 //
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response

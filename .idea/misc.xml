@@ -12,16 +12,23 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_main.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_educationn.xml" value="0.1171875" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_insurance.xml" value="0.1171875" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_loan.xml" value="0.12047101449275362" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_signup.xml" value="0.1" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/loan_item.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/login_dialog.xml" value="0.12590579710144928" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1171875" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/help.xml" value="0.1796875" />
+        <entry key="app/src/main/res/drawable/create_account_et.xml" value="0.13703703703703704" />
+        <entry key="app/src/main/res/drawable/fragment_login_bt_submit_phone.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/fragment_login_et_phone_edit.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/otp_arrow_back.xml" value="0.20092592592592592" />
+        <entry key="app/src/main/res/drawable/otp_number_line.xml" value="0.12129629629629629" />
+        <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1541372351160444" />
+        <entry key="app/src/main/res/layout/fragment_create_account.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/fragment_education.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_educationn.xml" value="0.2078804347826087" />
+        <entry key="app/src/main/res/layout/fragment_loan.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/fragment_verify_otp.xml" value="0.17798913043478262" />
       </map>
     </option>
   </component>

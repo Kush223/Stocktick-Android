@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="14dp"
+    android:height="8dp"
+    android:tint="?attr/colorControlNormal"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <group>
+
+        <clip-path
+            android:pathData="M1 1H13V7H1V1Z"
+            />
+
+    </group>
+
+    <path
+        android:fillColor="@color/Canvas_background"
+        android:pathData="M11.67,3.87L9.9,2.1 0,12l9.9,9.9 1.77,-1.77L3.54,12z" />
+</vector>
