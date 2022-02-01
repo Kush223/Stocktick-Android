@@ -33,6 +33,7 @@
     <string name="help">Help</string>
     <string name="login_enter_phone_number">Enter phone number</string>
     <string name="create_account_hint_enter_email_address">Enter email address</string>
+    <string name="enter_otp">Enter OTP</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>
