@@ -7,14 +7,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--    PHONE NUMBER CARD-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/phone_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/canvas_background"
+        tools:context=".LoginSignup.LoginFragment">
+
+        <!-- Login/Signup TextView-->
+        <LinearLayout
+            android:id="@+id/login_canvas1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/canvas_background"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <!-- Login/Signup -->
+            <TextView
+                android:id="@+id/tv_login_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="75dp"
+                android:gravity="top"
+                android:text="@string/login_signup"
+                android:textAppearance="@style/login_signup"
+                android:textColor="@color/black_000000" />
+            <!-- Hello, welcome back to your account -->
+            <TextView
+                android:id="@+id/tv_login_hello_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="top"
+                android:text="@string/hello_welcome"
+                android:textAppearance="@style/hello_welcome" />
+            <!-- Phone Number -->
+            <TextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="40dp"
+                android:gravity="top"
+                android:text="@string/phone_number"
+                android:textAppearance="@style/phone_number" />
+
+            <!--contains only the edit text as a single layout-->
+            <LinearLayout
+                android:id="@+id/login_canvas2"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/fragment_login_et_phone_edit"
+                android:orientation="horizontal">
+                <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/login_country_code_picker"
+                    android:layout_width="52dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="11dp"
+                    android:background="#FF6565"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:ccp_arrowColor="@color/black"
+                    app:ccp_arrowSize="2dp"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_contentColor="@color/black"
+                    app:ccp_countryPreference="IN"
+                    app:ccp_defaultLanguage="ENGLISH"
+                    app:ccp_defaultNameCode="IN"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_textSize="26sp" />
+
+                <View
+                    android:id="@+id/et_login_divider"
+                    android:layout_width="2dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="8dp"
+                    android:background="#FF7666" />
+
+                <EditText
+                    android:id="@+id/et_login_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="left"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:hint="@string/login_enter_phone_number"
+                    android:inputType="number"
+                    android:textColorHint="@color/gray_A5A5A5"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_login_request_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/fragment_login_bt_submit_phone"
+                android:text="@string/request_otp"
+                android:textAppearance="@style/request_otp"
+                android:textColor="@color/white_FFFFFF"
+                android:textSize="22sp"
+                app:layout_constraintBaseline_toBottomOf="@id/phone_card"
+                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!--OTP CARD-->
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_otp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
+        android:visibility="gone"
         tools:context=".LoginSignup.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
@@ -205,137 +329,6 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--    PHONE NUMBER CARD-->
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/phone_card"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/canvas_background"
-        android:visibility="gone"
-        tools:context=".LoginSignup.LoginFragment">
-
-        <!-- Login/Signup TextView-->
-        <LinearLayout
-            android:id="@+id/login_canvas1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/canvas_background"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <!-- Login/Signup -->
-            <TextView
-                android:id="@+id/tv_login_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="75dp"
-                android:gravity="top"
-                android:text="@string/login_signup"
-                android:textAppearance="@style/login_signup"
-                android:textColor="@color/black_000000" />
-            <!-- Hello, welcome back to your account -->
-            <TextView
-                android:id="@+id/tv_login_hello_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif-light"
-                android:gravity="top"
-                android:text="@string/hello_welcome"
-                android:textAppearance="@style/hello_welcome" />
-            <!-- Phone Number -->
-            <TextView
-                android:id="@+id/tv_phone_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="40dp"
-                android:gravity="top"
-                android:text="@string/phone_number"
-                android:textAppearance="@style/phone_number" />
-
-            <!--contains only the edit text as a single layout-->
-            <LinearLayout
-                android:id="@+id/login_canvas2"
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/fragment_login_et_phone_edit"
-                android:orientation="horizontal">
-                <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/login_country_code_picker"
-                    android:layout_width="52dp"
-                    android:layout_height="23dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="11dp"
-                    android:background="#FF6565"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:ccp_arrowColor="@color/black"
-                    app:ccp_arrowSize="2dp"
-                    app:ccp_autoDetectCountry="true"
-                    app:ccp_contentColor="@color/black"
-                    app:ccp_countryPreference="IN"
-                    app:ccp_defaultLanguage="ENGLISH"
-                    app:ccp_defaultNameCode="IN"
-                    app:ccp_hintExampleNumber="true"
-                    app:ccp_showFlag="false"
-                    app:ccp_textSize="26sp" />
-
-                <View
-                    android:id="@+id/et_login_divider"
-                    android:layout_width="2dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="8dp"
-                    android:background="#FF7666" />
-
-                <EditText
-                    android:id="@+id/et_login_phone_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="41dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="left"
-                    android:fontFamily="sans-serif"
-                    android:gravity="left"
-                    android:hint="@string/login_enter_phone_number"
-                    android:inputType="number"
-                    android:textColorHint="@color/gray_A5A5A5" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/bt_login_request_otp"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/fragment_login_bt_submit_phone"
-                android:text="@string/request_otp"
-                android:textAppearance="@style/request_otp"
-                android:textColor="@color/white_FFFFFF"
-                android:textSize="22sp"
-                app:layout_constraintBaseline_toBottomOf="@id/phone_card"
-                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

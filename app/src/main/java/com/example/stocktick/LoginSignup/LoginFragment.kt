@@ -116,10 +116,6 @@ class LoginFragment : Fragment() {
                 })
             }
         }
-        //Both enter otp and loginbutton are from OTP fragment page uska alag binding lagega.
-
-        Toast.makeText(requireActivity(), otp.length.toString(), Toast.LENGTH_SHORT).show()
-
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.toString()
             if (otp.length == 6) {
