@@ -14,9 +14,6 @@ class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomePageBinding
 
     private lateinit var mButtonGetStarted: Button
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 //    https://learntodroid.com/how-to-move-between-fragments-using-the-navigation-component/
 
     override fun onCreateView(

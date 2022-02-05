@@ -81,12 +81,12 @@
                     android:id="@+id/login_country_code_picker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2.3"
+                    android:layout_weight="1"
                     app:ccp_autoDetectCountry="true"
                     app:ccp_defaultLanguage="ENGLISH"
                     app:ccp_flagBorderColor="@color/black_000000"
-                    app:ccp_showFlag="true"
-                    app:ccp_showNameCode="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_showNameCode="false"
                     app:ccp_textSize="16sp" />
                 <!--                https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
                 <View
