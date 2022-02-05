@@ -1,55 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#E5E5E5"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="#2C3333"
         android:orientation="vertical"
-        tools:context=".ui.loan.LoanFragment">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/loan_img"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
-            android:text="@string/insurance_title"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="@string/loan_body"
-            android:textColor="@color/black"
-            android:layout_margin="20dp"
-            android:textSize="15sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginStart="20dp"
-            android:text="@string/loan_list_title"
-            android:textAllCaps="true"
-            android:textColor="#535353"
-            android:textSize="13sp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginLeft="9dp"
-            android:layout_marginRight="9dp"
-            android:layout_marginBottom="32dp"
             tools:listitem="@layout/loan_item"
             android:id="@+id/insurance_list"/>
 
     </LinearLayout>
-</ScrollView>
+

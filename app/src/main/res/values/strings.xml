@@ -15,6 +15,11 @@
     <string name="Interest">INTEREST</string>
     <string name="Know_more">KNOW MORE</string>
     <string name="help">Help</string>
+    <string name="Bike">Bike</string>
+    <string name="Home">Home</string>
+    <string name="Car">Car</string>
+    <string name="Personal">Personal</string>
+    <string name="Select_category">SELECT A CATEGORY</string>
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>

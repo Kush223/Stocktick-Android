@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#FF7666</item>
-        <item name="colorPrimaryVariant">#FF7666</item>
-        <item name="colorOnPrimary">#FF7666</item>
+        <item name="colorPrimary">#2C3333</item>
+        <item name="colorPrimaryVariant">#2C3333</item>
+        <item name="colorOnPrimary">#2C3333</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#FF7666</item>
-        <item name="colorSecondaryVariant">#FF7666</item>
-        <item name="colorOnSecondary">#FF7666</item>
+        <item name="colorSecondary">#2C3333</item>
+        <item name="colorSecondaryVariant">#2C3333</item>
+        <item name="colorOnSecondary">#2C3333</item>
 <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
 <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
         <!-- Customize your theme here. -->

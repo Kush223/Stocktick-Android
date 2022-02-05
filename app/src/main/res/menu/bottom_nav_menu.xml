@@ -8,17 +8,13 @@
 
     <item
         android:id="@+id/navigation_loan"
-        android:icon="@drawable/loan_icon"
+        android:icon="@drawable/insurance_icon"
         android:title="@string/title_loan" />
 
     <item
         android:id="@+id/navigation_insurance"
-        android:icon="@drawable/insurance_icon"
+        android:icon="@drawable/loan_icon"
         android:title="@string/title_insurance" />
 
-    <item
-        android:id="@+id/navigation_media"
-        android:icon="@drawable/insurance_icon"
-        android:title="@string/title_media" />
 
 </menu>
