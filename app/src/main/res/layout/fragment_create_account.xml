@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--TODO () remove hardcoded width and heights-->
+<!--TODO() fix country picker using fragment login otp-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/phone_card"
+    android:id="@+id/create_account_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E5E5E5"

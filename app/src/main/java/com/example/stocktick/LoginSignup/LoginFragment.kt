@@ -85,7 +85,7 @@ class LoginFragment : Fragment() {
 
     private fun otpRetrofitCalls() {
 
-        //SUBMIT PHONENUMBER BUTTON WORKINGS
+        //SUBMIT PHONE NUMBER BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
             phone = mEditTextPhoneEdit.toString()
             if (!phone.matches(phoneREGEXPattern)) {
@@ -113,6 +113,7 @@ class LoginFragment : Fragment() {
                         }
 
                     }
+
                     override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
                         Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
                             .show()

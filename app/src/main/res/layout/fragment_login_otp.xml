@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- "-->
+<!--OTP PAGE-->
+
+<!--TODO() show the inputted phone number in id = otp_user_phone_number-->
+<!--TODO() make the back button in otp page work-->
+<!--TODO() Make the Resend OTP part work-->
+<!--TODO() check if submit otp button works-->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +21,7 @@
         android:background="@color/canvas_background"
         tools:context=".LoginSignup.LoginFragment">
 
-        <!-- Login/Signup TextView-->
+        <!-- Login/Signup -->
         <LinearLayout
             android:id="@+id/login_canvas1"
             android:layout_width="match_parent"
@@ -60,7 +66,7 @@
                 android:text="@string/phone_number"
                 android:textAppearance="@style/phone_number" />
 
-            <!--contains only the edit text as a single layout-->
+            <!--contains only CCPicker edit text-->
             <LinearLayout
                 android:id="@+id/login_canvas2"
                 android:layout_width="match_parent"
@@ -102,12 +108,11 @@
                     android:textColorHint="@color/gray_A5A5A5" />
             </LinearLayout>
 
+            <!--            WHAT DOES THIS BUTTON DO?-->
             <Button
                 android:id="@+id/bt_login_request_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="19dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginRight="20dp"
@@ -126,8 +131,8 @@
         android:id="@+id/login_otp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/canvas_background"
         android:visibility="gone"
+        android:background="@color/canvas_background"
         tools:context=".LoginSignup.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
@@ -156,8 +161,6 @@
                     android:id="@+id/otp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="120dp"
                     android:layout_marginTop="52dp"
                     android:gravity="center_horizontal|top"
@@ -190,8 +193,7 @@
                 android:text="We have sent a verification code to your mobile number"
                 android:textColor="#A5A5A5"
                 android:textSize="14sp" />
-            <!--    TODO()    MOBILE NUMBER TEXT VIEW HAVE TO SHOW AS TAKEN FROM USER-->
-            <!--        PUTTING UP SAMPLE DATA FOR NOW-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -250,6 +252,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/otp">
 
+                <!--                ENTER OTP TV-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -261,8 +264,6 @@
                     android:textSize="16sp" />
 
                 <!--            https://github.com/GoodieBag/Pinview-->
-                <!--PLACEHOLDER OTP PIN type FOR NOW.-->
-                <!--            a better tutorial -->
                 <com.goodiebag.pinview.Pinview
                     android:id="@+id/pinview"
                     android:layout_width="match_parent"
@@ -289,6 +290,7 @@
                 android:background="@color/canvas_background"
                 android:orientation="vertical">
 
+                <!--                SUBMIT OTP BUTTON-->
                 <Button
                     android:id="@+id/bt_otp_submit"
                     android:layout_width="match_parent"
@@ -302,7 +304,7 @@
                     android:textAppearance="@style/request_otp"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="22sp" />
-
+                <!--                RESEND OTP TV-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--NAVIGATION FORMAT FOR THIS-->
+<!--    Splash  screen -> Get started -> Login Page-> OP Page->-->
+<!--    Option 1: If already registered mmove to home page-->
+<!--    Opionn 2: If new move o complete your profile page-->
+
+<!--Above discussed pin is case 1,
+when the app is getting used for the first time.
+But if someone is already signed in, then the flow would be:
+Splash screen -> Home screen-->
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +17,23 @@
     <fragment
         android:id="@+id/navigation_welcome_page"
         android:label="@string/Title_welcome_screen"
-        tools:layout="@layout/fragment_welcome_page" />
+        tools:layout="@layout/fragment_welcome_page">
+        <action
+            android:id="@+id/action_navigation_welcome_page_to_navigation_login_otp_"
+            app:destination="@id/navigation_login_otp_" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_create_account"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
+    <fragment
+        android:id="@+id/navigation_login_otp_"
+        android:name="com.example.stocktick.LoginSignup.LoginFragment"
+        android:label="fragment_login_otp"
+        tools:layout="@layout/fragment_login_otp" />
+<!--    THIS ONE LAYOUT navigation login otp has both login and verify otp page.-->
+
+
 
 </navigation>
