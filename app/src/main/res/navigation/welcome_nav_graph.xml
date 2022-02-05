@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--NAVIGATION FORMAT FOR THIS-->
 <!--    Splash  screen -> Get started -> Login Page-> OP Page->-->
-<!--    Option 1: If already registered mmove to home page-->
-<!--    Opionn 2: If new move o complete your profile page-->
+<!--    Option 1: If already registered move to home page-->
+<!--    Option 2: If new move o complete your profile page-->
 
 <!--Above discussed pin is case 1,
 when the app is getting used for the first time.

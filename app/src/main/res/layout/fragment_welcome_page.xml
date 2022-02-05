@@ -14,7 +14,7 @@
         android:fontFamily="sans-serif"
         android:text="WELCOME"
         android:textColor="@color/black_000000"
-        android:textSize="42dp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@id/tv_welcome_description"/>
 
 

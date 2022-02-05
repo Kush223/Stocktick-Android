@@ -33,11 +33,7 @@ import retrofit2.Response
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
 //TODO() -- reformat the login code to not use deprecated method?
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class LoginFragment : Fragment() {
 
     private lateinit var _binding: FragmentLoginOtpBinding
