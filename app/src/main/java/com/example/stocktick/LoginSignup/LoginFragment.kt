@@ -28,6 +28,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+//TODO() -- modularise the code
 //TODO() -- check the transfer using actual OTP pin
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
@@ -63,23 +64,28 @@ class LoginFragment : Fragment() {
         startSmartUserConsent()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //OTP retrofit calls.
+        otpRetrofitCalls()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
         val view: View = _binding.root
 
         //Assign variables
-        mButtonSubmitPhone = _binding.btLoginRequestOtp
-        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
-        mCountryCodePicker = _binding.loginCountryCodePicker
+        initialiseVariables()
+        return view
+    }
 
-        mButtonSubmitOtp = _binding.btOtpSubmit
+    private fun otpRetrofitCalls() {
 
-
-        // Inflate the layout for this fragment
+        //SUBMIT PHONENUMBER BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
             phone = mEditTextPhoneEdit.toString()
             if (!phone.matches(phoneREGEXPattern)) {
@@ -107,7 +113,6 @@ class LoginFragment : Fragment() {
                         }
 
                     }
-
                     override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
                         Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
                             .show()
@@ -116,6 +121,8 @@ class LoginFragment : Fragment() {
                 })
             }
         }
+
+        //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.toString()
             if (otp.length == 6) {
@@ -189,9 +196,14 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
                     .show()
             }
-
         }
-        return view
+    }
+
+    private fun initialiseVariables() {
+        mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
+        mCountryCodePicker = _binding.loginCountryCodePicker
+        mButtonSubmitOtp = _binding.btOtpSubmit
     }
 
     private fun registerBroadcastListener() {

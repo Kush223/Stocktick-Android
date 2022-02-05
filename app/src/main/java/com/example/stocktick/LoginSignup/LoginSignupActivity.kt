@@ -16,6 +16,10 @@ class LoginSignupActivity : AppCompatActivity() {
             R.id.login_signup_activity,
             LoginFragment()
         ).commit()
+        ///have to remove this i believe.....
+
+
+
         binding = ActivityLoginSignupBinding.inflate(
             layoutInflater
         )

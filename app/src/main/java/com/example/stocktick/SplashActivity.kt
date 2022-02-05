@@ -12,27 +12,26 @@ import android.os.Looper
 import android.util.Log
 import com.example.stocktick.LoginSignup.LoginSignupActivity
 
-//Splash screens are typically used by particularly
-// large applications to notify the user that the program is in the process of loading.
-// They provide feedback that a lengthy process is underway.
-// Occasionally, a progress bar within the splash screen indicates the loading progress
-
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         val sharedPreferences: SharedPreferences = this.getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-        //Log.d("bb",token!!)
+
         if(token == "a"){
             val mainHandler =  Handler(Looper.getMainLooper())
             mainHandler.postDelayed({
                 val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
+                //opened the login signup activity.
+                //this activity now will have the welcome screen fragment.
                 startActivity(intent)
             }, 2000)
         }
         else{
             val intent = Intent(this@SplashActivity,MainActivity::class.java)
+            //inside mainactiivty navigation embedded all the main app functionalities.
             startActivity(intent)
         }
 
