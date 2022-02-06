@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.telephony.PhoneNumberUtils
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
@@ -83,12 +84,17 @@ class LoginFragment : Fragment() {
 
         //SUBMIT PHONE NUMBER BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
-            phone = mEditTextPhoneEdit.toString()
-            if (!phone.matches(phoneREGEXPattern)) {
-                mEditTextPhoneEdit.error = "Please enter a correct number"
+            val num = mEditTextPhoneEdit.text.toString().trim()
+//            Log.d("PHONEe: ",num)
 
+            val ccp = mCountryCodePicker.selectedCountryCode.toString()
+//            Log.d("CCP: ",ccp)
+            phone = "+$ccp$num"
+//            Log.d("naya phone: ",phone)
+            if (PhoneNumberUtils.isGlobalPhoneNumber(ccp + phone)) {
+                mEditTextPhoneEdit.error = "Please enter a correct number"
             } else {
-                //Log.d("abc", phone)
+//                Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
                 val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
