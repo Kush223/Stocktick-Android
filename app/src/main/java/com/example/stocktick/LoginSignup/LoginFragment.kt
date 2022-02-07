@@ -26,6 +26,7 @@ import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.hbb20.CountryCodePicker
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -69,6 +70,7 @@ class LoginFragment : Fragment() {
         startSmartUserConsent()
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //OTP retrofit calls.
@@ -85,7 +87,7 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    @DelicateCoroutinesApi
+
     private fun otpRetrofitCalls() {
 
         //SUBMIT BUTTON WORKINGS
@@ -108,43 +110,17 @@ class LoginFragment : Fragment() {
     //coroutine api calls not view model.
     @DelicateCoroutinesApi
     private fun submitPhoneNumberButtonResponse() {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Main) {
             val phoneModel = PhoneModel(phone)
             try {
-                val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
-                Log.d("SUBMIT CALL SUCCESS", call.toString())
-                call.enqueue(object : Callback<GetOtpModel> {
+                RetrofitClientInstance.getClient.getOtp(phoneModel)
+                _binding.otpCard.visibility = View.VISIBLE
+                _binding.phoneCard.visibility = View.INVISIBLE
 
-                    override fun onResponse(
-                        call: Call<GetOtpModel>,
-                        response: Response<GetOtpModel>
-                    ) {
-                        if (response.code() == 200) {
-                            _binding.otpCard.visibility = View.VISIBLE
-                            _binding.phoneCard.visibility = View.GONE
-                            //something have to do with regarding fragment calling here.
-                        } else {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Request not sent",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-
-                    override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
-                        Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
-                            .show()
-                        Log.d("CALL ON FAILURE",call.toString())
-                    }
-                })
-
-            } catch (e: Exception) {
-                Toast.makeText(
-                    requireActivity(),
-                    "Request not sent",
-                    Toast.LENGTH_SHORT
-                ).show()
+            } catch (error: Exception) {
+                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                    .show()
+                Log.d("ERROR_LOGINFRAGMENT", error.toString())
             }
 
         }

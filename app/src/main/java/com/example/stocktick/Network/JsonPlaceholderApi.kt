@@ -14,6 +14,16 @@ interface JsonPlaceholderApi {
 
     @POST("auth/getotp/")
     fun getOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
+    //PHONEMODEL AS str = phone, otp
+    //GETOTPMODEL AS str = message,authToken,old_user
+
+    //HEROKUAPP MODEL
+    //get/all/otp "phone": "9140876745",
+    //        "otp": 186693
+    //@POST auth/getotp/ "username" :
+
+    //@POST /auth/validateotp/ "username" : "<phone_number>", "otp" : "<otp resp>"
+
 
     @POST("auth/validateotp/")
     fun validateOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
