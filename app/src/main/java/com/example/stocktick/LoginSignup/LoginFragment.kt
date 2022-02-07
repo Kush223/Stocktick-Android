@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.telephony.PhoneNumberUtils
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,11 +25,13 @@ import com.example.stocktick.SmsBroadcastReceiver
 import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.hbb20.CountryCodePicker
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//TODO() -- modularise the code
 //TODO() -- check the transfer using actual OTP pin
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
@@ -51,8 +52,13 @@ class LoginFragment : Fragment() {
     private lateinit var mCountryCodePicker: CountryCodePicker
     private lateinit var mButtonSubmitOtp: Button
 
-    private var phoneREGEXPattern = Regex("^[+][0-9]{11,12}$")
-//    link for regex pattern https://stackoverflow.com/questions/35324149/phonenumberutils-isglobalphonenumber-not-returning-proper-results
+    private var phoneREGEXPattern = Regex("^[0-9]{9,12}$")
+    //for innternational regex link: /^\+(?:[0-9] ?){6,14}[0-9]$/
+    //oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s03.html
+
+    //above regex is without ccp
+    //another link for country codes
+    //link for regex pattern with ccp,  https://stackoverflow.com/questions/35324149/phonenumberutils-isglobalphonenumber-not-returning-proper-results
     private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
     private val REQ_USER_CONSENT = 200
     private lateinit var phone: String
@@ -79,26 +85,36 @@ class LoginFragment : Fragment() {
         return view
     }
 
+    @DelicateCoroutinesApi
     private fun otpRetrofitCalls() {
-        submitPhoneNumberButtonRetrofit()
+
+        //SUBMIT BUTTON WORKINGS
+        mButtonSubmitPhone.setOnClickListener {
+            phone = mEditTextPhoneEdit.text.toString().trim()
+            //val ccp = mCountryCodePicker.selectedCountryCode.toString()
+
+            if (!phone.matches(phoneREGEXPattern)) {
+                mEditTextPhoneEdit.error = "Please enter a correct number"
+            } else {
+                submitPhoneNumberButtonResponse()
+            }
+        }
+        //OTP BUTTON WORKINGS
         submitOtpButtonRetrofit()
 
     }
 
-    private fun submitPhoneNumberButtonRetrofit() {
-        mButtonSubmitPhone.setOnClickListener {
-            val num = mEditTextPhoneEdit.text.toString().trim()
-            val ccp = mCountryCodePicker.selectedCountryCode.toString()
-            phone = "+$ccp$num"
 
-            if (PhoneNumberUtils.isGlobalPhoneNumber(ccp+phone)) {
-                mEditTextPhoneEdit.error = "Please enter a correct number"
-            } else {
-                val phoneModel = PhoneModel(phone)
-//                Log.d("phone",phone.toString())
-//                Log.d("phoneModel",phoneModel)
+    //coroutine api calls not view model.
+    @DelicateCoroutinesApi
+    private fun submitPhoneNumberButtonResponse() {
+        GlobalScope.launch {
+            val phoneModel = PhoneModel(phone)
+            try {
                 val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
+                Log.d("SUBMIT CALL SUCCESS", call.toString())
                 call.enqueue(object : Callback<GetOtpModel> {
+
                     override fun onResponse(
                         call: Call<GetOtpModel>,
                         response: Response<GetOtpModel>
@@ -110,26 +126,30 @@ class LoginFragment : Fragment() {
                         } else {
                             Toast.makeText(
                                 requireActivity(),
-                                "Request not sent" + response.code(),
+                                "Request not sent",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            //REQUEST NO SENT??? WHY?? some issue with the retrofit momdel.
-
                         }
-
                     }
 
                     override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
                         Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
                             .show()
-                        //
-                        //REQUEST IS NOT HAPPENING FAIL KAR RAHA HAI!!
+                        Log.d("CALL ON FAILURE",call.toString())
                     }
-
                 })
+
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireActivity(),
+                    "Request not sent",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+
         }
     }
+
 
     private fun submitOtpButtonRetrofit() {
         //SUBMIT OTP BUTTON WORKINGS
@@ -181,8 +201,8 @@ class LoginFragment : Fragment() {
                                 }
                                 dialog.show()
                                 val metrics: DisplayMetrics = resources.displayMetrics;
-                                val width = metrics.widthPixels;
-                                val height = metrics.heightPixels;
+                                val width = metrics.widthPixels
+                                val height = metrics.heightPixels
                                 //yourDialog.getWindow().setLayout((6 * width)/7, )
                                 dialog.window?.setLayout(width, (4 * height) / 5);
                             }
@@ -216,12 +236,14 @@ class LoginFragment : Fragment() {
         mButtonSubmitOtp = _binding.btOtpSubmit
     }
 
+    //NOT TOUCHING FOR NOW??
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
         smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
                     startActivityForResult(intent, REQ_USER_CONSENT)
+//                    link: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
                 }
 
                 override fun onFailure() {
