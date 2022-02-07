@@ -1,10 +1,8 @@
 package com.example.stocktick.Network
 
-import android.util.JsonToken
 import com.example.stocktick.LoginSignup.Models.GetOtpModel
 import com.example.stocktick.LoginSignup.Models.PhoneModel
 import com.example.stocktick.LoginSignup.Models.ProfileModel
-
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
 import retrofit2.http.Body
@@ -21,20 +19,26 @@ interface JsonPlaceholderApi {
     fun validateOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
 
     @POST("update/userinfo/")
-    fun updateInfo(@Header("authToken") authToken: String,@Body profileModel: ProfileModel) : Call<GetOtpModel>
+    fun updateInfo(
+        @Header("authToken") authToken: String, @Body profileModel: ProfileModel
+    ): Call<GetOtpModel>
 
     @GET("get/loans/")
-    fun getLoans(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+    fun getLoans(@Header("authToken") authToken: String): Call<List<LoanItem>>
 
     @GET("get/Insurance/")
-    fun getInsurances(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+    fun getInsurances(@Header("authToken") authToken: String): Call<List<LoanItem>>
 
     @GET("get/education")
-    fun getEducations(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+    fun getEducations(@Header("authToken") authToken: String): Call<List<LoanItem>>
 
     @GET("get/media")
-    fun getMedias(@Header("authToken") authToken: String) : Call<List<LoanItem>>
+    fun getMedias(@Header("authToken") authToken: String): Call<List<LoanItem>>
+
+//    @GET("get/all/otp")
+//    fun getAllOtp(@Header("authToken") authToken: String): Call<List>
 //
+
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response
 //

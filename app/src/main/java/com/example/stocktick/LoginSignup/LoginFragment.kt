@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +51,8 @@ class LoginFragment : Fragment() {
     private lateinit var mCountryCodePicker: CountryCodePicker
     private lateinit var mButtonSubmitOtp: Button
 
-    private var phoneREGEXPattern = Regex("^[6789]\\d{9}$")
+    private var phoneREGEXPattern = Regex("^[+][0-9]{11,12}$")
+//    link for regex pattern https://stackoverflow.com/questions/35324149/phonenumberutils-isglobalphonenumber-not-returning-proper-results
     private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
     private val REQ_USER_CONSENT = 200
     private lateinit var phone: String
@@ -71,31 +73,30 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
         val view: View = _binding.root
-
-        //Assign variables
         initialiseVariables()
         return view
     }
 
     private fun otpRetrofitCalls() {
+        submitPhoneNumberButtonRetrofit()
+        submitOtpButtonRetrofit()
 
-        //SUBMIT PHONE NUMBER BUTTON WORKINGS
+    }
+
+    private fun submitPhoneNumberButtonRetrofit() {
         mButtonSubmitPhone.setOnClickListener {
             val num = mEditTextPhoneEdit.text.toString().trim()
-//            Log.d("PHONEe: ",num)
-
             val ccp = mCountryCodePicker.selectedCountryCode.toString()
-//            Log.d("CCP: ",ccp)
             phone = "+$ccp$num"
-//            Log.d("naya phone: ",phone)
-            if (PhoneNumberUtils.isGlobalPhoneNumber(ccp + phone)) {
+
+            if (PhoneNumberUtils.isGlobalPhoneNumber(ccp+phone)) {
                 mEditTextPhoneEdit.error = "Please enter a correct number"
             } else {
-//                Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
+//                Log.d("phone",phone.toString())
+//                Log.d("phoneModel",phoneModel)
                 val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
                     override fun onResponse(
@@ -109,9 +110,11 @@ class LoginFragment : Fragment() {
                         } else {
                             Toast.makeText(
                                 requireActivity(),
-                                "Request not sent",
+                                "Request not sent" + response.code(),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            //REQUEST NO SENT??? WHY?? some issue with the retrofit momdel.
+
                         }
 
                     }
@@ -119,12 +122,16 @@ class LoginFragment : Fragment() {
                     override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
                         Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
                             .show()
+                        //
+                        //REQUEST IS NOT HAPPENING FAIL KAR RAHA HAI!!
                     }
 
                 })
             }
         }
+    }
 
+    private fun submitOtpButtonRetrofit() {
         //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.toString()
