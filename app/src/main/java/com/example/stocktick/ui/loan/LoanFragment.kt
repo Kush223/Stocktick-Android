@@ -22,13 +22,13 @@ import retrofit2.Response
 class LoanFragment : Fragment() {
     private lateinit var loanViewModel: LoanViewModel
     private lateinit var binding: FragmentLoanBinding
-    private val loanList: MutableList<LoanItem> = ArrayList()
-    private val carList: ArrayList<LoanItem> = ArrayList()
-    private val bikeList: ArrayList<LoanItem> = ArrayList()
-    private val homeList: ArrayList<LoanItem> = ArrayList()
-    private val personalList: ArrayList<LoanItem> = ArrayList()
-    private lateinit var recyclerView : RecyclerView
-    private lateinit var loanAdapter: LoanAdapter
+//    private val loanList: MutableList<LoanItem> = ArrayList()
+//    private val carList: ArrayList<LoanItem> = ArrayList()
+//    private val bikeList: ArrayList<LoanItem> = ArrayList()
+//    private val homeList: ArrayList<LoanItem> = ArrayList()
+//    private val personalList: ArrayList<LoanItem> = ArrayList()
+    //private lateinit var recyclerView : RecyclerView
+    //private lateinit var loanAdapter: LoanAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,56 +37,52 @@ class LoanFragment : Fragment() {
                 this, viewModelFactory
         )[LoanViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = "Loan"
-        recyclerView = binding.loanList
-        loanAdapter = LoanAdapter(loanList,carList,bikeList,personalList,homeList,requireActivity(),1)
-        val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-        linearLayoutManager.reverseLayout = false
-        linearLayoutManager.stackFromEnd = false
+        //recyclerView = binding.loanList
+        //loanAdapter = LoanAdapter(loanList,carList,bikeList,personalList,homeList,requireActivity(),1)
+//        val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
+//        linearLayoutManager.reverseLayout = false
+//        linearLayoutManager.stackFromEnd = false
 
-        //recyclerView.isNestedScrollingEnabled = false;
-        //object : LinearLayoutManager(activity){ override fun canScrollVertically(): Boolean { return false } }
-        recyclerView.layoutManager = linearLayoutManager
-//        val textView = binding.textDashboard
-//        loanViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
+        //recyclerView.layoutManager = linearLayoutManager
 
         //recyclerView.adapter=loanAdapter
-        loanList.add(LoanItem())
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getLoans(token!!)
-        call.enqueue(object : Callback<List<LoanItem>> {
-            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
-                if(response.code()==200){
-                    val loanItemList : List<LoanItem> = response.body()!!
-                    for(loanItem in loanItemList){
-                        if(loanItem.category.equals("Bike")){
-                            bikeList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
-                        }
-                        if(loanItem.category.equals("Car")){
-                            carList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
-                        }
-                        if(loanItem.category.equals("Home")){
-                            homeList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
-                        }
-                        if(loanItem.category.equals("Personal")){
-                            personalList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
-                        }
-                        //loanList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
-                    }
-                    //Log.d("ds"," " +personalList.size + " "+ homeList.size+ " "+ carList.size+ " "+ bikeList.size)
-
-                    recyclerView.adapter = loanAdapter
-                }
-                else{
-                    Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
-                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        loanList.add(LoanItem())
+//        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
+//        val token = sharedPreferences.getString("token","a")
+//        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getLoans(token!!)
+//        call.enqueue(object : Callback<List<LoanItem>> {
+//            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
+//                if(response.code()==200){
+//                    val loanItemList : List<LoanItem> = response.body()!!
+//                    for(loanItem in loanItemList){
+//                        if(loanItem.category.equals("Bike")){
+//                            bikeList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+//                        }
+//                        if(loanItem.category.equals("Car")){
+//                            carList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+//                        }
+//                        if(loanItem.category.equals("Home")){
+//                            homeList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+//                        }
+//                        if(loanItem.category.equals("Personal")){
+//                            personalList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+//                        }
+//                        //loanList.add(LoanItem(loanItem.link,loanItem.short_desc,loanItem.long_desc,loanItem.image_url,loanItem.category,loanItem.interest))
+//                    }
+//                    //Log.d("ds"," " +personalList.size + " "+ homeList.size+ " "+ carList.size+ " "+ bikeList.size)
+//
+//                    recyclerView.adapter = loanAdapter
+//                }
+//                else{
+//                    Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
+//                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
 
 
 

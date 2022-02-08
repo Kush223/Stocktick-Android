@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentInsuranceBinding
-import com.example.stocktick.ui.loan.LoanAdapter
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,8 +27,8 @@ class InsuranceFragment : Fragment() {
     private val bikeList: ArrayList<LoanItem> = ArrayList()
     private val homeList: ArrayList<LoanItem> = ArrayList()
     private val personalList: ArrayList<LoanItem> = ArrayList()
-    private lateinit var recyclerView : RecyclerView
-    private lateinit var insuranceAdapter: LoanAdapter
+//    private lateinit var recyclerView : RecyclerView
+//    private lateinit var insuranceAdapter: LoanAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,49 +37,47 @@ class InsuranceFragment : Fragment() {
                 this, viewModelFactory
         )[InsuranceViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = "Insurance"
-        recyclerView = binding.insuranceList
-        insuranceAdapter = LoanAdapter(insuranceList,carList,bikeList,personalList,homeList,requireActivity(),2)
-        val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-        linearLayoutManager.reverseLayout = false
-        linearLayoutManager.stackFromEnd = false
-        recyclerView.layoutManager = linearLayoutManager
-//        val textView = binding.textDashboard
-//        loanViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
-        insuranceList.add(LoanItem())
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getInsurances(token!!)
-        call.enqueue(object : Callback<List<LoanItem>> {
-            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
-                if(response.code()==200){
-                    val insuranceItemList : List<LoanItem> = response.body()!!
-                    for(insuranceItem in insuranceItemList){
-                        if(insuranceItem.category.equals("Bike")){
-                            bikeList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
-                        }
-                        if(insuranceItem.category.equals("Car")){
-                            carList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
-                        }
-                        if(insuranceItem.category.equals("Home")){
-                            homeList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
-                        }
-                        if(insuranceItem.category.equals("Personal")){
-                            personalList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
-                        }
-                    }
-
-                    recyclerView.adapter = insuranceAdapter
-                }
-                else{
-                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
-                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        recyclerView = binding.insuranceList
+//        insuranceAdapter = LoanAdapter(insuranceList,carList,bikeList,personalList,homeList,requireActivity(),2)
+//        val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
+//        linearLayoutManager.reverseLayout = false
+//        linearLayoutManager.stackFromEnd = false
+//        recyclerView.layoutManager = linearLayoutManager
+//        insuranceList.add(LoanItem())
+//        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
+//        val token = sharedPreferences.getString("token","a")
+//        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getInsurances(token!!)
+//        call.enqueue(object : Callback<List<LoanItem>> {
+//            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
+//                if(response.code()==200){
+//                    val insuranceItemList : List<LoanItem> = response.body()!!
+//                    for(insuranceItem in insuranceItemList){
+//                        if(insuranceItem.category.equals("Bike")){
+//                            bikeList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
+//                        }
+//                        if(insuranceItem.category.equals("Car")){
+//                            carList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
+//                        }
+//                        if(insuranceItem.category.equals("Home")){
+//                            homeList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
+//                        }
+//                        if(insuranceItem.category.equals("Personal")){
+//                            personalList.add(LoanItem(insuranceItem.link,insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url,insuranceItem.category,insuranceItem.interest))
+//                        }
+//                    }
+//
+//                    recyclerView.adapter = insuranceAdapter
+//                }
+//                else{
+//                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
+//                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
     }
     override fun onCreateView(
             inflater: LayoutInflater,

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -12,6 +12,75 @@
 <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
 <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
         <!-- Customize your theme here. -->
+
     </style>
+
+    <!--    Login/signUp THEME+ CREATE ACCOUNT THEME-->
+
+    <!--Login signup text view - CREATE ACCOUNT text view-->
+    <style name="login_signup">
+        <item name="android:textSize">
+            21sp
+        </item>
+        <item name="android:textColor">
+            #000000
+        </item>
+    </style>
+    <!--    Hello welcome to account textview- Trust is investment text view-->
+    <style name="hello_welcome">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            #333333
+        </item>
+    </style>
+    <!--    PHONE NUMBER - EMAIL ADDRESS textview theme -->
+    <style name="phone_number">
+        <item name="android:textSize">
+            16sp
+        </item>
+        <item name="android:textColor">
+            #A5A5A5
+        </item>
+    </style>
+    <!--    Request OTP-->
+    <style name="request_otp">
+
+        <item name="android:textSize">
+            22sp
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+>>>>>>> 41b1a749f7610bf03c5d3c20ab4dc2ee96219732
+    </style>
+
+    <!--    OTP styles-->
+    <style name="otp">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+    <style name="verification_code">
+
+        <item name="android:textSize">
+            26sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
 
 </resources>

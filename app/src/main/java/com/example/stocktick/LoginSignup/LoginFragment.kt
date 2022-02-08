@@ -21,45 +21,73 @@ import com.example.stocktick.MainActivity
 import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.SmsBroadcastReceiver
-import com.example.stocktick.databinding.FragmentLoginBinding
+import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import com.hbb20.CountryCodePicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//Not added ViewModelFactory to this as no ViewModel in this yet.
-
+//TODO() -- check the transfer using actual OTP pin
+//TODO() -- check the back button work
+//TODO() -- check the Resend OTP tv work --- should we change it to button?
+//TODO() -- reformat the login code to not use deprecated method?
 /**
  * A simple [Fragment] subclass.
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private var binding: FragmentLoginBinding? = null
-    private var phonePattern = Regex("^[6789]\\d{9}$")
-    private var smsBroadCastReceiver: SmsBroadcastReceiver? = null
+
+    private lateinit var _binding: FragmentLoginOtpBinding
+    private val binding get() = _binding
+
+
+    //xml variables submitPhone = button = bt_login_request_otp
+    //edit text = phoneEdit = et_login_phone
+    //otp card and phone card are crazy...they are visibility toggles have to find a way to integrate that into ui
+
+    private lateinit var mButtonSubmitPhone: Button
+    private lateinit var mEditTextPhoneEdit: EditText
+    private lateinit var mCountryCodePicker: CountryCodePicker
+    private lateinit var mButtonSubmitOtp: Button
+
+    private var phoneREGEXPattern = Regex("^[6789]\\d{9}$")
+    private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
     private val REQ_USER_CONSENT = 200
-    private var phone: String? = null
-    private var otp: String? = null
+    private lateinit var phone: String
+    private lateinit var otp: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         startSmartUserConsent()
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
+        val view: View = _binding.root
+
+        //Assign variables
+        mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
+        mCountryCodePicker = _binding.loginCountryCodePicker
+
+        mButtonSubmitOtp = _binding.btOtpSubmit
+
+
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val view: View = binding!!.root
-        binding!!.btSubmitPhone.setOnClickListener {
-            phone = binding!!.etPhoneEdit.text.toString()
-            if (!phone!!.matches(phonePattern)) {
-                binding!!.etPhoneEdit.error = "Please enter a correct number"
+        mButtonSubmitPhone.setOnClickListener {
+            phone = mEditTextPhoneEdit.text.toString()
+            Toast.makeText(requireActivity(),"m "+phone.length,Toast.LENGTH_SHORT).show()
+            if (phone.length!=10) {
+                mEditTextPhoneEdit.error = "Please enter a correct number"
+
             } else {
-                //Log.d("abc", phone!!)
+                //Log.d("abc", phone)
                 val phoneModel = PhoneModel(phone)
                 val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
@@ -68,8 +96,9 @@ class LoginFragment : Fragment() {
                         response: Response<GetOtpModel>
                     ) {
                         if (response.code() == 200) {
-                            binding!!.otpCard.visibility = View.VISIBLE
-                            binding!!.phoneCard.visibility = View.GONE
+                            _binding.otpCard.visibility = View.VISIBLE
+                            _binding.phoneCard.visibility = View.GONE
+                            //something have to do with regarding fragment calling here.
                         } else {
                             Toast.makeText(
                                 requireActivity(),
@@ -88,14 +117,18 @@ class LoginFragment : Fragment() {
                 })
             }
         }
-        binding!!.loginButton.setOnClickListener {
-            otp = binding!!.etEnterOtp.text.toString()
-         if(otp!!.length==6){
-                val phoneModel = PhoneModel(phone,otp)
-                val call : Call<GetOtpModel> = RetrofitClientInstance.getClient.validateOtp(phoneModel)
-                call.enqueue(object : Callback<GetOtpModel>{
-                    override fun onResponse(call: Call<GetOtpModel>, response: Response<GetOtpModel>) {
-                        if(response.code()==200){
+        mButtonSubmitOtp.setOnClickListener {
+            otp = _binding.pinview.toString()
+            if (otp.length == 6) {
+                val phoneModel = PhoneModel(phone, otp)
+                val call: Call<GetOtpModel> =
+                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
+                call.enqueue(object : Callback<GetOtpModel> {
+                    override fun onResponse(
+                        call: Call<GetOtpModel>,
+                        response: Response<GetOtpModel>
+                    ) {
+                        if (response.code() == 200) {
                             val res = response.body()
                             val old = res?.old_user
                             val sharedPreferences: SharedPreferences =
@@ -107,19 +140,14 @@ class LoginFragment : Fragment() {
                                 val intent = Intent(activity, MainActivity::class.java)
                                 startActivity(intent)
                             } else {
-//                                val fragment: Fragment = SignupFragment()
-//                                val fragmentManager = requireActivity().supportFragmentManager
-//                                val fragmentTransaction = fragmentManager.beginTransaction()
-//                                fragmentTransaction.replace(R.id.login_signup_activity, fragment)
-//                                fragmentTransaction.addToBackStack(null)
-//                                fragmentTransaction.commit()
                                 val dialog = Dialog(requireActivity())
                                 dialog.setTitle("Information")
                                 dialog.setCancelable(false)
                                 dialog.setContentView(R.layout.login_dialog)
                                 val name = dialog.findViewById(R.id.name_signup) as EditText
                                 val email = dialog.findViewById(R.id.email_signup) as EditText
-                                val submitBtn = dialog.findViewById(R.id.signup_button) as Button
+                                val submitBtn =
+                                    dialog.findViewById(R.id.signup_button) as Button
                                 val skipBtn = dialog.findViewById(R.id.skip_button) as Button
                                 submitBtn.setOnClickListener {
                                     if (name.text.isNotEmpty()) {
@@ -159,7 +187,8 @@ class LoginFragment : Fragment() {
 
                 })
             } else {
-                binding!!.etEnterOtp.error = "Otp should be of 6 digits"
+                Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
@@ -168,7 +197,7 @@ class LoginFragment : Fragment() {
 
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
-        smsBroadCastReceiver!!.smsBroadCastReceiverListener =
+        smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
                     startActivityForResult(intent, REQ_USER_CONSENT)

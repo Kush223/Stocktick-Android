@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_otp_cards"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--    PHONE NUMBER CARD-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/phone_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/canvas_background"
+        tools:context=".LoginSignup.LoginFragment">
+
+        <!-- Login/Signup TextView-->
+        <LinearLayout
+            android:id="@+id/login_canvas1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/canvas_background"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Login/Signup -->
+            <TextView
+                android:id="@+id/tv_login_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="75dp"
+                android:gravity="top"
+                android:text="@string/login_signup"
+                android:textAppearance="@style/login_signup"
+                android:textColor="@color/black_000000" />
+            <!-- Hello, welcome back to your account -->
+            <TextView
+                android:id="@+id/tv_login_hello_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="top"
+                android:text="@string/hello_welcome"
+                android:textAppearance="@style/hello_welcome" />
+            <!-- Phone Number -->
+            <TextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="40dp"
+                android:gravity="top"
+                android:text="@string/phone_number"
+                android:textAppearance="@style/phone_number" />
+
+            <!--contains only the edit text as a single layout-->
+            <LinearLayout
+                android:id="@+id/login_canvas2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/fragment_login_et_phone_edit"
+                android:orientation="horizontal">
+                <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/login_country_code_picker"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.3"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_defaultLanguage="ENGLISH"
+                    app:ccp_flagBorderColor="@color/black_000000"
+                    app:ccp_showFlag="true"
+                    app:ccp_showNameCode="true"
+                    app:ccp_textSize="16sp" />
+                <!--                https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.02"
+                    android:background="@color/black_000000" />
+
+                <EditText
+                    android:id="@+id/et_login_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif"
+                    android:gravity="start"
+                    android:hint="@string/login_enter_phone_number"
+                    android:inputType="number"
+                    android:textColorHint="@color/gray_A5A5A5" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_login_request_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/fragment_login_bt_submit_phone"
+                android:text="@string/request_otp"
+                android:textAppearance="@style/request_otp"
+                android:textColor="@color/white_FFFFFF"
+                android:textSize="22sp"
+                app:layout_constraintBaseline_toBottomOf="@id/phone_card"
+                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--OTP CARD-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_otp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/canvas_background"
+        android:visibility="gone"
+        tools:context=".LoginSignup.LoginFragment">
+        <!--OTP CARD-->
+        <LinearLayout
+            android:id="@+id/otp_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/canvas_background"
+            android:orientation="vertical"
+            tools:context=".LoginSignup.LoginFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- OTP +back button-->
+
+                <View
+                    android:id="@+id/vector_back_arrow"
+                    android:layout_width="16dp"
+                    android:layout_height="14dp"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/otp_arrow_back" />
+
+                <TextView
+                    android:id="@+id/otp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="52dp"
+                    android:gravity="center_horizontal|top"
+                    android:text="OTP"
+                    android:textAppearance="@style/otp" />
+            </LinearLayout>
+            <!-- Verification Code TV-->
+            <TextView
+                android:id="@+id/verification_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="102dp"
+                android:layout_marginTop="26dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="top"
+                android:text="Verification Code"
+                android:textAppearance="@style/verification_code" />
+            <!--TEXT VIEW MESSAGE sent otp-->
+            <TextView
+                android:id="@+id/otp_tv_we_have_sent_verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="85dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal|top"
+                android:text="We have sent a verification code to your mobile number"
+                android:textColor="#A5A5A5"
+                android:textSize="14sp" />
+            <!--    TODO()    MOBILE NUMBER TEXT VIEW HAVE TO SHOW AS TAKEN FROM USER-->
+            <!--        PUTTING UP SAMPLE DATA FOR NOW-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/otp_user_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="95dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginRight="95dp"
+                    android:gravity="center_horizontal"
+                    android:text="+91-9123456780"
+                    android:textColor="@color/black_000000"
+                    android:textSize="28sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/otp_user_phone_number_underline"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/otp_number_line"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/otp_edit_pencil"
+                        tools:ignore="NotSibling" />
+
+                    <View
+                        android:id="@+id/otp_edit_pencil"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:background="@drawable/otp_edit_icon"
+                        app:layout_constraintEnd_toEndOf="@id/otp_edit_pencil"
+                        app:layout_constraintTop_toBottomOf="@id/otp_user_phone_number"
+                        tools:ignore="NotSibling" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout_enter_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="171dp"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center_horizontal|top"
+                    android:text="@string/enter_otp"
+                    android:textColor="@color/gray_A5A5A5"
+                    android:textSize="16sp" />
+
+                <!--            https://github.com/GoodieBag/Pinview-->
+                <!--PLACEHOLDER OTP PIN type FOR NOW.-->
+                <!--            a better tutorial -->
+                <com.goodiebag.pinview.Pinview
+                    android:id="@+id/pinview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:cursorVisible="false"
+                    app:forceKeyboard="true"
+                    app:hint=""
+                    app:inputType="text"
+                    app:password="false"
+                    app:pinHeight="37dp"
+                    app:pinLength="6"
+                    app:pinWidth="37dp" />
+
+            </LinearLayout>
+
+
+            <!--Submit and Resend Otp -->
+            <LinearLayout
+                android:id="@+id/otp_canvas_resend_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:background="@color/canvas_background"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bt_otp_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/fragment_login_bt_submit_phone"
+                    android:text="Submit"
+                    android:textAppearance="@style/request_otp"
+                    android:textColor="@color/white_FFFFFF"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginRight="150dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center_horizontal|top"
+                    android:text="Resend OTP"
+                    android:textColor="#666666"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

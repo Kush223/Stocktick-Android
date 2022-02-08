@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEducationBinding
-import com.example.stocktick.ui.loan.LoanAdapter
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
 import retrofit2.Callback
