@@ -73,6 +73,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         //OTP retrofit calls.
         otpRetrofitCalls()
     }
@@ -88,6 +89,7 @@ class LoginFragment : Fragment() {
     }
 
 
+    @DelicateCoroutinesApi
     private fun otpRetrofitCalls() {
 
         //SUBMIT BUTTON WORKINGS
@@ -101,15 +103,26 @@ class LoginFragment : Fragment() {
                 submitPhoneNumberButtonResponse()
             }
         }
-        //OTP BUTTON WORKINGS
-        submitOtpButtonRetrofit()
 
+        //OTP BUTTON WORKINGS
+        mButtonSubmitOtp.setOnClickListener {
+            otp = _binding.pinview.value
+//            Log.d("OTP",otp)
+//            Log.d("LENGTH OF OTP",otp.length.toString())
+            if (otp.length.toString() == "6") {
+                submitOtpButtonResponse()
+            } else {
+                Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }
     }
 
 
     //coroutine api calls not view model.
     @DelicateCoroutinesApi
-    private fun submitPhoneNumberButtonResponse() {
+    fun submitPhoneNumberButtonResponse() {
         GlobalScope.launch(Dispatchers.Main) {
             val phoneModel = PhoneModel(phone)
             try {
@@ -118,49 +131,55 @@ class LoginFragment : Fragment() {
                 _binding.phoneCard.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                Toast.makeText(requireActivity(), "Request failed CATCH ERROR LOGIN", Toast.LENGTH_SHORT)
                     .show()
-                Log.d("ERROR_LOGINFRAGMENT", error.toString())
+                Log.d("ERROR_LOGINFRAGMENT1", error.toString())
             }
 
         }
     }
 
-
-    private fun submitOtpButtonRetrofit() {
+    @DelicateCoroutinesApi
+    private fun submitOtpButtonResponse() {
         //SUBMIT OTP BUTTON WORKINGS
-        mButtonSubmitOtp.setOnClickListener {
-            otp = _binding.pinview.toString()
-            if (otp.length == 6) {
-                val phoneModel = PhoneModel(phone, otp)
-                val call: Call<GetOtpModel> =
-                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
+        GlobalScope.launch(Dispatchers.Main) {//UNCLOSED BRACE HERE.
+            val phoneModel = PhoneModel(phone, otp)
+            try {
+                val call: Call<GetOtpModel> =    RetrofitClientInstance.getClient.validateOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
                     override fun onResponse(
                         call: Call<GetOtpModel>,
                         response: Response<GetOtpModel>
                     ) {
+
                         if (response.code() == 200) {
                             val res = response.body()
                             val old = res?.old_user
                             val sharedPreferences: SharedPreferences =
                                 requireActivity().getSharedPreferences("USER", MODE_PRIVATE)
                             val editor: SharedPreferences.Editor = sharedPreferences.edit()
+
+
                             editor.putString("token", res?.authToken)
                             editor.apply()
+
                             if (old == true) {
                                 val intent = Intent(activity, MainActivity::class.java)
                                 startActivity(intent)
                             } else {
+
                                 val dialog = Dialog(requireActivity())
                                 dialog.setTitle("Information")
                                 dialog.setCancelable(false)
                                 dialog.setContentView(R.layout.login_dialog)
+
                                 val name = dialog.findViewById(R.id.name_signup) as EditText
                                 val email = dialog.findViewById(R.id.email_signup) as EditText
                                 val submitBtn =
                                     dialog.findViewById(R.id.signup_button) as Button
                                 val skipBtn = dialog.findViewById(R.id.skip_button) as Button
+
+
                                 submitBtn.setOnClickListener {
                                     if (name.text.isNotEmpty()) {
                                         name.error = "Please enter your name"
@@ -171,16 +190,22 @@ class LoginFragment : Fragment() {
                                         startActivity(intent)
                                     }
                                 }
+
+
                                 skipBtn.setOnClickListener {
                                     val intent = Intent(activity, MainActivity::class.java)
                                     startActivity(intent)
                                 }
+
                                 dialog.show()
                                 val metrics: DisplayMetrics = resources.displayMetrics;
                                 val width = metrics.widthPixels
                                 val height = metrics.heightPixels
-                                //yourDialog.getWindow().setLayout((6 * width)/7, )
+
                                 dialog.window?.setLayout(width, (4 * height) / 5);
+
+                                //here logic for create email part is also written?? seems so...
+
                             }
                         } else {
                             Toast.makeText(
@@ -198,9 +223,12 @@ class LoginFragment : Fragment() {
                     }
 
                 })
-            } else {
-                Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
+
+
+            } catch (error: Exception) {
+                Toast.makeText(requireActivity(), "Request failed CATCH ERROR OTP", Toast.LENGTH_SHORT)
                     .show()
+                Log.d("ERROR_LOGINOTPFRAGMENT2", error.toString())
             }
         }
     }
