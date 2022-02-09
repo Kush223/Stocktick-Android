@@ -33,9 +33,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//TODO() -- check the transfer using actual OTP pin
-//TODO() -- check the back button work
-//TODO() -- check the Resend OTP tv work --- should we change it to button?
+//TODO() -- check the transfer using actual OTP pin - with sms reader part
+//TODO() -- Resend OTP tv -- to resend otp setOnClickListener
 //TODO() -- reformat the login code to not use deprecated method?
 
 class LoginFragment : Fragment() {
@@ -107,8 +106,6 @@ class LoginFragment : Fragment() {
         //OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.value
-//            Log.d("OTP",otp)
-//            Log.d("LENGTH OF OTP",otp.length.toString())
             if (otp.length.toString() == "6") {
                 submitOtpButtonResponse()
             } else {
@@ -131,7 +128,11 @@ class LoginFragment : Fragment() {
                 _binding.phoneCard.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR LOGIN", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireActivity(),
+                    "Request failed CATCH ERROR LOGIN",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
                 Log.d("ERROR_LOGINFRAGMENT1", error.toString())
             }
@@ -141,11 +142,13 @@ class LoginFragment : Fragment() {
 
     @DelicateCoroutinesApi
     private fun submitOtpButtonResponse() {
+
         //SUBMIT OTP BUTTON WORKINGS
-        GlobalScope.launch(Dispatchers.Main) {//UNCLOSED BRACE HERE.
+        GlobalScope.launch(Dispatchers.Main) {
             val phoneModel = PhoneModel(phone, otp)
             try {
-                val call: Call<GetOtpModel> =    RetrofitClientInstance.getClient.validateOtp(phoneModel)
+                val call: Call<GetOtpModel> =
+                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
                 call.enqueue(object : Callback<GetOtpModel> {
                     override fun onResponse(
                         call: Call<GetOtpModel>,
@@ -166,21 +169,28 @@ class LoginFragment : Fragment() {
                             if (old == true) {
                                 val intent = Intent(activity, MainActivity::class.java)
                                 startActivity(intent)
+                                //if it is a olduser then,
+                                //open the mainactivity straight away
                             } else {
+                                //else ask the user,
+                                //for their name create accountn etc things
 
                                 val dialog = Dialog(requireActivity())
                                 dialog.setTitle("Information")
                                 dialog.setCancelable(false)
-                                dialog.setContentView(R.layout.login_dialog)
+                                dialog.setContentView(R.layout.fragment_create_account)
 
-                                val name = dialog.findViewById(R.id.name_signup) as EditText
-                                val email = dialog.findViewById(R.id.email_signup) as EditText
-                                val submitBtn =
-                                    dialog.findViewById(R.id.signup_button) as Button
-                                val skipBtn = dialog.findViewById(R.id.skip_button) as Button
+                                val name =
+                                    dialog.findViewById(R.id.et_create_account_user_name) as EditText
+                                val email =
+                                    dialog.findViewById(R.id.et_create_account_email_address) as EditText
+                                val submitButton =
+                                    dialog.findViewById(R.id.bt_create_account_submit) as Button
+                                val skipButton =
+                                    dialog.findViewById(R.id.bt_create_account_skip) as Button
 
 
-                                submitBtn.setOnClickListener {
+                                submitButton.setOnClickListener {
                                     if (name.text.isNotEmpty()) {
                                         name.error = "Please enter your name"
                                     } else if (!email.text.isEmpty()) {
@@ -192,7 +202,7 @@ class LoginFragment : Fragment() {
                                 }
 
 
-                                skipBtn.setOnClickListener {
+                                skipButton.setOnClickListener {
                                     val intent = Intent(activity, MainActivity::class.java)
                                     startActivity(intent)
                                 }
@@ -203,9 +213,6 @@ class LoginFragment : Fragment() {
                                 val height = metrics.heightPixels
 
                                 dialog.window?.setLayout(width, (4 * height) / 5);
-
-                                //here logic for create email part is also written?? seems so...
-
                             }
                         } else {
                             Toast.makeText(
@@ -220,13 +227,18 @@ class LoginFragment : Fragment() {
                     override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
                         Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
                             .show()
+                        Log.d("CALL REQUEST FAILED", call.toString())
                     }
 
                 })
 
 
             } catch (error: Exception) {
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR OTP", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireActivity(),
+                    "Request failed CATCH ERROR OTP",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
                 Log.d("ERROR_LOGINOTPFRAGMENT2", error.toString())
             }

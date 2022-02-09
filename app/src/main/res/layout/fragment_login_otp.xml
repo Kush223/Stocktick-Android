@@ -2,9 +2,7 @@
 <!--OTP PAGE-->
 
 <!--TODO() show the inputted phone number in id = otp_user_phone_number-->
-<!--TODO() make the back button in otp page work-->
-<!--TODO() Make the Resend OTP part work-->
-<!--TODO() check if submit otp button works-->
+<!--TODO() Make the Resend OTP part work using a different drawable-->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -148,15 +146,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <!-- OTP +back button-->
-
-                <!--                <View-->
-                <!--                    android:id="@+id/vector_back_arrow"-->
-                <!--                    android:layout_width="16dp"-->
-                <!--                    android:layout_height="16dp"-->
-                <!--                    android:layout_marginLeft="20dp"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:background="@drawable/otp_arrow_back" />-->
 
                 <TextView
                     android:id="@+id/otp"
@@ -306,16 +295,18 @@
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="22sp" />
                 <!--                RESEND OTP TV-->
-                <TextView
+                <Button
+                    android:id="@+id/tv_login_resend_otp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="17dp"
                     android:layout_marginRight="15dp"
+                    android:background="@drawable/fragment_login_bt_submit_phone"
                     android:fontFamily="sans-serif"
                     android:text="Resend OTP"
-                    android:textColor="#666666"
+                    android:textColor="@color/white_FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
