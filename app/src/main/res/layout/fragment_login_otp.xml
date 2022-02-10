@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
         android:visibility="visible"
-        tools:context=".LoginSignup.LoginFragment">
+        tools:context=".auth.LoginFragment">
 
         <!-- Login/Signup -->
         <LinearLayout
@@ -132,7 +132,7 @@
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
         android:visibility="gone"
-        tools:context=".LoginSignup.LoginFragment">
+        tools:context=".auth.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
             android:id="@+id/otp_canvas"
@@ -140,7 +140,7 @@
             android:layout_height="match_parent"
             android:background="@color/canvas_background"
             android:orientation="vertical"
-            tools:context=".LoginSignup.LoginFragment">
+            tools:context=".auth.LoginFragment">
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.stocktick.R
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import com.example.stocktick.LoginSignup.LoginSignupActivity
+import com.example.stocktick.auth.LoginSignupActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

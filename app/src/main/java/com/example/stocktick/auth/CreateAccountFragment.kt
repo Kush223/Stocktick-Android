@@ -1,4 +1,4 @@
-package com.example.stocktick.LoginSignup
+package com.example.stocktick.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
