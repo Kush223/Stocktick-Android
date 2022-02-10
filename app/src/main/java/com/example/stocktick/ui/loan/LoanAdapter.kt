@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -25,7 +24,7 @@ class LoanAdapter(private val loanList: List<LoanItem>, private val context: Con
             binding.loanInterest.text = this.interest
             binding.loanLongDesc.text = this.long_desc
             binding.loanShortDesc.text = this.short_desc
-            Glide.with(context).load(this.image_url).into(binding.loanImg);
+            Glide.with(context).load(this.image_urls).into(binding.loanImg);
             binding.loanKnowMore.setOnClickListener{
                 val url = "http://www.example.com"
                 val i = Intent(Intent.ACTION_VIEW)

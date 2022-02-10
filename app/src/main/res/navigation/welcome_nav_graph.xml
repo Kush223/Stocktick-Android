@@ -17,7 +17,7 @@ Splash screen -> Home screen-->
     <fragment
         android:id="@+id/navigation_welcome_page"
         android:label="@string/Title_welcome_screen"
-        android:name="com.example.stocktick.LoginSignup.WelcomeFragment"
+        android:name="com.example.stocktick.auth.WelcomeFragment"
         tools:layout="@layout/fragment_welcome_page">
         <action
             android:id="@+id/action_navigation_welcome_page_to_navigation_login_otp_"
@@ -26,12 +26,12 @@ Splash screen -> Home screen-->
 
     <fragment
         android:id="@+id/navigation_login_otp_"
-        android:name="com.example.stocktick.LoginSignup.LoginFragment"
+        android:name="com.example.stocktick.auth.LoginFragment"
         android:label="fragment_login_otp"
         tools:layout="@layout/fragment_login_otp" />
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.example.stocktick.LoginSignup.CreateAccountFragment"
+        android:name="com.example.stocktick.auth.CreateAccountFragment"
         tools:layout="@layout/fragment_create_account"
         android:label="CreateAccountFragment" />
     <!--    THIS ONE LAYOUT navigation login otp has both login and verify otp page.-->

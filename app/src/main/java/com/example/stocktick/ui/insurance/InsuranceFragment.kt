@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stocktick.Network.RetrofitClientInstance
+import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentInsuranceBinding
 import com.example.stocktick.ui.loan.LoanAdapter
@@ -44,13 +44,13 @@ class InsuranceFragment : Fragment() {
 //        loanViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getInsurances(token!!)
+        val call : Call<List<LoanItem>> = RetrofitClientInstance.retrofitService.getInsurances(token!!)
         call.enqueue(object : Callback<List<LoanItem>> {
             override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
                 if(response.code()==200){
                     val insuranceItemList : List<LoanItem> = response.body()!!
                     for(insuranceItem in insuranceItemList){
-                        insuranceList.add(LoanItem(insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_url))
+                        insuranceList.add(LoanItem(insuranceItem.short_desc,insuranceItem.long_desc,insuranceItem.image_urls))
                     }
                     recyclerView.adapter = insuranceAdapter
                 }

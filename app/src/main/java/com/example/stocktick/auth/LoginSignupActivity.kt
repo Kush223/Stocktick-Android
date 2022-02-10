@@ -1,12 +1,8 @@
-package com.example.stocktick.LoginSignup
+package com.example.stocktick.auth
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stocktick.R
-import com.example.stocktick.databinding.ActivityLoginSignupBinding
 
 class LoginSignupActivity : AppCompatActivity() {
 

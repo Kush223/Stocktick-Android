@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stocktick.Network.RetrofitClientInstance
+import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentMediaBinding
-import com.example.stocktick.ui.education.EducationViewModel
 import com.example.stocktick.ui.loan.LoanAdapter
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
@@ -44,13 +43,13 @@ class MediaFragment : Fragment() {
 //        loanViewModel.mText.observe(viewLifecycleOwner, { s -> textView.text = s })
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getMedias(token!!)
+        val call : Call<List<LoanItem>> = RetrofitClientInstance.retrofitService.getMedias(token!!)
         call.enqueue(object : Callback<List<LoanItem>> {
             override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
                 if(response.code()==200){
                     val mediaItemList : List<LoanItem> = response.body()!!
                     for(mediaItem in mediaItemList){
-                        mediaList.add(LoanItem(mediaItem.short_desc,mediaItem.long_desc,mediaItem.image_url))
+                        mediaList.add(LoanItem(mediaItem.short_desc,mediaItem.long_desc,mediaItem.image_urls))
                     }
                     recyclerView.adapter = mediaAdapter
                 }
