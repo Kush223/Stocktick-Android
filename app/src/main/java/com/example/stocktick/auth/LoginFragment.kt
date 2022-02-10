@@ -1,4 +1,4 @@
-package com.example.stocktick.LoginSignup
+package com.example.stocktick.auth
 
 import android.app.Activity.MODE_PRIVATE
 import android.app.Activity.RESULT_OK
