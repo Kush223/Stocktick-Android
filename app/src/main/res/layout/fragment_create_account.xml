@@ -9,8 +9,7 @@
     android:id="@+id/create_account_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E5E5"
-    tools:context=".auth.LoginFragment">
+    android:background="#E5E5E5">
 
     <!-- Create an account TextView-->
     <LinearLayout

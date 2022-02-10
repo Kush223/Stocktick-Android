@@ -1,8 +1,8 @@
-package com.example.stocktick.auth
+package com.example.stocktick.LoginSignup
 
+import android.app.Activity.MODE_PRIVATE
 import android.app.Activity.RESULT_OK
 import android.app.Dialog
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
@@ -33,8 +33,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-//TODO() -- check the transfer using actual OTP pin - with sms reader part
-//TODO() -- Resend OTP tv -- to resend otp setOnClickListener
+
+//TODO() -- check the transfer using actual OTP pin
+//TODO() -- check the back button work
+//TODO() -- check the Resend OTP tv work --- should we change it to button?
 //TODO() -- reformat the login code to not use deprecated method?
 
 class LoginFragment : Fragment() {
@@ -78,8 +80,8 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
         val view: View = _binding.root
@@ -104,13 +106,14 @@ class LoginFragment : Fragment() {
         }
 
         //OTP BUTTON WORKINGS
+        submitOtpButtonRetrofit()
+
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.value
             if (otp.length.toString() == "6") {
-                submitOtpButtonResponse()
+                submitOtpButtonRetrofit()
             } else {
-                Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
-                    .show()
+                showToast("Otp should be of 6 digits")
             }
 
         }
@@ -119,121 +122,23 @@ class LoginFragment : Fragment() {
 
     //coroutine api calls not view model.
     @DelicateCoroutinesApi
-<<<<<<< HEAD:app/src/main/java/com/example/stocktick/LoginSignup/LoginFragment.kt
     fun submitPhoneNumberButtonResponse() {
-=======
-    private fun submitPhoneNumberButtonResponse() {
-        val phoneModel = PhoneModel(phone)
->>>>>>> 9855118ab227e5f8ab781a1f0fdc1f381c318f87:app/src/main/java/com/example/stocktick/auth/LoginFragment.kt
         GlobalScope.launch(Dispatchers.Main) {
+            val phoneModel = PhoneModel(phone)
             try {
-                Log.d(LOG_TAG, phoneModel.toString())
                 val resp = RetrofitClientInstance.retrofitService.getOtp(phoneModel)
-                Log.d(LOG_TAG, resp.toString())
                 _binding.otpCard.visibility = View.VISIBLE
                 _binding.phoneCard.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
-<<<<<<< HEAD:app/src/main/java/com/example/stocktick/LoginSignup/LoginFragment.kt
-                Toast.makeText(
-                    requireActivity(),
-                    "Request failed CATCH ERROR LOGIN",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                Log.d("ERROR_LOGINFRAGMENT1", error.toString())
-=======
-                showToast("Request failed CATCH ERROR")
-                Log.e("ERROR_LOGINFRAGMENT", error.toString())
->>>>>>> 9855118ab227e5f8ab781a1f0fdc1f381c318f87:app/src/main/java/com/example/stocktick/auth/LoginFragment.kt
+                showToast("Request failed CATCH ERROR LOGIN")
             }
 
         }
     }
 
-    @DelicateCoroutinesApi
-    private fun submitOtpButtonResponse() {
-
+    private fun submitOtpButtonRetrofit() {
         //SUBMIT OTP BUTTON WORKINGS
-<<<<<<< HEAD:app/src/main/java/com/example/stocktick/LoginSignup/LoginFragment.kt
-        GlobalScope.launch(Dispatchers.Main) {
-            val phoneModel = PhoneModel(phone, otp)
-            try {
-                val call: Call<GetOtpModel> =
-                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
-                call.enqueue(object : Callback<GetOtpModel> {
-                    override fun onResponse(
-                        call: Call<GetOtpModel>,
-                        response: Response<GetOtpModel>
-                    ) {
-
-                        if (response.code() == 200) {
-                            val res = response.body()
-                            val old = res?.old_user
-                            val sharedPreferences: SharedPreferences =
-                                requireActivity().getSharedPreferences("USER", MODE_PRIVATE)
-                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
-
-                            editor.putString("token", res?.authToken)
-                            editor.apply()
-
-                            if (old == true) {
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                //if it is a olduser then,
-                                //open the mainactivity straight away
-                            } else {
-                                //else ask the user,
-                                //for their name create accountn etc things
-
-                                val dialog = Dialog(requireActivity())
-                                dialog.setTitle("Information")
-                                dialog.setCancelable(false)
-                                dialog.setContentView(R.layout.fragment_create_account)
-
-                                val name =
-                                    dialog.findViewById(R.id.et_create_account_user_name) as EditText
-                                val email =
-                                    dialog.findViewById(R.id.et_create_account_email_address) as EditText
-                                val submitButton =
-                                    dialog.findViewById(R.id.bt_create_account_submit) as Button
-                                val skipButton =
-                                    dialog.findViewById(R.id.bt_create_account_skip) as Button
-
-
-                                submitButton.setOnClickListener {
-                                    if (name.text.isNotEmpty()) {
-                                        name.error = "Please enter your name"
-                                    } else if (!email.text.isEmpty()) {
-                                        email.error = "Please enter your email id"
-                                    } else {
-                                        val intent = Intent(activity, MainActivity::class.java)
-                                        startActivity(intent)
-                                    }
-                                }
-
-
-                                skipButton.setOnClickListener {
-                                    val intent = Intent(activity, MainActivity::class.java)
-                                    startActivity(intent)
-                                }
-
-                                dialog.show()
-                                val metrics: DisplayMetrics = resources.displayMetrics;
-                                val width = metrics.widthPixels
-                                val height = metrics.heightPixels
-
-                                dialog.window?.setLayout(width, (4 * height) / 5);
-                            }
-                        } else {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Request not sent",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-=======
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.value.toString()
             if (otp.length == 6) {
@@ -244,7 +149,6 @@ class LoginFragment : Fragment() {
             }
         }
     }
->>>>>>> 9855118ab227e5f8ab781a1f0fdc1f381c318f87:app/src/main/java/com/example/stocktick/auth/LoginFragment.kt
 
     @DelicateCoroutinesApi
     private fun handleSubmitOTP(phoneModel: PhoneModel) {
@@ -253,26 +157,6 @@ class LoginFragment : Fragment() {
                 val resp = RetrofitClientInstance.retrofitService.validateOtp(phoneModel)
                 Log.d(LOG_TAG, resp.toString())
                 handleViewPostOTP(resp)
-
-<<<<<<< HEAD:app/src/main/java/com/example/stocktick/LoginSignup/LoginFragment.kt
-                    override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
-                        Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
-                            .show()
-                        Log.d("CALL REQUEST FAILED", call.toString())
-                    }
-
-                })
-
-
-            } catch (error: Exception) {
-                Toast.makeText(
-                    requireActivity(),
-                    "Request failed CATCH ERROR OTP",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                Log.d("ERROR_LOGINOTPFRAGMENT2", error.toString())
-=======
 
             } catch (error: Exception) {
                 Log.d(LOG_TAG, "Error occurred: " + error.message)
@@ -284,7 +168,7 @@ class LoginFragment : Fragment() {
     private fun handleViewPostOTP(res: GetOtpModel) {
         val old = res.old_user
         val sharedPreferences: SharedPreferences =
-                requireActivity().getSharedPreferences(USER, MODE_PRIVATE)
+            requireActivity().getSharedPreferences(USER, MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(TOKEN, res.authToken)
         editor.apply()
@@ -295,13 +179,18 @@ class LoginFragment : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.setTitle("Information")
             dialog.setCancelable(false)
-            dialog.setContentView(R.layout.login_dialog)
-            val name = dialog.findViewById(R.id.name_signup) as EditText
-            val email = dialog.findViewById(R.id.email_signup) as EditText
-            val submitBtn =
-                    dialog.findViewById(R.id.signup_button) as Button
-            val skipBtn = dialog.findViewById(R.id.skip_button) as Button
-            submitBtn.setOnClickListener {
+            dialog.setContentView(R.layout.fragment_create_account)
+
+            val name =
+                dialog.findViewById(R.id.et_create_account_user_name) as EditText
+            val email =
+                dialog.findViewById(R.id.et_create_account_email_address) as EditText
+            val submitButton =
+                dialog.findViewById(R.id.bt_create_account_submit) as Button
+            val skipButton =
+                dialog.findViewById(R.id.bt_create_account_skip) as Button
+
+            submitButton.setOnClickListener {
                 if (name.text.isNotEmpty()) {
                     name.error = "Please enter your name"
                 } else if (!email.text.isEmpty()) {
@@ -311,24 +200,26 @@ class LoginFragment : Fragment() {
                     startActivity(intent)
                 }
             }
-            skipBtn.setOnClickListener {
+
+            skipButton.setOnClickListener {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
->>>>>>> 9855118ab227e5f8ab781a1f0fdc1f381c318f87:app/src/main/java/com/example/stocktick/auth/LoginFragment.kt
             }
             dialog.show()
             val metrics: DisplayMetrics = resources.displayMetrics;
             val width = metrics.widthPixels
             val height = metrics.heightPixels
+
             //yourDialog.getWindow().setLayout((6 * width)/7, )
             dialog.window?.setLayout(width, (4 * height) / 5);
         }
 
     }
 
-    private fun showToast(mssg: String) {
-        Toast.makeText(context, mssg, Toast.LENGTH_SHORT).show()
+    private fun showToast(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
+
 
     private fun initialiseVariables() {
         mButtonSubmitPhone = _binding.btLoginRequestOtp
@@ -341,17 +232,17 @@ class LoginFragment : Fragment() {
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
         smsBroadCastReceiver.smsBroadCastReceiverListener =
-                object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
-                    override fun onSuccess(intent: Intent?) {
-                        startActivityForResult(intent, REQ_USER_CONSENT)
+            object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
+                override fun onSuccess(intent: Intent?) {
+                    startActivityForResult(intent, REQ_USER_CONSENT)
 //                    link: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
-                    }
+                }
 
-                    override fun onFailure() {
-
-                    }
+                override fun onFailure() {
 
                 }
+
+            }
         val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
         requireActivity().registerReceiver(smsBroadCastReceiver, intentFilter)
     }
