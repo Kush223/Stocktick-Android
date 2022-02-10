@@ -109,8 +109,8 @@ class LoginFragment : Fragment() {
         submitOtpButtonRetrofit()
 
         mButtonSubmitOtp.setOnClickListener {
-            otp = _binding.pinview.value.toString()
-            if (otp.length == 6) {
+            otp = _binding.pinview.value
+            if (otp.length.toString() == "6") {
                 submitOtpButtonRetrofit()
             } else {
                 showToast("Otp should be of 6 digits")
@@ -152,7 +152,7 @@ class LoginFragment : Fragment() {
 
     @DelicateCoroutinesApi
     private fun handleSubmitOTP(phoneModel: PhoneModel) {
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.Main) {
             try {
                 val resp = RetrofitClientInstance.retrofitService.validateOtp(phoneModel)
                 Log.d(LOG_TAG, resp.toString())
@@ -160,7 +160,7 @@ class LoginFragment : Fragment() {
 
             } catch (error: Exception) {
                 Log.d(LOG_TAG, "Error occurred: " + error.message)
-                showToast("Request failed handle otp")
+                showToast("Request failed")
             }
         }
     }
@@ -179,7 +179,7 @@ class LoginFragment : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.setTitle("Information")
             dialog.setCancelable(false)
-            dialog.setContentView(R.layout.fragment_create_account)
+            dialog.setContentView(R.layout.create_account)
 
             val name =
                 dialog.findViewById(R.id.et_create_account_user_name) as EditText
