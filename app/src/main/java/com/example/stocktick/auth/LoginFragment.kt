@@ -178,10 +178,6 @@ class LoginFragment : Fragment() {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         } else {
-            val dialog = Dialog(requireActivity())
-            dialog.setTitle("Information")
-            dialog.setCancelable(false)
-            dialog.setContentView(R.layout.create_account_layout)
 
             _binding.otpCard.visibility = View.INVISIBLE
 
@@ -207,13 +203,6 @@ class LoginFragment : Fragment() {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
-            dialog.show()
-            val metrics: DisplayMetrics = resources.displayMetrics;
-            val width = metrics.widthPixels
-            val height = metrics.heightPixels
-
-            //yourDialog.getWindow().setLayout((6 * width)/7, )
-            dialog.window?.setLayout(width, (4 * height) / 5);
         }
 
     }

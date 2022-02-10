@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--TODO () remove hardcoded width and heights-->
+<?xml version="1.0" encoding="utf-8"?>
 <!--TODO() change all ui according to new ui-->
 <!--TODO() add skip button functionality-->
 <!--TODO() make skip button work the way resend needs to work-->
@@ -8,7 +8,6 @@
     android:id="@+id/create_account_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone"
     android:background="#E5E5E5">
 
     <!-- Create an account TextView-->
@@ -28,15 +27,15 @@
             <!--             Back Button-->
 
             <!-- Complete your profile -->
-            <View
-                android:id="@+id/vector_create_account_back_arrow"
-                android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_gravity="top"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0.1"
-                android:background="@drawable/otp_arrow_back" />
+            <!--            <View-->
+            <!--                android:id="@+id/vector_create_account_back_arrow"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="16dp"-->
+            <!--                android:layout_gravity="top"-->
+            <!--                android:layout_marginLeft="20dp"-->
+            <!--                android:layout_marginTop="25dp"-->
+            <!--                android:layout_weight="0.1"-->
+            <!--                android:background="@drawable/otp_arrow_back" />-->
 
             <TextView
                 android:id="@+id/tv_create_account_complete_profile"
@@ -185,6 +184,4 @@
                 app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
