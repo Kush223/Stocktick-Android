@@ -26,7 +26,7 @@ class WelcomeFragment : Fragment() {
 
         mButtonGetStarted.setOnClickListener { view ->
             view.findNavController()
-                .navigate(R.id.action_navigation_welcome_page_to_navigation_login_otp_)
+                .navigate(R.id.action_navigation_welcome_page_to_loginFragment)
         }
         return binding.root
 //        https://stackoverflow.com/questions/63007726/navigation-component-how-to-navigate-from-activity-to-a-fragment
