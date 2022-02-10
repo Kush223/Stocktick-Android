@@ -120,8 +120,7 @@ class LoginFragment : Fragment() {
                 _binding.phoneCard.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
-//                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
-//                    .show()
+                showToast("Request failed CATCH ERROR")
                 Log.e("ERROR_LOGINFRAGMENT", error.toString())
             }
 
@@ -133,75 +132,9 @@ class LoginFragment : Fragment() {
         //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.value.toString()
-//            _binding.pinview.
             if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
-               // handleSubmitOTP(phoneModel)
-//                val call: Call<GetOtpModel> =
-//                    RetrofitClientInstance.getClient.validateOtp(phoneModel)
-//                call.enqueue(object : Callback<GetOtpModel> {
-//                    override fun onResponse(
-//                        call: Call<GetOtpModel>,
-//                        response: Response<GetOtpModel>
-//                    ) {
-//                        if (response.code() == 200) {
-//                            val res = response.body()
-//                            val old = res?.old_user
-//                            val sharedPreferences: SharedPreferences =
-//                                requireActivity().getSharedPreferences("USER", MODE_PRIVATE)
-//                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-//                            editor.putString("token", res?.authToken)
-//                            editor.apply()
-//                            if (old == true) {
-//                                val intent = Intent(activity, MainActivity::class.java)
-//                                startActivity(intent)
-//                            } else {
-//                                val dialog = Dialog(requireActivity())
-//                                dialog.setTitle("Information")
-//                                dialog.setCancelable(false)
-//                                dialog.setContentView(R.layout.login_dialog)
-//                                val name = dialog.findViewById(R.id.name_signup) as EditText
-//                                val email = dialog.findViewById(R.id.email_signup) as EditText
-//                                val submitBtn =
-//                                    dialog.findViewById(R.id.signup_button) as Button
-//                                val skipBtn = dialog.findViewById(R.id.skip_button) as Button
-//                                submitBtn.setOnClickListener {
-//                                    if (name.text.isNotEmpty()) {
-//                                        name.error = "Please enter your name"
-//                                    } else if (!email.text.isEmpty()) {
-//                                        email.error = "Please enter your email id"
-//                                    } else {
-//                                        val intent = Intent(activity, MainActivity::class.java)
-//                                        startActivity(intent)
-//                                    }
-//                                }
-//                                skipBtn.setOnClickListener {
-//                                    val intent = Intent(activity, MainActivity::class.java)
-//                                    startActivity(intent)
-//                                }
-//                                dialog.show()
-//                                val metrics: DisplayMetrics = resources.displayMetrics;
-//                                val width = metrics.widthPixels
-//                                val height = metrics.heightPixels
-//                                //yourDialog.getWindow().setLayout((6 * width)/7, )
-//                                dialog.window?.setLayout(width, (4 * height) / 5);
-//                            }
-//                        } else {
-//                            Toast.makeText(
-//                                requireActivity(),
-//                                "Request not sent",
-//                                Toast.LENGTH_SHORT
-//                            ).show()
-//                        }
-//
-//                    }
-//
-//                    override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
-//                        Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//
-//                })
+                handleSubmitOTP(phoneModel)
             } else {
                 showToast("Otp should be of 6 digits")
             }
@@ -220,8 +153,6 @@ class LoginFragment : Fragment() {
             } catch (error: Exception) {
                 Log.d(LOG_TAG, "Error occurred: " + error.message)
                 showToast("Request failed")
-//                Toast.makeText(context, "Request failed", Toast.LENGTH_SHORT)
-//                        .show()
             }
         }
     }
