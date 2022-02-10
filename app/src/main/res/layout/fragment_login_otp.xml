@@ -151,8 +151,8 @@
                     android:id="@+id/otp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="25dp"
+                    android:gravity="center_horizontal"
                     android:text="OTP"
                     android:textAppearance="@style/otp" />
             </LinearLayout>
@@ -310,12 +310,12 @@
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include
-        android:id="@+id/create_account_layout"
-        layout="@layout/create_account"
-        android:visibility="gone"/>
+        <include
+            android:id="@+id/ca"
+            layout="@layout/create_account_layout"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

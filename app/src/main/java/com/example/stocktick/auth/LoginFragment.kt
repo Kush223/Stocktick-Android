@@ -21,6 +21,7 @@ import com.example.stocktick.R
 import com.example.stocktick.SmsBroadcastReceiver
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.databinding.CreateAccountLayoutBinding
 import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOG_TAG
@@ -53,6 +54,7 @@ class LoginFragment : Fragment() {
     private lateinit var mEditTextPhoneEdit: EditText
     private lateinit var mCountryCodePicker: CountryCodePicker
     private lateinit var mButtonSubmitOtp: Button
+    private lateinit var mCreateAccountLayoutBinding: CreateAccountLayoutBinding
 
     private var phoneREGEXPattern = Regex("^[0-9]{9,12}$")
     //for innternational regex link: /^\+(?:[0-9] ?){6,14}[0-9]$/
@@ -65,6 +67,15 @@ class LoginFragment : Fragment() {
     private val REQ_USER_CONSENT = 200
     private lateinit var phone: String
     private lateinit var otp: String
+
+    private fun initialiseVariables() {
+        mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
+        mCountryCodePicker = _binding.loginCountryCodePicker
+        mButtonSubmitOtp = _binding.btOtpSubmit
+        mCreateAccountLayoutBinding = _binding.ca
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,16 +118,6 @@ class LoginFragment : Fragment() {
 
         //OTP BUTTON WORKINGS
         submitOtpButtonRetrofit()
-
-        mButtonSubmitOtp.setOnClickListener {
-            otp = _binding.pinview.value
-            if (otp.length.toString() == "6") {
-                submitOtpButtonRetrofit()
-            } else {
-                showToast("Otp should be of 6 digits")
-            }
-
-        }
     }
 
 
@@ -172,6 +173,7 @@ class LoginFragment : Fragment() {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(TOKEN, res.authToken)
         editor.apply()
+
         if (old == true) {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
@@ -179,16 +181,16 @@ class LoginFragment : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.setTitle("Information")
             dialog.setCancelable(false)
-            dialog.setContentView(R.layout.create_account)
+            dialog.setContentView(R.layout.create_account_layout)
 
-            val name =
-                dialog.findViewById(R.id.et_create_account_user_name) as EditText
-            val email =
-                dialog.findViewById(R.id.et_create_account_email_address) as EditText
-            val submitButton =
-                dialog.findViewById(R.id.bt_create_account_submit) as Button
-            val skipButton =
-                dialog.findViewById(R.id.bt_create_account_skip) as Button
+            _binding.otpCard.visibility = View.INVISIBLE
+
+            mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
+
+            val name =  mCreateAccountLayoutBinding.etCreateAccountUserName
+            val email =mCreateAccountLayoutBinding.etCreateAccountEmailAddress
+            val submitButton = mCreateAccountLayoutBinding.btCreateAccountSubmit
+            val skipButton = mCreateAccountLayoutBinding.btCreateAccountSkip
 
             submitButton.setOnClickListener {
                 if (name.text.isNotEmpty()) {
@@ -220,13 +222,6 @@ class LoginFragment : Fragment() {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
-
-    private fun initialiseVariables() {
-        mButtonSubmitPhone = _binding.btLoginRequestOtp
-        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
-        mCountryCodePicker = _binding.loginCountryCodePicker
-        mButtonSubmitOtp = _binding.btOtpSubmit
-    }
 
     //NOT TOUCHING FOR NOW??
     private fun registerBroadcastListener() {
