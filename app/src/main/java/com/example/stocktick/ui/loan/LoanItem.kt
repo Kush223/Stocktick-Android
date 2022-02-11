@@ -26,5 +26,9 @@ data class LoanItem(
 
         @Expose
         @SerializedName("interest")
-        val interest: String?= null
+        val interest: String?= null,
+
+        @Expose
+        @SerializedName("color_code")
+        val colorCode: String?= null
 )

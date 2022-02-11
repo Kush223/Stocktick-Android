@@ -33,22 +33,22 @@ class EducationFragment : Fragment() {
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getEducations(token!!)
-        call.enqueue(object : Callback<List<LoanItem>> {
-            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
-                if(response.code()==200){
-
-                }
-                else{
-                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
-                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getEducations(token!!,"M")
+//        call.enqueue(object : Callback<List<LoanItem>> {
+//            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
+//                if(response.code()==200){
+//
+//                }
+//                else{
+//                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
+//                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
 
     }
     override fun onCreateView(

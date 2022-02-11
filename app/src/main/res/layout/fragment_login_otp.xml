@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- "-->
+<!--OTP PAGE-->
+
+<!--TODO() show the inputted phone number in id = otp_user_phone_number-->
+<!--TODO() make the back button in otp page work-->
+<!--TODO() Make the Resend OTP part work-->
+<!--TODO() check if submit otp button works-->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,10 +18,11 @@
         android:id="@+id/phone_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         android:background="@color/canvas_background"
         tools:context=".LoginSignup.LoginFragment">
 
-        <!-- Login/Signup TextView-->
+        <!-- Login/Signup -->
         <LinearLayout
             android:id="@+id/login_canvas1"
             android:layout_width="match_parent"
@@ -60,7 +67,7 @@
                 android:text="@string/phone_number"
                 android:textAppearance="@style/phone_number" />
 
-            <!--contains only the edit text as a single layout-->
+            <!--contains only CCPicker edit text-->
             <LinearLayout
                 android:id="@+id/login_canvas2"
                 android:layout_width="match_parent"
@@ -75,12 +82,12 @@
                     android:id="@+id/login_country_code_picker"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2.3"
+                    android:layout_weight="1"
                     app:ccp_autoDetectCountry="true"
                     app:ccp_defaultLanguage="ENGLISH"
                     app:ccp_flagBorderColor="@color/black_000000"
-                    app:ccp_showFlag="true"
-                    app:ccp_showNameCode="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_showNameCode="false"
                     app:ccp_textSize="16sp" />
                 <!--                https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
                 <View
@@ -102,6 +109,7 @@
                     android:textColorHint="@color/gray_A5A5A5" />
             </LinearLayout>
 
+            <!--            WHAT DOES THIS BUTTON DO?-->
             <Button
                 android:id="@+id/bt_login_request_otp"
                 android:layout_width="match_parent"
@@ -121,7 +129,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--OTP CARD-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/login_otp"
+        android:id="@+id/otp_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
@@ -129,7 +137,7 @@
         tools:context=".LoginSignup.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
-            android:id="@+id/otp_card"
+            android:id="@+id/otp_canvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/canvas_background"
@@ -145,20 +153,18 @@
                 <View
                     android:id="@+id/vector_back_arrow"
                     android:layout_width="16dp"
-                    android:layout_height="14dp"
-                    android:layout_marginLeft="39dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/otp_arrow_back" />
 
                 <TextView
                     android:id="@+id/otp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center_horizontal|top"
                     android:layout_marginLeft="120dp"
                     android:layout_marginTop="52dp"
-                    android:gravity="center_horizontal|top"
                     android:text="OTP"
                     android:textAppearance="@style/otp" />
             </LinearLayout>
@@ -169,8 +175,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="102dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="26dp"
+                android:layout_marginRight="12dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="top"
                 android:text="Verification Code"
@@ -188,8 +196,7 @@
                 android:text="We have sent a verification code to your mobile number"
                 android:textColor="#A5A5A5"
                 android:textSize="14sp" />
-            <!--    TODO()    MOBILE NUMBER TEXT VIEW HAVE TO SHOW AS TAKEN FROM USER-->
-            <!--        PUTTING UP SAMPLE DATA FOR NOW-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -199,19 +206,19 @@
                     android:id="@+id/otp_user_phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="95dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="35dp"
                     android:layout_marginTop="23dp"
-                    android:layout_marginRight="95dp"
-                    android:gravity="center_horizontal"
-                    android:text="+91-9123456780"
+                    android:layout_marginRight="35dp"
+                    android:text="+91-9140076745"
                     android:textColor="@color/black_000000"
-                    android:textSize="28sp" />
+                    android:textSize="24sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginRight="80dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
                     android:orientation="horizontal">
 
                     <View
@@ -248,19 +255,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/otp">
 
+                <!--                ENTER OTP TV-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="171dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
-                    android:gravity="center_horizontal|top"
                     android:text="@string/enter_otp"
                     android:textColor="@color/gray_A5A5A5"
                     android:textSize="16sp" />
 
                 <!--            https://github.com/GoodieBag/Pinview-->
-                <!--PLACEHOLDER OTP PIN type FOR NOW.-->
-                <!--            a better tutorial -->
                 <com.goodiebag.pinview.Pinview
                     android:id="@+id/pinview"
                     android:layout_width="match_parent"
@@ -287,6 +292,7 @@
                 android:background="@color/canvas_background"
                 android:orientation="vertical">
 
+                <!--                SUBMIT OTP BUTTON-->
                 <Button
                     android:id="@+id/bt_otp_submit"
                     android:layout_width="match_parent"
@@ -300,15 +306,15 @@
                     android:textAppearance="@style/request_otp"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="22sp" />
-
+                <!--                RESEND OTP TV-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="17dp"
-                    android:layout_marginRight="150dp"
+                    android:layout_marginRight="15dp"
                     android:fontFamily="sans-serif"
-                    android:gravity="center_horizontal|top"
                     android:text="Resend OTP"
                     android:textColor="#666666"
                     android:textSize="20sp" />

@@ -8,6 +8,7 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,10 @@ import com.example.stocktick.SmsBroadcastReceiver
 import com.example.stocktick.databinding.FragmentLoginOtpBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.hbb20.CountryCodePicker
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,11 +37,7 @@ import retrofit2.Response
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
 //TODO() -- reformat the login code to not use deprecated method?
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class LoginFragment : Fragment() {
 
     private lateinit var _binding: FragmentLoginOtpBinding
@@ -52,7 +53,13 @@ class LoginFragment : Fragment() {
     private lateinit var mCountryCodePicker: CountryCodePicker
     private lateinit var mButtonSubmitOtp: Button
 
-    private var phoneREGEXPattern = Regex("^[6789]\\d{9}$")
+    private var phoneREGEXPattern = Regex("^[0-9]{9,12}$")
+    //for innternational regex link: /^\+(?:[0-9] ?){6,14}[0-9]$/
+    //oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s03.html
+
+    //above regex is without ccp
+    //another link for country codes
+    //link for regex pattern with ccp,  https://stackoverflow.com/questions/35324149/phonenumberutils-isglobalphonenumber-not-returning-proper-results
     private lateinit var smsBroadCastReceiver: SmsBroadcastReceiver
     private val REQ_USER_CONSENT = 200
     private lateinit var phone: String
@@ -64,59 +71,65 @@ class LoginFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //OTP retrofit calls.
+        otpRetrofitCalls()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
         val view: View = _binding.root
-
-        //Assign variables
-        mButtonSubmitPhone = _binding.btLoginRequestOtp
-        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
-        mCountryCodePicker = _binding.loginCountryCodePicker
-
-        mButtonSubmitOtp = _binding.btOtpSubmit
+        initialiseVariables()
+        return view
+    }
 
 
-        // Inflate the layout for this fragment
+    private fun otpRetrofitCalls() {
+
+        //SUBMIT BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
-            phone = mEditTextPhoneEdit.text.toString()
-            Toast.makeText(requireActivity(),"m "+phone.length,Toast.LENGTH_SHORT).show()
-            if (phone.length!=10) {
+
+            phone = mEditTextPhoneEdit.text.toString().trim()
+            //val ccp = mCountryCodePicker.selectedCountryCode.toString()
+
+            if (!phone.matches(phoneREGEXPattern)) {
                 mEditTextPhoneEdit.error = "Please enter a correct number"
-
             } else {
-                //Log.d("abc", phone)
-                val phoneModel = PhoneModel(phone)
-                val call: Call<GetOtpModel> = RetrofitClientInstance.getClient.getOtp(phoneModel)
-                call.enqueue(object : Callback<GetOtpModel> {
-                    override fun onResponse(
-                        call: Call<GetOtpModel>,
-                        response: Response<GetOtpModel>
-                    ) {
-                        if (response.code() == 200) {
-                            _binding.otpCard.visibility = View.VISIBLE
-                            _binding.phoneCard.visibility = View.GONE
-                            //something have to do with regarding fragment calling here.
-                        } else {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Request not sent",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-
-                    }
-
-                    override fun onFailure(call: Call<GetOtpModel>, t: Throwable) {
-                        Toast.makeText(requireActivity(), "Request failed", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-
-                })
+                submitPhoneNumberButtonResponse()
             }
         }
+        //OTP BUTTON WORKINGS
+        submitOtpButtonRetrofit()
+
+    }
+
+
+    //coroutine api calls not view model.
+    @DelicateCoroutinesApi
+    private fun submitPhoneNumberButtonResponse() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val phoneModel = PhoneModel(phone)
+            try {
+                RetrofitClientInstance.getClient.getOtp(phoneModel)
+                _binding.otpCard.visibility = View.VISIBLE
+                _binding.phoneCard.visibility = View.INVISIBLE
+
+            } catch (error: Exception) {
+                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                    .show()
+                Log.d("ERROR_LOGINFRAGMENT", error.toString())
+            }
+
+        }
+    }
+
+
+    private fun submitOtpButtonRetrofit() {
+        //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
             otp = _binding.pinview.toString()
             if (otp.length == 6) {
@@ -165,8 +178,8 @@ class LoginFragment : Fragment() {
                                 }
                                 dialog.show()
                                 val metrics: DisplayMetrics = resources.displayMetrics;
-                                val width = metrics.widthPixels;
-                                val height = metrics.heightPixels;
+                                val width = metrics.widthPixels
+                                val height = metrics.heightPixels
                                 //yourDialog.getWindow().setLayout((6 * width)/7, )
                                 dialog.window?.setLayout(width, (4 * height) / 5);
                             }
@@ -190,17 +203,24 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireActivity(), "Otp should be of 6 digits", Toast.LENGTH_SHORT)
                     .show()
             }
-
         }
-        return view
     }
 
+    private fun initialiseVariables() {
+        mButtonSubmitPhone = _binding.btLoginRequestOtp
+        mEditTextPhoneEdit = _binding.etLoginPhoneNumber
+        mCountryCodePicker = _binding.loginCountryCodePicker
+        mButtonSubmitOtp = _binding.btOtpSubmit
+    }
+
+    //NOT TOUCHING FOR NOW??
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
         smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
                     startActivityForResult(intent, REQ_USER_CONSENT)
+//                    link: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
                 }
 
                 override fun onFailure() {
