@@ -11,5 +11,6 @@
     <color name="white_FFFFFF">#FFFFFF</color>
     <color name="button_canvas">#FFC400</color>
     <color name="background_light_text">#F9F9F9</color>
+    <color name="canvas_all">#E5E5E5</color>
     <!--    #FF7666-->
 </resources>

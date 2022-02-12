@@ -3,74 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_000000">
+    android:background="@color/canvas_all">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="10dp"
-        android:foregroundGravity="center_horizontal"
-        android:src="@drawable/welcome_screen_illustration"
-        app:layout_constraintBottom_toTopOf="@+id/tv_hey_welcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_hey_welcome"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginRight="120dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_horizontal"
-        android:text="@string/hey_welcome"
-        android:textColor="@color/white_FFFFFF"
-        android:textSize="21sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_welcome_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@color/black_000000">
+        <!--link for aspect ratio: https://stackoverflow.com/questions/43973185/constraintlayout-unable-to-scale-image-to-fit-a-ratio-in-recyclerview-->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="center_horizontal"
+            android:src="@drawable/welcome_screen_illustration"
+            app:layout_constraintBottom_toTopOf="@+id/tv_hey_welcome"
+            app:layout_constraintDimensionRatio="10:16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_hey_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:text="@string/hey_welcome"
+            android:textColor="@color/white_FFFFFF"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_welcome_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-    <TextView
-        android:id="@+id/tv_welcome_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="27dp"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center_horizontal"
-        android:text="@string/tv_welcome_descriptiono"
-        android:textColor="#D7D7D7"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/bt_welcome_get_started"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_welcome_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="27dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:text="@string/tv_welcome_descriptiono"
+            android:textColor="#D7D7D7"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/bt_welcome_get_started"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
-        android:id="@+id/bt_welcome_get_started"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="150dp"
-        android:background="@drawable/welcome_get_started"
-        android:text="@string/get_started"
-        android:textAllCaps="false"
-        android:textColor="@color/white_FFFFFF"
-        android:textSize="26sp"
-        app:backgroundTint="@color/button_canvas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <Button
+            android:id="@+id/bt_welcome_get_started"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/welcome_get_started"
+            android:text="@string/get_started"
+            android:textAllCaps="false"
+            android:textColor="@color/white_FFFFFF"
+            android:textSize="26sp"
+            app:backgroundTint="@color/button_canvas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

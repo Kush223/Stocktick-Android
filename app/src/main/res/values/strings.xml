@@ -21,7 +21,7 @@
 
     <!--login page strings-->
     <string name="login_signup">Login/Signup</string>
-    <string name="hello_welcome">Hello, welcome back to your account</string>
+    <string name="hello_welcome">Hello, welcome to your account</string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="request_otp">Request OTP</string>
 
@@ -47,6 +47,9 @@
     <string name="hey_welcome">Hey!! Welcome</string>
     <string name="tv_welcome_descriptiono">We deliver the best services at affordable prices</string>
     <string name="get_started">Get Started</string>
+    <string name="complete_your_profile">Complete Your Profile</string>
+    <string name="skip">SKIP</string>
+    <string name="resend_otp">Resend Otp</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>

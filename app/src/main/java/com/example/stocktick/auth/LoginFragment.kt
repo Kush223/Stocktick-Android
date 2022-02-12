@@ -34,9 +34,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-//TODO() -- add #E5E5E5 colour to canvas backgrounds across pages
+//TODO() -- add #E5E5E5 colour to canvas backgrounds across pages??
 
-//TODO() -- check the back button work
+//TODO () -- add a loader to request otp button
+
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
 
 //TODO() -- reformat the login code to not use deprecated method?
@@ -44,8 +45,6 @@ import kotlinx.coroutines.launch
 class LoginFragment : Fragment() {
 
     private lateinit var _binding: FragmentLoginOtpBinding
-    private val binding get() = _binding
-
 
     //xml variables submitPhone = button = bt_login_request_otp
     //edit text = phoneEdit = et_login_phone
@@ -131,6 +130,7 @@ class LoginFragment : Fragment() {
                 val resp = RetrofitClientInstance.retrofitService.getOtp(phoneModel)
                 _binding.otpCard.visibility = View.VISIBLE
                 _binding.phoneCard.visibility = View.INVISIBLE
+                Log.d(LOG_TAG,"OTP RESEND CHECK")
 
             } catch (error: Exception) {
                 showToast("Request failed CATCH ERROR LOGIN")
@@ -149,6 +149,17 @@ class LoginFragment : Fragment() {
             } else {
                 showToast("Otp should be of 6 digits")
             }
+        }
+        val mButtonBackOtp = _binding.vectorOtpBackArrow
+        mButtonBackOtp.setOnClickListener{
+            _binding.otpCard.visibility = View.INVISIBLE
+            _binding.phoneCard.visibility = View.VISIBLE
+        }
+
+        val mButtonResendOtp = _binding.tvLoginResendOtp
+        mButtonResendOtp.setOnClickListener{
+
+            submitPhoneNumberButtonResponse()
         }
     }
 
@@ -190,9 +201,9 @@ class LoginFragment : Fragment() {
             val skipButton = mCreateAccountLayoutBinding.btCreateAccountSkip
 
             submitButton.setOnClickListener {
-                if (name.text.isNotEmpty()) {
+                if (name.text.isEmpty()) {
                     name.error = "Please enter your name"
-                } else if (!email.text.isEmpty()) {
+                } else if (email.text.isEmpty()) {
                     email.error = "Please enter your email id"
                 } else {
                     val intent = Intent(activity, MainActivity::class.java)
@@ -204,6 +215,7 @@ class LoginFragment : Fragment() {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
+
         }
 
     }
