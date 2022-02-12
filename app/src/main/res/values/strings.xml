@@ -44,6 +44,9 @@
     <string name="verification_code_otp">Verification Code</string>
     <string name="otp">OTP</string>
     <string name="email_address">EMAIL ADDRESS</string>
+    <string name="hey_welcome">Hey!! Welcome</string>
+    <string name="tv_welcome_descriptiono">We deliver the best services at affordable prices</string>
+    <string name="get_started">Get Started</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>

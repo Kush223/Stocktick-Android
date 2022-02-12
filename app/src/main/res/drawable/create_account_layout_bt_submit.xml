@@ -5,12 +5,12 @@
     android:shape="rectangle">
 
     <solid android:color="@color/button_canvas" />
-    <corners android:radius="51dp" />
+    <corners android:radius="15dp" />
 
     <padding
-        android:bottom="10dip"
-        android:left="130dip"
-        android:right="130dip"
-        android:top="10dip" />
+        android:bottom="8dip"
+        android:left="10dip"
+        android:right="10dip"
+        android:top="8dip" />
 </shape><!--  for rounded shapes blog  https://stackoverflow.com/questions/3646415/how-to-create-edittext-with-rounded-corners#:~:text=Modify%20each%20to%20have%20more,background%20for%20your%20EditText%20widget-->
     <!--  for colour hex  https://stackoverflow.com/questions/11285961/how-to-make-a-background-20-transparent-on-android-->

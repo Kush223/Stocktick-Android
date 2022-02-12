@@ -34,6 +34,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+//TODO() -- add #E5E5E5 colour to canvas backgrounds across pages
 
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?

@@ -310,6 +310,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/fragment_login_bt_submit_phone"
                     android:text="@string/submit_login_otp"
+                    android:textAllCaps="false"
                     android:textAppearance="@style/request_otp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
