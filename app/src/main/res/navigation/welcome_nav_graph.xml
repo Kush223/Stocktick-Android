@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--NAVIGATION FORMAT FOR THIS-->
+<?xml version="1.0" encoding="utf-8"?><!--NAVIGATION FORMAT FOR THIS-->
 <!--    Splash  screen -> Get started -> Login Page-> OP Page->-->
 <!--    Option 1: If already registered move to home page-->
 <!--    Option 2: If new move o complete your profile page-->
@@ -16,26 +15,18 @@ Splash screen -> Home screen-->
     app:startDestination="@id/navigation_welcome_page">
     <fragment
         android:id="@+id/navigation_welcome_page"
+        android:name="com.example.stocktick.auth.WelcomeFragment"
         android:label="@string/Title_welcome_screen"
-        android:name="com.example.stocktick.LoginSignup.WelcomeFragment"
         tools:layout="@layout/fragment_welcome_page">
         <action
-            android:id="@+id/action_navigation_welcome_page_to_navigation_login_otp_"
-            app:destination="@id/navigation_login_otp_" />
+            android:id="@+id/action_navigation_welcome_page_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_login_otp_"
-        android:name="com.example.stocktick.LoginSignup.LoginFragment"
-        android:label="fragment_login_otp"
+        android:id="@+id/loginFragment"
+        android:name="com.example.stocktick.auth.LoginFragment"
+        android:label="LoginFragment"
         tools:layout="@layout/fragment_login_otp" />
-    <fragment
-        android:id="@+id/createAccountFragment"
-        android:name="com.example.stocktick.LoginSignup.CreateAccountFragment"
-        tools:layout="@layout/fragment_create_account"
-        android:label="CreateAccountFragment" />
     <!--    THIS ONE LAYOUT navigation login otp has both login and verify otp page.-->
-
-
-
 </navigation>

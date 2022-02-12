@@ -5,7 +5,7 @@
     android:id="@+id/login_signup_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginSignup.LoginSignupActivity">
+    tools:context=".auth.LoginSignupActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_activity_login"

@@ -1,4 +1,4 @@
-package com.example.stocktick.Loan
+package com.example.stocktick.loan
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

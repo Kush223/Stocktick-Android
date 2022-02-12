@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stocktick.Network.RetrofitClientInstance
+import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEducationBinding
 import com.example.stocktick.ui.loan.LoanItem
@@ -33,11 +33,15 @@ class EducationFragment : Fragment() {
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
-//        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getEducations(token!!,"M")
+//        val call : Call<List<LoanItem>> = RetrofitClientInstance.retrofitService.getEducations(token!!)
 //        call.enqueue(object : Callback<List<LoanItem>> {
 //            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
 //                if(response.code()==200){
-//
+//                    val eduItemList : List<LoanItem> = response.body()!!
+//                    for(eduItem in eduItemList){
+//                        eduList.add(LoanItem(eduItem.link,eduItem.short_desc,eduItem.long_desc,eduItem.image_urls,eduItem.category,eduItem.interest))
+//                    }
+//                    recyclerView.adapter = eduAdapter
 //                }
 //                else{
 //                    Toast.makeText(requireActivity(),"Bad Request", Toast.LENGTH_SHORT).show()

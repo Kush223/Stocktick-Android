@@ -1,8 +1,9 @@
-package com.example.stocktick.Network
+package com.example.stocktick.network
 
-import com.example.stocktick.LoginSignup.Models.GetOtpModel
-import com.example.stocktick.LoginSignup.Models.PhoneModel
-import com.example.stocktick.LoginSignup.Models.ProfileModel
+import com.example.stocktick.auth.model.GetOtpModel
+import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.auth.model.ProfileModel
+import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
 import retrofit2.Response
@@ -11,28 +12,18 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface JsonPlaceholderApi {
+interface ApiServiceInterface {
 
     @POST("auth/getotp/")
-    fun getOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
-    //PHONEMODEL AS str = phone, otp
-    //GETOTPMODEL AS str = message,authToken,old_user
-
-    //HEROKUAPP MODEL
-    //get/all/otp "phone": "9140876745",
-    //        "otp": 186693
-    //@POST auth/getotp/ "username" :
-
-    //@POST /auth/validateotp/ "username" : "<phone_number>", "otp" : "<otp resp>"
-
+    suspend fun getOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
     @POST("auth/validateotp/")
-    fun validateOtp(@Body phoneModel: PhoneModel): Call<GetOtpModel>
+    suspend fun validateOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
-    @POST("update/userinfo/")
-    fun updateInfo(
-        @Header("authToken") authToken: String,@Header("platform") platform: String, @Body profileModel: ProfileModel
-    ): Call<GetOtpModel>
+//    @POST("update/userinfo/")
+//    fun updateInfo(
+//        @Header("authToken") authToken: String,@Header("platform") platform: String, @Body profileModel: ProfileModel
+//    ): Call<GetOtpModel>
 
     @GET("get/loans/")
     suspend fun getLoans(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
@@ -40,8 +31,11 @@ interface JsonPlaceholderApi {
     @GET("get/Insurance/")
     suspend fun getInsurances(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
-    @GET("get/education")
+    @GET("get/education/")
     suspend fun getEducations(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
+
+    @POST("add/loandetails/")
+    suspend fun addLoanDetails(@Header("authToken") authToken: String,@Body loanFormItem: LoanFormItem): Response<GetOtpModel>
 
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response

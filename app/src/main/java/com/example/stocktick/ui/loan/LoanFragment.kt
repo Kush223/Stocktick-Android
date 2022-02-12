@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stocktick.LoginSignup.Models.PhoneModel
-import com.example.stocktick.Network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentLoanBinding
+import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.loan.LoanViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -49,46 +48,16 @@ class LoanFragment : Fragment() {
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         val token = sharedPreferences.getString("token","a")
+        loanList.clear()
         getLoans()
-//        val call : Call<List<LoanItem>> = RetrofitClientInstance.getClient.getLoans("b6ceeaf9-ee67-4b40-906e-97125eae5bff","M")
-//        call.enqueue(object : Callback<List<LoanItem>> {
-//            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
-//                if(response.code()==200){
-//                    val loanItemList : List<LoanItem> = response.body()!!
-//                    for(loanItem in loanItemList) {
-//                        loanList.add(LoanItem(loanItem.link, loanItem.short_desc, loanItem.long_desc, loanItem.image_url, loanItem.category, loanItem.interest,loanItem.colorCode))
-//                    }
-//                    loanList.add(LoanItem())
-//                    recyclerView.adapter = loanAdapter
-//                }
-//                else{
-//                    Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<LoanItem>>, t: Throwable) {
-//                Toast.makeText(requireActivity(),"Request failed", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
     }
 
     @DelicateCoroutinesApi
     private fun getLoans() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClientInstance.getClient.getLoans("b6ceeaf9-ee67-4b40-906e-97125eae5bff","M")
-                if(response.code()==200){
-                    val loanItemList : List<LoanItem> = response.body()!!
-                    for(loanItem in loanItemList) {
-                        loanList.add(LoanItem(loanItem.link, loanItem.short_desc, loanItem.long_desc, loanItem.image_url, loanItem.category, loanItem.interest,loanItem.colorCode))
-                    }
-                    loanList.add(LoanItem())
-                    recyclerView.adapter = loanAdapter
-                }
-                else{
-                    Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
-                }
+                val response = RetrofitClientInstance.retrofitService.getLoans("b6ceeaf9-ee67-4b40-906e-97125eae5bff","M")
+                setAdapter(response)
 
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
@@ -96,6 +65,19 @@ class LoanFragment : Fragment() {
                 Log.d("ERROR_LOGINFRAGMENT", error.toString())
             }
 
+        }
+    }
+    private fun setAdapter(response: Response<List<LoanItem>>){
+        if(response.code()==200){
+            val loanItemList : List<LoanItem> = response.body()!!
+            for(loanItem in loanItemList) {
+                loanList.add(LoanItem(loanItem.link, loanItem.short_desc, loanItem.long_desc, loanItem.image_urls, loanItem.category, loanItem.interest,loanItem.color_code))
+            }
+            loanList.add(LoanItem())
+            recyclerView.adapter = loanAdapter
+        }
+        else{
+            Toast.makeText(requireActivity(),"Bad Request",Toast.LENGTH_SHORT).show()
         }
     }
     override fun onCreateView(
