@@ -11,133 +11,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    PHONE NUMBER CARD-->
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--        android:id="@+id/phone_card"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:background="@color/canvas_background"-->
-    <!--        android:visibility= "visible"-->
-    <!--        tools:context=".auth.LoginFragment">-->
+        PHONE NUMBER CARD
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phone_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/canvas_background"
+            android:visibility= "visible"
+            tools:context=".auth.LoginFragment">
 
-    <!--        &lt;!&ndash; Login/Signup &ndash;&gt;-->
-    <!--        <LinearLayout-->
-    <!--            android:id="@+id/login_canvas1"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:background="@color/canvas_background"-->
-    <!--            android:orientation="vertical"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent">-->
+            <!-- Login/Signup -->
+            <LinearLayout
+                android:id="@+id/login_canvas1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/canvas_background"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <!--            &lt;!&ndash; Login/Signup &ndash;&gt;-->
-    <!--            <TextView-->
-    <!--                android:id="@+id/tv_login_signup"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="21dp"-->
-    <!--                android:layout_marginTop="75dp"-->
-    <!--                android:gravity="top"-->
-    <!--                android:text="@string/login_signup"-->
-    <!--                android:textAppearance="@style/login_signup"-->
-    <!--                android:textColor="@color/white_FFFFFF" />-->
-    <!--            &lt;!&ndash; Hello, welcome back to your account &ndash;&gt;-->
-    <!--            <TextView-->
-    <!--                android:id="@+id/tv_login_hello_welcome"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="21dp"-->
-    <!--                android:layout_marginTop="13dp"-->
-    <!--                android:fontFamily="sans-serif-light"-->
-    <!--                android:gravity="top"-->
-    <!--                android:text="@string/hello_welcome"-->
-    <!--                android:textAppearance="@style/hello_welcome"-->
-    <!--                android:textColor="@color/white_FFFFFF" />-->
-    <!--            &lt;!&ndash; Phone Number &ndash;&gt;-->
-    <!--            <TextView-->
-    <!--                android:id="@+id/tv_phone_number"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="21dp"-->
-    <!--                android:layout_marginTop="40dp"-->
-    <!--                android:gravity="top"-->
-    <!--                android:text="@string/phone_number"-->
-    <!--                android:textAppearance="@style/phone_number" />-->
+                <!-- Login/Signup -->
+                <TextView
+                    android:id="@+id/tv_login_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="75dp"
+                    android:gravity="top"
+                    android:text="@string/login_signup"
+                    android:textAppearance="@style/login_signup"
+                    android:textColor="@color/white_FFFFFF" />
+                <!-- Hello, welcome back to your account -->
+                <TextView
+                    android:id="@+id/tv_login_hello_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="top"
+                    android:text="@string/hello_welcome"
+                    android:textAppearance="@style/hello_welcome"
+                    android:textColor="@color/white_FFFFFF" />
+                <!-- Phone Number -->
+                <TextView
+                    android:id="@+id/tv_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="40dp"
+                    android:gravity="top"
+                    android:text="@string/phone_number"
+                    android:textAppearance="@style/phone_number" />
 
-    <!--            &lt;!&ndash;contains only CCPicker edit text&ndash;&gt;-->
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/login_canvas2"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="20dp"-->
-    <!--                android:layout_marginTop="14dp"-->
-    <!--                android:layout_marginRight="20dp"-->
-    <!--                android:background="@drawable/fragment_login_et_phone_edit"-->
-    <!--                android:orientation="horizontal">-->
-    <!--                &lt;!&ndash;        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties&ndash;&gt;-->
-    <!--                <com.hbb20.CountryCodePicker-->
-    <!--                    android:id="@+id/login_country_code_picker"-->
-    <!--                    android:layout_width="0dp"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_weight="1.3"-->
-    <!--                    app:ccp_arrowColor="@color/white"-->
-    <!--                    app:ccp_arrowSize="20dp"-->
-    <!--                    app:ccp_autoDetectCountry="true"-->
-    <!--                    app:ccp_contentColor="@color/white_FFFFFF"-->
-    <!--                    app:ccp_defaultLanguage="ENGLISH"-->
-    <!--                    app:ccp_flagBorderColor="@color/white_FFFFFF"-->
-    <!--                    app:ccp_showFlag="false"-->
-    <!--                    app:ccp_showNameCode="false"-->
-    <!--                    app:ccp_textSize="18sp" />-->
-    <!--                &lt;!&ndash;                https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties&ndash;&gt;-->
-    <!--                <View-->
-    <!--                    android:layout_width="0dp"-->
-    <!--                    android:layout_height="match_parent"-->
-    <!--                    android:layout_weight="0.03"-->
-    <!--                    android:paddingRight="2dp"-->
-    <!--                    android:background="@color/button_canvas" />-->
+                <!--contains only CCPicker edit text-->
+                <LinearLayout
+                    android:id="@+id/login_canvas2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/fragment_login_et_phone_edit"
+                    android:orientation="horizontal">
+                    <!--        link for xml attr to ccp - https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/login_country_code_picker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.3"
+                        app:ccp_arrowColor="@color/white_FFFFFF"
+                        app:ccp_arrowSize="20dp"
+                        app:ccp_autoDetectCountry="true"
+                        app:ccp_contentColor="@color/white_FFFFFF"
+                        app:ccp_defaultLanguage="ENGLISH"
+                        app:ccp_flagBorderColor="@color/white_FFFFFF"
+                        app:ccp_showFlag="false"
+                        app:ccp_showNameCode="false"
+                        app:ccp_textSize="18sp" />
+                    <!--                https://github.com/hbb20/CountryCodePickerProject/wiki/XML-Properties-->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.03"
+                        android:paddingRight="2dp"
+                        android:background="@color/button_canvas" />
 
-    <!--                <EditText-->
-    <!--                    android:id="@+id/et_login_phone_number"-->
-    <!--                    android:layout_width="0dp"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_gravity="left"-->
-    <!--                    android:layout_weight="5"-->
-    <!--                    android:fontFamily="sans-serif"-->
-    <!--                    android:gravity="left"-->
-    <!--                    android:hint="@string/login_enter_phone_number"-->
-    <!--                    android:inputType="phone"-->
-    <!--                    android:textColor="@color/white_FFFFFF"-->
-    <!--                    android:textColorHint="@color/white"-->
-    <!--                    android:textSize="19sp" />-->
-    <!--            </LinearLayout>-->
+                    <EditText
+                        android:id="@+id/et_login_phone_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif"
+                        android:gravity="left"
+                        android:hint="@string/login_enter_phone_number"
+                        android:inputType="phone"
+                        android:textColor="@color/white_FFFFFF"
+                        android:textColorHint="@color/white_FFFFFF"
+                        android:textSize="19sp" />
+                </LinearLayout>
 
-    <!--            &lt;!&ndash;            WHAT DOES THIS BUTTON DO?&ndash;&gt;-->
-    <!--            <Button-->
-    <!--                android:id="@+id/bt_login_request_otp"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginLeft="19dp"-->
-    <!--                android:layout_marginTop="36dp"-->
-    <!--                android:layout_marginRight="20dp"-->
-    <!--                android:background="@drawable/fragment_login_bt_submit_phone"-->
-    <!--                app:backgroundTint="@color/button_canvas"-->
-    <!--                android:text="@string/request_otp"-->
-    <!--                android:textAppearance="@style/request_otp"-->
-    <!--                android:textColor="@color/black_000000"-->
-    <!--                android:textSize="22sp"-->
-    <!--                app:layout_constraintBaseline_toBottomOf="@id/phone_card"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />-->
-    <!--        </LinearLayout>-->
+                <!--            WHAT DOES THIS BUTTON DO?-->
+                <Button
+                    android:id="@+id/bt_login_request_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/fragment_login_bt_submit_phone"
+                    app:backgroundTint="@color/button_canvas"
+                    android:text="@string/request_otp"
+                    android:textAppearance="@style/request_otp"
+                    android:textColor="@color/black_000000"
+                    android:textSize="22sp"
+                    app:layout_constraintBaseline_toBottomOf="@id/phone_card"
+                    app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+            </LinearLayout>
 
-    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <!--    &lt;!&ndash;OTP CARD&ndash;&gt;-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--OTP CARD-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/otp_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:context=".auth.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
@@ -270,21 +270,24 @@
                     android:text="@string/enter_otp"
                     android:textColor="@color/background_light_text"
                     android:textSize="16sp" />
-
-                <!--            https://github.com/GoodieBag/Pinview-->
-                <com.goodiebag.pinview.Pinview
+                <!--otp pinview-->
+                <!--                link to mukesh solanki-->
+                <!--                https://github.com/mukeshsolanki/android-otpview-pinview-->
+                <!--<check tags in the github for knowing the latest builds-->
+                <com.mukesh.OtpView
                     android:id="@+id/pinview"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    app:cursorVisible="false"
-                    app:forceKeyboard="true"
-                    app:hint=""
-                    app:inputType="number"
-                    app:password="false"
-                    app:pinLength="6"
-                    app:pinWidth="40dp" />
+                    android:layout_marginTop="25dp"
+                    android:inputType="number"
+                    android:itemBackground="@color/black_000000"
+                    android:textColor="@color/white_FFFFFF"
+                    app:OtpItemCount="6"
+                    app:OtpItemSpacing="10dp"
+                    app:OtpLineColor="@color/button_canvas"
+                    app:OtpLineWidth="2dp"
+                    app:OtpViewType="line" />
 
             </LinearLayout>
 
@@ -320,7 +323,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="17dp"
                     android:layout_marginRight="15dp"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif"
                     android:text="Resend Otp"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="18sp" />

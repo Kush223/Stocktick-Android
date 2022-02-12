@@ -30,10 +30,11 @@
     <!--    KNOW MORE-->
     <string name="Know_more">KNOW MORE</string>
     <!--    HELP-->
-    <string name="help">Help</string>
+    <string name="help">HELP</string>
+    <!--    <LOGIN-OTP-WELCOME-CREATE ACCOUNT SCREEN STRINGS>-->
     <string name="login_enter_phone_number">Enter phone number</string>
     <string name="create_account_hint_enter_email_address">Enter email address</string>
-    <string name="enter_otp">Enter OTP</string>
+    <string name="enter_otp">ENTER OTP</string>
     <string name="Title_welcome_screen">Welcome Screen</string>
     <string name="submit">SUBMIT</string>
     <string name="user_name">NAME</string>
@@ -42,6 +43,7 @@
     <string name="message_otp_recieved_">We have sent a verification code to your mobile number</string>
     <string name="verification_code_otp">Verification Code</string>
     <string name="otp">OTP</string>
+    <string name="email_address">EMAIL ADDRESS</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>

@@ -35,9 +35,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-//TODO() -- check the transfer using actual OTP pin
 //TODO() -- check the back button work
 //TODO() -- check the Resend OTP tv work --- should we change it to button?
+
 //TODO() -- reformat the login code to not use deprecated method?
 
 class LoginFragment : Fragment() {
@@ -141,7 +141,7 @@ class LoginFragment : Fragment() {
     private fun submitOtpButtonRetrofit() {
         //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
-            otp = _binding.pinview.value.toString()
+            otp = _binding.pinview.text.toString()
             if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
                 handleSubmitOTP(phoneModel)
