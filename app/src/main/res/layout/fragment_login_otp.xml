@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!-- "-->
-<!--OTP PAGE-->
+<!--LOGIN and OTP PAGE-->
 
 <!--TODO() show the inputted phone number in id = otp_user_phone_number-->
-<!--TODO() Make the Resend OTP part work using a different drawable-->
 
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

@@ -34,11 +34,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-//TODO() -- add #E5E5E5 colour to canvas backgrounds across pages??
+//TODO() -- Fix the app bar colour
+
+//TODO() -- Fix the phone number shows right part.
 
 //TODO () -- add a loader to request otp button
-
-//TODO() -- check the Resend OTP tv work --- should we change it to button?
 
 //TODO() -- reformat the login code to not use deprecated method?
 

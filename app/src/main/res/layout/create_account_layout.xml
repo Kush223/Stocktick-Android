@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--TODO() change all ui according to new ui-->
-<!--TODO() add skip button functionality-->
-<!--TODO() make skip button work the way resend needs to work-->
+<?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
