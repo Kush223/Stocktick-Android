@@ -1,14 +1,15 @@
 <resources>
     <!-- Base application theme. -->
+    <!--    https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android-->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#FF7666</item>
-        <item name="colorPrimaryVariant">#FF7666</item>
-        <item name="colorOnPrimary">#FF7666</item>
+        <item name="colorPrimary">@color/black_000000</item>
+        <item name="colorPrimaryVariant">@color/button_canvas</item>
+        <item name="colorOnPrimary">@color/button_canvas</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#FF7666</item>
-        <item name="colorSecondaryVariant">#FF7666</item>
-        <item name="colorOnSecondary">#FF7666</item>
+        <item name="colorSecondary">@color/button_canvas</item>
+        <item name="colorSecondaryVariant">@color/button_canvas</item>
+        <item name="colorOnSecondary">@color/button_canvas</item>
 
     </style>
 
@@ -38,7 +39,7 @@
             16sp
         </item>
         <item name="android:textColor">
-            #A5A5A5
+            #F9F9F9
         </item>
     </style>
     <!--    Request OTP-->
@@ -62,10 +63,11 @@
         </item>
 
         <item name="android:textColor">
-            #000000
+            @color/white
         </item>
 
     </style>
+
     <style name="verification_code">
 
         <item name="android:textSize">
@@ -73,7 +75,7 @@
         </item>
 
         <item name="android:textColor">
-            #000000
+            @color/white_FFFFFF
         </item>
 
     </style>

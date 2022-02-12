@@ -38,6 +38,10 @@
     <string name="submit">SUBMIT</string>
     <string name="user_name">NAME</string>
     <string name="create_account_hint_enter_user_name">Enter Name</string>
+    <string name="submit_login_otp">Submit</string>
+    <string name="message_otp_recieved_">We have sent a verification code to your mobile number</string>
+    <string name="verification_code_otp">Verification Code</string>
+    <string name="otp">OTP</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>
