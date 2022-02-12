@@ -3,14 +3,13 @@
 
 <!--TODO() show the inputted phone number in id = otp_user_phone_number-->
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_otp_cards"
     android:layout_width="match_parent"
-    android:background="@color/canvas_all"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/canvas_all">
 
     <!--        PHONE NUMBER CARD-->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,10 +100,10 @@
                     android:id="@+id/et_login_phone_number"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
+                    android:layout_gravity="start"
                     android:layout_weight="5"
                     android:fontFamily="sans-serif"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:hint="@string/login_enter_phone_number"
                     android:inputType="phone"
                     android:textColor="@color/white_FFFFFF"
@@ -131,7 +130,7 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--OTP CARD-->
+    <!--OTP CARD-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/otp_card"
         android:layout_width="match_parent"
@@ -157,23 +156,23 @@
                 <View
                     android:id="@+id/vector_otp_back_arrow"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="24dp"
+                    android:layout_gravity="bottom"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="28dp"
-                    android:layout_gravity="bottom"
                     android:layout_marginBottom="12dp"
-                    android:paddingEnd="24dp"
-                    android:background="@drawable/otp_arrow_back" />
+                    android:layout_weight="1"
+                    android:background="@drawable/otp_arrow_back"
+                    android:paddingEnd="24dp" />
 
                 <TextView
                     android:id="@+id/otp"
                     android:layout_width="0dp"
-                    android:layout_weight="21"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="26dp"
+                    android:layout_weight="21"
                     android:gravity="center_horizontal"
                     android:text="@string/otp"
                     android:textAppearance="@style/otp" />
@@ -328,11 +327,11 @@
                     android:layout_marginTop="17dp"
                     android:layout_marginRight="15dp"
                     android:fontFamily="sans-serif"
-                    app:backgroundTint="@color/black_000000"
                     android:text="@string/resend_otp"
                     android:textAllCaps="false"
                     android:textColor="@color/white_FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:backgroundTint="@color/black_000000" />
             </LinearLayout>
         </LinearLayout>
 

@@ -7,5 +7,6 @@ data class LoanItem(
         val long_desc: String?= null,
         val image_urls: String?= null,
         val category: String?= null,
-        val interest: String?= null
+        val interest: String?= null,
+        val color_code: String?= null
 )

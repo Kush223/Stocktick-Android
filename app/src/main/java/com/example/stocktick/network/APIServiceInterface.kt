@@ -3,8 +3,10 @@ package com.example.stocktick.network
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.auth.model.ProfileModel
+import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -18,26 +20,22 @@ interface ApiServiceInterface {
     @POST("auth/validateotp/")
     suspend fun validateOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
-    @POST("update/userinfo/")
-    fun updateInfo(
-        @Header("authToken") authToken: String, @Body profileModel: ProfileModel
-    ): Call<GetOtpModel>
+//    @POST("update/userinfo/")
+//    fun updateInfo(
+//        @Header("authToken") authToken: String,@Header("platform") platform: String, @Body profileModel: ProfileModel
+//    ): Call<GetOtpModel>
 
     @GET("get/loans/")
-    fun getLoans(@Header("authToken") authToken: String): Call<List<LoanItem>>
+    suspend fun getLoans(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
     @GET("get/Insurance/")
-    fun getInsurances(@Header("authToken") authToken: String): Call<List<LoanItem>>
+    suspend fun getInsurances(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
-    @GET("get/education")
-    fun getEducations(@Header("authToken") authToken: String): Call<List<LoanItem>>
+    @GET("get/education/")
+    suspend fun getEducations(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
-    @GET("get/media")
-    fun getMedias(@Header("authToken") authToken: String): Call<List<LoanItem>>
-
-//    @GET("get/all/otp")
-//    fun getAllOtp(@Header("authToken") authToken: String): Call<List>
-//
+    @POST("add/loandetails/")
+    suspend fun addLoanDetails(@Header("authToken") authToken: String,@Body loanFormItem: LoanFormItem): Response<GetOtpModel>
 
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response

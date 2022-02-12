@@ -24,6 +24,10 @@
         <item name="android:maxLines">1</item>
     </style>
 
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+        <!-- Customize your theme here. -->
+
     <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
         <item name="android:statusBarColor">@color/black_000000</item>
     </style>
@@ -69,6 +73,7 @@
             @color/white_FFFFFF
         </item>
 
+>>>>>>> 41b1a749f7610bf03c5d3c20ab4dc2ee96219732
     </style>
 
     <!--    OTP styles-->

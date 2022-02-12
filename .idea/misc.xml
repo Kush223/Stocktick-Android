@@ -38,8 +38,11 @@
         <entry key="app/src/main/res/layout/fragment_media.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_verify_otp.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_welcome_page.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/loan_bottom.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/loan_dialog.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/loan_item.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/login_dialog.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/success_form.xml" value="0.3229166666666667" />
       </map>
     </option>
   </component>

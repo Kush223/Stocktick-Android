@@ -106,6 +106,7 @@ class LoginFragment : Fragment() {
 
         //SUBMIT BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
+
             phone = mEditTextPhoneEdit.text.toString().trim()
             //val ccp = mCountryCodePicker.selectedCountryCode.toString()
 
