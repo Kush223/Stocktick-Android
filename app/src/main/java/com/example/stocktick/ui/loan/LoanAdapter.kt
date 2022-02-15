@@ -74,6 +74,48 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 val businessTitle = dialog.findViewById(R.id.business_title) as TextView
                 val businessCard = dialog.findViewById(R.id.business_card) as CardView
                 val submitBtn = dialog.findViewById(R.id.loan_form_submit) as CardView
+                val manuCard = dialog.findViewById(R.id.manufacture_card) as CardView
+                val variantCard = dialog.findViewById(R.id.variant_card) as CardView
+                val pucCard = dialog.findViewById(R.id.puc_card) as CardView
+                val pucExpCard = dialog.findViewById(R.id.puc_exp_card) as CardView
+                val vehicleCard = dialog.findViewById(R.id.vehicle_no_card) as CardView
+                val insurerCard = dialog.findViewById(R.id.insurer_card) as CardView
+                val policyExpCard = dialog.findViewById(R.id.policy_exp_card) as CardView
+                val policyTypeCard = dialog.findViewById(R.id.policy_type_card) as CardView
+                val modelCard = dialog.findViewById(R.id.model_card) as CardView
+                val manuYearCard = dialog.findViewById(R.id.manufacture_year_card) as CardView
+
+                val manuYear = dialog.findViewById(R.id.manufacture_year_title) as TextView
+                val manu = dialog.findViewById(R.id.manufacture_title) as TextView
+                val model = dialog.findViewById(R.id.model_title) as TextView
+                val puc = dialog.findViewById(R.id.puc_title) as TextView
+                val pucExp = dialog.findViewById(R.id.puc_exp_title) as TextView
+                val vehicle = dialog.findViewById(R.id.vehicle_no_title) as TextView
+                val insurer = dialog.findViewById(R.id.insurer_title) as TextView
+                val policyExp = dialog.findViewById(R.id.policy_exp_title) as TextView
+                val policyClaim = dialog.findViewById(R.id.policy_claim_title) as TextView
+
+
+                manuYear.visibility=View.GONE
+                manuYearCard.visibility=View.GONE
+                modelCard.visibility=View.GONE
+                manuCard.visibility=View.GONE
+                manu.visibility=View.GONE
+                variantCard.visibility=View.GONE
+                pucCard.visibility=View.GONE
+                pucExpCard.visibility=View.GONE
+                vehicleCard.visibility=View.GONE
+                insurerCard.visibility=View.GONE
+                policyExpCard.visibility=View.GONE
+                policyTypeCard.visibility=View.GONE
+                puc.visibility = View.GONE
+                pucExp.visibility = View.GONE
+                policyClaim.visibility = View.GONE
+                policyExp.visibility = View.GONE
+                insurer.visibility = View.GONE
+                vehicle.visibility = View.GONE
+                model.visibility=View.GONE
+
 
                 if(this.category?.length!! >8 && this.category.substring(0,8) == "Business"){
                     businessCard.visibility= View.VISIBLE

@@ -41,19 +41,44 @@
     <string name="Name">NAME</string>
     <string name="Personal">Personal</string>
     <string name="Select_category">SELECT A CATEGORY</string>
+
     <string name="phone_heading">PHONE NUMBER</string>
     <string name="business_hint">Enter organization name</string>
     <string name="business_heading">ORGANIZATION NAME</string>
     <string name="email_hint">Enter your email</string>
     <string name="email_heading">EMAIL</string>
+    <string name="policy_exp_heading">Policy Exp Date</string>
+    <string name="policy_exp_hint">Please enter the policy Expiry Date</string>
     <string name="login_enter_phone_number">Enter phone number</string>
     <string name="enter_name">Enter your name</string>
     <string name="create_account_hint_enter_email_address">Enter email address</string>
+    <string name="policy_type_heading">Policy Type</string>
+    <string name="policy_type_hint">Please enter the policy type</string>
+    <string name="ownership_transfer_heading">Has ownership of the car been transferred in last 12 months</string>
+    <string name="puc_exp_heading">PUC Valid Exp date</string>
+    <string name="puc_exp_hint">Please enter PUC Valid Expiry date</string>
+    <string name="puc_heading">PUC</string>
+    <string name="insurer_heading">Select a Current Insurer</string>
+    <string name="insurer_hint">Please enter your current insurer</string>
+    <string name="variant_heading">Variant Name</string>
+    <string name="variant_hint">Please enter variant name</string>
+    <string name="fuel_type_heading">Select a Fuel Type</string>
+    <string name="model_heading">Select a Model</string>
+    <string name="model_hint">Please select a model</string>
+    <string name="manufacturer_heading">Select Manufacturer</string>
+    <string name="vehicle_heading">Vehicle No</string>
+    <string name="vehicle_hint">Please enter vehicle number</string>
+    <string name="manufacture_year_heading">Select Manufacture Year</string>
+    <string name="manufacture_year_hint">Please enter vehicle number</string>
+    <string name="policy_heading">Current Policy Claim </string>
+
     <string name="enter_otp">Enter OTP</string>
     <string name="Title_welcome_screen">Welcome Screen</string>
     <string name="submit">SUBMIT</string>
     <string name="user_name">NAME</string>
     <string name="success">SUCCESS!!</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
     <string name="success_message">Our Team will contact you in 24 hours to get the best deals</string>
     <string name="create_account_hint_enter_user_name">Enter Name</string>
     <!--GENDERS-->
