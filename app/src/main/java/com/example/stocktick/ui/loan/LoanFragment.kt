@@ -29,6 +29,7 @@ class LoanFragment : Fragment() {
     private var loanList: MutableList<LoanItem> = ArrayList()
     private lateinit var recyclerView : RecyclerView
     private lateinit var loanAdapter: LoanAdapter
+    private lateinit var token: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +48,7 @@ class LoanFragment : Fragment() {
         recyclerView.adapter=loanAdapter
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        val token = sharedPreferences.getString("token","a")
+        token = sharedPreferences.getString("token","a").toString()
         loanList.clear()
         getLoans()
     }
@@ -56,7 +57,7 @@ class LoanFragment : Fragment() {
     private fun getLoans() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClientInstance.retrofitService.getLoans("b6ceeaf9-ee67-4b40-906e-97125eae5bff","M")
+                val response = RetrofitClientInstance.retrofitService.getLoans(token,"M")
                 setAdapter(response)
 
             } catch (error: Exception) {

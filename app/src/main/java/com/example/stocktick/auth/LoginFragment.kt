@@ -34,17 +34,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+//TODO() -- Fix the app bar colour
 
-//TODO() -- check the transfer using actual OTP pin
-//TODO() -- check the back button work
-//TODO() -- check the Resend OTP tv work --- should we change it to button?
+//TODO() -- Fix the phone number shows right part.
+
+//TODO () -- add a loader to request otp button
+
 //TODO() -- reformat the login code to not use deprecated method?
 
 class LoginFragment : Fragment() {
 
     private lateinit var _binding: FragmentLoginOtpBinding
-    private val binding get() = _binding
-
 
     //xml variables submitPhone = button = bt_login_request_otp
     //edit text = phoneEdit = et_login_phone
@@ -130,7 +130,10 @@ class LoginFragment : Fragment() {
             try {
                 val resp = RetrofitClientInstance.retrofitService.getOtp(phoneModel)
                 _binding.otpCard.visibility = View.VISIBLE
+                val str = "+91-$phone"
+                _binding.otpUserPhoneNumber.text = str
                 _binding.phoneCard.visibility = View.INVISIBLE
+                Log.d(LOG_TAG,"OTP RESEND CHECK")
 
             } catch (error: Exception) {
                 showToast("Request failed CATCH ERROR LOGIN")
@@ -142,13 +145,24 @@ class LoginFragment : Fragment() {
     private fun submitOtpButtonRetrofit() {
         //SUBMIT OTP BUTTON WORKINGS
         mButtonSubmitOtp.setOnClickListener {
-            otp = _binding.pinview.value.toString()
+            otp = _binding.pinview.text.toString()
             if (otp.length == 6) {
                 val phoneModel = PhoneModel(phone, otp)
                 handleSubmitOTP(phoneModel)
             } else {
                 showToast("Otp should be of 6 digits")
             }
+        }
+        val mButtonBackOtp = _binding.vectorOtpBackArrow
+        mButtonBackOtp.setOnClickListener{
+            _binding.otpCard.visibility = View.INVISIBLE
+            _binding.phoneCard.visibility = View.VISIBLE
+        }
+
+        val mButtonResendOtp = _binding.tvLoginResendOtp
+        mButtonResendOtp.setOnClickListener{
+
+            submitPhoneNumberButtonResponse()
         }
     }
 
@@ -182,17 +196,17 @@ class LoginFragment : Fragment() {
 
             _binding.otpCard.visibility = View.INVISIBLE
 
-            mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
 
+            mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
             val name =  mCreateAccountLayoutBinding.etCreateAccountUserName
             val email =mCreateAccountLayoutBinding.etCreateAccountEmailAddress
             val submitButton = mCreateAccountLayoutBinding.btCreateAccountSubmit
             val skipButton = mCreateAccountLayoutBinding.btCreateAccountSkip
 
             submitButton.setOnClickListener {
-                if (name.text.isNotEmpty()) {
+                if (name.text.isEmpty()) {
                     name.error = "Please enter your name"
-                } else if (!email.text.isEmpty()) {
+                } else if (email.text.isEmpty()) {
                     email.error = "Please enter your email id"
                 } else {
                     val intent = Intent(activity, MainActivity::class.java)
@@ -204,6 +218,7 @@ class LoginFragment : Fragment() {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
+
         }
 
     }

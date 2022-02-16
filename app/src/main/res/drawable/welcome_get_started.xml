@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?><!--  res/drawable/rounded_edittext.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingTop="13dp"
-    android:paddingBottom="13dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:shape="rectangle">
 
-    <solid android:color="#2666CF" />
-    <corners android:radius="32dp" />
+    <solid android:color="@color/button_canvas" />
+    <corners android:radius="30dp" />
 
     <padding
-        android:bottom="13dip"
-        android:top="13dip" />
+        android:right="70dp"
+        android:left="70dp"
+        android:bottom="10dip"
+        android:top="10dip" />
 </shape>

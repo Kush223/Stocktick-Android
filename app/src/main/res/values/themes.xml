@@ -1,19 +1,37 @@
 <resources>
     <!-- Base application theme. -->
+    <!--    https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android-->
+    <!--MUKESH SOLANKI PINVIEW WORKAROUND https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
+    <!--    this for the font adn the background: https://www.murrayc.com/permalink/2014/10/28/android-changing-the-toolbars-text-color-and-overflow-icon-color/-->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="android:statusBarColor">@color/black_000000</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#2C3333</item>
-        <item name="colorPrimaryVariant">#2C3333</item>
-        <item name="colorOnPrimary">#2C3333</item>
+        <item name="android:textColor">@color/black_000000</item>
+        <item name="colorPrimary">@color/black_000000</item>
+        <item name="colorPrimaryVariant">@color/button_canvas</item>
+        <item name="colorOnPrimary">@color/button_canvas</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#2C3333</item>
-        <item name="colorSecondaryVariant">#2C3333</item>
-        <item name="colorOnSecondary">#2C3333</item>
+        <item name="colorSecondary">@color/button_canvas</item>
+        <item name="colorSecondaryVariant">@color/button_canvas</item>
+        <item name="colorOnSecondary">@color/button_canvas</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
+
+    <style name="OtpWidget.OtpView" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
 <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
 <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
         <!-- Customize your theme here. -->
 
+    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:statusBarColor">@color/black_000000</item>
     </style>
+
 
     <!--    Login/signUp THEME+ CREATE ACCOUNT THEME-->
 
@@ -23,7 +41,7 @@
             21sp
         </item>
         <item name="android:textColor">
-            #000000
+            @color/white_FFFFFF
         </item>
     </style>
     <!--    Hello welcome to account textview- Trust is investment text view-->
@@ -32,7 +50,7 @@
             18sp
         </item>
         <item name="android:textColor">
-            #333333
+            @color/white_FFFFFF
         </item>
     </style>
     <!--    PHONE NUMBER - EMAIL ADDRESS textview theme -->
@@ -41,7 +59,7 @@
             16sp
         </item>
         <item name="android:textColor">
-            #A5A5A5
+            @color/background_light_text
         </item>
     </style>
     <!--    Request OTP-->
@@ -52,7 +70,7 @@
         </item>
 
         <item name="android:textColor">
-            #FFFFFF
+            @color/white_FFFFFF
         </item>
 
 >>>>>>> 41b1a749f7610bf03c5d3c20ab4dc2ee96219732
@@ -62,14 +80,15 @@
     <style name="otp">
 
         <item name="android:textSize">
-            24sp
+            25sp
         </item>
 
         <item name="android:textColor">
-            #000000
+            @color/white_FFFFFF
         </item>
 
     </style>
+
     <style name="verification_code">
 
         <item name="android:textSize">
@@ -77,7 +96,7 @@
         </item>
 
         <item name="android:textColor">
-            #000000
+            @color/white_FFFFFF
         </item>
 
     </style>

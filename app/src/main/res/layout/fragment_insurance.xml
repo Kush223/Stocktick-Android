@@ -18,7 +18,7 @@
         android:gravity="center"
         android:text="Get 10% off on first purchase with us. Code - GYNX"
         android:textColor="@color/white"
-        android:textSize="11sp" />
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/insurance_img"
@@ -121,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="@string/Bike"
+                    android:text="@string/Motor"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="@string/Car"
+                    android:text="@string/Health"
                     android:textColor="#FFC700"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="@string/Home"
+                    android:text="@string/Life"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>

@@ -25,7 +25,7 @@
 
     <!--login page strings-->
     <string name="login_signup">Login/Signup</string>
-    <string name="hello_welcome">Hello, welcome back to your account</string>
+    <string name="hello_welcome">Hello, welcome to your account</string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="request_otp">Request OTP</string>
 
@@ -34,10 +34,11 @@
     <!--    KNOW MORE-->
     <string name="get_quote">GET QUOTE</string>
     <!--    HELP-->
+
     <string name="help">Help</string>
-    <string name="Bike">Bike</string>
-    <string name="Home">Home</string>
-    <string name="Car">Car</string>
+    <string name="Motor">Motor</string>
+    <string name="Life">Life</string>
+    <string name="Health">Health</string>
     <string name="Name">NAME</string>
     <string name="Personal">Personal</string>
     <string name="Select_category">SELECT A CATEGORY</string>
@@ -68,11 +69,28 @@
     <string name="manufacturer_heading">Select Manufacturer</string>
     <string name="vehicle_heading">Vehicle No</string>
     <string name="vehicle_hint">Please enter vehicle number</string>
+    <string name="address_heading">ADDRESS</string>
+    <string name="address_hint">Please enter your address</string>
+    <string name="dob_heading">Date Of Birth</string>
+    <string name="dob_hint">Please enter your date of birth</string>
+    <string name="select_family_heading">Select Family Member</string>
+    <string name="age_heading">AGE</string>
+    <string name="age_hint">Please enter your age</string>
+    <string name="amount_heading">AMOUNT</string>
+    <string name="amount_hint">Please enter the amount</string>
+    <string name="coverLife_heading">Cover Life</string>
+    <string name="coverLife_hint">Please enter your cover life</string>
+    <string name="coverUpto_heading">Cover Upto</string>
+    <string name="coverUpto_hint">Please enter your cover amount</string>
     <string name="manufacture_year_heading">Select Manufacture Year</string>
     <string name="manufacture_year_hint">Please enter vehicle number</string>
+    <string name="medical_cond_heading">Medical Condition</string>
+    <string name="medical_cond_hint">Please enter your medical condition</string>
     <string name="policy_heading">Current Policy Claim </string>
 
     <string name="enter_otp">Enter OTP</string>
+    <!--  <LOGIN-OTP-WELCOME-CREATE ACCOUNT SCREEN STRINGS>-->
+
     <string name="Title_welcome_screen">Welcome Screen</string>
     <string name="submit">SUBMIT</string>
     <string name="user_name">NAME</string>
@@ -81,6 +99,17 @@
     <string name="no">NO</string>
     <string name="success_message">Our Team will contact you in 24 hours to get the best deals</string>
     <string name="create_account_hint_enter_user_name">Enter Name</string>
+    <string name="submit_login_otp">Submit</string>
+    <string name="message_otp_recieved_">We have sent a verification code to your mobile number</string>
+    <string name="verification_code_otp">Verification Code</string>
+    <string name="otp">OTP</string>
+    <string name="email_address">EMAIL ADDRESS</string>
+    <string name="hey_welcome">Hey!! Welcome</string>
+    <string name="tv_welcome_descriptiono">We deliver the best services at affordable prices</string>
+    <string name="get_started">Get Started</string>
+    <string name="complete_your_profile">Complete Your Profile</string>
+    <string name="skip">SKIP</string>
+    <string name="resend_otp">Resend Otp</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>

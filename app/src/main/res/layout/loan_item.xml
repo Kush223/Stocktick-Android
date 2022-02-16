@@ -1,112 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loan_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    android:id="@+id/loan_card"
     android:layout_marginBottom="7dp"
     app:cardBackgroundColor="@android:color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:cardCornerRadius="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="9dp"
         android:layout_marginTop="13dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="9dp"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="2"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/loan_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:id="@+id/loan_title"
+                android:text="@string/Category"
                 android:textColor="@color/black"
-                android:text="@string/Category"/>
+                android:textSize="17sp" />
+
             <TextView
+                android:id="@+id/loan_short_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
                 android:layout_marginTop="6dp"
-                android:id="@+id/loan_short_desc"
+                android:text="rkjvengnregerjgnergerjgrejgnrrejgngregnerergre"
                 android:textColor="#424242"
-                android:text="rkjvengnregerjgnergerjgrejgnrrejgngregnerergre"/>
+                android:textSize="10sp" />
+
             <TextView
+                android:id="@+id/loan_interest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:text="18%"
                 android:layout_marginStart="41dp"
                 android:layout_marginTop="15dp"
-                android:id="@+id/loan_interest"
-                android:textColor="@color/black" />
+                android:text="18%"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="6dp"
+                android:text="@string/Interest"
                 android:textColor="#424242"
-                android:text="@string/Interest"/>
+                android:textSize="10sp" />
 
         </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/loan_img"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/black"
+                app:cardCornerRadius="3dp">
+
+                <TextView
+                    android:id="@+id/get_quote"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:id="@+id/loan_img"
-                    android:src="@mipmap/ic_launcher"/>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:backgroundTint="@color/black"
-                        android:layout_marginTop="14dp"
-                        app:cardCornerRadius="3dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:id="@+id/get_quote"
-                        android:layout_gravity="center"
-                        android:text="@string/get_quote"
-                        android:textColor="@color/white"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="13sp" />
-                    </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="9sp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginStart="28dp"-->
-<!--                android:text="@string/Category"/>-->
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="15sp"-->
-<!--                android:layout_marginTop="6dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginStart="28dp"-->
-<!--                android:id="@+id/loan_category"-->
-<!--                android:text="@string/Category"/>-->
-
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/get_quote"
+                    android:textColor="@color/white_FFFFFF"
+                    android:textSize="13sp" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textSize="9sp"-->
+        <!--                android:layout_marginTop="10dp"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:layout_marginStart="28dp"-->
+        <!--                android:text="@string/Category"/>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textSize="15sp"-->
+        <!--                android:layout_marginTop="6dp"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:layout_marginStart="28dp"-->
+        <!--                android:id="@+id/loan_category"-->
+        <!--                android:text="@string/Category"/>-->
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,8 +1,10 @@
 package com.example.stocktick.ui.loan
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.os.Handler
@@ -40,9 +42,12 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
     private val itemFooter = 22
     private val phoneREGEXPattern = Regex("^[0-9]{9,12}$")
     private lateinit var dialog : Dialog
+    private lateinit var token: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         //val v = LayoutInflater.from(parent.context).inflate(R.layout.loan_item, parent, false)
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("USER", Activity.MODE_PRIVATE)
+        token = sharedPreferences.getString("token","a").toString()
         return when(viewType){
             itemBody ->  LoanViewHolder(LoanItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else ->  FooterHolder(LoanBottomBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -74,6 +79,11 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 val businessTitle = dialog.findViewById(R.id.business_title) as TextView
                 val businessCard = dialog.findViewById(R.id.business_card) as CardView
                 val submitBtn = dialog.findViewById(R.id.loan_form_submit) as CardView
+
+                val dobCard = dialog.findViewById(R.id.dob_card) as CardView
+                val coverLifeCard = dialog.findViewById(R.id.coverLife_card) as CardView
+                val coverUptoCard = dialog.findViewById(R.id.coverUpto_card) as CardView
+                val amountCard = dialog.findViewById(R.id.amount_card) as CardView
                 val manuCard = dialog.findViewById(R.id.manufacture_card) as CardView
                 val variantCard = dialog.findViewById(R.id.variant_card) as CardView
                 val pucCard = dialog.findViewById(R.id.puc_card) as CardView
@@ -81,10 +91,27 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 val vehicleCard = dialog.findViewById(R.id.vehicle_no_card) as CardView
                 val insurerCard = dialog.findViewById(R.id.insurer_card) as CardView
                 val policyExpCard = dialog.findViewById(R.id.policy_exp_card) as CardView
+                val policyClaimCard = dialog.findViewById(R.id.policy_claim_card) as CardView
                 val policyTypeCard = dialog.findViewById(R.id.policy_type_card) as CardView
                 val modelCard = dialog.findViewById(R.id.model_card) as CardView
                 val manuYearCard = dialog.findViewById(R.id.manufacture_year_card) as CardView
+                val fuelCard = dialog.findViewById(R.id.fuel_type_card) as CardView
+                val ownershipCard = dialog.findViewById(R.id.ownership_transfer_card) as CardView
+                val addressCard = dialog.findViewById(R.id.address_card) as CardView
+                val ageCard = dialog.findViewById(R.id.age_card) as CardView
+                val familyCard = dialog.findViewById(R.id.select_family_card) as CardView
+                val medicalCard = dialog.findViewById(R.id.medical_cond_card) as CardView
 
+                val medical = dialog.findViewById(R.id.medical_cond_title) as TextView
+                val family = dialog.findViewById(R.id.select_family_title) as TextView
+                val age = dialog.findViewById(R.id.age_title) as TextView
+                val address = dialog.findViewById(R.id.address_title) as TextView
+                val dob = dialog.findViewById(R.id.dob_title) as TextView
+                val coverLife = dialog.findViewById(R.id.coverLife_title) as TextView
+                val coverUpto = dialog.findViewById(R.id.coverUpto_title) as TextView
+                val amount = dialog.findViewById(R.id.amount_title) as TextView
+                val policyType = dialog.findViewById(R.id.policy_type_title) as TextView
+                val fuelType = dialog.findViewById(R.id.fuel_type_title) as TextView
                 val manuYear = dialog.findViewById(R.id.manufacture_year_title) as TextView
                 val manu = dialog.findViewById(R.id.manufacture_title) as TextView
                 val model = dialog.findViewById(R.id.model_title) as TextView
@@ -94,14 +121,27 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 val insurer = dialog.findViewById(R.id.insurer_title) as TextView
                 val policyExp = dialog.findViewById(R.id.policy_exp_title) as TextView
                 val policyClaim = dialog.findViewById(R.id.policy_claim_title) as TextView
+                val variant = dialog.findViewById(R.id.variant_title) as TextView
+                val ownership = dialog.findViewById(R.id.ownership_transfer_title) as TextView
 
 
+                medical.visibility= View.GONE
+                medicalCard.visibility= View.GONE
+                address.visibility=View.GONE
+                addressCard.visibility=View.GONE
+                policyClaimCard.visibility=View.GONE
+                ownership.visibility=View.GONE
+                ownershipCard.visibility=View.GONE
+                policyType.visibility=View.GONE
+                fuelCard.visibility=View.GONE
+                fuelType.visibility=View.GONE
                 manuYear.visibility=View.GONE
                 manuYearCard.visibility=View.GONE
                 modelCard.visibility=View.GONE
                 manuCard.visibility=View.GONE
                 manu.visibility=View.GONE
                 variantCard.visibility=View.GONE
+                variant.visibility=View.GONE
                 pucCard.visibility=View.GONE
                 pucExpCard.visibility=View.GONE
                 vehicleCard.visibility=View.GONE
@@ -115,6 +155,18 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 insurer.visibility = View.GONE
                 vehicle.visibility = View.GONE
                 model.visibility=View.GONE
+                dob.visibility = View.GONE
+                dobCard.visibility = View.GONE
+                coverLife.visibility = View.GONE
+                coverLifeCard.visibility = View.GONE
+                coverUpto.visibility = View.GONE
+                coverUptoCard.visibility = View.GONE
+                amount.visibility = View.GONE
+                amountCard.visibility = View.GONE
+                age.visibility= View.GONE
+                ageCard.visibility= View.GONE
+                family.visibility= View.GONE
+                familyCard.visibility= View.GONE
 
 
                 if(this.category?.length!! >8 && this.category.substring(0,8) == "Business"){
@@ -179,7 +231,7 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
     private fun submitLoanDetails(item: LoanFormItem){
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClientInstance.retrofitService.addLoanDetails("b6ceeaf9-ee67-4b40-906e-97125eae5bff",item)
+                val response = RetrofitClientInstance.retrofitService.addLoanDetails(token,item)
                 setAdapter(response)
 
             } catch (error: Exception) {

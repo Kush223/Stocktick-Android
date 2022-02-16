@@ -3,6 +3,7 @@ package com.example.stocktick.network
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.auth.model.ProfileModel
+import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import retrofit2.Call
@@ -36,6 +37,9 @@ interface ApiServiceInterface {
 
     @POST("add/loandetails/")
     suspend fun addLoanDetails(@Header("authToken") authToken: String,@Body loanFormItem: LoanFormItem): Response<GetOtpModel>
+
+    @POST("add/insurance/details/")
+    suspend fun addInsuranceDetails(@Header("authToken") authToken: String,@Body insuranceModel: InsuranceModel): Response<GetOtpModel>
 
 //    @GET("posts/{num}")
 //    suspend fun getPostById(@Path("num") num : Int): Response
