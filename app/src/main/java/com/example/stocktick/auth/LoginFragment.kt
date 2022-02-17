@@ -36,8 +36,7 @@ import java.util.regex.Pattern
 
 
 //TODO () -- add a loader to request otp button
-
-//TODO() -- reformat the login code to not use deprecated method?
+//link: https://stackoverflow.com/questions/55060626/android-how-to-display-transparent-loading-layer-above-the-activity
 
 class LoginFragment : Fragment() {
 
@@ -178,7 +177,6 @@ class LoginFragment : Fragment() {
                 handleViewPostOTP(resp)
 
             } catch (error: Exception) {
-//                Log.d(LOG_TAG, "Error occurred: " + error.message)
                 showToast("Request failed")
             }
         }
