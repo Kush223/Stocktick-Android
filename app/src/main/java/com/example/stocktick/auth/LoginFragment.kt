@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.stocktick.MainActivity
 import com.example.stocktick.SmsBroadcastReceiver
@@ -177,7 +178,7 @@ class LoginFragment : Fragment() {
                 handleViewPostOTP(resp)
 
             } catch (error: Exception) {
-                Log.d(LOG_TAG, "Error occurred: " + error.message)
+//                Log.d(LOG_TAG, "Error occurred: " + error.message)
                 showToast("Request failed")
             }
         }
@@ -230,18 +231,33 @@ class LoginFragment : Fragment() {
     }
 
 
-    //NOT TOUCHING FOR NOW??
+    //    links: //https://github.com/androidmads/SMSRetrieverApiSample/tree/master/app/src/main/java/com/androidmad/smsretrieverapisample
+    //        https://www.c-sharpcorner.com/article/verify-otp-without-sms-permission-in-android-using-kotlin/
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
+
         smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
-                    startActivityForResult(intent, REQ_USER_CONSENT)
-//                    link: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
+                    val resultLauncher =
+                        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+                            if (result.resultCode == REQ_USER_CONSENT) {
+                                val data: Intent? = result.data
+                                if (result.resultCode == RESULT_OK && data != null) {
+                                    val message =
+                                        data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
+                                    getOtpFromMessage(message)
+                                }
+                            }
+                        }
+
+                    resultLauncher.launch(intent)
+//                    link startActivityResult: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
                 }
 
                 override fun onFailure() {
-
+                    showToast(" SMS RECEIVER Error occured")
                 }
 
             }
@@ -259,24 +275,12 @@ class LoginFragment : Fragment() {
         registerBroadcastListener()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQ_USER_CONSENT) {
-            if (resultCode == RESULT_OK && data != null) {
-                val message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
-                getOtpFromMessage(message)
-            }
-        }
-    }
-
     private fun getOtpFromMessage(message: String?) {
         val otpPattern = Pattern.compile("(|^)\\d{6}")
         val matcher = otpPattern.matcher(message)
         if (matcher.find()) {
             _binding.pinview.setText(matcher.group(0))
         }
-//        <!--    https://www.c-sharpcorner.com/article/verify-otp-without-sms-permission-in-android-using-kotlin/-->
-
     }
 
 
