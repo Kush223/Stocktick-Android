@@ -135,12 +135,7 @@ class LoginFragment : Fragment() {
                 val otpPhoneString = "$ccp-$phone"
                 mTextViewOtpPhoneNumber.text = otpPhoneString
 
-//                _binding.phoneCard.visibility = View.INVISIBLE
-//                val resp = RetrofitClientInstance.retrofitService.getOtp(phoneModel)
-//                _binding.otpCard.visibility = View.VISIBLE
-//                val str = "+91-$phone"
-//                _binding.otpTvUserPhoneNumber.text = str
-//                _binding.phoneCard.visibility = View.INVISIBLE
+                _binding.phoneCard.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
                 showToast("Request failed CATCH ERROR LOGIN")
@@ -279,8 +274,8 @@ class LoginFragment : Fragment() {
         val matcher = otpPattern.matcher(message)
         if (matcher.find()) {
             _binding.pinview.setText(matcher.group(0))
-//                _binding.pinview
         }
+//        <!--    https://www.c-sharpcorner.com/article/verify-otp-without-sms-permission-in-android-using-kotlin/-->
 
     }
 
