@@ -36,6 +36,7 @@ import java.util.regex.Pattern
 
 
 //TODO () -- add a loader to request otp button
+
 //link: https://stackoverflow.com/questions/55060626/android-how-to-display-transparent-loading-layer-above-the-activity
 
 class LoginFragment : Fragment() {
@@ -132,7 +133,7 @@ class LoginFragment : Fragment() {
                 _binding.otpCard.visibility = View.VISIBLE
 
                 val ccp = mCountryCodePicker.selectedCountryCode.toString()
-                val otpPhoneString = "$ccp-$phone"
+                val otpPhoneString = "+$ccp-$phone"
                 mTextViewOtpPhoneNumber.text = otpPhoneString
 
                 _binding.phoneCard.visibility = View.INVISIBLE

@@ -4,19 +4,11 @@ import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEducationBinding
-import com.example.stocktick.ui.loan.LoanItem
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class EducationFragment : Fragment() {
@@ -27,12 +19,13 @@ class EducationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = EducationViewModelFactory(requireContext())
         eduViewModel = ViewModelProvider(
-                this, viewModelFactory
+            this, viewModelFactory
         )[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = "Loan"
 
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        val token = sharedPreferences.getString("token","a")
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "a")
 //        val call : Call<List<LoanItem>> = RetrofitClientInstance.retrofitService.getEducations(token!!)
 //        call.enqueue(object : Callback<List<LoanItem>> {
 //            override fun onResponse(call: Call<List<LoanItem>>, response: Response<List<LoanItem>>) {
@@ -55,9 +48,10 @@ class EducationFragment : Fragment() {
 //        })
 
     }
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentEducationBinding.inflate(inflater, container, false)
         return binding.root
