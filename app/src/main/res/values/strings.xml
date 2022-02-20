@@ -110,6 +110,8 @@
     <string name="complete_your_profile">Complete Your Profile</string>
     <string name="skip">SKIP</string>
     <string name="resend_otp">Resend Otp</string>
+    <string name="education_title_blogs">BLOGS</string>
+    <string name="education_title_webinar">WEBINARS</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>
