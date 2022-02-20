@@ -36,6 +36,7 @@ import java.util.regex.Pattern
 
 
 //TODO () -- add a loader to request otp button
+//TODO() -- sms reader make fully functional.
 
 //link: https://stackoverflow.com/questions/55060626/android-how-to-display-transparent-loading-layer-above-the-activity
 
