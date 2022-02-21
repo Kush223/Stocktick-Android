@@ -2,22 +2,21 @@ package com.example.stocktick.auth
 
 import android.app.Activity.MODE_PRIVATE
 import android.app.Activity.RESULT_OK
-import android.app.Dialog
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.stocktick.MainActivity
-import com.example.stocktick.R
 import com.example.stocktick.SmsBroadcastReceiver
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
@@ -33,14 +32,11 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
-//TODO() -- Fix the app bar colour
-
-//TODO() -- Fix the phone number shows right part.
 
 //TODO () -- add a loader to request otp button
-
-//TODO() -- reformat the login code to not use deprecated method?
+//link: https://stackoverflow.com/questions/55060626/android-how-to-display-transparent-loading-layer-above-the-activity
 
 class LoginFragment : Fragment() {
 
@@ -54,6 +50,7 @@ class LoginFragment : Fragment() {
     private lateinit var mEditTextPhoneEdit: EditText
     private lateinit var mCountryCodePicker: CountryCodePicker
     private lateinit var mButtonSubmitOtp: Button
+    private lateinit var mTextViewOtpPhoneNumber: TextView
     private lateinit var mCreateAccountLayoutBinding: CreateAccountLayoutBinding
 
     private var phoneREGEXPattern = Regex("^[0-9]{9,12}$")
@@ -68,12 +65,14 @@ class LoginFragment : Fragment() {
     private lateinit var phone: String
     private lateinit var otp: String
 
+
     private fun initialiseVariables() {
         mButtonSubmitPhone = _binding.btLoginRequestOtp
         mEditTextPhoneEdit = _binding.etLoginPhoneNumber
         mCountryCodePicker = _binding.loginCountryCodePicker
         mButtonSubmitOtp = _binding.btOtpSubmit
         mCreateAccountLayoutBinding = _binding.ca
+        mTextViewOtpPhoneNumber = _binding.otpTvUserPhoneNumber
 
     }
 
@@ -86,8 +85,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //OTP retrofit calls.
-        otpRetrofitCalls()
+        //SUBMIT PONE AND OTP retrofit calls.
+        submitOtpRetrofitCalls()
     }
 
     override fun onCreateView(
@@ -102,13 +101,12 @@ class LoginFragment : Fragment() {
 
 
     @DelicateCoroutinesApi
-    private fun otpRetrofitCalls() {
+    private fun submitOtpRetrofitCalls() {
 
         //SUBMIT BUTTON WORKINGS
         mButtonSubmitPhone.setOnClickListener {
 
             phone = mEditTextPhoneEdit.text.toString().trim()
-            //val ccp = mCountryCodePicker.selectedCountryCode.toString()
 
             if (!phone.matches(phoneREGEXPattern)) {
                 mEditTextPhoneEdit.error = "Please enter a correct number"
@@ -116,6 +114,7 @@ class LoginFragment : Fragment() {
                 submitPhoneNumberButtonResponse()
             }
         }
+
 
         //OTP BUTTON WORKINGS
         submitOtpButtonRetrofit()
@@ -128,12 +127,15 @@ class LoginFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             val phoneModel = PhoneModel(phone)
             try {
-                val resp = RetrofitClientInstance.retrofitService.getOtp(phoneModel)
+                RetrofitClientInstance.retrofitService.getOtp(phoneModel)
+
                 _binding.otpCard.visibility = View.VISIBLE
-                val str = "+91-$phone"
-                _binding.otpUserPhoneNumber.text = str
+
+                val ccp = mCountryCodePicker.selectedCountryCode.toString()
+                val otpPhoneString = "$ccp-$phone"
+                mTextViewOtpPhoneNumber.text = otpPhoneString
+
                 _binding.phoneCard.visibility = View.INVISIBLE
-                Log.d(LOG_TAG,"OTP RESEND CHECK")
 
             } catch (error: Exception) {
                 showToast("Request failed CATCH ERROR LOGIN")
@@ -154,13 +156,13 @@ class LoginFragment : Fragment() {
             }
         }
         val mButtonBackOtp = _binding.vectorOtpBackArrow
-        mButtonBackOtp.setOnClickListener{
+        mButtonBackOtp.setOnClickListener {
             _binding.otpCard.visibility = View.INVISIBLE
             _binding.phoneCard.visibility = View.VISIBLE
         }
 
         val mButtonResendOtp = _binding.tvLoginResendOtp
-        mButtonResendOtp.setOnClickListener{
+        mButtonResendOtp.setOnClickListener {
 
             submitPhoneNumberButtonResponse()
         }
@@ -175,7 +177,6 @@ class LoginFragment : Fragment() {
                 handleViewPostOTP(resp)
 
             } catch (error: Exception) {
-                Log.d(LOG_TAG, "Error occurred: " + error.message)
                 showToast("Request failed")
             }
         }
@@ -198,8 +199,8 @@ class LoginFragment : Fragment() {
 
 
             mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
-            val name =  mCreateAccountLayoutBinding.etCreateAccountUserName
-            val email =mCreateAccountLayoutBinding.etCreateAccountEmailAddress
+            val name = mCreateAccountLayoutBinding.etCreateAccountUserName
+            val email = mCreateAccountLayoutBinding.etCreateAccountEmailAddress
             val submitButton = mCreateAccountLayoutBinding.btCreateAccountSubmit
             val skipButton = mCreateAccountLayoutBinding.btCreateAccountSkip
 
@@ -228,18 +229,33 @@ class LoginFragment : Fragment() {
     }
 
 
-    //NOT TOUCHING FOR NOW??
+    //    links: //https://github.com/androidmads/SMSRetrieverApiSample/tree/master/app/src/main/java/com/androidmad/smsretrieverapisample
+    //        https://www.c-sharpcorner.com/article/verify-otp-without-sms-permission-in-android-using-kotlin/
     private fun registerBroadcastListener() {
         smsBroadCastReceiver = SmsBroadcastReceiver()
+
         smsBroadCastReceiver.smsBroadCastReceiverListener =
             object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
                 override fun onSuccess(intent: Intent?) {
-                    startActivityForResult(intent, REQ_USER_CONSENT)
-//                    link: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
+                    val resultLauncher =
+                        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+                            if (result.resultCode == REQ_USER_CONSENT) {
+                                val data: Intent? = result.data
+                                if (result.resultCode == RESULT_OK && data != null) {
+                                    val message =
+                                        data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
+                                    getOtpFromMessage(message)
+                                }
+                            }
+                        }
+
+                    resultLauncher.launch(intent)
+//                    link startActivityResult: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
                 }
 
                 override fun onFailure() {
-
+                    showToast(" SMS RECEIVER Error occured")
                 }
 
             }
@@ -257,13 +273,11 @@ class LoginFragment : Fragment() {
         registerBroadcastListener()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQ_USER_CONSENT) {
-            if (resultCode == RESULT_OK && data != null) {
-                val message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
-                //getOtpFromMessage(message)
-            }
+    private fun getOtpFromMessage(message: String?) {
+        val otpPattern = Pattern.compile("(|^)\\d{6}")
+        val matcher = otpPattern.matcher(message)
+        if (matcher.find()) {
+            _binding.pinview.setText(matcher.group(0))
         }
     }
 

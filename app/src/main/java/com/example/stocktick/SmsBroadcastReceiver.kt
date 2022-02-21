@@ -31,6 +31,6 @@ class SmsBroadcastReceiver : BroadcastReceiver() {
         fun onSuccess(intent: Intent?)
         fun onFailure()
     }
-    //tutorial :
+    //tutorial : https://www.youtube.com/watch?v=pJmW8yAjgUA&ab_channel=Foxandroid
 
 }

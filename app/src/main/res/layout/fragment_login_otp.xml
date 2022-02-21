@@ -212,14 +212,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/otp_user_phone_number"
+                    android:id="@+id/otp_tv_user_phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="23dp"
                     android:layout_marginRight="35dp"
-                    android:text="+91-9140076745"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="24sp" />
                 <!--OTP USER PHONE NUMBER UNDER LINE AND PENCIL-->
@@ -246,7 +245,7 @@
                         android:layout_height="10dp"
                         android:background="@drawable/otp_edit_icon"
                         app:layout_constraintEnd_toEndOf="@id/otp_edit_pencil"
-                        app:layout_constraintTop_toBottomOf="@id/otp_user_phone_number"
+                        app:layout_constraintTop_toBottomOf="@id/otp_tv_user_phone_number"
                         tools:ignore="NotSibling" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
