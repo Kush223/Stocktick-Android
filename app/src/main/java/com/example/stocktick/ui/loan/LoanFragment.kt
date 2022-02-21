@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentLoanBinding
 import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.utility.Constant.LOAN
+import com.example.stocktick.utility.Constant.TOKEN
+import com.example.stocktick.utility.Constant.USER
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,7 +35,7 @@ class LoanFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var loanAdapter: LoanAdapter
 
-    private lateinit var token: String
+    private lateinit var tokenSharedPreference: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +44,7 @@ class LoanFragment : Fragment() {
         loanViewModel = ViewModelProvider(
             this, viewModelFactory
         )[LoanViewModel::class.java]
-        (activity as AppCompatActivity).supportActionBar?.title = "Loan"
+        (activity as AppCompatActivity).supportActionBar?.title = LOAN
 
 
         recyclerView = binding.loanList
@@ -56,8 +59,8 @@ class LoanFragment : Fragment() {
         recyclerView.adapter = loanAdapter
 
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        token = sharedPreferences.getString("token", "a").toString()
+            requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
+        tokenSharedPreference = sharedPreferences.getString(TOKEN, "a").toString()
 
         loanList.clear()
         getLoans()
@@ -67,13 +70,14 @@ class LoanFragment : Fragment() {
     private fun getLoans() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClientInstance.retrofitService.getLoans(token, "M")
+                val response =
+                    RetrofitClientInstance.retrofitService.getLoans(tokenSharedPreference, "M")
                 setAdapter(response)
 
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
-                Log.d("ERROR_LOGINFRAGMENT", error.toString())
+//                Log.d("ERROR_LOGINFRAGMENT", error.toString())
             }
 
         }
@@ -81,19 +85,21 @@ class LoanFragment : Fragment() {
 
     private fun setAdapter(response: Response<List<LoanItem>>) {
         if (response.code() == 200) {
-            val loanItemList: List<LoanItem> = response.body()!!
-            for (loanItem in loanItemList) {
-                loanList.add(
-                    LoanItem(
-                        loanItem.link,
-                        loanItem.short_desc,
-                        loanItem.long_desc,
-                        loanItem.image_urls,
-                        loanItem.category,
-                        loanItem.interest,
-                        loanItem.color_code
+            val loanItemList: List<LoanItem>? = response.body()
+            if (loanItemList != null) {
+                for (loanItem in loanItemList) {
+                    loanList.add(
+                        LoanItem(
+                            loanItem.link,
+                            loanItem.short_desc,
+                            loanItem.long_desc,
+                            loanItem.image_urls,
+                            loanItem.category,
+                            loanItem.interest,
+                            loanItem.color_code
+                        )
                     )
-                )
+                }
             }
             loanList.add(LoanItem())
             recyclerView.adapter = loanAdapter
