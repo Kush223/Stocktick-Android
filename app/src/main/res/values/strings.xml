@@ -89,6 +89,16 @@
     <string name="policy_heading">Current Policy Claim </string>
 
     <string name="enter_otp">Enter OTP</string>
+    <string name="credit">CREDIT</string>
+    <string name="debit">DEBIT</string>
+    <string name="insurance">Insurance</string>
+    <string name="mutual_fund">Mutual Fund</string>
+    <string name="title_home">HOME</string>
+    <string name="invest_money">INVEST YOUR MONEY</string>
+    <string name="our_services">OUR SERVICES</string>
+    <string name="financial_independence">Financial Independence with Us</string>
+    <string name="algo_eq">We work in ALGO and EQ model</string>
+    <string name="privacy_policy">Privacy Policy  |  Terms and Conditions</string>
     <!--  <LOGIN-OTP-WELCOME-CREATE ACCOUNT SCREEN STRINGS>-->
 
     <string name="Title_welcome_screen">Welcome Screen</string>

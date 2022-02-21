@@ -45,7 +45,7 @@ class LoanFragment : Fragment() {
         linearLayoutManager.stackFromEnd = true
         recyclerView.layoutManager = linearLayoutManager
 
-        recyclerView.adapter=loanAdapter
+//        recyclerView.adapter=loanAdapter
 
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         token = sharedPreferences.getString("token","a").toString()
