@@ -48,16 +48,20 @@ import retrofit2.Response
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 class EducationFragment : Fragment() {
+
+    private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
+
+    //taken from kush's code in loanfragment
     private lateinit var eduViewModel: EducationViewModel
     private lateinit var _binding: FragmentEducationBinding
 
     private lateinit var mRecyclerViewWebinar: RecyclerView
     private lateinit var mRecyclerViewBlogs: RecyclerView
-//    private lateinit var mWebinarList : List<WebinarItem>
+    //    private lateinit var mWebinarList : List<WebinarItem>
 
     private lateinit var tokenSharedPreference: String
-//    private lateinit var mEducationAdapterWebinar: EducationAdapter
-//private lateinit var mEducationAdapterBlogs: EducationAdapter
+    //    private lateinit var mEducationAdapterWebinar: EducationAdapter
+    //private lateinit var mEducationAdapterBlogs: EducationAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -114,7 +118,7 @@ class EducationFragment : Fragment() {
     private fun setAdapterBlog(response: Response<List<WebinarItem>>) {
         if (response.code() == 200) {
             mRecyclerViewBlogs.adapter = BlogAdapter()
-        }else {
+        } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
     }
@@ -124,7 +128,7 @@ class EducationFragment : Fragment() {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.getEducations(tokenSharedPreference, "E")
-                //have used E instead of M here.
+                //differnet platform to loan fragment.
                 setAdapterWebinar(response)
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
@@ -138,8 +142,28 @@ class EducationFragment : Fragment() {
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
         //one way from LoanFragment
         //another way from, https://github.com/Ana2k/JSONApp-NotesApp/blob/main/JsonExtractorFirebase/app/src/main/java/com/example/androidjsonextractor/UsersFragment.kt
-//        trying method 1 for now
-        mRecyclerViewWebinar.adapter = WebinarAdapter(,)
+        //trying method 1 for now
+        if (response.code() == 200) {
+            val webinarItemList: List<WebinarItem>? = response.body()
+            if (webinarItemList != null) {
+                for (webinarItem in webinarItemList) {
+                    webinarMutableList.add(
+                        WebinarItem(
+                            webinarItem.short_desc,
+                            webinarItem.long_desc,
+                            webinarItem.image_url,
+                            null
+                        )
+                    )
+                }
+            }
+            webinarMutableList.add(WebinarItem())
+            //why add an empty item?
+            mRecyclerViewWebinar.adapter = WebinarAdapter(requireContext(),webinarMutableList)
+        } else {
+            Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

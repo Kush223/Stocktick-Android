@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.databinding.EduWebinarItemBinding
 import com.example.stocktick.ui.education.model.WebinarItem
 
-class WebinarAdapter(val webinarList: List<WebinarItem>, val context: Context) :
+class WebinarAdapter( val context: Context,val webinarList: List<WebinarItem>) :
     RecyclerView.Adapter<WebinarViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
