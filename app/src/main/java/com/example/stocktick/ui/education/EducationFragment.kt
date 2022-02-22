@@ -158,7 +158,7 @@ class EducationFragment : Fragment() {
                 }
             }
             webinarMutableList.add(WebinarItem())
-            //why add an empty item?
+            //why add an empty item? why write all things as null?
             mRecyclerViewWebinar.adapter = WebinarAdapter(requireContext(),webinarMutableList)
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
