@@ -1,13 +1,13 @@
 package com.example.stocktick.ui.education.model
 
-data class WebinarItem(
-//    "short_desc": "loren ipsum",
-//    "long_desc": "loren ipsum svhsgk jgvjdy. fjhgvsjdhgb j hvgdjfh",
-//    "image_url": null,
-//    "video_link": "https://www.youtube.com/watch?v=HicJKU9r6B4"
+import com.squareup.moshi.Json
 
-    var short_desc: String?=null,
-    var long_desc: String?=null,
-    var image_url: String?=null,
-    var video_link: String?=null
+data class WebinarItem(
+        var title: String?=null,
+        var short_desc: String?=null,
+        @Json(name = "long_desc")
+        var image_url: String?=null,
+        var hosted_by: String?=null,
+        var other_host_name: String?=null,
+        var webinar_redirect_url: String?=null
 )

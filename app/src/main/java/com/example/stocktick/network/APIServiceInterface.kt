@@ -2,6 +2,7 @@ package com.example.stocktick.network
 
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
@@ -20,19 +21,19 @@ interface ApiServiceInterface {
     @POST("auth/validateotp/")
     suspend fun validateOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
-//    @POST("update/userinfo/")
-//    fun updateInfo(
-//        @Header("authToken") authToken: String,@Header("platform") platform: String, @Body profileModel: ProfileModel
-//    ): Call<GetOtpModel>
-
     @GET("get/loans/")
     suspend fun getLoans(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
     @GET("get/Insurance/")
     suspend fun getInsurances(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
+//EDUCATION PAGE URLS
     @GET("get/education/")
-    suspend fun getEducations(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<WebinarItem>>
+    suspend fun getBlogs(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<BlogItem>>
+
+    @GET("get/webinar")
+    suspend fun getWebinar(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<WebinarItem>>
+
 
     @POST("add/loandetails/")
     suspend fun addLoanDetails(@Header("authToken") authToken: String,@Body loanFormItem: LoanFormItem): Response<GetOtpModel>
@@ -40,12 +41,9 @@ interface ApiServiceInterface {
     @POST("add/insurance/details/")
     suspend fun addInsuranceDetails(@Header("authToken") authToken: String,@Body insuranceModel: InsuranceModel): Response<GetOtpModel>
 
-//    @GET("posts/{num}")
-//    suspend fun getPostById(@Path("num") num : Int): Response
-//
-//    @GET("comments")
-//    suspend fun getCommentsByPost(@Query("postId") postId : Int): Response>
-//
-//    @POST("posts")
-//    suspend fun createPost(@Body post: Post): Response
+//    @POST("subscribe/webinar/")
+//    suspend fun registerToWebinar(@Header("authToken")authToken: String,@Body subscribeWebinar: )
+//POST request only returns only the message....
+
 }
+//JSON STRUCTURE AT https://codeshare.io/wn39rK

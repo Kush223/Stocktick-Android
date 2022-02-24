@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEducationBinding
 import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
@@ -25,12 +26,6 @@ import retrofit2.Response
 
 
 //immediately
-//TO CONTINUE -- complete the adapter based code, in blog adapter, webinar adapter
-// add their codes to models and check the api response if that is coming up or not
-// check along with the data is being received or not.
-//Start at the adapters. and once they are done integrate the youtube view and the webview parts.
-
-//THEN ofc debugging part will be left well :)
 
 
 //TODO() WEBINAR-- API - self, hosted, <===>
@@ -109,11 +104,15 @@ class EducationFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getEducations(
+                    RetrofitClientInstance.retrofitService.getBlogs(
                         tokenSharedPreference,
                         "Eb"
                     )
-                setAdapterBlog(response)
+                //some issues with the getEducation and API calling parts.
+                //??
+//                setAdapterBlog(response) - logic wise
+                //json structure for this, in
+                //first complete the webinar end to end.
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
@@ -121,7 +120,7 @@ class EducationFragment : Fragment() {
         }
     }
 
-    private fun setAdapterBlog(response: Response<List<WebinarItem>>) {
+    private fun setAdapterBlog(response: Response<List<BlogItem>>) {
         if (response.code() == 200) {
             mRecyclerViewBlogs.adapter = BlogAdapter()
         } else {
@@ -133,10 +132,11 @@ class EducationFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getEducations(
+                    RetrofitClientInstance.retrofitService.getWebinar(
                         tokenSharedPreference,
                         "Ew"
                     )
+                //will this api call be to education or to webinar??
                 setAdapterWebinar(response)
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
@@ -153,10 +153,12 @@ class EducationFragment : Fragment() {
                 for (webinarItem in webinarItemList) {
                     webinarMutableList.add(
                         WebinarItem(
+                            webinarItem.title,
                             webinarItem.short_desc,
-                            webinarItem.long_desc,
                             webinarItem.image_url,
-                            null
+                            webinarItem.hosted_by,
+                            webinarItem.other_host_name,
+                            webinarItem.webinar_redirect_url
                         )
                     )
                 }

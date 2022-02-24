@@ -237,7 +237,7 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                         .show()
-                Log.d("ERROR_LOGINFRAGMENT", error.toString())
+//                Log.d("ERROR_LOANADAPTER", error.toString())
             }
 
         }

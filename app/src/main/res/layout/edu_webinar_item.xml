@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--    placeholder comment-->
 <!--TODO() implement colour gradient toggle on card-->
-<!--TODO()  api integrate the images -->
+<!--TODO() attatch the respective ids to the values in json getWebinar -->
 <!--TODO() regigster button API link, self hosted and third party webview point-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -33,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/webinar_card_title"
+                    android:id="@+id/webinar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="13dp"
