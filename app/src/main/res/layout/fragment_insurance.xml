@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="#212121">
 
     <TextView
@@ -122,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="@string/Motor"
-                    android:textColor="@color/white"
+                    android:textColor="#909090"
                     android:textSize="12sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -184,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="@string/Life"
-                    android:textColor="@color/white"
+                    android:textColor="#909090"
                     android:textSize="12sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

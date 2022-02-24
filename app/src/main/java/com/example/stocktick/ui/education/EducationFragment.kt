@@ -59,6 +59,9 @@ class EducationFragment : Fragment() {
     private lateinit var mRecyclerViewBlogs: RecyclerView
     //    private lateinit var mWebinarList : List<WebinarItem>
 
+    private lateinit var webinarAdapter: WebinarAdapter
+
+
     private lateinit var tokenSharedPreference: String
     //    private lateinit var mEducationAdapterWebinar: EducationAdapter
     //private lateinit var mEducationAdapterBlogs: EducationAdapter
@@ -77,6 +80,13 @@ class EducationFragment : Fragment() {
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
 
+        mRecyclerViewWebinar = _binding.eduWebinarList
+        mRecyclerViewBlogs = _binding.eduBlogList
+
+        mRecyclerViewWebinar.adapter = webinarAdapter
+
+        WebinarAdapter(requireContext(), webinarMutableList)
+
         val linearLayoutManagerWebinar =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
         val linearLayoutManagerBlogs =
@@ -84,9 +94,6 @@ class EducationFragment : Fragment() {
 
         mRecyclerViewWebinar.layoutManager = linearLayoutManagerWebinar
         mRecyclerViewBlogs.layoutManager = linearLayoutManagerBlogs
-
-        mRecyclerViewWebinar = _binding.eduWebinarList
-        mRecyclerViewBlogs = _binding.eduBlogList
 
 
         val sharedPreferences: SharedPreferences =
@@ -96,21 +103,20 @@ class EducationFragment : Fragment() {
 
         getWebinarList()
         getBlogList()
-
-
     }
 
     private fun getBlogList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getEducations(tokenSharedPreference, "E")
-                //have used E instead of M here.
+                    RetrofitClientInstance.retrofitService.getEducations(
+                        tokenSharedPreference,
+                        "Eb"
+                    )
                 setAdapterBlog(response)
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
-//                Log.d("ERROR EDU WEBI", error.toString())
             }
         }
     }
@@ -127,22 +133,20 @@ class EducationFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getEducations(tokenSharedPreference, "E")
-                //differnet platform to loan fragment.
+                    RetrofitClientInstance.retrofitService.getEducations(
+                        tokenSharedPreference,
+                        "Ew"
+                    )
                 setAdapterWebinar(response)
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
-//                Log.d("ERROR EDU WEBI", error.toString())
             }
 
         }
     }
 
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
-        //one way from LoanFragment
-        //another way from, https://github.com/Ana2k/JSONApp-NotesApp/blob/main/JsonExtractorFirebase/app/src/main/java/com/example/androidjsonextractor/UsersFragment.kt
-        //trying method 1 for now
         if (response.code() == 200) {
             val webinarItemList: List<WebinarItem>? = response.body()
             if (webinarItemList != null) {
@@ -159,7 +163,10 @@ class EducationFragment : Fragment() {
             }
             webinarMutableList.add(WebinarItem())
             //why add an empty item? why write all things as null?
-            mRecyclerViewWebinar.adapter = WebinarAdapter(requireContext(),webinarMutableList)
+            mRecyclerViewWebinar.adapter = webinarAdapter
+
+            //why are we attaching the adapter twice?
+
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
