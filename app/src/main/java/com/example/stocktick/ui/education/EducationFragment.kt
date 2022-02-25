@@ -46,14 +46,11 @@ class EducationFragment : Fragment() {
 
     private lateinit var mRecyclerViewWebinar: RecyclerView
     private lateinit var mRecyclerViewBlogs: RecyclerView
-    //    private lateinit var mWebinarList : List<WebinarItem>
 
     private lateinit var webinarAdapter: WebinarAdapter
 
 
     private lateinit var tokenSharedPreference: String
-    //    private lateinit var mEducationAdapterWebinar: EducationAdapter
-    //private lateinit var mEducationAdapterBlogs: EducationAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -119,7 +116,7 @@ class EducationFragment : Fragment() {
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(
                         tokenSharedPreference,
-                        "Ew"
+                        "M"
                     )
                 //will this api call be to education or to webinar??
                 Log.d("response",response.body().toString())

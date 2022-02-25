@@ -15,30 +15,30 @@ import retrofit2.http.POST
 
 interface ApiServiceInterface {
 
-    @POST("auth/getotp/")
+    @POST("/auth/getotp/")
     suspend fun getOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
-    @POST("auth/validateotp/")
+    @POST("/auth/validateotp/")
     suspend fun validateOtp(@Body phoneModel: PhoneModel): GetOtpModel
 
-    @GET("get/loans/")
+    @GET("/get/loans/")
     suspend fun getLoans(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
-    @GET("get/Insurance/")
+    @GET("/get/Insurance/")
     suspend fun getInsurances(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<LoanItem>>
 
 //EDUCATION PAGE URLS
-    @GET("get/education/")
+    @GET("/get/education/")
     suspend fun getBlogs(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<BlogItem>>
 
-    @GET("get/webinar")
+    @GET("/get/webinar")
     suspend fun getWebinar(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<WebinarItem>>
 
 
-    @POST("add/loandetails/")
+    @POST("/add/loandetails/")
     suspend fun addLoanDetails(@Header("authToken") authToken: String,@Body loanFormItem: LoanFormItem): Response<GetOtpModel>
 
-    @POST("add/insurance/details/")
+    @POST("/add/insurance/details/")
     suspend fun addInsuranceDetails(@Header("authToken") authToken: String,@Body insuranceModel: InsuranceModel): Response<GetOtpModel>
 
 //    @POST("subscribe/webinar/")
