@@ -38,7 +38,7 @@ import retrofit2.Response
 
 class EducationFragment : Fragment() {
 
-    private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
+    private lateinit var webinarMutableList: MutableList<WebinarItem>
 
     //taken from kush's code in loanfragment
     private lateinit var eduViewModel: EducationViewModel
@@ -70,27 +70,20 @@ class EducationFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
 
         mRecyclerViewWebinar = _binding.eduWebinarList
-//        mRecyclerViewBlogs = _binding.eduBlogList
 
-        webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList)
-
-        val linearLayoutManagerWebinar =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-//        val linearLayoutManagerBlogs =
-//            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-
-        mRecyclerViewWebinar.layoutManager = linearLayoutManagerWebinar
-//        mRecyclerViewBlogs.layoutManager = linearLayoutManagerBlogs
-
+        mRecyclerViewWebinar.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
 
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
-        mRecyclerViewWebinar.adapter = webinarAdapter
+//         Log.d("webinaradpater,adapter",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
+//
         getWebinarList()
-//        getBlogList()
+//        Log.d("webinarAdapter2",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
+
+
     }
 
     private fun getBlogList() {
@@ -129,9 +122,12 @@ class EducationFragment : Fragment() {
                         "Ew"
                     )
                 //will this api call be to education or to webinar??
+                Log.d("response",response.body().toString())
                 setAdapterWebinar(response)
+
             } catch (error: Exception) {
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                Log.d("errorWEbi",error.toString())
+                Toast.makeText(requireActivity(), "Request failed CATCH ERROR webinar", Toast.LENGTH_SHORT)
                     .show()
             }
 
@@ -139,9 +135,9 @@ class EducationFragment : Fragment() {
     }
 
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
-
         if (response.code() == 200) {
             val webinarItemList: List<WebinarItem>? = response.body()
+            Log.d("webinarItem",webinarItemList.toString())
             if (webinarItemList != null) {
                 for (webinarItem in webinarItemList) {
                     webinarMutableList.add(
@@ -154,13 +150,19 @@ class EducationFragment : Fragment() {
                             webinarItem.webinar_redirect_url
                         )
                     )
+                    Log.d("itemlist",webinarItemList.toString())
                 }
+                Log.d("itemlist",webinarItemList.toString())
+            }else{
+                Log.d("nullitem",webinarItemList.toString())
             }
-            webinarMutableList.add(WebinarItem())
-            //why add an empty item? why write all things as null?
-            mRecyclerViewWebinar.adapter = webinarAdapter
 
-            //why are we attaching the adapter twice?
+            webinarMutableList.add(WebinarItem())
+            webinarAdapter = WebinarAdapter(requireActivity(), webinarMutableList)
+            mRecyclerViewWebinar.adapter = webinarAdapter
+            Log.d("webinarAdapter2",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
+
+            //why are we attaching the adapter twice???
 
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
