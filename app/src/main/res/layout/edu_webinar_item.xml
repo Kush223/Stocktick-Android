@@ -44,7 +44,7 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/webinar_hosting_person"
+                    android:id="@+id/webinar_hosted_by"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="13dp"
@@ -54,7 +54,7 @@
                     android:textSize="15sp" />
 
                 <Button
-                    android:id="@+id/webinar_register_button"
+                    android:id="@+id/webinar_redirect_url"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
@@ -74,7 +74,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/webinar_image_url"
+                android:id="@+id/webinar_image_uri"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="9dp"

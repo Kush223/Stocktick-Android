@@ -3,6 +3,7 @@ package com.example.stocktick.ui.education
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,18 +29,11 @@ import retrofit2.Response
 //immediately
 
 
-//TODO() WEBINAR-- API - self, hosted, <===>
-//self hosted then API hit and success register -- popup success
-//third party --> 1)API hit backend then webview. redirect
-
-//TODO() BLOGS --- API - video type or link type <===>
-//video type, we will be taken to a webview.
-//on the app only video will run youtube.
+//TODO() -- launch the app and make both the webinar and then the blog end to end functional
 
 
 //TODO() -- adapters attatch ?? need hai? why do we need adapters?
-//TODO() -- use constants instead in places.
-//TODO() -- API integration to webinar and youtube cards
+
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 class EducationFragment : Fragment() {
@@ -76,19 +70,17 @@ class EducationFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
 
         mRecyclerViewWebinar = _binding.eduWebinarList
-        mRecyclerViewBlogs = _binding.eduBlogList
+//        mRecyclerViewBlogs = _binding.eduBlogList
 
-        mRecyclerViewWebinar.adapter = webinarAdapter
-
-        WebinarAdapter(requireContext(), webinarMutableList)
+        webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList)
 
         val linearLayoutManagerWebinar =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
-        val linearLayoutManagerBlogs =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
+//        val linearLayoutManagerBlogs =
+//            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
 
         mRecyclerViewWebinar.layoutManager = linearLayoutManagerWebinar
-        mRecyclerViewBlogs.layoutManager = linearLayoutManagerBlogs
+//        mRecyclerViewBlogs.layoutManager = linearLayoutManagerBlogs
 
 
         val sharedPreferences: SharedPreferences =
@@ -96,8 +88,9 @@ class EducationFragment : Fragment() {
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
+        mRecyclerViewWebinar.adapter = webinarAdapter
         getWebinarList()
-        getBlogList()
+//        getBlogList()
     }
 
     private fun getBlogList() {
@@ -108,8 +101,7 @@ class EducationFragment : Fragment() {
                         tokenSharedPreference,
                         "Eb"
                     )
-                //some issues with the getEducation and API calling parts.
-                //??
+
 //                setAdapterBlog(response) - logic wise
                 //json structure for this, in
                 //first complete the webinar end to end.
@@ -147,6 +139,7 @@ class EducationFragment : Fragment() {
     }
 
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
+
         if (response.code() == 200) {
             val webinarItemList: List<WebinarItem>? = response.body()
             if (webinarItemList != null) {
@@ -155,7 +148,7 @@ class EducationFragment : Fragment() {
                         WebinarItem(
                             webinarItem.title,
                             webinarItem.short_desc,
-                            webinarItem.image_url,
+                            webinarItem.image_uri,
                             webinarItem.hosted_by,
                             webinarItem.other_host_name,
                             webinarItem.webinar_redirect_url
@@ -171,6 +164,7 @@ class EducationFragment : Fragment() {
 
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
+            Log.d("Response code",response.toString()+"\n"+response.code())
         }
 
     }
