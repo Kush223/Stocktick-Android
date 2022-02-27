@@ -82,6 +82,7 @@ class EducationFragment : Fragment() {
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
         getWebinarList()
+        getBlogList()
     }
 
     private fun getBlogList() {
@@ -107,6 +108,7 @@ class EducationFragment : Fragment() {
             Log.d("blogItem", blogItemList.toString())
             if (blogItemList != null) {
                 for (blogItem in blogItemList) {
+                    Log.d("itemlistBlog1", blogItemList.toString())
                     blogMutableList.add(
                         BlogItem(
                             blogItem.short_desc,
@@ -116,15 +118,14 @@ class EducationFragment : Fragment() {
                             blogItem.blog_link
                         )
                     )
-                    Log.d("itemlist", blogItemList.toString())
+                    Log.d("itemlistBlog", blogItemList.toString())
                 }
-                Log.d("itemlist", blogItemList.toString())
+                Log.d("itemlistBlog", blogItemList.toString())
             } else {
-                Log.d("nullitem", blogItemList.toString())
+                Log.d("nullitemBlog", blogItemList.toString())
             }
 
-//            blogMutableList.add(BlogItem())
-            blogAdapter = BlogAdapter(requireActivity(), blogMutableList)
+            blogAdapter = BlogAdapter(requireContext(), blogMutableList)
             mRecyclerViewBlog.adapter = blogAdapter
             Log.d(
                 "blogAdapter2",
@@ -187,7 +188,7 @@ class EducationFragment : Fragment() {
             }
 
 //            webinarMutableList.add(WebinarItem())
-            webinarAdapter = WebinarAdapter(requireActivity(), webinarMutableList)
+            webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList)
             mRecyclerViewWebinar.adapter = webinarAdapter
             Log.d(
                 "webinarAdapter2",

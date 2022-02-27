@@ -9,31 +9,35 @@
     android:layout_marginEnd="24dp"
     app:cardCornerRadius="6dp">
     <!--blogs text layout-->
-    <LinearLayout
+    <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/education_blog_placeholder_image"
-        android:orientation="vertical">
+        android:background="@drawable/education_blog_placeholder_image">
 
-        <TextView
-            android:id="@+id/blog_short_desc"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="13dp"
-            android:fontFamily="sans-serif"
-            android:text="Stocks Going Up"
-            android:textSize="20sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/blog_long_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="5dp"
-            android:text="19 Feb 2022"
-            android:textSize="15sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/blog_short_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="sans-serif"
+                android:text="Stocks Going Up"
+                android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/blog_long_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="5dp"
+                android:text="19 Feb 2022"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ImageView>
 </androidx.cardview.widget.CardView>

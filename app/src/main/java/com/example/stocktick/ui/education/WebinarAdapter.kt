@@ -15,7 +15,7 @@ class WebinarAdapter(val context: Context, val webinarList: MutableList<WebinarI
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = EduWebinarItemBinding.inflate(inflater, parent, false)
-        Log.d("onCreateViewHholder", "Create a view holder")
+//        Log.d("onCreateViewHholder", "Create a view holder")
         return WebinarViewHolder(context, binding)
     }
 
@@ -24,7 +24,7 @@ class WebinarAdapter(val context: Context, val webinarList: MutableList<WebinarI
         val singleItem = webinarList[position]
         holder.bind(singleItem)
         //webinarUrl - if self hosted, then open
-        Log.d("onBindViewHholder", holder.toString())
+//        Log.d("onBindViewHholder", holder.toString())
 
 
     }
