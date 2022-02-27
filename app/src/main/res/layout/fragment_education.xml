@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--TODO() integrate youtube templates thumbnails-->
+<?xml version="1.0" encoding="utf-8"?><!--TODO() integrate youtube templates thumbnails-->
 <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <!--        ENTIRE WEBINAR LAYOUT-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,8 +69,8 @@
         </LinearLayout>
 
 
-<!--        &lt;!&ndash;ENTIRE BLOG LAYOUT -->
-<!--add some wieghts for testing purpose in case you want -->
+        <!--        &lt;!&ndash;ENTIRE BLOG LAYOUT -->
+        <!--add some wieghts for testing purpose in case you want -->
         <LinearLayout
             android:id="@+id/edu_blog_linear_layout"
             android:layout_width="match_parent"
@@ -129,5 +127,4 @@
                 tools:listitem="@layout/edu_blog_item" />
         </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

@@ -31,23 +31,22 @@ import retrofit2.Response
 
 //TODO() -- launch the app and make both the webinar and then the blog end to end functional
 
-
-//TODO() -- adapters attatch ?? need hai? why do we need adapters?
-
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 class EducationFragment : Fragment() {
 
-    private lateinit var webinarMutableList: MutableList<WebinarItem>
+    private var blogMutableList: MutableList<BlogItem> = ArrayList()
+    private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
 
     //taken from kush's code in loanfragment
     private lateinit var eduViewModel: EducationViewModel
     private lateinit var _binding: FragmentEducationBinding
 
     private lateinit var mRecyclerViewWebinar: RecyclerView
-    private lateinit var mRecyclerViewBlogs: RecyclerView
+    private lateinit var mRecyclerViewBlog: RecyclerView
 
     private lateinit var webinarAdapter: WebinarAdapter
+    private lateinit var blogAdapter: BlogAdapter
 
 
     private lateinit var tokenSharedPreference: String
@@ -66,33 +65,33 @@ class EducationFragment : Fragment() {
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
 
+        //webinar
         mRecyclerViewWebinar = _binding.eduWebinarList
+        mRecyclerViewWebinar.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-        mRecyclerViewWebinar.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
+        //blogs
+        mRecyclerViewBlog = _binding.eduBlogList
+        mRecyclerViewBlog.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+
 
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
-//         Log.d("webinaradpater,adapter",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
-//
         getWebinarList()
-//        Log.d("webinarAdapter2",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
-
-
     }
 
     private fun getBlogList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getBlogs(
-                        tokenSharedPreference,
-                        "Eb"
-                    )
+                    RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
 
-//                setAdapterBlog(response) - logic wise
+                setAdapterBlog(response)
+                //                - logic wise
                 //json structure for this, in
                 //first complete the webinar end to end.
             } catch (error: Exception) {
@@ -104,27 +103,60 @@ class EducationFragment : Fragment() {
 
     private fun setAdapterBlog(response: Response<List<BlogItem>>) {
         if (response.code() == 200) {
-            mRecyclerViewBlogs.adapter = BlogAdapter()
+            val blogItemList: List<BlogItem>? = response.body()
+            Log.d("blogItem", blogItemList.toString())
+            if (blogItemList != null) {
+                for (blogItem in blogItemList) {
+                    blogMutableList.add(
+                        BlogItem(
+                            blogItem.short_desc,
+                            blogItem.long_desc,
+                            blogItem.image_url,
+                            blogItem.video_link,
+                            blogItem.blog_link
+                        )
+                    )
+                    Log.d("itemlist", blogItemList.toString())
+                }
+                Log.d("itemlist", blogItemList.toString())
+            } else {
+                Log.d("nullitem", blogItemList.toString())
+            }
+
+//            blogMutableList.add(BlogItem())
+            blogAdapter = BlogAdapter(requireActivity(), blogMutableList)
+            mRecyclerViewBlog.adapter = blogAdapter
+            Log.d(
+                "blogAdapter2",
+                blogAdapter.toString() + "\n" + mRecyclerViewWebinar.adapter.toString()
+            )
+
+            //why are we attaching the adapter twice???
+
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
+            Log.d("Response code", response.toString() + "\n" + response.code())
         }
+
     }
+
 
     private fun getWebinarList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.getWebinar(
-                        tokenSharedPreference,
-                        "M"
-                    )
+                    RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
                 //will this api call be to education or to webinar??
-                Log.d("response",response.body().toString())
+                Log.d("response", response.body().toString())
                 setAdapterWebinar(response)
 
             } catch (error: Exception) {
-                Log.d("errorWEbi",error.toString())
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR webinar", Toast.LENGTH_SHORT)
+                Log.d("errorWEbi", error.toString())
+                Toast.makeText(
+                    requireActivity(),
+                    "Request failed CATCH ERROR webinar",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
 
@@ -134,36 +166,39 @@ class EducationFragment : Fragment() {
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
         if (response.code() == 200) {
             val webinarItemList: List<WebinarItem>? = response.body()
-            Log.d("webinarItem",webinarItemList.toString())
+            Log.d("webinarItem", webinarItemList.toString())
             if (webinarItemList != null) {
                 for (webinarItem in webinarItemList) {
                     webinarMutableList.add(
                         WebinarItem(
                             webinarItem.title,
                             webinarItem.short_desc,
-                            webinarItem.image_uri,
+                            webinarItem.image_url,
                             webinarItem.hosted_by,
                             webinarItem.other_host_name,
                             webinarItem.webinar_redirect_url
                         )
                     )
-                    Log.d("itemlist",webinarItemList.toString())
+                    Log.d("itemlist", webinarItemList.toString())
                 }
-                Log.d("itemlist",webinarItemList.toString())
-            }else{
-                Log.d("nullitem",webinarItemList.toString())
+                Log.d("itemlist", webinarItemList.toString())
+            } else {
+                Log.d("nullitem", webinarItemList.toString())
             }
 
-            webinarMutableList.add(WebinarItem())
+//            webinarMutableList.add(WebinarItem())
             webinarAdapter = WebinarAdapter(requireActivity(), webinarMutableList)
             mRecyclerViewWebinar.adapter = webinarAdapter
-            Log.d("webinarAdapter2",webinarAdapter.toString()+"\n"+mRecyclerViewWebinar.adapter.toString())
+            Log.d(
+                "webinarAdapter2",
+                webinarAdapter.toString() + "\n" + mRecyclerViewWebinar.adapter.toString()
+            )
 
             //why are we attaching the adapter twice???
 
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
-            Log.d("Response code",response.toString()+"\n"+response.code())
+            Log.d("Response code", response.toString() + "\n" + response.code())
         }
 
     }

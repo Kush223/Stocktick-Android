@@ -29,10 +29,10 @@ interface ApiServiceInterface {
 
 //EDUCATION PAGE URLS
     @GET("/get/education/")
-    suspend fun getBlogs(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<BlogItem>>
+    suspend fun getBlogs(@Header("authToken") authToken: String): Response<List<BlogItem>>
 
-    @GET("/get/webinar")
-    suspend fun getWebinar(@Header("authToken") authToken: String,@Header("platform") platform: String): Response<List<WebinarItem>>
+    @GET("/get/webinars/")
+    suspend fun getWebinar(@Header("authToken") authToken: String): Response<List<WebinarItem>>
 
 
     @POST("/add/loandetails/")

@@ -74,7 +74,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/webinar_image_uri"
+                android:id="@+id/webinar_image_url"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="9dp"
