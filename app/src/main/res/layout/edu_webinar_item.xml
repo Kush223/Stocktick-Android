@@ -7,16 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="25dp"
-    android:paddingTop="7dp"
-    android:paddingRight="25dp">
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="5dp">
 
 
     <!--Webinar card-->
     <androidx.cardview.widget.CardView
         android:id="@+id/edu_webinar_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         app:cardCornerRadius="6dp">
 
         <!-- Info+image-->
@@ -29,7 +29,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:orientation="vertical">
 
                 <TextView
@@ -40,6 +40,7 @@
                     android:layout_marginTop="13dp"
                     android:fontFamily="sans-serif"
                     android:text="Webinar 1"
+                    android:maxLines="1"
                     android:textColor="@color/black_000000"
                     android:textSize="22sp" />
 
@@ -50,6 +51,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="5dp"
                     android:text="Self-hosted"
+                    android:maxLines="1"
                     android:textColor="@color/black_000000"
                     android:textSize="15sp" />
 
@@ -79,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="9dp"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:src="@drawable/webinar_education" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

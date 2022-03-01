@@ -3,10 +3,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingStart="24dp"
-    android:paddingTop="5dp"
-    android:paddingEnd="24dp">
+    android:layout_height="150dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="5dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/edu_blog_card"
@@ -24,31 +24,46 @@
                 android:id="@+id/blog_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/education_blog_placeholder_image"/>
+                android:background="@drawable/education_blog_placeholder_image" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/blog_short_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/button_canvas"
-                android:layout_marginStart="13dp"
-                android:fontFamily="sans-serif"
-                android:text="Stocks Going Up"
-                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/blog_long_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:layout_marginStart="13dp"
-                android:text="19 Feb 2022"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/blog_short_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:maxLines="1"
+                    android:text="Stocks Going Up"
+                    android:textColor="@color/button_canvas"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/blog_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="19 Feb 2022"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/blog_long_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_weight="1"
+                    android:maxLines="4"
+                    android:text="19 Feb 2022"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
