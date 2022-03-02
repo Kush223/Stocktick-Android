@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.EduWebinarItemBinding
 import com.example.stocktick.ui.education.model.WebinarItem
 
-//TODO() -- DIffutils?
+//TODO() --
 class WebinarAdapter(val context: Context, val webinarList: MutableList<WebinarItem>) :
     RecyclerView.Adapter<WebinarViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {

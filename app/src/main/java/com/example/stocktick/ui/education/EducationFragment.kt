@@ -29,8 +29,10 @@ import retrofit2.Response
 //immediately
 
 
-//TODO() -- launch the app and make both the webinar and then the blog end to end functional
-
+//TODO() -- intents
+//TODO() -- if youtube_url is given then the template of that yt in blog.
+//TODO() -- if only image_url then only image_url
+//TODO() -- if webinar is self hosted -
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 class EducationFragment : Fragment() {

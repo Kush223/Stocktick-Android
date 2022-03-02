@@ -47,7 +47,7 @@
         <entry key="app/src/main/res/layout/blog_image.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/create_account_layout.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/edu_blog_item.xml" value="0.26507054296707994" />
-        <entry key="app/src/main/res/layout/edu_webinar_item.xml" value="0.8" />
+        <entry key="app/src/main/res/layout/edu_webinar_item.xml" value="0.536" />
         <entry key="app/src/main/res/layout/fragment_create_account.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_education.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/fragment_educationn.xml" value="0.2078804347826087" />
@@ -57,6 +57,7 @@
         <entry key="app/src/main/res/layout/fragment_verify_otp.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_welcome_page.xml" value="0.4" />
         <entry key="app/src/main/res/layout/loan_item.xml" value="0.27169149868536374" />
+        <entry key="app/src/main/res/menu/help.xml" value="0.26507054296707994" />
       </map>
     </option>
   </component>

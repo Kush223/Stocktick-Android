@@ -5,18 +5,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="135dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:layout_marginTop="5dp">
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical">
 
 
     <!--Webinar card-->
     <androidx.cardview.widget.CardView
         android:id="@+id/edu_webinar_card"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="6dp">
 
         <!-- Info+image-->
@@ -39,8 +39,8 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="13dp"
                     android:fontFamily="sans-serif"
-                    android:text="Webinar 1"
                     android:maxLines="1"
+                    android:text="Webinar 1"
                     android:textColor="@color/black_000000"
                     android:textSize="22sp" />
 
@@ -50,8 +50,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="5dp"
-                    android:text="Self-hosted"
                     android:maxLines="1"
+                    android:text="Self-hosted"
                     android:textColor="@color/black_000000"
                     android:textSize="15sp" />
 
@@ -66,7 +66,6 @@
                     android:fontFamily="sans-serif-medium"
                     android:paddingLeft="7dp"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
                     android:text="Register Now"
                     android:textAllCaps="false"
                     android:textColor="@color/white_FFFFFF"

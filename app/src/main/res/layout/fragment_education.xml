@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="5dp"
                 tools:listitem="@layout/edu_webinar_item" />
 
         </LinearLayout>
@@ -87,8 +87,8 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/education_title_line" />
 
@@ -106,9 +106,9 @@
                     android:id="@+id/vector_education_blog_title_line_2"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/education_title_line" />
 
@@ -123,7 +123,7 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginRight="9dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="5dp"
                 tools:listitem="@layout/edu_blog_item" />
         </LinearLayout>
     </LinearLayout>

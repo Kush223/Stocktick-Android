@@ -10,3 +10,5 @@
         android:title="@string/help"
         app:showAsAction="always"/>
 </menu>
+<!--TODO() - enable the menu items as a list on tapping the help drawable-->
+<!--TODO() - the list has also a signout button that clears the client id? how?-->
