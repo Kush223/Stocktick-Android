@@ -20,17 +20,14 @@ import com.example.stocktick.ui.education.model.BlogItem
 class BlogAdapter(val context: Context, val blogList: MutableList<BlogItem>) :
     RecyclerView.Adapter<BlogViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogViewHolder {
-        Log.d("onCreateViewHolderBLOGw", "Create a view holder22")
         val inflater = LayoutInflater.from(parent.context)
         val binding = EduBlogItemBinding.inflate(inflater, parent, false)
-        Log.d("onCreateViewHolderBLOG", "Create a view holder2")
         return BlogViewHolder(context,binding)
     }
 
     override fun onBindViewHolder(holder: BlogViewHolder, position: Int) {
         val singleItem = blogList[position]
         holder.bind(singleItem)
-        Log.d("onBindViewHholder", holder.toString())
     }
 
     override fun getItemCount(): Int {

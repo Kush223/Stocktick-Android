@@ -41,9 +41,7 @@ interface ApiServiceInterface {
     @POST("/add/insurance/details/")
     suspend fun addInsuranceDetails(@Header("authToken") authToken: String,@Body insuranceModel: InsuranceModel): Response<GetOtpModel>
 
-//    @POST("subscribe/webinar/")
-//    suspend fun registerToWebinar(@Header("authToken")authToken: String,@Body subscribeWebinar: )
-//POST request only returns only the message....
-
+    @POST("/subscribe/webinar/")
+    suspend fun postRegisterToWebinar(@Header("authToken")authToken: String )
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK

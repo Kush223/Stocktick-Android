@@ -74,6 +74,7 @@ class EducationFragment : Fragment() {
 
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
+        //some other card.
         mRecyclerViewBlog.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
@@ -94,9 +95,7 @@ class EducationFragment : Fragment() {
                     RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
 
                 setAdapterBlog(response)
-                //                - logic wise
-                //json structure for this, in
-                //first complete the webinar end to end.
+
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
@@ -110,7 +109,6 @@ class EducationFragment : Fragment() {
             Log.d("blogItem", blogItemList.toString())
             if (blogItemList != null) {
                 for (blogItem in blogItemList) {
-                    Log.d("itemlistBlog1", blogItemList.toString())
                     blogMutableList.add(
                         BlogItem(
                             blogItem.short_desc,
@@ -120,20 +118,15 @@ class EducationFragment : Fragment() {
                             blogItem.blog_link
                         )
                     )
-                    Log.d("itemlistBlog", blogItemList.toString())
                 }
-                Log.d("itemlistBlog", blogItemList.toString())
             } else {
                 Log.d("nullitemBlog", blogItemList.toString())
             }
 
             blogAdapter = BlogAdapter(requireContext(), blogMutableList)
             mRecyclerViewBlog.adapter = blogAdapter
-            Log.d(
-                "blogAdapter2",
-                blogAdapter.toString() + "\n" + mRecyclerViewWebinar.adapter.toString()
-            )
 
+//            setRegisterButtonWebinar()
             //why are we attaching the adapter twice???
 
         } else {
@@ -149,12 +142,11 @@ class EducationFragment : Fragment() {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
-                //will this api call be to education or to webinar??
                 Log.d("response", response.body().toString())
                 setAdapterWebinar(response)
 
             } catch (error: Exception) {
-                Log.d("errorWEbi", error.toString())
+
                 Toast.makeText(
                     requireActivity(),
                     "Request failed CATCH ERROR webinar",
@@ -189,19 +181,13 @@ class EducationFragment : Fragment() {
                 Log.d("nullitem", webinarItemList.toString())
             }
 
-//            webinarMutableList.add(WebinarItem())
-            webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList)
+            webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList,tokenSharedPreference)
+
             mRecyclerViewWebinar.adapter = webinarAdapter
-            Log.d(
-                "webinarAdapter2",
-                webinarAdapter.toString() + "\n" + mRecyclerViewWebinar.adapter.toString()
-            )
 
             //why are we attaching the adapter twice???
-
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
-            Log.d("Response code", response.toString() + "\n" + response.code())
         }
 
     }

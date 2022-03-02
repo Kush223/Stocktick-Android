@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><!--    placeholder comment-->
 <!--TODO() implement colour gradient toggle on card-->
-<!--TODO() attatch the respective ids to the values in json getWebinar -->
-<!--TODO() regigster button API link, self hosted and third party webview point-->
+<!--TODO() register button API link, self hosted and third party webview point-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/webinar_layout"
     android:layout_width="match_parent"
     android:layout_height="135dp"
     android:layout_marginStart="10dp"
@@ -16,11 +16,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/edu_webinar_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_webinar_self_hosted"
+        android:layout_height="match_parent"
         app:cardCornerRadius="6dp">
 
         <!-- Info+image-->
         <LinearLayout
+            android:id="@+id/edu_webinar_gradient_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_webinar_self_hosted"
@@ -56,7 +58,7 @@
                     android:textSize="15sp" />
 
                 <Button
-                    android:id="@+id/webinar_redirect_url"
+                    android:id="@+id/webinar_register_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
