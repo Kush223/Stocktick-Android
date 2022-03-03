@@ -3,6 +3,7 @@ package com.example.stocktick.ui.education
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -64,29 +65,32 @@ class WebinarViewHolder(
         Glide.with(context).load(singleItem?.image_url).into(binding.webinarImageUrl)
 
         binding.eduWebinarCard.setOnClickListener {
-            Log.d("eduWebinarCard","TAPPED ON THIS WEBINAR CARD")
+            Log.d("eduWebinarCard", "TAPPED ON THIS WEBINAR CARD")
             if (hosting == "self") {
                 //show a loading icon here while retorifit call is happening
-//                    binding.webinarProgressBar
+                binding.progressWebinar.visibility = View.VISIBLE
+                binding.eduWebinarGradientLayout.visibility = View.INVISIBLE
                 postRequestWebinar()
-
-
+                binding.progressWebinar.visibility = View.INVISIBLE
+                binding.eduWebinarGradientLayout.visibility = View.VISIBLE
             }
         }
     }
 
     @DelicateCoroutinesApi
     private fun postRequestWebinar() {
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch(Dispatchers.IO) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(tokenSharedPreference)
+                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(
+                        tokenSharedPreference)
                 Log.d("TAGpostreq", response.toString() + "\n")
+
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
                     .show()
-                Log.d("ERROR",error.toString())
+                Log.d("ERROR", error.toString())
                 //Error 404 but why?
             }
         }

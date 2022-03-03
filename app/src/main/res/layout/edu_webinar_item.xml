@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--    placeholder comment-->
 <!--TODO() implement colour gradient toggle on card-->
 <!--TODO() register button API link, self hosted and third party webview point-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/webinar_layout"
     android:layout_width="match_parent"
@@ -16,17 +16,28 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/edu_webinar_card"
         android:layout_width="match_parent"
-        android:background="@drawable/gradient_webinar_self_hosted"
         android:layout_height="match_parent"
+        android:background="@drawable/gradient_webinar_self_hosted"
+        android:visibility="visible"
         app:cardCornerRadius="6dp">
 
+        <ProgressBar
+            android:id="@+id/progress_webinar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/progress_bar" />
         <!-- Info+image-->
         <LinearLayout
             android:id="@+id/edu_webinar_gradient_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_webinar_self_hosted"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
             <!--    only info-->
             <LinearLayout
                 android:layout_width="0dp"
@@ -86,4 +97,4 @@
                 android:src="@drawable/webinar_education" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>
