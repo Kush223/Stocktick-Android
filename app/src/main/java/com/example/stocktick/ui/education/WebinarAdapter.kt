@@ -71,26 +71,27 @@ class WebinarViewHolder(
                 binding.progressWebinar.visibility = View.VISIBLE
                 binding.eduWebinarGradientLayout.visibility = View.INVISIBLE
                 postRequestWebinar()
-                binding.progressWebinar.visibility = View.INVISIBLE
-                binding.eduWebinarGradientLayout.visibility = View.VISIBLE
+
             }
         }
     }
 
     @DelicateCoroutinesApi
     private fun postRequestWebinar() {
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(
-                        tokenSharedPreference)
+                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(tokenSharedPreference)
                 Log.d("TAGpostreq", response.toString() + "\n")
-
+                binding.progressWebinar.visibility = View.INVISIBLE
+                binding.eduWebinarGradientLayout.visibility = View.VISIBLE
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
                     .show()
                 Log.d("ERROR", error.toString())
+                binding.progressWebinar.visibility = View.INVISIBLE
+                binding.eduWebinarGradientLayout.visibility = View.VISIBLE
                 //Error 404 but why?
             }
         }
