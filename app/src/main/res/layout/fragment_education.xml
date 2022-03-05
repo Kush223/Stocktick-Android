@@ -1,130 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?><!--TODO() integrate youtube templates thumbnails-->
 <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_profile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#212121"
-    android:orientation="vertical">
-    <!--BOTH WEBINAR AND BLOG LAYOUT-->
-    <LinearLayout
+    android:layout_height="match_parent">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#212121"
         android:orientation="vertical">
-        <!--        ENTIRE WEBINAR LAYOUT-->
+
+        <!--BOTH WEBINAR AND BLOG LAYOUT-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--WEBINAR TITLE LAYOUT-->
+            <!--        ENTIRE WEBINAR LAYOUT-->
             <LinearLayout
+                android:id="@+id/edu_webinar_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <View
-                    android:id="@+id/vector_education_webinar_title_line_1"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/education_title_line" />
-
-                <TextView
-                    android:id="@+id/education_webinar"
-                    android:layout_width="0dp"
+                <!--WEBINAR TITLE LAYOUT-->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/education_title_webinar"
-                    android:textColor="@color/education_page_title_colour" />
+                    android:orientation="horizontal">
 
-                <View
-                    android:id="@+id/vector_education_webinar_title_line_2"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/education_title_line" />
+                    <View
+                        android:id="@+id/vector_education_webinar_title_line_1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/education_title_line" />
 
+                    <TextView
+                        android:id="@+id/education_webinar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/education_title_webinar"
+                        android:textColor="@color/education_page_title_colour" />
+
+                    <View
+                        android:id="@+id/vector_education_webinar_title_line_2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/education_title_line" />
+
+
+                </LinearLayout>
+
+                <!--            WEBINAR LIST-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edu_webinar_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="9dp"
+                    android:layout_marginBottom="5dp"
+                    tools:listitem="@layout/edu_webinar_item" />
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/edu_network_error_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="PLEASE CHECK YOUR INTERNET CONNECTION AND TRY AGAIN"
+                android:visibility="invisible" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/edu_webinar_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
-                android:layout_marginRight="9dp"
-                android:layout_marginBottom="5dp"
-                tools:listitem="@layout/edu_webinar_item" />
-
-        </LinearLayout>
-
-
-        <!--        &lt;!&ndash;ENTIRE BLOG LAYOUT -->
-        <!--add some wieghts for testing purpose in case you want -->
-        <LinearLayout
-            android:id="@+id/edu_blog_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!--            TITLE BLOGS-->
+            <!--        ENTIRE BLOG LAYOUT -->
             <LinearLayout
+                android:id="@+id/edu_blog_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <View
-                    android:id="@+id/vector_education_blog_title_line_1"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/education_title_line" />
-
-                <TextView
-                    android:id="@+id/education_blogs"
-                    android:layout_width="0dp"
+                android:orientation="vertical">
+                <!--            TITLE BLOGS-->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/education_title_blogs"
-                    android:textColor="@color/education_page_title_colour" />
+                    android:orientation="horizontal">
 
-                <View
-                    android:id="@+id/vector_education_blog_title_line_2"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="24dp"
+                    <View
+                        android:id="@+id/vector_education_blog_title_line_1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/education_title_line" />
+
+                    <TextView
+                        android:id="@+id/education_blogs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/education_title_blogs"
+                        android:textColor="@color/education_page_title_colour" />
+
+                    <View
+                        android:id="@+id/vector_education_blog_title_line_2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/education_title_line" />
+
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edu_blog_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginRight="9dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/education_title_line" />
-
-
+                    tools:listitem="@layout/edu_blog_item" />
             </LinearLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/edu_blog_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginRight="9dp"
-                android:layout_marginBottom="5dp"
-                tools:listitem="@layout/edu_blog_item" />
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_webinar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80909090"
+        android:foregroundGravity="center_horizontal"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_bar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package com.example.stocktick.network
 
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
+import com.example.stocktick.ui.education.model.RegisterWebinarModel
 import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
@@ -42,6 +44,6 @@ interface ApiServiceInterface {
     suspend fun addInsuranceDetails(@Header("authToken") authToken: String,@Body insuranceModel: InsuranceModel): Response<GetOtpModel>
 
     @POST("/subscribe/webinar/")
-    suspend fun postRegisterToWebinar(@Header("authToken")authToken: String )
+    suspend fun postRegisterToWebinar(@Header("authToken")authToken: String ,@Body registerWebinar : RegisterWebinarModel): Response<ResponseRegisterWebinar>
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK

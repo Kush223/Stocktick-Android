@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/webinar_layout"
     android:layout_width="match_parent"
-    android:layout_height="135dp"
+    android:layout_height="150dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="5dp"
@@ -20,24 +20,13 @@
         android:background="@drawable/gradient_webinar_self_hosted"
         android:visibility="visible"
         app:cardCornerRadius="6dp">
-
-        <ProgressBar
-            android:id="@+id/progress_webinar"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            android:indeterminateDrawable="@drawable/progress_bar" />
         <!-- Info+image-->
         <LinearLayout
             android:id="@+id/edu_webinar_gradient_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_webinar_self_hosted"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:orientation="horizontal">
             <!--    only info-->
             <LinearLayout
                 android:layout_width="0dp"
@@ -57,28 +46,54 @@
                     android:textColor="@color/black_000000"
                     android:textSize="22sp" />
 
-                <TextView
-                    android:id="@+id/webinar_hosted_by"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="13dp"
-                    android:layout_marginTop="5dp"
-                    android:maxLines="1"
-                    android:text="Self-hosted"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:text="Hosted by : "
+                        android:textColor="@color/black_000000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/webinar_hosted_by"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:text="Self-hosted"
+                        android:textColor="@color/black_000000"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/webinar_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
                     android:textColor="@color/black_000000"
-                    android:textSize="15sp" />
+                    android:layout_marginTop="7dp"
+                    android:textSize="15sp"
+                    android:text="DATE"/>
 
                 <Button
                     android:id="@+id/webinar_register_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="11dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="5dp"
                     android:backgroundTint="@color/black_000000"
                     android:fontFamily="sans-serif-medium"
-                    android:paddingLeft="7dp"
-                    android:paddingTop="4dp"
+                    android:layout_marginLeft="7dp"
                     android:text="Register Now"
                     android:textAllCaps="false"
                     android:textColor="@color/white_FFFFFF"

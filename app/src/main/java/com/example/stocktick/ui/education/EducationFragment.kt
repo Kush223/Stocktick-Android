@@ -15,11 +15,13 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEducationBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.education.model.BlogItem
+import com.example.stocktick.ui.education.model.RegisterWebinarModel
 import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,7 +37,7 @@ import retrofit2.Response
 //TODO() -- if webinar is self hosted -
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
-class EducationFragment : Fragment() {
+class EducationFragment : Fragment(), WebinarInterface {
 
     private var blogMutableList: MutableList<BlogItem> = ArrayList()
     private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
@@ -74,10 +76,8 @@ class EducationFragment : Fragment() {
 
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
-        //some other card.
         mRecyclerViewBlog.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-
 
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
@@ -91,13 +91,22 @@ class EducationFragment : Fragment() {
     private fun getBlogList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
+                _binding.eduWebinarLinearLayout.visibility = View.VISIBLE
+                _binding.eduBlogLinearLayout.visibility = View.VISIBLE
+                _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
                 val response =
                     RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
 
                 setAdapterBlog(response)
-
             } catch (error: Exception) {
-                Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+//                _binding.eduWebinarLinearLayout.visibility = View.INVISIBLE
+//                _binding.eduBlogLinearLayout.visibility = View.INVISIBLE
+//                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
+                Toast.makeText(
+                    requireActivity(),
+                    "Request failed CATCH ERROR blog",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
         }
@@ -106,28 +115,16 @@ class EducationFragment : Fragment() {
     private fun setAdapterBlog(response: Response<List<BlogItem>>) {
         if (response.code() == 200) {
             val blogItemList: List<BlogItem>? = response.body()
-            Log.d("blogItem", blogItemList.toString())
             if (blogItemList != null) {
                 for (blogItem in blogItemList) {
-                    blogMutableList.add(
-                        BlogItem(
-                            blogItem.short_desc,
-                            blogItem.long_desc,
-                            blogItem.image_url,
-                            blogItem.video_link,
-                            blogItem.blog_link
-                        )
-                    )
+                    blogMutableList.add(blogItem)
                 }
             } else {
-                Log.d("nullitemBlog", blogItemList.toString())
+//                Log.d("nullitemBlog", blogItemList.toString())
             }
 
             blogAdapter = BlogAdapter(requireContext(), blogMutableList)
             mRecyclerViewBlog.adapter = blogAdapter
-
-//            setRegisterButtonWebinar()
-            //why are we attaching the adapter twice???
 
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
@@ -140,13 +137,17 @@ class EducationFragment : Fragment() {
     private fun getWebinarList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
+                _binding.eduWebinarLinearLayout.visibility = View.VISIBLE
+                _binding.eduBlogLinearLayout.visibility = View.VISIBLE
+                _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
-                Log.d("response", response.body().toString())
+//                Log.d("response", response.body().toString())
                 setAdapterWebinar(response)
-
             } catch (error: Exception) {
-
+                _binding.eduWebinarLinearLayout.visibility = View.INVISIBLE
+                _binding.eduBlogLinearLayout.visibility = View.INVISIBLE
+                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
                 Toast.makeText(
                     requireActivity(),
                     "Request failed CATCH ERROR webinar",
@@ -161,31 +162,18 @@ class EducationFragment : Fragment() {
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
         if (response.code() == 200) {
             val webinarItemList: List<WebinarItem>? = response.body()
-            Log.d("webinarItem", webinarItemList.toString())
             if (webinarItemList != null) {
                 for (webinarItem in webinarItemList) {
-                    webinarMutableList.add(
-                        WebinarItem(
-                            webinarItem.title,
-                            webinarItem.short_desc,
-                            webinarItem.image_url,
-                            webinarItem.hosted_by,
-                            webinarItem.other_host_name,
-                            webinarItem.webinar_redirect_url
-                        )
-                    )
-                    Log.d("itemlist", webinarItemList.toString())
+                    webinarMutableList.add(webinarItem)
                 }
-                Log.d("itemlist", webinarItemList.toString())
             } else {
-                Log.d("nullitem", webinarItemList.toString())
+                //Log.d("nullitem", webinarItemList.toString())
             }
 
-            webinarAdapter = WebinarAdapter(requireContext(), webinarMutableList,tokenSharedPreference)
-
+            webinarAdapter =
+                WebinarAdapter(requireContext(), webinarMutableList, tokenSharedPreference, this)
             mRecyclerViewWebinar.adapter = webinarAdapter
 
-            //why are we attaching the adapter twice???
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
@@ -208,5 +196,38 @@ class EducationFragment : Fragment() {
             // do something here
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCellClickListener(id: String?) {
+        //use this retrofit call to webinar from here.
+        val registerWebinarModel = RegisterWebinarModel(id.toString())
+        val progressBar = _binding.progressWebinar
+        progressBar.visibility = View.VISIBLE
+        postRequestWebinar(registerWebinarModel)
+    }
+
+    @DelicateCoroutinesApi
+    private fun postRequestWebinar(registerWebinarModel: RegisterWebinarModel) {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+
+                val response =
+                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(
+                        tokenSharedPreference,
+                        registerWebinarModel
+                    )
+                Log.d("TAGpostreq", response.toString() + "\n")
+                Toast.makeText(
+                    context,
+                    "Response" + response.body().toString() + "Response Code" + response.code(),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            } catch (error: Exception) {
+                Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
+                    .show()
+                Log.d("ERROR", error.toString())
+            }
+        }
     }
 }

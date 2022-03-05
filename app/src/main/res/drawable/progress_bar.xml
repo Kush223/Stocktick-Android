@@ -5,7 +5,7 @@
     <shape android:shape="ring" android:innerRadiusRatio="3"
         android:thicknessRatio="8" android:useLevel="false">
 
-        <size android:width="56dip" android:height="56dip" />
+        <size android:width="10dip" android:height="60dip" />
 
         <gradient android:type="sweep" android:useLevel="false"
             android:startColor="@android:color/transparent"
