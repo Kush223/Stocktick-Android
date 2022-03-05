@@ -23,6 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import soup.neumorphism.NeumorphCardView
 
 //TODO() -- remove hardcoded tokens use constants instead
 //TODO() -- modularise the code of this file.
@@ -32,9 +33,9 @@ class InsuranceFragment : Fragment() {
 
     private lateinit var insuranceViewModel: InsuranceViewModel
     private lateinit var binding: FragmentInsuranceBinding
-    private lateinit var motorCard: CardView
-    private lateinit var healthCard: CardView
-    private lateinit var lifeCard: CardView
+    private lateinit var motorCard: NeumorphCardView
+    private lateinit var healthCard: NeumorphCardView
+    private lateinit var lifeCard: NeumorphCardView
     private lateinit var token: String
 
     private lateinit var policyClaimYes: RadioButton

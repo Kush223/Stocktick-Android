@@ -89,17 +89,7 @@ class LoanFragment : Fragment() {
             val loanItemList: List<LoanItem>? = response.body()
             if (loanItemList != null) {
                 for (loanItem in loanItemList) {
-                    loanList.add(
-                        LoanItem(
-                            loanItem.link,
-                            loanItem.short_desc,
-                            loanItem.long_desc,
-                            loanItem.image_urls,
-                            loanItem.category,
-                            loanItem.interest,
-                            loanItem.color_code
-                        )
-                    )
+                    loanList.add(loanItem)
                 }
             }
             loanList.add(LoanItem())

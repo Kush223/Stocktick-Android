@@ -66,7 +66,7 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             body.binding.loanInterest.text = this.interest
             body.binding.loanCard.setCardBackgroundColor(Color.parseColor(this.color_code))
             body.binding.loanShortDesc.text = this.short_desc
-            Glide.with(context).load(this.image_urls).into(body.binding.loanImg);
+            Glide.with(context).load(this.image_url).into(body.binding.loanImg);
             body.binding.getQuote.setOnClickListener{
                 dialog = Dialog(context)
                 //dialog.setTitle("Information")

@@ -8,4 +8,6 @@ object Constant {
     const val EDUCATION = "Education"
     const val LOAN = "Loan"
     const val SHAREDPREFERENCES_TOKEN_A = "a"
+    const val permSms = 100
+    const val smsPerm = "smsPerm"
 }
