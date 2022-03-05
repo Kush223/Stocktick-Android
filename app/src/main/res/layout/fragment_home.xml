@@ -22,13 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
-        <androidx.cardview.widget.CardView
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:backgroundTint="#222222"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="15dp"
+            android:id="@+id/credit_card"
+            app:neumorph_shadowColorDark="@color/canvas_background"
+            app:neumorph_shadowColorLight="#505050"
+            app:neumorph_shadowElevation="2dp"
+            app:neumorph_shapeType="flat"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,14 +59,15 @@
                     android:textSize="24sp"/>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="0dp"
             android:layout_weight="1"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true"
-            android:backgroundTint="#222222"
-            app:cardCornerRadius="15dp"
+            android:id="@+id/debit_card"
+            app:neumorph_shadowColorDark="@color/canvas_background"
+            app:neumorph_shadowColorLight="#505050"
+            app:neumorph_shadowElevation="2dp"
+            app:neumorph_shapeType="flat"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +97,7 @@
                     android:textSize="24sp"/>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </soup.neumorphism.NeumorphCardView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,13 +135,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:orientation="horizontal">
-        <androidx.cardview.widget.CardView
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:backgroundTint="#222222"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="15dp"
+            android:id="@+id/mutual_fund_card"
+            app:neumorph_shadowColorDark="@color/canvas_background"
+            app:neumorph_shadowColorLight="#505050"
+            app:neumorph_shadowElevation="2dp"
+            app:neumorph_shapeType="flat"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,14 +164,15 @@
                     android:textSize="14sp"/>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="0dp"
             android:layout_weight="1"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true"
-            android:backgroundTint="#222222"
-            app:cardCornerRadius="15dp"
+            android:id="@+id/insur_card"
+            app:neumorph_shadowColorDark="@color/canvas_background"
+            app:neumorph_shadowColorLight="#505050"
+            app:neumorph_shadowElevation="2dp"
+            app:neumorph_shapeType="flat"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,7 +194,7 @@
                     android:textSize="14sp"/>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </soup.neumorphism.NeumorphCardView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,16 +1,57 @@
 package com.example.stocktick
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Telephony
+import android.util.Log
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) { // must check the result to prevent exception
+                do {
+                    var msgData = ""
+                    for(idx in 0 until cursor.columnCount)
+                    {
+                        val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
+                        val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                        val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                        //val dateFormat= Date(smsDate)
+//                        val type
+//                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
+//                            case Telephony.Sms.MESSAGE_TYPE_INBOX:
+//                            type = "inbox";
+//                            break;
+//                            case Telephony.Sms.MESSAGE_TYPE_SENT:
+//                            type = "sent";
+//                            break;
+//                            case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
+//                            type = "outbox";
+//                            break;
+//                            default:
+//                            break;
+//                        }
+                        msgData += body
+                    }
+                    Log.d("msg",msgData)
+                    // use msgData
+                } while (cursor.moveToNext())
+            }
+            else {
+                // empty box, no SMS
+            }
+        }
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -25,5 +66,47 @@ class MainActivity : AppCompatActivity() {
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) { // must check the result to prevent exception
+                do {
+                    var msgData = ""
+//                    for(idx in 0 until cursor.columnCount)
+//                    {
+                        val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
+                        val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                        val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                        //val dateFormat= Date(smsDate)
+//                        val type
+//                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
+//                            case Telephony.Sms.MESSAGE_TYPE_INBOX:
+//                            type = "inbox";
+//                            break;
+//                            case Telephony.Sms.MESSAGE_TYPE_SENT:
+//                            type = "sent";
+//                            break;
+//                            case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
+//                            type = "outbox";
+//                            break;
+//                            default:
+//                            break;
+//                        }
+                        msgData += body
+//                    }
+                    Log.d("msg",msgData)
+                    //Log.d("msg","end")
+                    // use msgData
+                } while (cursor.moveToNext())
+                cursor.close()
+            }
+            else {
+                // empty box, no SMS
+            }
+        }
     }
 }

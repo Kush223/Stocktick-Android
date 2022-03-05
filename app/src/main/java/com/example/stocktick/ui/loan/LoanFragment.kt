@@ -72,7 +72,7 @@ class LoanFragment : Fragment() {
         if(response.code()==200){
             val loanItemList : List<LoanItem> = response.body()!!
             for(loanItem in loanItemList) {
-                loanList.add(LoanItem(loanItem.link, loanItem.short_desc, loanItem.long_desc, loanItem.image_urls, loanItem.category, loanItem.interest,loanItem.color_code))
+                loanList.add(LoanItem(loanItem.link, loanItem.short_desc, loanItem.long_desc, loanItem.image_url, loanItem.category, loanItem.interest,loanItem.color_code))
             }
             loanList.add(LoanItem())
             recyclerView.adapter = loanAdapter

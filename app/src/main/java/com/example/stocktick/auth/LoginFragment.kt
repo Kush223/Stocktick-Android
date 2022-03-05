@@ -76,10 +76,10 @@ class LoginFragment : Fragment() {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        startSmartUserConsent()
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        startSmartUserConsent()
+//    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -194,9 +194,7 @@ class LoginFragment : Fragment() {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         } else {
-
             _binding.otpCard.visibility = View.INVISIBLE
-
 
             mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
             val name = mCreateAccountLayoutBinding.etCreateAccountUserName
@@ -231,47 +229,47 @@ class LoginFragment : Fragment() {
 
     //    links: //https://github.com/androidmads/SMSRetrieverApiSample/tree/master/app/src/main/java/com/androidmad/smsretrieverapisample
     //        https://www.c-sharpcorner.com/article/verify-otp-without-sms-permission-in-android-using-kotlin/
-    private fun registerBroadcastListener() {
-        smsBroadCastReceiver = SmsBroadcastReceiver()
+//    private fun registerBroadcastListener() {
+//        smsBroadCastReceiver = SmsBroadcastReceiver()
+//
+//        smsBroadCastReceiver.smsBroadCastReceiverListener =
+//            object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
+//                override fun onSuccess(intent: Intent?) {
+//                    val resultLauncher =
+//                        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//
+//                            if (result.resultCode == REQ_USER_CONSENT) {
+//                                val data: Intent? = result.data
+//                                if (result.resultCode == RESULT_OK && data != null) {
+//                                    val message =
+//                                        data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
+//                                    getOtpFromMessage(message)
+//                                }
+//                            }
+//                        }
+//
+//                    resultLauncher.launch(intent)
+////                    link startActivityResult: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
+//                }
+//
+//                override fun onFailure() {
+//                    showToast(" SMS RECEIVER Error occured")
+//                }
+//
+//            }
+//        val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
+//        requireActivity().registerReceiver(smsBroadCastReceiver, intentFilter)
+//    }
 
-        smsBroadCastReceiver.smsBroadCastReceiverListener =
-            object : SmsBroadcastReceiver.SmsBroadCastReceiverListener {
-                override fun onSuccess(intent: Intent?) {
-                    val resultLauncher =
-                        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//    private fun startSmartUserConsent() {
+//        val client = SmsRetriever.getClient(requireActivity())
+//        client.startSmsRetriever()
+//    }
 
-                            if (result.resultCode == REQ_USER_CONSENT) {
-                                val data: Intent? = result.data
-                                if (result.resultCode == RESULT_OK && data != null) {
-                                    val message =
-                                        data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
-                                    getOtpFromMessage(message)
-                                }
-                            }
-                        }
-
-                    resultLauncher.launch(intent)
-//                    link startActivityResult: https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative
-                }
-
-                override fun onFailure() {
-                    showToast(" SMS RECEIVER Error occured")
-                }
-
-            }
-        val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-        requireActivity().registerReceiver(smsBroadCastReceiver, intentFilter)
-    }
-
-    private fun startSmartUserConsent() {
-        val client = SmsRetriever.getClient(requireActivity())
-        client.startSmsRetriever()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        registerBroadcastListener()
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        //registerBroadcastListener()
+//    }
 
     private fun getOtpFromMessage(message: String?) {
         val otpPattern = Pattern.compile("(|^)\\d{6}")
@@ -282,8 +280,8 @@ class LoginFragment : Fragment() {
     }
 
 
-    override fun onStop() {
-        super.onStop()
-        requireActivity().unregisterReceiver(smsBroadCastReceiver)
-    }
+//    override fun onStop() {
+//        super.onStop()
+//        //requireActivity().unregisterReceiver(smsBroadCastReceiver)
+//    }
 }
