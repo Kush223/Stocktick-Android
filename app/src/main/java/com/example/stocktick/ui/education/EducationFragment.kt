@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -42,12 +43,12 @@ class EducationFragment : Fragment(), WebinarInterface {
     private var blogMutableList: MutableList<BlogItem> = ArrayList()
     private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
 
-    //taken from kush's code in loanfragment
     private lateinit var eduViewModel: EducationViewModel
     private lateinit var _binding: FragmentEducationBinding
 
     private lateinit var mRecyclerViewWebinar: RecyclerView
     private lateinit var mRecyclerViewBlog: RecyclerView
+    private lateinit var mProgressBar: ProgressBar
 
     private lateinit var webinarAdapter: WebinarAdapter
     private lateinit var blogAdapter: BlogAdapter
@@ -59,6 +60,7 @@ class EducationFragment : Fragment(), WebinarInterface {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
+        mProgressBar = _binding.progressWebinar
         return _binding.root
     }
 
@@ -84,30 +86,30 @@ class EducationFragment : Fragment(), WebinarInterface {
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
+        mProgressBar.visibility = View.VISIBLE
         getWebinarList()
         getBlogList()
+
     }
 
     private fun getBlogList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                _binding.eduWebinarLinearLayout.visibility = View.VISIBLE
-                _binding.eduBlogLinearLayout.visibility = View.VISIBLE
                 _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
                 val response =
                     RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
-
                 setAdapterBlog(response)
+                mProgressBar.visibility = View.INVISIBLE
             } catch (error: Exception) {
-//                _binding.eduWebinarLinearLayout.visibility = View.INVISIBLE
-//                _binding.eduBlogLinearLayout.visibility = View.INVISIBLE
-//                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
+
                 Toast.makeText(
                     requireActivity(),
-                    "Request failed CATCH ERROR blog",
+                    "Request failed for blog",
                     Toast.LENGTH_SHORT
                 )
                     .show()
+                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
+
             }
         }
     }
@@ -128,7 +130,7 @@ class EducationFragment : Fragment(), WebinarInterface {
 
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
-            Log.d("Response code", response.toString() + "\n" + response.code())
+//            Log.d("Response code", response.toString() + "\n" + response.code())
         }
 
     }
@@ -137,20 +139,17 @@ class EducationFragment : Fragment(), WebinarInterface {
     private fun getWebinarList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                _binding.eduWebinarLinearLayout.visibility = View.VISIBLE
-                _binding.eduBlogLinearLayout.visibility = View.VISIBLE
                 _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
-//                Log.d("response", response.body().toString())
+
                 setAdapterWebinar(response)
+                mProgressBar.visibility = View.INVISIBLE
             } catch (error: Exception) {
-                _binding.eduWebinarLinearLayout.visibility = View.INVISIBLE
-                _binding.eduBlogLinearLayout.visibility = View.INVISIBLE
                 _binding.eduNetworkErrorTv.visibility = View.VISIBLE
                 Toast.makeText(
                     requireActivity(),
-                    "Request failed CATCH ERROR webinar",
+                    "Request failed for webinar",
                     Toast.LENGTH_SHORT
                 )
                     .show()
@@ -173,7 +172,6 @@ class EducationFragment : Fragment(), WebinarInterface {
             webinarAdapter =
                 WebinarAdapter(requireContext(), webinarMutableList, tokenSharedPreference, this)
             mRecyclerViewWebinar.adapter = webinarAdapter
-
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
@@ -201,32 +199,40 @@ class EducationFragment : Fragment(), WebinarInterface {
     override fun onCellClickListener(id: String?) {
         //use this retrofit call to webinar from here.
         val registerWebinarModel = RegisterWebinarModel(id.toString())
-        val progressBar = _binding.progressWebinar
-        progressBar.visibility = View.VISIBLE
+        mProgressBar.visibility = View.VISIBLE
         postRequestWebinar(registerWebinarModel)
+        mProgressBar.visibility = View.INVISIBLE
     }
 
     @DelicateCoroutinesApi
     private fun postRequestWebinar(registerWebinarModel: RegisterWebinarModel) {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-
                 val response =
                     RetrofitClientInstance.retrofitService.postRegisterToWebinar(
                         tokenSharedPreference,
                         registerWebinarModel
                     )
                 Log.d("TAGpostreq", response.toString() + "\n")
-                Toast.makeText(
-                    context,
-                    "Response" + response.body().toString() + "Response Code" + response.code(),
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+
+                if(response.code()==200){
+                    //show the success image here.
+                }
+                else if(response.code()==400){
+
+                }
+                else{
+                    //otherwise show a dialog with other responses.
+                    Toast.makeText(context,"Response" + response.body().toString()
+                            + "Response Code" + response.code(),Toast.LENGTH_LONG).show()
+                }
+
+
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
                     .show()
                 Log.d("ERROR", error.toString())
+
             }
         }
     }
