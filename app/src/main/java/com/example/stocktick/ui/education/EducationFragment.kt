@@ -219,7 +219,7 @@ class EducationFragment : Fragment(), WebinarInterface {
                     //show the success image here.
                 }
                 else if(response.code()==400){
-
+                    //show dialog saying you are already registered.
                 }
                 else{
                     //otherwise show a dialog with other responses.
