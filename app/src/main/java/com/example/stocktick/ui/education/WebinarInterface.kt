@@ -1,6 +1,6 @@
 package com.example.stocktick.ui.education
 
 interface WebinarInterface{
-    fun onCellClickListener(id: String?, hostedBy: String?)
+    fun onWebinarClickListener(id: String?, hostedBy: String?, webinarRedirectUrl: String?)
 }
 //interface - skeleton of a function.

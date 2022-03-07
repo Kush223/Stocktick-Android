@@ -9,7 +9,9 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
+import android.webkit.WebChromeClient
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -41,7 +43,6 @@ import retrofit2.Response
 //TODO() -- intents
 //TODO() -- if youtube_url is given then the template of that yt in blog.
 //TODO() -- if only image_url then only image_url
-//TODO() -- if webinar is self hosted -
 //TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 class EducationFragment : Fragment(), WebinarInterface {
@@ -85,6 +86,7 @@ class EducationFragment : Fragment(), WebinarInterface {
         mRecyclerViewWebinar = _binding.eduWebinarList
         mRecyclerViewWebinar.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+        mWebViewWebinar = _binding.webViewWebinar
 
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
@@ -210,24 +212,35 @@ class EducationFragment : Fragment(), WebinarInterface {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCellClickListener(id: String?, hostedBy: String?) {
+    override fun onWebinarClickListener(id: String?, hostedBy: String?, webinarRedirectUrl: String?) {
         //use this retrofit call to webinar from here.
         val registerWebinarModel = RegisterWebinarModel(id.toString())
         mProgressBar.visibility = View.VISIBLE
-        postRequestWebinar(registerWebinarModel)
+        postRequestWebinar(registerWebinarModel,hostedBy)
         mProgressBar.visibility = View.INVISIBLE
 
         //if hosted_by is
-        Log.d("HOSTEDFRAG", hostedBy.toString())
+        //Log.d("HOSTEDFRAG", hostedBy.toString())
         if(hostedBy.toString()=="other"){
             //webview
+            mWebViewWebinar.webViewClient = WebViewClient()
+            mWebViewWebinar.webChromeClient = WebChromeClient()
+            //if you want to add intents. https://developer.android.com/guide/webapps/webview
+            //the MyWebViewClient part
+            mWebViewWebinar.settings.apply{
+                javaScriptCanOpenWindowsAutomatically = true
+                javaScriptEnabled = true
+                domStorageEnabled = true
+            }
+            mWebViewWebinar.loadUrl(webinarRedirectUrl.toString())
+            mWebViewWebinar.visibility = View.VISIBLE
 
         }
 
     }
 
     @DelicateCoroutinesApi
-    private fun postRequestWebinar(registerWebinarModel: RegisterWebinarModel) {
+    private fun postRequestWebinar(registerWebinarModel: RegisterWebinarModel, hostedBy: String?) {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
@@ -284,7 +297,7 @@ class EducationFragment : Fragment(), WebinarInterface {
         dialog.show()
         val metrics: DisplayMetrics? = context?.resources?.displayMetrics
         val width = metrics?.widthPixels
-        val height = metrics?.heightPixels
+//        val height = metrics?.heightPixels
         dialog.window?.setLayout((4 * width!!) / 5, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 }

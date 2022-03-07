@@ -21,7 +21,12 @@ class WebinarAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = EduWebinarItemBinding.inflate(inflater, parent, false)
-        return WebinarViewHolder(context, binding, tokenSharedPreference,webinarInterfaceClickListener)
+        return WebinarViewHolder(
+            context,
+            binding,
+            tokenSharedPreference,
+            webinarInterfaceClickListener
+        )
     }
 
     override fun onBindViewHolder(holder: WebinarViewHolder, position: Int) {
@@ -58,9 +63,13 @@ class WebinarViewHolder(
         //so the real reason and magic of the interface is happening here.
         //we only want to click on a particular id and send it back to the fragment to do retrofi
         //we put up the progress bar and other things also here i think?
-        //        or do we?
-        binding.webinarRegisterButton.setOnClickListener{
-            webinarInterfaceClickListener.onCellClickListener(singleItem?.id,singleItem?.hosted_by)
+        //or do we?
+        binding.webinarRegisterButton.setOnClickListener {
+            webinarInterfaceClickListener.onWebinarClickListener(
+                singleItem?.id,
+                singleItem?.hosted_by,
+                singleItem?.webinar_redirect_url
+            )
         }
 
     }
