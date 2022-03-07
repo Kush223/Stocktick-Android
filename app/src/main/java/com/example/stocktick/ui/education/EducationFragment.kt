@@ -1,11 +1,17 @@
 package com.example.stocktick.ui.education
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
+import android.webkit.WebView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -52,6 +58,9 @@ class EducationFragment : Fragment(), WebinarInterface {
 
     private lateinit var webinarAdapter: WebinarAdapter
     private lateinit var blogAdapter: BlogAdapter
+    private lateinit var mWebViewWebinar: WebView
+
+    private lateinit var dialog: Dialog
 
 
     private lateinit var tokenSharedPreference: String
@@ -61,6 +70,7 @@ class EducationFragment : Fragment(), WebinarInterface {
     ): View {
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
         mProgressBar = _binding.progressWebinar
+
         return _binding.root
     }
 
@@ -95,67 +105,52 @@ class EducationFragment : Fragment(), WebinarInterface {
     private fun getBlogList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
+                showViewsAfterReload()
                 val response =
                     RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
                 setAdapterBlog(response)
                 mProgressBar.visibility = View.INVISIBLE
+
             } catch (error: Exception) {
-
-                Toast.makeText(
-                    requireActivity(),
-                    "Request failed for blog",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
-                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
-
+                showNetworkErrorViews()
             }
         }
     }
-
-    private fun setAdapterBlog(response: Response<List<BlogItem>>) {
-        if (response.code() == 200) {
-            val blogItemList: List<BlogItem>? = response.body()
-            if (blogItemList != null) {
-                for (blogItem in blogItemList) {
-                    blogMutableList.add(blogItem)
-                }
-            } else {
-//                Log.d("nullitemBlog", blogItemList.toString())
-            }
-
-            blogAdapter = BlogAdapter(requireContext(), blogMutableList)
-            mRecyclerViewBlog.adapter = blogAdapter
-
-        } else {
-            Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
-//            Log.d("Response code", response.toString() + "\n" + response.code())
-        }
-
-    }
-
 
     private fun getWebinarList() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
+                showViewsAfterReload()
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
 
                 setAdapterWebinar(response)
                 mProgressBar.visibility = View.INVISIBLE
+
             } catch (error: Exception) {
-                _binding.eduNetworkErrorTv.visibility = View.VISIBLE
-                Toast.makeText(
-                    requireActivity(),
-                    "Request failed for webinar",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                showNetworkErrorViews()
             }
 
         }
+    }
+
+    private fun showViewsAfterReload() {
+        _binding.eduNetworkErrorTv.visibility = View.INVISIBLE
+        _binding.btTryAgain.visibility = View.INVISIBLE
+        _binding.webinarTitleLinearLayout.visibility = View.VISIBLE
+        _binding.blogTitleLinearLayout.visibility = View.VISIBLE
+    }
+
+    private fun showNetworkErrorViews() {
+        _binding.eduNetworkErrorTv.visibility = View.VISIBLE
+        _binding.btTryAgain.visibility = View.VISIBLE
+        _binding.btTryAgain.setOnClickListener {
+            getWebinarList()
+            getBlogList()
+        }
+        _binding.webinarTitleLinearLayout.visibility = View.INVISIBLE
+        _binding.blogTitleLinearLayout.visibility = View.INVISIBLE
+        //mProgressBar.visibility = View.INVISIBLE
     }
 
     private fun setAdapterWebinar(response: Response<List<WebinarItem>>) {
@@ -172,6 +167,25 @@ class EducationFragment : Fragment(), WebinarInterface {
             webinarAdapter =
                 WebinarAdapter(requireContext(), webinarMutableList, tokenSharedPreference, this)
             mRecyclerViewWebinar.adapter = webinarAdapter
+        } else {
+            Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+    private fun setAdapterBlog(response: Response<List<BlogItem>>) {
+        if (response.code() == 200) {
+            val blogItemList: List<BlogItem>? = response.body()
+            if (blogItemList != null) {
+                for (blogItem in blogItemList) {
+                    blogMutableList.add(blogItem)
+                }
+            } else {
+//                Log.d("nullitemBlog", blogItemList.toString())
+            }
+
+            blogAdapter = BlogAdapter(requireContext(), blogMutableList)
+            mRecyclerViewBlog.adapter = blogAdapter
+
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
@@ -196,12 +210,20 @@ class EducationFragment : Fragment(), WebinarInterface {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCellClickListener(id: String?) {
+    override fun onCellClickListener(id: String?, hostedBy: String?) {
         //use this retrofit call to webinar from here.
         val registerWebinarModel = RegisterWebinarModel(id.toString())
         mProgressBar.visibility = View.VISIBLE
         postRequestWebinar(registerWebinarModel)
         mProgressBar.visibility = View.INVISIBLE
+
+        //if hosted_by is
+        Log.d("HOSTEDFRAG", hostedBy.toString())
+        if(hostedBy.toString()=="other"){
+            //webview
+
+        }
+
     }
 
     @DelicateCoroutinesApi
@@ -215,25 +237,54 @@ class EducationFragment : Fragment(), WebinarInterface {
                     )
                 Log.d("TAGpostreq", response.toString() + "\n")
 
-                if(response.code()==200){
-                    //show the success image here.
-                }
-                else if(response.code()==400){
-                    //show dialog saying you are already registered.
-                }
-                else{
-                    //otherwise show a dialog with other responses.
-                    Toast.makeText(context,"Response" + response.body().toString()
-                            + "Response Code" + response.code(),Toast.LENGTH_LONG).show()
-                }
-
+                //show dialog saying you are already registered.
+                dialog = Dialog(requireContext())
+                showDialog(dialog, response.code())
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
                     .show()
                 Log.d("ERROR", error.toString())
+                dialog = Dialog(requireContext())
+                showDialog(dialog,404)
 
             }
         }
+    }
+
+    private fun showDialog(dialog: Dialog, code: Int) {
+        dialog.setCancelable(true)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val alreadyTv: TextView? = dialog.findViewById(R.id.already_dialog_text_view)
+        val successTv: TextView? = dialog.findViewById(R.id.success_tv)
+        val networkTv: TextView? = dialog.findViewById(R.id.edu_network_error_tv)
+
+        if (code == 200) {
+            alreadyTv?.visibility = View.INVISIBLE
+            successTv?.visibility = View.VISIBLE
+            networkTv?.visibility = View.INVISIBLE
+            createDialog(dialog)
+        } else if (code == 400) {
+            alreadyTv?.visibility = View.VISIBLE
+            successTv?.visibility = View.INVISIBLE
+            networkTv?.visibility = View.INVISIBLE
+            createDialog(dialog)
+        } else {
+            alreadyTv?.visibility = View.INVISIBLE
+            successTv?.visibility = View.INVISIBLE
+            networkTv?.visibility = View.VISIBLE
+            createDialog(dialog)
+        }
+
+    }
+
+    private fun createDialog(dialog: Dialog) {
+        dialog.setContentView(R.layout.already_registered_dialog_layout)
+        dialog.show()
+        val metrics: DisplayMetrics? = context?.resources?.displayMetrics
+        val width = metrics?.widthPixels
+        val height = metrics?.heightPixels
+        dialog.window?.setLayout((4 * width!!) / 5, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 }

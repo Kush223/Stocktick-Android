@@ -42,7 +42,7 @@
                     android:layout_marginTop="13dp"
                     android:fontFamily="sans-serif"
                     android:maxLines="1"
-                    android:text="Webinar 1"
+                    android:text="@string/dummy_title_webinar"
                     android:textColor="@color/black_000000"
                     android:textSize="22sp" />
 
@@ -58,7 +58,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:maxLines="1"
-                        android:text="Hosted by : "
+                        android:text="@string/hosted_by"
                         android:textColor="@color/black_000000"
                         android:textSize="15sp" />
 
@@ -69,7 +69,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:maxLines="1"
-                        android:text="Self-hosted"
+                        android:text="@string/self_hosted_dummy"
                         android:textColor="@color/black_000000"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -82,7 +82,7 @@
                     android:textColor="@color/black_000000"
                     android:layout_marginTop="7dp"
                     android:textSize="15sp"
-                    android:text="DATE"/>
+                    android:text="@string/date"/>
 
                 <Button
                     android:id="@+id/webinar_register_button"
@@ -94,7 +94,7 @@
                     android:backgroundTint="@color/black_000000"
                     android:fontFamily="sans-serif-medium"
                     android:layout_marginLeft="7dp"
-                    android:text="Register Now"
+                    android:text="@string/register_now_bt"
                     android:textAllCaps="false"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="18sp" />

@@ -40,7 +40,7 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif"
                     android:maxLines="1"
-                    android:text="Stocks Going Up"
+                    android:text="@string/dummy_text_blog"
                     android:textColor="@color/button_canvas"
                     android:textSize="20sp" />
 
@@ -51,7 +51,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_weight="1"
                     android:maxLines="1"
-                    android:text="19 Feb 2022"
+                    android:text="@string/dummy_date_blog"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -62,7 +62,7 @@
                     android:layout_marginStart="13dp"
                     android:layout_weight="1"
                     android:maxLines="3"
-                    android:text="19 Feb 2022"
+                    android:text="@string/dummy_date_blog"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>

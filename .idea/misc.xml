@@ -13,8 +13,6 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_main.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/create_account_layout.xml" value="0.1" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_debit_credit.xml" value="0.10666666666666667" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_debit_credit2.xml" value="0.14764492753623187" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_education.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_educationn.xml" value="0.1171875" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -39,6 +37,7 @@
         <entry key="app/src/main/res/drawable/check_circle.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/create_account_et.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/create_account_layout_bt_submit.xml" value="0.247" />
+        <entry key="app/src/main/res/drawable/dialog_box.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/education_title_line.xml" value="0.247" />
         <entry key="app/src/main/res/drawable/fragment_login_et_phone_edit.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/gradient_webinar_outside.xml" value="0.1" />
@@ -47,6 +46,7 @@
         <entry key="app/src/main/res/drawable/progress_bar.xml" value="0.106" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1541372351160444" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/already_registered_dialog_layout.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/blog_image.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/create_account_layout.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/edu_blog_item.xml" value="0.26507054296707994" />
@@ -60,8 +60,11 @@
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_verify_otp.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_welcome_page.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/loan_dialog.xml" value="0.2230281051677244" />
         <entry key="app/src/main/res/layout/loan_item.xml" value="0.27169149868536374" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.1767905711695376" />
+        <entry key="app/src/main/res/layout/success_dialog_layout.xml" value="0.26507054296707994" />
+        <entry key="app/src/main/res/layout/success_form.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/menu/help.xml" value="0.26507054296707994" />
       </map>
     </option>

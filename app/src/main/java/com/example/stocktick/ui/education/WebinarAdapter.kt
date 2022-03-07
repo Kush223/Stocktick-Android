@@ -60,20 +60,8 @@ class WebinarViewHolder(
         //we put up the progress bar and other things also here i think?
         //        or do we?
         binding.webinarRegisterButton.setOnClickListener{
-            webinarInterfaceClickListener.onCellClickListener(singleItem?.id)
+            webinarInterfaceClickListener.onCellClickListener(singleItem?.id,singleItem?.hosted_by)
         }
-
-//        binding.eduWebinarCard.setOnClickListener {
-//            Log.d("eduWebinarCard", "TAPPED ON THIS WEBINAR CARD")
-//            if (hosting == "self") {
-//                //show a loading icon here while retorifit call is happening
-//                binding.progressWebinar.visibility = View.VISIBLE
-//                binding.eduWebinarGradientLayout.visibility = View.INVISIBLE
-//                postRequestWebinar()
-//                binding.progressWebinar.visibility = View.INVISIBLE
-//                binding.eduWebinarGradientLayout.visibility = View.VISIBLE
-//            }
-//        }
 
     }
 }

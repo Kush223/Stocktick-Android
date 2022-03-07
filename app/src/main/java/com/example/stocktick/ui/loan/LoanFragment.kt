@@ -25,7 +25,6 @@ import retrofit2.Response
 
 //TODO() -- remove hardcoded tokens use constants instead
 
-
 class LoanFragment : Fragment() {
     private lateinit var loanViewModel: LoanViewModel
 
@@ -78,7 +77,6 @@ class LoanFragment : Fragment() {
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
-//                Log.d("ERROR_LOGINFRAGMENT", error.toString())
             }
 
         }

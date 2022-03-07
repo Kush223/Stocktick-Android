@@ -212,17 +212,11 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 }
 
                 dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-//                val lp = WindowManager.LayoutParams()
-//                lp.copyFrom(dialog.window?.attributes)
-//                lp.width = WindowManager.LayoutParams.MATCH_PARENT
-//                lp.height = WindowManager.LayoutParams.WRAP_CONTENT
 
                 dialog.show()
-//                dialog.window?.attributes = lp
                 val metrics: DisplayMetrics = context.resources.displayMetrics
                 val width = metrics.widthPixels
                 val height = metrics.heightPixels
-                //yourDialog.getWindow().setLayout((6 * width)/7, )
                 dialog.window?.setLayout((4 * width) / 5, ViewGroup.LayoutParams.WRAP_CONTENT)
             }
         }
@@ -237,7 +231,6 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                         .show()
-//                Log.d("ERROR_LOANADAPTER", error.toString())
             }
 
         }

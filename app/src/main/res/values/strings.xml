@@ -137,6 +137,16 @@
     <string name="resend_otp">Resend Otp</string>
     <string name="education_title_blogs">BLOGS</string>
     <string name="education_title_webinar">WEBINARS</string>
+    <string name="already_registered_message">You are already Registered\nThank You</string>
+    <string name="dummy_text_blog">Stocks Going Up</string>
+    <string name="dummy_date_blog">19 Feb 2022</string>
+    <string name="dummy_title_webinar">Webinar 1</string>
+    <string name="hosted_by">Hosted by :</string>
+    <string name="self_hosted_dummy">Self-hosted</string>
+    <string name="date">DATE</string>
+    <string name="register_now_bt">Register Now</string>
+    <string name="please_check_your_internet_connection">PLEASE CHECK YOUR INTERNET CONNECTION.</string>
+    <string name="try_again">Try Again</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>
