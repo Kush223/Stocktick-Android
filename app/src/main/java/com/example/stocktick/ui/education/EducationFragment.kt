@@ -37,6 +37,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 //immediately
@@ -73,7 +75,7 @@ class EducationFragment : Fragment(), EducationInterface {
     private lateinit var tokenSharedPreference: String
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
         mProgressBar = _binding.progressWebinar
@@ -91,18 +93,18 @@ class EducationFragment : Fragment(), EducationInterface {
         //webinar
         mRecyclerViewWebinar = _binding.eduWebinarList
         mRecyclerViewWebinar.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         mWebViewWebinar = _binding.webViewWebinar
 
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
         mRecyclerViewBlog.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
+                requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference =
-            sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
+                sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
 
         mProgressBar.visibility = View.VISIBLE
         getWebinarList()
@@ -115,7 +117,7 @@ class EducationFragment : Fragment(), EducationInterface {
             try {
                 showViewsAfterReload()
                 val response =
-                    RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
+                        RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
                 setAdapterBlog(response)
                 mProgressBar.visibility = View.INVISIBLE
 
@@ -130,7 +132,7 @@ class EducationFragment : Fragment(), EducationInterface {
             try {
                 showViewsAfterReload()
                 val response =
-                    RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
+                        RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
 
                 setAdapterWebinar(response)
                 mProgressBar.visibility = View.INVISIBLE
@@ -172,7 +174,7 @@ class EducationFragment : Fragment(), EducationInterface {
                 //Log.d("nullitem", webinarItemList.toString())
             }
             webinarAdapter =
-                WebinarAdapter(requireContext(), webinarMutableList, this)
+                    WebinarAdapter(requireContext(), webinarMutableList, this)
             mRecyclerViewWebinar.adapter = webinarAdapter
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
@@ -180,11 +182,25 @@ class EducationFragment : Fragment(), EducationInterface {
 
     }
 
+    private fun getYouTubeId(youTubeUrl: String): String? {
+        val pattern = "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*"
+        val compiledPattern: Pattern = Pattern.compile(pattern)
+        val matcher: Matcher = compiledPattern.matcher(youTubeUrl)
+        if (matcher.find()) {
+            return matcher.group()
+        }
+        return null
+    }
+
     private fun setAdapterBlog(response: Response<List<BlogItem>>) {
         if (response.code() == 200) {
             val blogItemList: List<BlogItem>? = response.body()
             if (blogItemList != null) {
                 for (blogItem in blogItemList) {
+                    // Modify the blog link
+                    if (blogItem.video_link != null) {
+                        blogItem.video_link = getYouTubeId(blogItem.video_link.toString())
+                    }
                     blogMutableList.add(blogItem)
                 }
             } else {
@@ -287,10 +303,10 @@ class EducationFragment : Fragment(), EducationInterface {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.postRegisterToWebinar(
-                        tokenSharedPreference,
-                        registerWebinarModel
-                    )
+                        RetrofitClientInstance.retrofitService.postRegisterToWebinar(
+                                tokenSharedPreference,
+                                registerWebinarModel
+                        )
                 //Log.d("TAGpostreq", response.toString() + "\n")
 
                 //show dialog saying you are already registered.
@@ -299,7 +315,7 @@ class EducationFragment : Fragment(), EducationInterface {
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
                 Log.d("ERROR", error.toString())
                 dialog = Dialog(requireContext())
                 showDialog(dialog, 404, hostedBy)
