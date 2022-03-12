@@ -44,6 +44,7 @@ class BlogViewHolder(
         val videoUrl = singleItem.video_link
         if(videoUrl!=null){
             //show YT view
+//            binding.youtubePlayerViewBlog.
             binding.ytLinearLayoutBlog.visibility = View.VISIBLE
             binding.imageLinearLayoutBlog.visibility = View.GONE
         }else{
