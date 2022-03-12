@@ -45,7 +45,7 @@ import retrofit2.Response
 
 //TODO() -- seperate item files for blog and video links.
 
-//TODO() -- youtube_url wierd black screen remove :/ how?
+//TODO() -- youtube_url wierd black screen remove :/  ---- load glide from adapter. to show thumbnails.
 //TODO() -- check the youtube url implemented with a stream of data
 //TODO() -- full screen button where is it?
 

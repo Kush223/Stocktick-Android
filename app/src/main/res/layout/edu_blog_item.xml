@@ -99,11 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:autoPlay="false"
-            app:enableAutomaticInitialization="true"
+            app:enableAutomaticInitialization="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout"
-            app:videoId="S0Q4gqBUs7c" />
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
     </LinearLayout>
 <!--    https://johncodeos.com/how-to-embed-youtube-videos-into-your-android-app-using-kotlin/-->
 

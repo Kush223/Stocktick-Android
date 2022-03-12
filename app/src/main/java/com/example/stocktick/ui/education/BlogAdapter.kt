@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.EduBlogItemBinding
 import com.example.stocktick.ui.education.model.BlogItem
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+
 //TODO() multiple layout files for youtube and blog item seperately
 class BlogAdapter(
     val context: Context, private val blogList: MutableList<BlogItem>, private val educationInterfaceClickListener: EducationInterface
@@ -43,12 +45,15 @@ class BlogViewHolder(
         if(videoUrl!=null){
             //show YT view
             binding.ytLinearLayoutBlog.visibility = View.VISIBLE
-            binding.imageLinearLayoutBlog.visibility = View.INVISIBLE
+            binding.imageLinearLayoutBlog.visibility = View.GONE
         }else{
             //image type
-            binding.ytLinearLayoutBlog.visibility = View.INVISIBLE
+            binding.ytLinearLayoutBlog.visibility = View.GONE
             binding.imageLinearLayoutBlog.visibility = View.VISIBLE
         }
+        var mYoutubeVideoPlayer : YouTubePlayerView = binding.youtubePlayerViewBlog
+
+        mYoutubeVideoPlayer.
 
         //so the real reason and magic of the interface is happening here.
         //we only want to click on a particular id and send it back to the fragment to do retrofi
