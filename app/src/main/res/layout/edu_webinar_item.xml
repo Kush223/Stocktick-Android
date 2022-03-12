@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><!--    placeholder comment-->
-<!--TODO() implement colour gradient toggle on card-->
-<!--TODO() register button API link, self hosted and third party webview point-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/webinar_layout"

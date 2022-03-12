@@ -9,14 +9,8 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.EduWebinarItemBinding
 import com.example.stocktick.ui.education.model.WebinarItem
 
-//TODO() -- a) )fix the retrofit.
-//TODO() --
-class WebinarAdapter(
-    val context: Context,
-    private val webinarList: MutableList<WebinarItem>,
-    private val tokenSharedPreference: String,
-    var webinarInterfaceClickListener: WebinarInterface
-) :
+class WebinarAdapter( val context: Context, private val webinarList: MutableList<WebinarItem>,
+    var educationInterfaceClickListener: EducationInterface) :
     RecyclerView.Adapter<WebinarViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,8 +18,7 @@ class WebinarAdapter(
         return WebinarViewHolder(
             context,
             binding,
-            tokenSharedPreference,
-            webinarInterfaceClickListener
+            educationInterfaceClickListener
         )
     }
 
@@ -43,20 +36,23 @@ class WebinarAdapter(
 class WebinarViewHolder(
     val context: Context,
     private val binding: EduWebinarItemBinding,
-    private val tokenSharedPreference: String,
-    private val webinarInterfaceClickListener: WebinarInterface
+    private val educationInterfaceClickListener: EducationInterface
 ) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(singleItem: WebinarItem?) {
-        val hosting = singleItem?.hosted_by.toString()
+        var hosting = singleItem?.hosted_by.toString()
+
         //toggle card colour
         if (hosting == "other") {
             binding.eduWebinarGradientLayout.setBackgroundResource(R.drawable.gradient_webinar_outside)
+            hosting = " "+singleItem?.other_host_name.toString()
+        }else{
+            hosting = " Self"
         }
         //binding attaching
         binding.webinarTitle.text = singleItem?.title
-        binding.webinarHostedBy.text = singleItem?.hosted_by
+        binding.webinarHostedBy.text = hosting
         binding.webinarDate.text = singleItem?.date
         Glide.with(context).load(singleItem?.image_url).into(binding.webinarImageUrl)
 
@@ -65,7 +61,7 @@ class WebinarViewHolder(
         //we put up the progress bar and other things also here i think?
         //or do we?
         binding.webinarRegisterButton.setOnClickListener {
-            webinarInterfaceClickListener.onWebinarClickListener(
+            educationInterfaceClickListener.onWebinarClickListener(
                 singleItem?.id,
                 singleItem?.hosted_by,
                 singleItem?.webinar_redirect_url

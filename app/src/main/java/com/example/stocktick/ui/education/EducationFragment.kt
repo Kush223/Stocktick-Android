@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
+import com.example.stocktick.databinding.EduBlogItemBinding
 import com.example.stocktick.databinding.FragmentEducationBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.education.model.BlogItem
@@ -30,6 +31,7 @@ import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -38,14 +40,17 @@ import retrofit2.Response
 
 
 //immediately
+//TODO() -- FIX BACK BUTTON AND THE APP BAR CONFIGURATIONS.
+//TODO() -- FIX THE MENU ITEMS TO SHOW LOGOUT and help in one part of the menu.
+
+//TODO() -- seperate item files for blog and video links.
+
+//TODO() -- youtube_url wierd black screen remove :/ how?
+//TODO() -- check the youtube url implemented with a stream of data
+//TODO() -- full screen button where is it?
 
 
-//TODO() -- intents
-//TODO() -- if youtube_url is given then the template of that yt in blog.
-//TODO() -- if only image_url then only image_url
-//TODo() -- Change the youtube to integrate this link: <!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
-
-class EducationFragment : Fragment(), WebinarInterface {
+class EducationFragment : Fragment(), EducationInterface {
 
     private var blogMutableList: MutableList<BlogItem> = ArrayList()
     private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
@@ -60,6 +65,7 @@ class EducationFragment : Fragment(), WebinarInterface {
     private lateinit var webinarAdapter: WebinarAdapter
     private lateinit var blogAdapter: BlogAdapter
     private lateinit var mWebViewWebinar: WebView
+    private lateinit var mYoutubePlayer: YouTubePlayerView
 
     private lateinit var dialog: Dialog
 
@@ -165,15 +171,15 @@ class EducationFragment : Fragment(), WebinarInterface {
             } else {
                 //Log.d("nullitem", webinarItemList.toString())
             }
-
             webinarAdapter =
-                WebinarAdapter(requireContext(), webinarMutableList, tokenSharedPreference, this)
+                WebinarAdapter(requireContext(), webinarMutableList, this)
             mRecyclerViewWebinar.adapter = webinarAdapter
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
         }
 
     }
+
     private fun setAdapterBlog(response: Response<List<BlogItem>>) {
         if (response.code() == 200) {
             val blogItemList: List<BlogItem>? = response.body()
@@ -184,8 +190,7 @@ class EducationFragment : Fragment(), WebinarInterface {
             } else {
 //                Log.d("nullitemBlog", blogItemList.toString())
             }
-
-            blogAdapter = BlogAdapter(requireContext(), blogMutableList)
+            blogAdapter = BlogAdapter(requireContext(), blogMutableList, this)
             mRecyclerViewBlog.adapter = blogAdapter
 
         } else {
@@ -216,27 +221,65 @@ class EducationFragment : Fragment(), WebinarInterface {
         //use this retrofit call to webinar from here.
         val registerWebinarModel = RegisterWebinarModel(id.toString())
         mProgressBar.visibility = View.VISIBLE
-        postRequestWebinar(registerWebinarModel,hostedBy)
-        mProgressBar.visibility = View.INVISIBLE
+        postRequestWebinar(registerWebinarModel, hostedBy)
+
 
         //if hosted_by is
         //Log.d("HOSTEDFRAG", hostedBy.toString())
-        if(hostedBy.toString()=="other"){
+        if (hostedBy.toString() == "other") {
             //webview
             mWebViewWebinar.webViewClient = WebViewClient()
             mWebViewWebinar.webChromeClient = WebChromeClient()
             //if you want to add intents. https://developer.android.com/guide/webapps/webview
             //the MyWebViewClient part
-            mWebViewWebinar.settings.apply{
+            mWebViewWebinar.settings.apply {
                 javaScriptCanOpenWindowsAutomatically = true
                 javaScriptEnabled = true
                 domStorageEnabled = true
+                setSupportZoom(true)
             }
             mWebViewWebinar.loadUrl(webinarRedirectUrl.toString())
+            mProgressBar.visibility = View.INVISIBLE
             mWebViewWebinar.visibility = View.VISIBLE
-
         }
+        mProgressBar.visibility = View.INVISIBLE
 
+    }
+
+    override fun onBlogClickListener(videoLink: String?, blogLink: String?) {
+        lateinit var bindingBlog: EduBlogItemBinding
+
+        if (videoLink != null) {
+            //YT type
+            mYoutubePlayer = bindingBlog.youtubePlayerViewBlog
+            viewLifecycleOwner.lifecycle.addObserver(mYoutubePlayer)
+            //how does it know which link to load?? which not to load??
+            //in the video url??
+            //in the stream of data given and the different ids provided to it?
+            //add ui limits from this link?
+            //full screen button where is it?
+            //https://johncodeos.com/how-to-embed-youtube-videos-into-your-android-app-using-kotlin/
+        } else {
+            //BLOG type
+            //open view for the blogLink
+            mProgressBar.visibility = View.VISIBLE
+            mWebViewWebinar.webViewClient = WebViewClient()
+            mWebViewWebinar.webChromeClient = WebChromeClient()
+            mWebViewWebinar.settings.apply {
+                javaScriptCanOpenWindowsAutomatically = true
+                javaScriptEnabled = true
+                domStorageEnabled = true
+                setSupportZoom(true)
+            }
+            mWebViewWebinar.loadUrl(blogLink.toString())
+            mWebViewWebinar.visibility = View.VISIBLE
+            mProgressBar.visibility = View.INVISIBLE
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mYoutubePlayer.release()
     }
 
     @DelicateCoroutinesApi
@@ -248,24 +291,24 @@ class EducationFragment : Fragment(), WebinarInterface {
                         tokenSharedPreference,
                         registerWebinarModel
                     )
-                Log.d("TAGpostreq", response.toString() + "\n")
+                //Log.d("TAGpostreq", response.toString() + "\n")
 
                 //show dialog saying you are already registered.
                 dialog = Dialog(requireContext())
-                showDialog(dialog, response.code())
+                showDialog(dialog, response.code(), hostedBy)
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed Network ERROR", Toast.LENGTH_SHORT)
                     .show()
                 Log.d("ERROR", error.toString())
                 dialog = Dialog(requireContext())
-                showDialog(dialog,404)
+                showDialog(dialog, 404, hostedBy)
 
             }
         }
     }
 
-    private fun showDialog(dialog: Dialog, code: Int) {
+    private fun showDialog(dialog: Dialog, code: Int, hostedBy: String?) {
         dialog.setCancelable(true)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -273,7 +316,7 @@ class EducationFragment : Fragment(), WebinarInterface {
         val successTv: TextView? = dialog.findViewById(R.id.success_tv)
         val networkTv: TextView? = dialog.findViewById(R.id.edu_network_error_tv)
 
-        if (code == 200) {
+        if (code == 200 && hostedBy.toString() == "self") {
             alreadyTv?.visibility = View.INVISIBLE
             successTv?.visibility = View.VISIBLE
             networkTv?.visibility = View.INVISIBLE
