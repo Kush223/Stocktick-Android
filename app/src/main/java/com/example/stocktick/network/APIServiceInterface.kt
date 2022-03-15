@@ -49,4 +49,4 @@ interface ApiServiceInterface {
     @POST("/subscribe/webinar/")
     suspend fun postRegisterToWebinar(@Header("authToken")authToken: String ,@Body registerWebinar : RegisterWebinarModel): Response<ResponseRegisterWebinar>
 }
-//JSON STRUCTURE AT https://codeshare.io/wn39rK
+//JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages

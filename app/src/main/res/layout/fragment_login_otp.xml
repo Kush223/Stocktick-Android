@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
-        android:visibility="visible"
+        android:visibility="invisible"
         tools:context=".auth.LoginFragment">
 
         <!-- Login/Signup -->
@@ -135,7 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
-        android:visibility="invisible"
+        android:visibility="visible"
         tools:context=".auth.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
@@ -169,7 +169,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="26dp"
                     android:layout_weight="21"
                     android:gravity="center_horizontal"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="12dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="top"
@@ -195,7 +195,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="85dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginRight="85dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center_horizontal|top"
