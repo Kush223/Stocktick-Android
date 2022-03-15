@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    tools:context=".ui.mutual_funds.MutualFundRootFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/happyInvestor"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_happyinvestor"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/necessity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Mutual Fund is a Necessity"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/happyInvestor" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="The text will be fetched from the api. So for no ed from the api. So for n ed from the api. So for n w I am just writing random stuff"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text_color"
+        app:layout_constraintTop_toBottomOf="@id/necessity" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:neumorph_shadowColorDark="@color/canvas_background"
+                    app:neumorph_shadowColorLight="#505050"
+                    app:neumorph_shadowElevation="2dp"
+                    app:neumorph_shapeType="flat"
+
+                    >
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="85dp"
+                            android:layout_height="85dp"
+                            android:foregroundGravity="center_vertical"
+                            android:src="@drawable/fundbazar_elephant"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="20dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FUNDZ"
+                            android:id="@+id/let1"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/let2"
+                            app:layout_constraintTop_toTopOf="@+id/let2"
+                            app:layout_constraintBottom_toBottomOf="@+id/let2"
+
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FUNDZ"
+                            android:id="@+id/let2"
+                            android:textSize="25sp"
+                            android:textColor="#ed6c1e"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginTop="10dp"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/let2"
+                            app:layout_constraintEnd_toEndOf="@id/let2"
+                            android:text="Invest Anytime,Anywhere"
+                            android:textStyle="italic"
+                            />
+
+                        <soup.neumorphism.NeumorphButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Visit"
+                            android:paddingHorizontal="10dp"
+                            app:neumorph_strokeColor="@color/white"
+                            style="@style/Widget.Neumorph.Button"
+                            app:neumorph_shadowColorDark="@color/canvas_background"
+                            app:neumorph_shadowColorLight="#505050"
+                            app:neumorph_shadowElevation="3dp"
+                            app:neumorph_shapeType="flat"
+                            android:id="@+id/cardButton"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="10dp"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"
+                            />
+
+
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </soup.neumorphism.NeumorphCardView>
+
+
+            <com.example.stocktick.ui.customviews.MutualFundCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/riskFactor"
+                app:let1="Want to know your"
+                app:let2="Risk Factor?"
+                app:image="@drawable/risky_man"
+                app:buttonText="Get Started"
+                />
+            <com.example.stocktick.ui.customviews.MutualFundCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/finance"
+                app:let1="Stressed about"
+                app:let2="Finance?"
+                app:buttonText="Get Started"
+                app:image="@drawable/thinking_man"
+                />
+            <com.example.stocktick.ui.customviews.MutualFundCard
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exploreMore"
+                app:let1="Explore more about"
+                app:let2="Mutual Funds"
+                app:image="@drawable/lazy_man"
+                app:buttonText="Explore More"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

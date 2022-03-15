@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    tools:context=".ui.mutual_funds.risk_factor.questions_fragment.QuestionsFragment">
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btSubNext"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:paddingHorizontal="10dp"
+        android:text="Submit"
+        android:textColor="@color/button_canvas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeType="flat"
+        app:neumorph_strokeColor="@color/white"
+        app:layout_goneMarginEnd="15dp"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

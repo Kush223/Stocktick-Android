@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -81,7 +80,8 @@ class HomeFragment : Fragment() {
             fragmentTransaction?.commit()
         }
         mutualCard.setOnClickListener{
-
+            view?.findNavController()?.navigate(R.id.action_navigation_home_to_mutualFundRootFragment2)
+            //Issue: if clicked, then we need to press back else it misbehaves
         }
         insuranceCard.setOnClickListener{
             //view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.navigation_insurance) }

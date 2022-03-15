@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_mutual_funds"
+        android:icon="@drawable/mutual_fund_nav_icon"
+        android:title="Mutual Funds"
+        />
+    <item
         android:id="@+id/navigation_education"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_education" />

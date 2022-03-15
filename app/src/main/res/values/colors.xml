@@ -15,5 +15,7 @@
     <color name="canvas_all">#E5E5E5</color>
     <color name="education_title_line">#858585</color>
     <color name="education_page_title_colour">#BABABA</color>
+    <color name="secondary_text_color">#B7B7B7</color>
+    <color name="color_background">#212121</color>
     <!--    #FF7666-->
 </resources>
