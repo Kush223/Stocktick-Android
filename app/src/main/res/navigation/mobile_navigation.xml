@@ -15,7 +15,12 @@
         android:id="@+id/navigation_home"
         android:name="com.example.stocktick.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_mutualFundRootFragment2"
+            app:destination="@id/navigation_mutual_funds"
+            />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_loan"
@@ -28,5 +33,9 @@
         android:name="com.example.stocktick.ui.insurance.InsuranceFragment"
         android:label="@string/insurance_title"
         tools:layout="@layout/fragment_insurance" />
+    <fragment
+        android:id="@+id/navigation_mutual_funds"
+        android:name="com.example.stocktick.ui.mutual_funds.MutualFundRootFragment"
+        android:label="MutualFundRootFragment" />
 
 </navigation>

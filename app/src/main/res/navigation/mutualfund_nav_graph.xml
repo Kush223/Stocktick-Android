@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mutualfund_nav_graph"
+    app:startDestination="@id/userDetailFragment">
+
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.UserDetailFragment"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_user_detail" >
+        <action
+            android:id="@+id/to_questions_fragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment.QuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/to_result_fragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/back_to_userdetail_fragment"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
+</navigation>

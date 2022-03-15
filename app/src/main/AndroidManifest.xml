@@ -14,6 +14,10 @@
         android:theme="@style/Theme.Stocktick"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.mutual_funds.risk_factor.RiskFactorActivity"
+            android:exported="false"
+            />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -25,7 +29,6 @@
         <activity
             android:name=".auth.LoginSignupActivity"
             android:exported="true" />
-
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"

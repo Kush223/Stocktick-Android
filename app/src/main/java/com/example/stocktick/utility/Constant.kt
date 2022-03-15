@@ -6,6 +6,7 @@ object Constant {
     const val USER = "USER"
     const val LOG_TAG ="TEST123"
     const val EDUCATION = "Education"
+    const val MUTUAL_FUND = "Mutual Fund"
     const val LOAN = "Loan"
     const val SHAREDPREFERENCES_TOKEN_A = "a"
     const val permSms = 100
