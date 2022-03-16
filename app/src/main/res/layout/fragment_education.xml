@@ -70,7 +70,7 @@
 
             <!--            WEBINAR LIST-->
 
-            <!--            TITLE BLOGS TEXT VIEW-->
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/edu_webinar_list"
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="5dp"
                 tools:listitem="@layout/edu_webinar_item" />
-
+            <!--            TITLE BLOGS TEXT VIEW-->
             <LinearLayout
                 android:id="@+id/blog_title_linear_layout"
                 android:layout_width="match_parent"
@@ -87,14 +87,13 @@
                 android:orientation="horizontal"
                 android:visibility="visible">
 
-
                 <View
                     android:id="@+id/vector_education_blog_title_line_1"
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_weight="1"
                     android:background="@drawable/education_title_line" />
 
@@ -112,13 +111,11 @@
                     android:id="@+id/vector_education_blog_title_line_2"
                     android:layout_width="0dp"
                     android:layout_height="3dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_weight="1"
                     android:background="@drawable/education_title_line" />
-
-
             </LinearLayout>
 
             <!--BLOG LIST-->
@@ -127,7 +124,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
-                android:layout_marginTop="17dp"
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="5dp"
                 tools:listitem="@layout/edu_blog_item_image" />

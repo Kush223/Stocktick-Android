@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.EduBlogItemImageBinding
@@ -15,8 +14,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 
 //https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
@@ -56,28 +53,21 @@ class BlogAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val singleItem = blogList[position]
-        Log.d("ITEMS","2")
         if (singleItem.view_type == 0) {
             //attatch to the video_url
-            Log.d("ITEMS","3")
             (holder as BlogImageViewHolder).bind(singleItem)
-            Log.d("ITEMS","4")
         } else {
             lifecycle.addObserver(youTubePlayerView)
-            Log.d("ITEMS","5")
             (holder as BlogVideoViewHolder).bind(singleItem,youTubePlayerView)
-            Log.d("ITEMS","6")
         }
     }
 
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("ITEMS","1")
         return blogList[position].view_type ?: 0
     }
 
     override fun getItemCount(): Int {
-        Log.d("ITEMS","0")
         return blogList.size
     }
 }
@@ -86,24 +76,18 @@ class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVide
     RecyclerView.ViewHolder(binding.root) {
     fun bind(singleItem: BlogItem, youTubePlayerView: YouTubePlayerView) {
         //Here code related to the video playing etc.
-        Log.d("blogVideoVH", binding.toString())
-        Log.d("singleItem", singleItem.toString())
-        Log.d("singleItem", singleItem.video_link.toString())
+
         val id = singleItem.video_link
         lateinit var youTubePlayer : YouTubePlayer
-        Log.d("BINDSID",id.toString())
 
+        Log.d("bindID",id.toString())
         youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(initializedYouTubePlayer: YouTubePlayer) {
-                Log.d("BINDS","1")
                 youTubePlayer = initializedYouTubePlayer
-                Log.d("BINDS","2")
                 if (id != null) {
-                    Log.d("BINDS","3")
                     youTubePlayer.cueVideo(id, 0F)
-                    Log.d("BINDS","4")
                 }else{
-                    Log.d("bindID",id.toString())
+                    Log.d("bindID3",id.toString())
                 }
             }
         })
