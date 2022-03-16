@@ -1,20 +1,18 @@
 package com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentQuestionsBinding
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
-import soup.neumorphism.NeumorphButton
 import kotlin.math.ceil
 
 
@@ -52,22 +50,25 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions)
             answers = answers,
             context = requireContext(),
             onBtnClick = { page->
-                if (page >= totalPage){
-                    Toast.makeText(requireContext(), "Navigate now", Toast.LENGTH_SHORT).show()
-                }
-                else if (page==totalPage-1) {
-                    val list = viewModel.mQuestions.value ?: listOf()
-                    fiveQuestions = list.subList(
-                        5*page, list.size-1
-                    )
-                    adapter.notifyDataSetChanged()
-                    questionsRecyclerView.smoothScrollToPosition(0)
-                }
-                else  {
-                    fiveQuestions =
-                        viewModel.mQuestions.value?.subList(5 * (page), 5 * (page + 1)) ?: listOf()
-                    adapter.notifyDataSetChanged()
-                    questionsRecyclerView.smoothScrollToPosition(0)
+                when {
+                    page >= totalPage -> {
+                        Toast.makeText(requireContext(), "Navigate now", Toast.LENGTH_SHORT).show()
+                        view?.findNavController()?.navigate(R.id.to_result_fragment)
+                    }
+                    page==totalPage-1 -> {
+                        val list = viewModel.mQuestions.value ?: listOf()
+                        fiveQuestions = list.subList(
+                            5*page, list.size-1
+                        )
+                        adapter.notifyDataSetChanged()
+                        questionsRecyclerView.smoothScrollToPosition(0)
+                    }
+                    else -> {
+                        fiveQuestions =
+                            viewModel.mQuestions.value?.subList(5 * (page), 5 * (page + 1)) ?: listOf()
+                        adapter.notifyDataSetChanged()
+                        questionsRecyclerView.smoothScrollToPosition(0)
+                    }
                 }
             },
             totalPage = totalPage

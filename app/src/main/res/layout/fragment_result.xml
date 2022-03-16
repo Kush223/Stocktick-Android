@@ -11,6 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
+        android:id="@+id/header"
         >
         <ImageView
             android:layout_width="match_parent"
@@ -32,6 +33,132 @@
             android:background="@color/color_background"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.example.stocktick.ui.customviews.PerformanceMeter
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        android:layout_marginTop="40dp"
+        android:id="@+id/performanceMEter"
+        />
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/performanceMEter"
+        android:layout_marginTop="20dp"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shapeType="flat"
+        android:id="@+id/card"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/score"
+                android:textSize="20sp"
+                android:text="You have scored 90 out of 100"
+                android:textColor="#D76E28"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintTop_toBottomOf="@id/score"
+                android:text="Based on the score, below is the suggestion"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </soup.neumorphism.NeumorphCardView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:id="@+id/resultDesc"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        />
+
+    <soup.neumorphism.NeumorphButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:paddingHorizontal="10dp"
+        app:neumorph_strokeColor="@color/white"
+        style="@style/Widget.Neumorph.Button"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeType="flat"
+        android:id="@+id/btRetry"
+        app:layout_constraintTop_toBottomOf="@+id/resultDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+    <soup.neumorphism.NeumorphButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Share"
+        app:neumorph_strokeColor="@color/white"
+        style="@style/Widget.Neumorph.Button"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeType="flat"
+        android:id="@+id/btShare"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btDownloadPdf"
+        android:layout_marginHorizontal="10dp"
+        />
+    <soup.neumorphism.NeumorphButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Download Pdf"
+        android:textColor="@color/button_canvas"
+        app:neumorph_strokeColor="@color/white"
+        style="@style/Widget.Neumorph.Button"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shapeType="flat"
+        android:id="@+id/btDownloadPdf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btShare"
+        android:layout_marginHorizontal="10dp"
+        />
+
+
+
+
 
 
 
