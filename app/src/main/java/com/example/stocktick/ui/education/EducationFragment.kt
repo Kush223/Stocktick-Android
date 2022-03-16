@@ -17,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,7 +47,7 @@ import java.util.regex.Pattern
 //TODO() -- onReady white screen :/  ---- load glide from adapter. to show thumbnails.
 
 
-class EducationFragment : Fragment(), EducationInterface {
+class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
 
     private var blogMutableList: MutableList<BlogItem> = ArrayList()
     private var webinarMutableList: MutableList<WebinarItem> = ArrayList()
@@ -68,10 +69,10 @@ class EducationFragment : Fragment(), EducationInterface {
     private lateinit var tokenSharedPreference: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-//        Log.d("onCreateView","1")
+        Log.d("onCreateView","1")
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
         mProgressBar = _binding.progressWebinar
-//        Log.d("onCreateEducation","0")
+        Log.d("onCreateEducation","0")
         return _binding.root
     }
 
@@ -201,7 +202,7 @@ class EducationFragment : Fragment(), EducationInterface {
                 Log.d("nullitemBlog", blogItemList.toString())
             }
             Log.d("Adapter",blogMutableList.toString())
-            blogAdapter = BlogAdapter(requireContext(), blogMutableList, this)
+            blogAdapter = BlogAdapter(lifecycle, requireContext(), blogMutableList, this)
             mRecyclerViewBlog.adapter = blogAdapter
 
         } else {
@@ -269,9 +270,11 @@ class EducationFragment : Fragment(), EducationInterface {
             domStorageEnabled = true
             setSupportZoom(true)
         }
+        Log.d("BLOGS","000")
         mWebViewWebinar.loadUrl(blogLink.toString())
         mWebViewWebinar.visibility = View.VISIBLE
         mProgressBar.visibility = View.INVISIBLE
+        Log.d("BLOGS","00111111")
     }
 
     @DelicateCoroutinesApi
