@@ -10,9 +10,12 @@ import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.EduBlogItemImageBinding
 import com.example.stocktick.databinding.EduBlogItemVideoBinding
 import com.example.stocktick.ui.education.model.BlogItem
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+
 
 //https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
 //https://github.com/PierfrancescoSoffritti/android-youtube-player
@@ -26,6 +29,10 @@ class BlogAdapter(
         const val VIEW_TYPE_IMAGE = 0
     }
 
+//    fun RecyclerViewAdapter(lifecycle: Lifecycle?) {
+//        this.lifecycle = lifecycle!!
+//    }
+
     private lateinit var youTubePlayerView: YouTubePlayerView
     private lateinit var lifecycle: Lifecycle
 
@@ -34,12 +41,10 @@ class BlogAdapter(
         if (viewType == VIEW_TYPE_IMAGE) {
             val binding = EduBlogItemImageBinding.inflate(inflater, parent, false)
             return BlogImageViewHolder(context, binding, educationInterfaceClickListener)
-//            Log.d("VIEWTYPES1: ",viewType.toString())
         } else {
             val binding = EduBlogItemVideoBinding.inflate(inflater, parent, false)
-//            Log.d("VIEWTYPES2: ",viewType.toString())
             youTubePlayerView = binding.youtubePlayerViewBlog
-            lifecycle.addObserver(youTubePlayerView)
+            //HOW TO ATTATCH LIFECYCLE HERE? or where to attach the life cycle even?
             return BlogVideoViewHolder(context, binding)
         }
 
@@ -50,16 +55,14 @@ class BlogAdapter(
         if (singleItem.view_type == 0) {
             //attatch to the video_url
             (holder as BlogImageViewHolder).bind(singleItem)
-//            Log.d("holder1 ",holder.toString())
         } else {
-            (holder as BlogVideoViewHolder).bind(singleItem)
+            lifecycle.addObserver(youTubePlayerView)
+            (holder as BlogVideoViewHolder).bind(singleItem,youTubePlayerView)
         }
     }
-//        Log.d("holder2 ",holder.toString())
 
 
     override fun getItemViewType(position: Int): Int {
-//        Log.d("getitmviewtype",blogList[position].view_type.toString())
         return blogList[position].view_type ?: 0
     }
 
@@ -68,13 +71,31 @@ class BlogAdapter(
     }
 }
 
-class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVideoBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(singleItem: BlogItem) {
+class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVideoBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    fun bind(singleItem: BlogItem, youTubePlayerView: YouTubePlayerView) {
         //Here code related to the video playing etc.
         Log.d("blogVideoVH", binding.toString())
         Log.d("singleItem", singleItem.toString())
         Log.d("singleITem", singleItem.video_link.toString())
         val id = getYouTubeId(singleItem.video_link.toString())
+        lateinit var youTubePlayer : YouTubePlayer
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(initializedYouTubePlayer: YouTubePlayer) {
+                youTubePlayer = initializedYouTubePlayer
+                if (id != null) {
+                    youTubePlayer.cueVideo(id, 0F)
+                }else{
+                    Log.d("bindID",id.toString())
+                }
+            }
+        })
+//        .addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+//            override fun onReady(initializedYouTubePlayer: YouTubePlayer) {
+//                youTubePlayer = initializedYouTubePlayer
+//                youTubePlayer.cueVideo(currentVideoId, 0)
+//            }
+//        })
     }
 
     private fun getYouTubeId(youTubeUrl: String): String? {

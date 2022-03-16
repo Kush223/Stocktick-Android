@@ -164,7 +164,7 @@ class EducationFragment : Fragment(), EducationInterface {
                     webinarMutableList.add(webinarItem)
                 }
             } else {
-                //Log.d("nullitem", webinarItemList.toString())
+                Log.d("nullitem", webinarItemList.toString())
             }
             webinarAdapter =
                 WebinarAdapter(requireContext(), webinarMutableList, this)
