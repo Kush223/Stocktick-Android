@@ -30,7 +30,6 @@ import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -62,18 +61,17 @@ class EducationFragment : Fragment(), EducationInterface {
     private lateinit var webinarAdapter: WebinarAdapter
     private lateinit var blogAdapter: BlogAdapter
     private lateinit var mWebViewWebinar: WebView
-    private lateinit var mYoutubePlayerView: YouTubePlayerView
 
     private lateinit var dialog: Dialog
 
 
     private lateinit var tokenSharedPreference: String
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        Log.d("onCreateView","1")
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
         mProgressBar = _binding.progressWebinar
+        Log.d("onCreateEducation","0")
         return _binding.root
     }
 
@@ -83,24 +81,26 @@ class EducationFragment : Fragment(), EducationInterface {
         val viewModelFactory = EducationViewModelFactory(requireContext())
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
-
+        Log.d("onViewCreated","4")
         //webinar
         mRecyclerViewWebinar = _binding.eduWebinarList
         mRecyclerViewWebinar.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         mWebViewWebinar = _binding.webViewWebinar
-
+        Log.d("onViewCreated","3")
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
         mRecyclerViewBlog.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-
+        Log.d("onViewCreated","2")
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
+        Log.d("onViewCreated","1")
 
         mProgressBar.visibility = View.VISIBLE
+        Log.d("onViewCreated","0")
         getWebinarList()
         getBlogList()
 
@@ -114,7 +114,6 @@ class EducationFragment : Fragment(), EducationInterface {
                     RetrofitClientInstance.retrofitService.getBlogs(tokenSharedPreference)
                 setAdapterBlog(response)
                 mProgressBar.visibility = View.INVISIBLE
-
             } catch (error: Exception) {
                 showNetworkErrorViews()
             }
@@ -127,7 +126,7 @@ class EducationFragment : Fragment(), EducationInterface {
                 showViewsAfterReload()
                 val response =
                     RetrofitClientInstance.retrofitService.getWebinar(tokenSharedPreference)
-
+                Log.d("responseWeb",response.toString())
                 setAdapterWebinar(response)
                 mProgressBar.visibility = View.INVISIBLE
 
@@ -199,9 +198,9 @@ class EducationFragment : Fragment(), EducationInterface {
                     blogMutableList.add(blogItem)
                 }
             } else {
-//                Log.d("nullitemBlog", blogItemList.toString())
+                Log.d("nullitemBlog", blogItemList.toString())
             }
-
+            Log.d("Adapter",blogMutableList.toString())
             blogAdapter = BlogAdapter(requireContext(), blogMutableList, this)
             mRecyclerViewBlog.adapter = blogAdapter
 
@@ -273,11 +272,6 @@ class EducationFragment : Fragment(), EducationInterface {
         mWebViewWebinar.loadUrl(blogLink.toString())
         mWebViewWebinar.visibility = View.VISIBLE
         mProgressBar.visibility = View.INVISIBLE
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mYoutubePlayerView.release()
     }
 
     @DelicateCoroutinesApi

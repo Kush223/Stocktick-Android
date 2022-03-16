@@ -23,23 +23,29 @@ class BlogAdapter(
         if (viewType == VIEW_TYPE_IMAGE) {
             val binding = EduBlogItemImageBinding.inflate(inflater, parent, false)
             return BlogImageViewHolder(context, binding, educationInterfaceClickListener)
+            Log.d("VIEWTYPES1: ",viewType.toString())
         } else {
+
             val binding = EduBlogItemVideoBinding.inflate(inflater, parent, false)
-            Log.d("OncreateVH","VIEWTYPE code"+viewType.toString())
-            return BlogVideoViewHolder(context,binding,educationInterfaceClickListener)
+            Log.d("VIEWTYPES2: ",viewType.toString())
+            return BlogVideoViewHolder(context, binding)
         }
 
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val singleItem = blogList[position]
-        if (singleItem.view_type==0) {
+        if (singleItem.view_type == 0) {
             //attatch to the video_url
             (holder as BlogImageViewHolder).bind(singleItem)
+            Log.d("holder1 ",holder.toString())
         }
         (holder as BlogVideoViewHolder).bind(singleItem)
+        Log.d("holder2 ",holder.toString())
     }
 
     override fun getItemViewType(position: Int): Int {
+        Log.d("getitmviewtype",blogList[position].view_type.toString())
         return blogList[position].view_type ?: 0
     }
 
@@ -49,13 +55,10 @@ class BlogAdapter(
 }
 
 class BlogVideoViewHolder(
-    context: Context,
-    private var binding: EduBlogItemVideoBinding,
-    educationInterfaceClickListener: EducationInterface
+    context: Context, private var binding: EduBlogItemVideoBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(singleItem: BlogItem) {
         //Here code related to the video playing etc.
-
 
     }
 }

@@ -1,5 +1,7 @@
 package com.example.stocktick.ui.education.model
 
+import androidx.annotation.Nullable
+
 data class BlogItem(
     var short_desc: String? = null,
     var long_desc: String? = null,
