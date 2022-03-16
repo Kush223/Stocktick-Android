@@ -4,30 +4,42 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.EduBlogItemImageBinding
 import com.example.stocktick.databinding.EduBlogItemVideoBinding
 import com.example.stocktick.ui.education.model.BlogItem
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
+//https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
+//https://github.com/PierfrancescoSoffritti/android-youtube-player
 class BlogAdapter(
-    val context: Context, private val blogList: MutableList<BlogItem>, private val educationInterfaceClickListener: EducationInterface
+    val context: Context,
+    private val blogList: MutableList<BlogItem>,
+    private val educationInterfaceClickListener: EducationInterface
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         const val VIEW_TYPE_IMAGE = 0
     }
 
+    private lateinit var youTubePlayerView: YouTubePlayerView
+    private lateinit var lifecycle: Lifecycle
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         if (viewType == VIEW_TYPE_IMAGE) {
             val binding = EduBlogItemImageBinding.inflate(inflater, parent, false)
             return BlogImageViewHolder(context, binding, educationInterfaceClickListener)
-            Log.d("VIEWTYPES1: ",viewType.toString())
+//            Log.d("VIEWTYPES1: ",viewType.toString())
         } else {
-
             val binding = EduBlogItemVideoBinding.inflate(inflater, parent, false)
-            Log.d("VIEWTYPES2: ",viewType.toString())
+//            Log.d("VIEWTYPES2: ",viewType.toString())
+            youTubePlayerView = binding.youtubePlayerViewBlog
+            lifecycle.addObserver(youTubePlayerView)
             return BlogVideoViewHolder(context, binding)
         }
 
@@ -38,14 +50,16 @@ class BlogAdapter(
         if (singleItem.view_type == 0) {
             //attatch to the video_url
             (holder as BlogImageViewHolder).bind(singleItem)
-            Log.d("holder1 ",holder.toString())
+//            Log.d("holder1 ",holder.toString())
+        } else {
+            (holder as BlogVideoViewHolder).bind(singleItem)
         }
-        (holder as BlogVideoViewHolder).bind(singleItem)
-        Log.d("holder2 ",holder.toString())
     }
+//        Log.d("holder2 ",holder.toString())
+
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("getitmviewtype",blogList[position].view_type.toString())
+//        Log.d("getitmviewtype",blogList[position].view_type.toString())
         return blogList[position].view_type ?: 0
     }
 
@@ -54,12 +68,23 @@ class BlogAdapter(
     }
 }
 
-class BlogVideoViewHolder(
-    context: Context, private var binding: EduBlogItemVideoBinding,
-) : RecyclerView.ViewHolder(binding.root) {
+class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVideoBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(singleItem: BlogItem) {
         //Here code related to the video playing etc.
+        Log.d("blogVideoVH", binding.toString())
+        Log.d("singleItem", singleItem.toString())
+        Log.d("singleITem", singleItem.video_link.toString())
+        val id = getYouTubeId(singleItem.video_link.toString())
+    }
 
+    private fun getYouTubeId(youTubeUrl: String): String? {
+        val pattern = "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*"
+        val compiledPattern: Pattern = Pattern.compile(pattern)
+        val matcher: Matcher = compiledPattern.matcher(youTubeUrl)
+        if (matcher.find()) {
+            return matcher.group()
+        }
+        return null
     }
 }
 

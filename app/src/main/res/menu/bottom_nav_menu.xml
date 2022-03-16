@@ -8,8 +8,8 @@
         />
     <item
         android:id="@+id/navigation_education"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_education" />
+        android:icon="@drawable/loan_icon"
+        android:title="@string/learn" />
 
     <item
         android:id="@+id/navigation_home"
