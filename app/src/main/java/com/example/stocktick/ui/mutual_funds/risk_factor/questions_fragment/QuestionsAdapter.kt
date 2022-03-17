@@ -17,7 +17,7 @@ import soup.neumorphism.NeumorphButton
 private const val TAG = "QuestionsAdapter"
 class QuestionsAdapter
 constructor(
-    private val questions: List<Question>,
+    var questions: List<Question>,
     private val answers: MutableMap<String, String>,
     private val context: Context,
     private val onBtnClick: (Int)->Unit,
@@ -88,15 +88,19 @@ constructor(
             })
         } else {
             val question = questions[position]
-            val adapter = OptionsAdapter.newInstance(
+            val key = "option${question.questionNo}"
+            var adapter : OptionsAdapter? = null
+            adapter = OptionsAdapter.newInstance(
                 options = question.options,
                 onClick = {
                     //question numbering starts form 1 and not 0
-                    val key = "option${question.questionNo}"
                     answers[key] = it.toString()
+                    adapter?.optionChosen = it
+                    adapter?.notifyDataSetChanged()
                     Toast.makeText(context, "OnBindVIewHOlder $answers", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onBindViewHolder: $answers")
-                }
+                },
+                optionChosen = if (answers.containsKey(key) && answers[key]!=null) answers[key]!!.toInt() else -1
             )
             holder.question.text = "${position + 1 +(page-1)*5}. ${question.question}"
             holder.options.layoutManager = LinearLayoutManager(context)

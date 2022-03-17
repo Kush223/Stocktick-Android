@@ -9,6 +9,7 @@ import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
+import com.example.stocktick.ui.mutual_funds.models.RiskFactorQuestionItem
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -48,5 +49,9 @@ interface ApiServiceInterface {
 
     @POST("/subscribe/webinar/")
     suspend fun postRegisterToWebinar(@Header("authToken")authToken: String ,@Body registerWebinar : RegisterWebinarModel): Response<ResponseRegisterWebinar>
+
+    //mutual fund calls
+    @GET("/riskfactor/questions/")
+    suspend fun getRiskFactorQuestions() : Response<List<RiskFactorQuestionItem>>
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages
