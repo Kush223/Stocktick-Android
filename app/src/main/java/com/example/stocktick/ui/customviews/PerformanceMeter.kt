@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import kotlinx.coroutines.*
-import kotlin.math.max
 
 enum class PerformanceLabel(val label: String, val angle: Float) {
     WEALTH_PROTECT("Protect", 10f),
