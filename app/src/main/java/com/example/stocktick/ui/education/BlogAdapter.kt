@@ -78,6 +78,7 @@ class BlogAdapter(
 
 class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVideoBinding) :
     RecyclerView.ViewHolder(binding.root) {
+
     fun bind(singleItem: BlogItem, youTubePlayerView: YouTubePlayerView) {
         //Here code related to the video playing etc.
 
