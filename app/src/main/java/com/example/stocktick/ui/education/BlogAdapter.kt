@@ -12,8 +12,12 @@ import com.example.stocktick.databinding.EduBlogItemVideoBinding
 import com.example.stocktick.ui.education.model.BlogItem
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.utils.FadeViewHelper
+
+
+
 
 
 //https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
@@ -88,6 +92,16 @@ class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVide
                     youTubePlayer.cueVideo(id, 0F)
                 }else{
                     Log.d("bindID3",id.toString())
+                }
+                val defaultPlayerUiController = DefaultPlayerUiController(youTubePlayerView, youTubePlayer)
+                youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
+                defaultPlayerUiController.apply{
+                    showMenuButton(false)
+                    showFullscreenButton(true)
+                    showVideoTitle(false)
+                    showPlayPauseButton(true)
+                    showYouTubeButton(true)
+                    showSeekBar(true)
                 }
             }
         })

@@ -8,8 +8,6 @@
         android:id="@+id/yt_linear_layout_blog"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:autoPlay="false"
+            android:focusable="true"
             app:enableAutomaticInitialization="true"
             app:handleNetworkEvents="true"
             app:layout_constraintEnd_toEndOf="parent" />

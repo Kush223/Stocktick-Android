@@ -21,7 +21,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!--BOTH WEBINAR AND BLOG LAYOUT-->
-
+        <LinearLayout
+            android:id="@+id/wrapper_education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <!--WEBINAR TITLE LAYOUT-->
             <LinearLayout
                 android:id="@+id/webinar_title_linear_layout"
@@ -62,10 +66,7 @@
 
 
             </LinearLayout>
-
             <!--            WEBINAR LIST-->
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/edu_webinar_list"
                 android:layout_width="match_parent"
@@ -122,6 +123,7 @@
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="5dp"
                 tools:listitem="@layout/edu_blog_item_image" />
+    </LinearLayout>
     </ScrollView>
 
     <ProgressBar
