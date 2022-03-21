@@ -152,7 +152,6 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
     ) -> Unit)
     {
         viewModelScope.launch(Dispatchers.IO){
-
             try {
                 val response = RetrofitClientInstance.retrofitService.getRangeResult(
                     authToken = tokenSharedPreference
@@ -174,7 +173,7 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
                                 },
                                 description = response.body()?.get(0)?.description
                                     ?: "No description found",
-                                score = (response.body()?.get(0)?.value1 ?: "80") as String
+                                score = (response.body()?.get(0)?.value1 ?: "80").toString()
                             )
                         )
                     }
