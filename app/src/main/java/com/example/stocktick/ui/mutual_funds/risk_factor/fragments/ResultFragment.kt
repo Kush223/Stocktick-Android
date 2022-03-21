@@ -1,7 +1,6 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
 import android.os.Bundle
-import android.os.PerformanceHintManager
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -9,8 +8,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentResultBinding
-import com.example.stocktick.ui.customviews.PerformanceLabel
 import com.example.stocktick.ui.customviews.PerformanceMeter
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 
 
 class ResultFragment : Fragment(R.layout.fragment_result) {

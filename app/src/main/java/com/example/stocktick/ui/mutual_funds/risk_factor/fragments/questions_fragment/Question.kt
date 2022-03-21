@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment
 
 data class Question(
     val question: String,

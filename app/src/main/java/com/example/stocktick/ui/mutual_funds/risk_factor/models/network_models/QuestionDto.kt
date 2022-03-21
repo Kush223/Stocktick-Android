@@ -1,6 +1,6 @@
-package com.example.stocktick.ui.mutual_funds.models.network_models
+package com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models
 
-data class RiskFactorQuestionItem(
+data class QuestionDto(
     val created_by: String?,
     val id: Int?,
     val modified_by: String?,

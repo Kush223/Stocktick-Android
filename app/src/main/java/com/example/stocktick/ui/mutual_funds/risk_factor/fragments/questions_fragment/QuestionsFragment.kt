@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentQuestionsBinding
-import com.example.stocktick.ui.mutual_funds.models.network_models.PostUserResponse
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 import kotlin.math.ceil
 
@@ -79,7 +79,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                             }
 
 
-                            val postUserResponse = PostUserResponse(
+                            val postUserResponse = AnswersDto(
                                 option1 = answers["option1"] ?: "1",
                                 option2 = answers["option2"] ?: "1",
                                 option3 = answers["option3"] ?: "1",
@@ -92,7 +92,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                                 option10 = answers["option10"] ?: "1",
                             )
                             viewModel.postUserResponse(
-                                postUserResponse = postUserResponse
+                                answersDto = postUserResponse
                             ) { isSuccessful ->
                                 if (isSuccessful) {
                                     val navController = view?.findNavController()

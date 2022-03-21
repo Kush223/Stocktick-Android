@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -18,6 +18,7 @@ import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentUserDetailBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 import com.example.stocktick.utility.extension_functions.getResizedBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment.QuestionsFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.QuestionsFragment"
         android:label="fragment_questions"
         tools:layout="@layout/fragment_questions" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.ResultFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.risk_factor.fragments.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action

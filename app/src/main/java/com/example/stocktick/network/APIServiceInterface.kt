@@ -9,7 +9,7 @@ import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
-import com.example.stocktick.ui.mutual_funds.models.network_models.*
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -52,23 +52,23 @@ interface ApiServiceInterface {
 
     //mutual fund calls
     @GET("/riskfactor/questions/")
-    suspend fun getRiskFactorQuestions() : Response<List<RiskFactorQuestionItem>>
+    suspend fun getRiskFactorQuestions() : Response<List<QuestionDto>>
 
     @POST("/riskfactor/response/")
     suspend fun  submitResponse(
         @Header("authToken") authToken: String,
-        @Body postUserResponse : PostUserResponse
+        @Body answersDto : AnswersDto
     ) : Response<PostUserResponseFeedback>
 
     @GET("/riskfactor/result/")
     suspend fun getRangeResult(
         @Header("authToken") authToken : String
-    ) : Response<List<GetRangeResult>>
+    ) : Response<List<ResultDto>>
 
     @POST("riskfactor/user/")
     suspend fun postUserProfile(
         @Header("authToken") authToken: String,
-        @Body userProfile: PostUserProfile
+        @Body userProfileDto: ProfileDto
     ) : Response<PostUserProfileFeedback>
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages
