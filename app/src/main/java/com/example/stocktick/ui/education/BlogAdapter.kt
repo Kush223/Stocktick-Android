@@ -14,10 +14,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.utils.FadeViewHelper
-
-
-
 
 
 //https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
@@ -33,20 +29,17 @@ class BlogAdapter(
         const val VIEW_TYPE_IMAGE = 0
     }
 
-//    fun RecyclerViewAdapter(lifecycle: Lifecycle?) {
-//        this.lifecycle = lifecycle!!
-//    }
 
     private lateinit var youTubePlayerView: YouTubePlayerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         if (viewType == VIEW_TYPE_IMAGE) {
-            Log.d("BLOGS","1")
+//            Log.d("BLOGS", "1")
             val binding = EduBlogItemImageBinding.inflate(inflater, parent, false)
             return BlogImageViewHolder(context, binding, educationInterfaceClickListener)
         } else {
-            Log.d("BLOGS","2")
+//            Log.d("BLOGS", "2")
             val binding = EduBlogItemVideoBinding.inflate(inflater, parent, false)
             youTubePlayerView = binding.youtubePlayerViewBlog
             //HOW TO ATTATCH LIFECYCLE HERE? or where to attach the life cycle even?
@@ -62,7 +55,7 @@ class BlogAdapter(
             (holder as BlogImageViewHolder).bind(singleItem)
         } else {
             lifecycle.addObserver(youTubePlayerView)
-            (holder as BlogVideoViewHolder).bind(singleItem,youTubePlayerView)
+            (holder as BlogVideoViewHolder).bind(singleItem, youTubePlayerView)
         }
     }
 
@@ -83,20 +76,20 @@ class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVide
         //Here code related to the video playing etc.
 
         val id = singleItem.video_link
-        lateinit var youTubePlayer : YouTubePlayer
+        lateinit var youTubePlayer: YouTubePlayer
 
-        Log.d("bindID",id.toString())
+        Log.d("bindID", id.toString())
         youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(initializedYouTubePlayer: YouTubePlayer) {
                 youTubePlayer = initializedYouTubePlayer
                 if (id != null) {
                     youTubePlayer.cueVideo(id, 0F)
-                }else{
-                    Log.d("bindID3",id.toString())
+                } else {
+                    Log.d("bindID3", id.toString())
                 }
                 val defaultPlayerUiController = DefaultPlayerUiController(youTubePlayerView, youTubePlayer)
                 youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
-                defaultPlayerUiController.apply{
+                defaultPlayerUiController.apply {
                     showMenuButton(false)
                     showFullscreenButton(true)
                     showVideoTitle(false)

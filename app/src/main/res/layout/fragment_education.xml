@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
+<?xml version="1.0" encoding="utf-8"?><!--https://github.com/PierfrancescoSoffritti/android-youtube-player-->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#212121">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/education_scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,6 +73,7 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/edu_webinar_item" />
             <!--            TITLE BLOGS TEXT VIEW-->
             <LinearLayout
@@ -122,9 +122,10 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/edu_blog_item_image" />
-    </LinearLayout>
-    </ScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progress_webinar"

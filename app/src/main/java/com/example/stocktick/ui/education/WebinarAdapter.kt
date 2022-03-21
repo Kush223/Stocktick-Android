@@ -9,8 +9,10 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.EduWebinarItemBinding
 import com.example.stocktick.ui.education.model.WebinarItem
 
-class WebinarAdapter( val context: Context, private val webinarList: MutableList<WebinarItem>,
-    var educationInterfaceClickListener: EducationInterface) :
+class WebinarAdapter(
+    val context: Context, private val webinarList: MutableList<WebinarItem>,
+    var educationInterfaceClickListener: EducationInterface
+) :
     RecyclerView.Adapter<WebinarViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebinarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -46,8 +48,8 @@ class WebinarViewHolder(
         //toggle card colour
         if (hosting == "other") {
             binding.eduWebinarGradientLayout.setBackgroundResource(R.drawable.gradient_webinar_outside)
-            hosting = " "+singleItem?.other_host_name.toString()
-        }else{
+            hosting = " " + singleItem?.other_host_name.toString()
+        } else {
             hosting = " Self"
         }
         //binding attaching
