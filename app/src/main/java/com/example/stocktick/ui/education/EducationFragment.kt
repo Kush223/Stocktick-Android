@@ -41,10 +41,11 @@ import java.util.regex.Pattern
 
 
 //immediately
+//TODO () -- ADD MUTUAL FUNDS CARDS
+//TODO () -- add the logout functionality
 //TODO() -- FIX BACK BUTTON AND THE APP BAR CONFIGURATIONS.
 //TODO() -- FIX THE MENU ITEMS TO SHOW LOGOUT and help in one part of the menu.
 
-//TODO() -- onReady white screen :/  ---- load glide from adapter. to show thumbnails.
 
 
 class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
@@ -69,10 +70,8 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
     private lateinit var tokenSharedPreference: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        Log.d("onCreateView","1")
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
         mProgressBar = _binding.progressWebinar
-        Log.d("onCreateEducation","0")
         return _binding.root
     }
 
@@ -270,11 +269,9 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
             domStorageEnabled = true
             setSupportZoom(true)
         }
-        Log.d("BLOGS","000")
         mWebViewWebinar.loadUrl(blogLink.toString())
         mWebViewWebinar.visibility = View.VISIBLE
         mProgressBar.visibility = View.INVISIBLE
-        Log.d("BLOGS","00111111")
     }
 
     @DelicateCoroutinesApi
