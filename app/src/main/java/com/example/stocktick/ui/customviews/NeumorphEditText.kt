@@ -32,6 +32,7 @@ NeumorphEditText(
             setText(text)
             val hint = attributes.getString(R.styleable.NeumorphEdittext_hint)
             editText.hint = hint
+            editText.setTextColor(Color.WHITE)
         }
         catch (e: Exception){
             Log.e(TAG, "Error :${e.localizedMessage} ", )

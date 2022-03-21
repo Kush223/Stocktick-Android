@@ -3,6 +3,7 @@ package com.example.stocktick.ui.mutual_funds.risk_factor
 import android.os.Bundle
 import android.os.PerformanceHintManager
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -16,6 +17,8 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
 
     private lateinit var binding: FragmentResultBinding
     private lateinit var meter : PerformanceMeter
+    
+    private val viewModel: RiskFactorViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +30,25 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentResultBinding.bind(view)
         meter = binding.performanceMEter
-        meter.swapAngle(PerformanceLabel.WEALTH_MULTIPLY)
+        
+        viewModel.getRangeResult{isSuccessful, getRangeResultDM ->  
+            if (isSuccessful){
+                val category = getRangeResultDM?.category ?: return@getRangeResult
+                meter.swapAngle(category)
+                binding.resultDesc.text = getRangeResultDM.description
+                binding.score.text = "You have scored ${getRangeResultDM.score} out of 100"
+
+
+            }
+            else {
+                Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+
+            binding.btRetry.setOnClickListener{
+                view?.findNavController()?.navigate(R.id.action_resultFragment_to_questionsFragment)
+            }
+        }
+        
 
     }
 

@@ -295,7 +295,11 @@ class EducationFragment : Fragment(), EducationInterface {
 
     override fun onDestroy() {
         super.onDestroy()
-        mYoutubePlayer.release()
+        try {  // I (samuel) added this because it was causing the application to crash with the below exception
+            mYoutubePlayer.release()
+        } catch (e: UninitializedPropertyAccessException){
+
+        }
     }
 
     @DelicateCoroutinesApi

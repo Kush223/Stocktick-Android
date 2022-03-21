@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentQuestionsBinding
+import com.example.stocktick.ui.mutual_funds.models.network_models.PostUserResponse
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 import kotlin.math.ceil
 
@@ -46,6 +47,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         questionsRecyclerView = binding.questions
         questionsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        viewModel.getAllQuestions()
+
         viewModel.mQuestions.observe(requireActivity(), Observer {
             Log.d(TAG, "onViewCreated: observed :$it")
             allQuestions = it
@@ -59,23 +62,96 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                 context = requireContext(),
                 onBtnClick = { page ->
                     when {
-                        page >= totalPage -> {
-                            val navController = view?.findNavController()
-                            navController?.navigate(R.id.to_result_fragment)
+                        page >= totalPage -> {   //This is submit button
+
+                            if (
+                                !validateResponse(
+                                    start = (page - 1) * 5 + 1,
+                                    end = totalQuestions
+                                )
+                            ) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Please answer all the questions",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                return@newInstance false
+                            }
+
+
+                            val postUserResponse = PostUserResponse(
+                                option1 = answers["option1"] ?: "1",
+                                option2 = answers["option2"] ?: "1",
+                                option3 = answers["option3"] ?: "1",
+                                option4 = answers["option4"] ?: "1",
+                                option5 = answers["option5"] ?: "1",
+                                option6 = answers["option6"] ?: "1",
+                                option7 = answers["option7"] ?: "1",
+                                option8 = answers["option8"] ?: "1",
+                                option9 = answers["option9"] ?: "1",
+                                option10 = answers["option10"] ?: "1",
+                            )
+                            viewModel.postUserResponse(
+                                postUserResponse = postUserResponse
+                            ) { isSuccessful ->
+                                if (isSuccessful) {
+                                    val navController = view?.findNavController()
+                                    navController?.navigate(R.id.to_result_fragment)
+                                } else {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Failed to submit response",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+
                         }
-                        page == totalPage - 1 -> {
+                        page == totalPage - 1 -> { //this is for the last page, logic here populates the adapter with the remaining no of questions which would be 5 or less
+
+                            if (
+                                !validateResponse(
+                                    start = (page - 1) * 5 + 1,
+                                    end = page * 5
+                                )
+                            ) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Please answer all the questions",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                return@newInstance false
+
+                            }
+
                             adapter.questions = allQuestions.subList(
                                 5 * page, allQuestions.size
                             )
                             adapter.notifyDataSetChanged()
                             questionsRecyclerView.smoothScrollToPosition(0)
                         }
-                        else -> {
+                        else -> {           //this is for usual page
+
+                            if (
+                                !validateResponse(
+                                    start = (page - 1) * 5 + 1,
+                                    end = page * 5
+                                )
+                            ) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Please answer all the questions",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                return@newInstance false
+                            }
                             adapter.questions = allQuestions.subList(5 * (page), 5 * (page + 1))
                             adapter.notifyDataSetChanged()
                             questionsRecyclerView.smoothScrollToPosition(0)
                         }
                     }
+                    true
                 },
                 totalPage = totalPage
 
@@ -84,7 +160,13 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
             questionsRecyclerView.adapter = adapter
         })
 
+    }
 
+    private fun validateResponse(start: Int, end: Int): Boolean {
+        for (i in start..end) {
+            if (!answers.containsKey("option$i")) return false
+        }
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

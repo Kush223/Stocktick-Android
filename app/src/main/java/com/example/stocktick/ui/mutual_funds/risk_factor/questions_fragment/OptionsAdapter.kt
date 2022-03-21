@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
+import soup.neumorphism.NeumorphCardView
 
 
 private const val TAG = "OptionsAdapterT"
@@ -21,6 +22,7 @@ constructor(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val option: TextView = itemView.findViewById(R.id.option)
+        val optionCardView : NeumorphCardView = itemView.findViewById(R.id.optionCardView)
     }
 
     companion object {
@@ -45,10 +47,10 @@ constructor(
         Log.d(TAG, "onBindViewHolder: position: $position and chosen option :$optionChosen")
         holder.option.text = "${('a'.code.toByte().toInt()+position).toChar()}. $option"
         if (optionChosen == holder.layoutPosition) {
-            holder.option.setTextColor(Color.CYAN)
+            holder.option.setTextColor(Color.parseColor("#FFC400"))
         }
         else holder.option.setTextColor(Color.WHITE)
-        holder.option.setOnClickListener{
+        holder.optionCardView.setOnClickListener{
             Log.d(TAG, "onBindViewHolder: Clicked :$position")
             onClick(position)
         }
@@ -57,6 +59,5 @@ constructor(
     override fun getItemCount(): Int {
         return options.size
     }
-
 
 }

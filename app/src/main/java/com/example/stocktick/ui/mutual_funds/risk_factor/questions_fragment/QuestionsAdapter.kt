@@ -20,7 +20,7 @@ constructor(
     var questions: List<Question>,
     private val answers: MutableMap<String, String>,
     private val context: Context,
-    private val onBtnClick: (Int)->Unit,
+    private val onBtnClick: (Int)->Boolean,
     private var page: Int=1,
     private val totalPage: Int
 
@@ -31,7 +31,7 @@ constructor(
             list: List<Question>,
             answers: MutableMap<String, String>,
             context: Context,
-            onBtnClick: (Int) -> Unit,
+            onBtnClick: (Int) -> Boolean,
             totalPage: Int
         ) = QuestionsAdapter(
             list,
@@ -54,14 +54,14 @@ constructor(
                  options = itemView.findViewById(R.id.options)
             }
             catch (e: Exception){
-                Log.d(TAG, "Error :${e.localizedMessage} ")
+                Log.d(TAG, "Error question :${e.localizedMessage} ")
             }
             try {
 
                 button = itemView.findViewById(R.id.btSubNext)
             }
             catch (e: Exception){
-                Log.d(TAG, "Error :${e.localizedMessage} ")
+                Log.e(TAG, "Error view holder btn :${e.localizedMessage} ")
             }
         }
     }
@@ -78,26 +78,30 @@ constructor(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        Log.d(TAG, "onBindViewHolder: position :$position and size :${questions.size}")
+        
         if (position == questions.size) {
+            Log.d(TAG, "onBindViewHolder: button part")
             if (page == totalPage)
                 holder.button.text = "Submit"
             else holder.button.text = "Next"
             holder.button.setOnClickListener(View.OnClickListener {
-                onBtnClick(page)
-                page++
+                val isSuccessful = onBtnClick(page)
+                if (isSuccessful) page++
             })
         } else {
+            Log.d(TAG, "onBindViewHolder: question part")
             val question = questions[position]
             val key = "option${question.questionNo}"
             var adapter : OptionsAdapter? = null
             adapter = OptionsAdapter.newInstance(
                 options = question.options,
                 onClick = {
-                    //question numbering starts form 1 and not 0
-                    answers[key] = it.toString()
+                    //question numbering starts for 1 and not 0
+                    answers[key] = (it+1).toString()
                     adapter?.optionChosen = it
                     adapter?.notifyDataSetChanged()
-                    Toast.makeText(context, "OnBindVIewHOlder $answers", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "onBindViewHolder: $answers")
                 },
                 optionChosen = if (answers.containsKey(key) && answers[key]!=null) answers[key]!!.toInt() else -1

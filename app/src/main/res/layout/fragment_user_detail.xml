@@ -6,6 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.mutual_funds.risk_factor.UserDetailFragment">
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,25 +55,25 @@
     </com.example.stocktick.ui.customviews.NeumorphEditText>
     <soup.neumorphism.NeumorphCardView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailCard"
         app:layout_constraintEnd_toStartOf="@+id/genderCard"
         android:layout_marginTop="20dp"
-        app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
         app:neumorph_shapeType="flat"
         android:layout_marginHorizontal="15dp"
         android:id="@+id/ageCard"
         >
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Gender"
-            android:textColorHint="@color/secondary_text_color"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginVertical="5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/gender"
+            android:backgroundTint="@color/white"
+            android:dropDownWidth="wrap_content"
+            android:layout_marginStart="10dp"
             />
     </soup.neumorphism.NeumorphCardView>
 
@@ -82,9 +84,9 @@
         app:layout_constraintStart_toEndOf="@+id/ageCard"
         app:layout_constraintTop_toBottomOf="@+id/emailCard"
         android:layout_marginTop="20dp"
-        app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
         app:neumorph_shapeType="flat"
         android:layout_marginHorizontal="15dp"
         android:id="@+id/genderCard"
@@ -93,6 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age"
+            android:id="@+id/age"
+            android:textColor="@color/white"
             android:inputType="number"
             android:textColorHint="@color/secondary_text_color"
             android:layout_marginHorizontal="15dp"
@@ -111,9 +115,9 @@
         android:layout_marginTop="20dp"
         app:neumorph_strokeColor="@color/white"
         style="@style/Widget.Neumorph.Button"
-        app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="3dp"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
         app:neumorph_shapeType="flat"
         android:id="@+id/submitBtn"
 
