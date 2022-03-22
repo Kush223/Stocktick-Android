@@ -13,9 +13,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
         app:neumorph_shapeType="flat"
         android:id="@+id/nameCard"
         >
