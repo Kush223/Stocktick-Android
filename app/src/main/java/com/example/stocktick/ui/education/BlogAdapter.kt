@@ -1,70 +1,125 @@
 package com.example.stocktick.ui.education
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.stocktick.databinding.EduBlogItemBinding
+import com.example.stocktick.databinding.EduBlogItemImageBinding
+import com.example.stocktick.databinding.EduBlogItemVideoBinding
 import com.example.stocktick.ui.education.model.BlogItem
-//TODO() multiple layout files for youtube and blog item seperately
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
+
+
+//https://github.com/PierfrancescoSoffritti/android-youtube-player/blob/master/core-sample-app/src/main/java/com/pierfrancescosoffritti/androidyoutubeplayer/core/sampleapp/examples/recyclerViewExample/RecyclerViewAdapter.java
+//https://github.com/PierfrancescoSoffritti/android-youtube-player
 class BlogAdapter(
-    val context: Context, private val blogList: MutableList<BlogItem>, private val educationInterfaceClickListener: EducationInterface
+    val lifecycle: Lifecycle,
+    val context: Context,
+    private val blogList: MutableList<BlogItem>,
+    private val educationInterfaceClickListener: EducationInterface
 ) :
-    RecyclerView.Adapter<BlogViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = EduBlogItemBinding.inflate(inflater, parent, false)
-        return BlogViewHolder(context, binding, educationInterfaceClickListener)
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    companion object {
+        const val VIEW_TYPE_IMAGE = 0
     }
 
-    override fun onBindViewHolder(holder: BlogViewHolder, position: Int) {
+
+    private lateinit var youTubePlayerView: YouTubePlayerView
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        if (viewType == VIEW_TYPE_IMAGE) {
+//            Log.d("BLOGS", "1")
+            val binding = EduBlogItemImageBinding.inflate(inflater, parent, false)
+            return BlogImageViewHolder(context, binding, educationInterfaceClickListener)
+        } else {
+//            Log.d("BLOGS", "2")
+            val binding = EduBlogItemVideoBinding.inflate(inflater, parent, false)
+            youTubePlayerView = binding.youtubePlayerViewBlog
+            //HOW TO ATTATCH LIFECYCLE HERE? or where to attach the life cycle even?
+            return BlogVideoViewHolder(context, binding)
+        }
+
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val singleItem = blogList[position]
-        holder.bind(singleItem)
+        if (singleItem.view_type == 0) {
+            //attatch to the video_url
+            (holder as BlogImageViewHolder).bind(singleItem)
+        } else {
+            lifecycle.addObserver(youTubePlayerView)
+            (holder as BlogVideoViewHolder).bind(singleItem, youTubePlayerView)
+        }
+    }
+
+
+    override fun getItemViewType(position: Int): Int {
+        return blogList[position].view_type ?: 0
     }
 
     override fun getItemCount(): Int {
         return blogList.size
     }
-
 }
 
-class BlogViewHolder(
+class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVideoBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+
+    fun bind(singleItem: BlogItem, youTubePlayerView: YouTubePlayerView) {
+        //Here code related to the video playing etc.
+
+        val id = singleItem.video_link
+        lateinit var youTubePlayer: YouTubePlayer
+
+        Log.d("bindID", id.toString())
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(initializedYouTubePlayer: YouTubePlayer) {
+                youTubePlayer = initializedYouTubePlayer
+                if (id != null) {
+                    youTubePlayer.cueVideo(id, 0F)
+                } else {
+                    Log.d("bindID3", id.toString())
+                }
+                val defaultPlayerUiController = DefaultPlayerUiController(youTubePlayerView, youTubePlayer)
+                youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
+                defaultPlayerUiController.apply {
+                    showMenuButton(false)
+                    showFullscreenButton(true)
+                    showVideoTitle(false)
+                    showPlayPauseButton(true)
+                    showYouTubeButton(true)
+                    showSeekBar(true)
+                }
+            }
+        })
+    }
+}
+
+class BlogImageViewHolder(
     val context: Context,
-    private val binding: EduBlogItemBinding,
+    private val binding: EduBlogItemImageBinding,
     val educationInterfaceClickListener: EducationInterface
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(singleItem: BlogItem) {
         binding.blogLongDesc.text = singleItem.long_desc
         binding.blogShortDesc.text = singleItem.short_desc
         Glide.with(context).load(singleItem.image_url).into(binding.blogImageView)
-        val videoUrl = singleItem.video_link
-        if(videoUrl!=null){
-            //show YT view
-//            binding.youtubePlayerViewBlog.
-            binding.ytLinearLayoutBlog.visibility = View.VISIBLE
-            binding.imageLinearLayoutBlog.visibility = View.GONE
-        }else{
-            //image type
-            binding.ytLinearLayoutBlog.visibility = View.GONE
-            binding.imageLinearLayoutBlog.visibility = View.VISIBLE
-        }
-
-        //so the real reason and magic of the interface is happening here.
-        //we only want to click on a particular id and send it back to the fragment to do retrofi
-        //we put up the progress bar and other things also here i think?
-        //or do we?
         binding.blogOverallLayout.setOnClickListener {
-            educationInterfaceClickListener.onBlogClickListener(
-                singleItem.video_link,
+            educationInterfaceClickListener.onBlogImageClickListener(
                 singleItem.blog_link
             )
         }
     }
 }
 
-
+//https://blog.mindorks.com/recyclerview-multiple-view-types-in-android
 //https://stackoverflow.com/questions/44273955/glide-callback-after-success-in-kotlin
 //https://stackoverflow.com/questions/33971626/set-background-image-to-relative-layout-using-glide-in-android
 

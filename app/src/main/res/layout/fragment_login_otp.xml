@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
-        android:visibility="invisible"
+        android:visibility="visible"
         tools:context=".auth.LoginFragment">
 
         <!-- Login/Signup -->
@@ -135,7 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/canvas_background"
-        android:visibility="visible"
+        android:visibility="invisible"
         tools:context=".auth.LoginFragment">
         <!--OTP CARD-->
         <LinearLayout
