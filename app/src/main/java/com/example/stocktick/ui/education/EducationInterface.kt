@@ -1,6 +1,6 @@
 package com.example.stocktick.ui.education
 
-interface EducationInterface{
+interface EducationInterface {
     fun onWebinarClickListener(id: String?, hostedBy: String?, webinarRedirectUrl: String?)
     fun onBlogImageClickListener(blogLink: String?)
 }

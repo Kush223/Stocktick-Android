@@ -2,7 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="238dp"
+    android:layout_marginStart="2dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="2dp"
+    android:layout_marginBottom="5dp">
 
     <LinearLayout
         android:id="@+id/yt_linear_layout_blog"
@@ -17,8 +21,8 @@
             android:id="@+id/youtube_player_view_blog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:autoPlay="false"
             android:focusable="true"
+            app:autoPlay="false"
             app:enableAutomaticInitialization="true"
             app:handleNetworkEvents="true"
             app:layout_constraintEnd_toEndOf="parent" />

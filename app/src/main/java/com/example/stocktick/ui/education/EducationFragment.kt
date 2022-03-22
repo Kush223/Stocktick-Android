@@ -16,6 +16,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
@@ -81,29 +82,25 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
         val viewModelFactory = EducationViewModelFactory(requireContext())
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
-//        Log.d("onViewCreated","4")
+
         //webinar
         mRecyclerViewWebinar = _binding.eduWebinarList
         mRecyclerViewWebinar.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         mWebViewWebinar = _binding.webViewWebinar
-//        Log.d("onViewCreated","3")
+        
         //blogs
         mRecyclerViewBlog = _binding.eduBlogList
         mRecyclerViewBlog.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-//        Log.d("onViewCreated","2")
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference =
             sharedPreferences.getString(TOKEN, SHAREDPREFERENCES_TOKEN_A).toString()
-//        Log.d("onViewCreated","1")
 
         mProgressBar.visibility = View.VISIBLE
-//        Log.d("onViewCreated","0")
         getWebinarList()
         getBlogList()
-
     }
 
     private fun getBlogList() {
@@ -200,7 +197,7 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
             } else {
                 Log.d("nullitemBlog", blogItemList.toString())
             }
-            Log.d("Adapter",blogMutableList.toString())
+            Log.d("Adapter", blogMutableList.toString())
             blogAdapter = BlogAdapter(lifecycle, requireContext(), blogMutableList, this)
             mRecyclerViewBlog.adapter = blogAdapter
 
@@ -234,9 +231,6 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
         mProgressBar.visibility = View.VISIBLE
         postRequestWebinar(registerWebinarModel, hostedBy)
 
-
-        //if hosted_by is
-        //Log.d("HOSTEDFRAG", hostedBy.toString())
         if (hostedBy.toString() == "other") {
             //webview
             mWebViewWebinar.webViewClient = WebViewClient()
@@ -283,7 +277,6 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
                         tokenSharedPreference,
                         registerWebinarModel
                     )
-                //Log.d("TAGpostreq", response.toString() + "\n")
 
                 //show dialog saying you are already registered.
                 dialog = Dialog(requireContext())
