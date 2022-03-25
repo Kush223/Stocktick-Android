@@ -23,7 +23,7 @@
         android:id="@+id/layout_bottom_neumorph"
         style="@style/ShapeAppearanceBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
+        android:layout_height="86dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:neumorph_shadowColorDark="@color/canvas_background"
@@ -34,7 +34,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
             app:itemIconTint="@drawable/button_highlighter"
             app:itemTextColor="@drawable/button_highlighter"
@@ -43,8 +43,8 @@
             <soup.neumorphism.NeumorphFloatingActionButton
                 android:id="@+id/fab_home"
                 style="@style/Widget.Neumorph.FloatingActionButton"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/app_name"
                 android:scaleType="center"

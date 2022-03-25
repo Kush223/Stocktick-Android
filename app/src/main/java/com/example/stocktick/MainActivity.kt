@@ -4,7 +4,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView = binding.bottomNavigationView
         binding.bottomNavigationView.background = null
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
