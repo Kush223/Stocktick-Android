@@ -26,9 +26,11 @@
         android:layout_height="86dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        app:neumorph_insetEnd="3dp"
+        app:neumorph_insetStart="4dp"
         app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shadowColorLight="#252525"
+        app:neumorph_shadowElevation="6dp"
         app:neumorph_shapeType="flat">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -41,29 +43,15 @@
             app:menu="@menu/bottom_nav_menu">
 
             <soup.neumorphism.NeumorphFloatingActionButton
-                android:id="@+id/fab_home"
-                style="@style/Widget.Neumorph.FloatingActionButton"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_gravity="center"
-                android:contentDescription="@string/app_name"
                 android:scaleType="center"
                 android:src="@drawable/ic_home_24dp"
-                app:itemIconTint="@drawable/button_highlighter"
-                app:itemTextColor="@drawable/button_highlighter"
-                app:layout_anchor="@+id/layout_bottom_neumorph"
-                app:layout_anchorGravity="center_horizontal"
                 app:neumorph_inset="2dp"
                 app:neumorph_shadowColorDark="@color/canvas_background"
                 app:neumorph_shadowColorLight="#252525"
-                app:neumorph_shadowElevation="2dp"
                 app:neumorph_shapeType="flat" />
         </com.google.android.material.bottomnavigation.BottomNavigationView>
     </soup.neumorphism.NeumorphCardView>
-</RelativeLayout><!--what kush used-->
-    <!--    app:neumorph_shadowColorDark="@color/canvas_background"-->
-    <!--    app:neumorph_shadowColorLight="#505050"-->
-
-    <!--what samuel used-->
-<!--    app:neumorph_shadowColorDark="#131313"-->
-<!--    app:neumorph_shadowColorLight="#252525"-->
+</RelativeLayout>
