@@ -2,4 +2,9 @@
 <resources>
 
     <style name="button_platform_appearance"></style>
+    <style name="ShapeAppearanceBottomNav">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <item name="neumorph_cornerSizeTopLeft">32dp</item>
+        <item name="neumorph_cornerSizeTopRight">32dp</item>
+    </style>
 </resources>

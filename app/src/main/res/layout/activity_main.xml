@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--do we need to put up the neumorph cardview?-->
+<!--    https://stackoverflow.com/questions/40668133/bottom-navigation-view-highlight-selected-item-->
+<!--    https://stackoverflow.com/questions/65707145/customize-bottom-navigation-bar-item-layout-->
+<!--put up the neumorph card views-->
+<!--    https://github.com/fornewid/neumorphism-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#212121"
+    android:orientation="vertical">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_activity_main"
@@ -19,9 +25,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
+        android:background="@drawable/bottom_nav_shape"
+        app:itemIconTint="@drawable/button_highlighter"
+        app:itemTextColor="@drawable/button_highlighter"
         app:menu="@menu/bottom_nav_menu" />
-
 </RelativeLayout>

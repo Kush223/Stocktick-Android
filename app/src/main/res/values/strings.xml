@@ -148,6 +148,7 @@
     <string name="please_check_your_internet_connection">PLEASE CHECK YOUR INTERNET CONNECTION.</string>
     <string name="try_again">Try Again</string>
     <string name="learn">Learn</string>
+    <string name="mutual_funds">Mutual Funds</string>
     <!--GENDERS-->
     <string-array name="genders">
         <item>Male</item>

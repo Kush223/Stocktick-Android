@@ -43,11 +43,8 @@ import java.util.regex.Pattern
 
 //immediately
 //TODO () -- ADD MUTUAL FUNDS CARDS
-//TODO () -- add the logout functionality
 //TODO() -- FIX BACK BUTTON AND THE APP BAR CONFIGURATIONS.
 //TODO() -- FIX THE MENU ITEMS TO SHOW LOGOUT and help in one part of the menu.
-
-
 
 class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
 

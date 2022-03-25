@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--    https://fornewid.medium.com/neumorphism-in-android-9cf15e2122dc-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/bottom_nav_neumorph_view"
+        style="@style/ShapeAppearanceBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#252525"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

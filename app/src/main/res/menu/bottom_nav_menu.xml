@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/navigation_mutual_funds"
         android:icon="@drawable/mutual_fund_nav_icon"
-        android:title="Mutual Funds"
-        />
+        android:title="@string/mutual_funds" />
     <item
         android:id="@+id/navigation_education"
         android:icon="@drawable/loan_icon"
@@ -25,6 +23,4 @@
         android:id="@+id/navigation_insurance"
         android:icon="@drawable/loan_icon"
         android:title="@string/title_insurance" />
-
-
 </menu>
