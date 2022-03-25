@@ -1,16 +1,15 @@
 package com.example.stocktick
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
-import androidx.navigation.Navigation
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,8 +20,7 @@ class MainActivity : AppCompatActivity() {
             if (cursor.moveToFirst()) { // must check the result to prevent exception
                 do {
                     var msgData = ""
-                    for(idx in 0 until cursor.columnCount)
-                    {
+                    for (idx in 0 until cursor.columnCount) {
                         val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
                         val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                         val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
@@ -43,11 +41,10 @@ class MainActivity : AppCompatActivity() {
 //                        }
                         msgData += body
                     }
-                    Log.d("msg",msgData)
+                    Log.d("msg", msgData)
                     // use msgData
                 } while (cursor.moveToNext())
-            }
-            else {
+            } else {
                 // empty box, no SMS
             }
         }
@@ -55,19 +52,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navView = binding.navView
+        val navView = binding.bottomNavigationView
+        binding.bottomNavigationView.background = null
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration.Builder(R.id.navigation_mutual_funds,
-            R.id.navigation_insurance, R.id.navigation_loan, R.id.navigation_education)
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.navigation_mutual_funds,
+            R.id.navigation_insurance,R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education
+        )
             .build()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
-
-
     }
 
     override fun onResume() {
@@ -80,10 +79,10 @@ class MainActivity : AppCompatActivity() {
                     var msgData = ""
 //                    for(idx in 0 until cursor.columnCount)
 //                    {
-                        val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
-                        val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                        val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                        //val dateFormat= Date(smsDate)
+                    val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
+                    val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                    val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                    //val dateFormat= Date(smsDate)
 //                        val type
 //                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
 //                            case Telephony.Sms.MESSAGE_TYPE_INBOX:
@@ -98,15 +97,14 @@ class MainActivity : AppCompatActivity() {
 //                            default:
 //                            break;
 //                        }
-                        msgData += body
+                    msgData += body
 //                    }
-                    Log.d("msg",msgData)
+                    Log.d("msg", msgData)
                     //Log.d("msg","end")
                     // use msgData
                 } while (cursor.moveToNext())
                 cursor.close()
-            }
-            else {
+            } else {
                 // empty box, no SMS
             }
         }

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--do we need to put up the neumorph cardview?-->
-<!--    https://stackoverflow.com/questions/40668133/bottom-navigation-view-highlight-selected-item-->
-<!--    https://stackoverflow.com/questions/65707145/customize-bottom-navigation-bar-item-layout-->
-<!--put up the neumorph card views-->
-<!--    https://github.com/fornewid/neumorphism-->
+<!--    https://github.com/fornewid/neumorphism/blob/main/sample-app/src/main/res/layout/activity_main.xml&lt;!&ndash;    https://www.geeksforgeeks.org/how-to-add-a-floating-action-button-to-bottom-navigation-bar-in-android/&ndash;&gt;-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
@@ -16,41 +13,60 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_coordinator_layout"
+        android:layout_above="@+id/layout_bottom_neumorph"
         android:layout_alignParentTop="true"
         app:defaultNavHost="true"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/bottom_coordinator_layout"
+    <!--    BOTTOM NAVIGATION-->
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/layout_bottom_neumorph"
+        style="@style/ShapeAppearanceBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="84dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:neumorph_shadowColorDark="@color/canvas_background"
+        app:neumorph_shadowColorLight="#505050"
+        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shapeType="flat">
 
-        <soup.neumorphism.NeumorphCardView
-            android:id="@+id/layout_bottom_neumorph"
-            style="@style/ShapeAppearanceBottomNav"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="4dp"
-            app:neumorph_shapeType="flat">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation_view"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_alignParentBottom="true"
-                android:background="@layout/bottom_navigation_neumorph_card"
-                app:itemIconTint="@drawable/button_highlighter"
-                app:itemTextColor="@drawable/button_highlighter"
-                app:menu="@menu/bottom_nav_menu" />
+            android:layout_height="68dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="fill"
+            app:itemIconTint="@drawable/button_highlighter"
+            app:itemTextColor="@drawable/button_highlighter"
+            app:menu="@menu/bottom_nav_menu">
 
             <soup.neumorphism.NeumorphFloatingActionButton
-                android:layout_width=""
-                android:layout_height="" />
-        </soup.neumorphism.NeumorphCardView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                android:id="@+id/fab_home"
+                style="@style/Widget.Neumorph.FloatingActionButton"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:scaleType="center"
+                android:src="@drawable/ic_home_24dp"
+                app:itemIconTint="@drawable/button_highlighter"
+                app:itemTextColor="@drawable/button_highlighter"
+                app:layout_anchor="@+id/layout_bottom_neumorph"
+                app:layout_anchorGravity="center_horizontal"
+                app:neumorph_inset="6dp"
+                app:neumorph_shadowColorDark="@color/canvas_background"
+                app:neumorph_shadowColorLight="#505050"
+                app:neumorph_shadowElevation="2dp"
+                app:neumorph_shapeType="flat" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </soup.neumorphism.NeumorphCardView>
+</RelativeLayout><!--what kush used-->
+    <!--    app:neumorph_shadowColorDark="@color/canvas_background"-->
+    <!--    app:neumorph_shadowColorLight="#505050"-->
 
-</RelativeLayout>
+    <!--what samuel used-->
+    <!--    app:neumorph_shadowColorDark="#131313"-->
+    <!--    app:neumorph_shadowColorLight="#252525"-->
