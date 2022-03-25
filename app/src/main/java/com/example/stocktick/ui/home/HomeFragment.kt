@@ -15,6 +15,7 @@ import com.example.stocktick.ui.debit_credit.DebitCreditFragment
 import soup.neumorphism.NeumorphCardView
 
 class HomeFragment : Fragment() {
+//    https://material.io/components/bottom-navigation/android#using-bottom-navigation
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
     private var serviceList: MutableList<HomeItem> = ArrayList()

@@ -52,8 +52,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val navView = binding.bottomNavigationView
         binding.bottomNavigationView.background = null
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
