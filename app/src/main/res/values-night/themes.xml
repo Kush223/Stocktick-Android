@@ -1,20 +1,117 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Stocktick" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-<!--        <item name="colorPrimary">@color/purple_200</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/black</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-        <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
-        <!-- Customize your theme here. -->
+
+        <!--        <item name="colorPrimary">@color/purple_200</item>-->
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <!--        <item name="colorOnPrimary">@color/black</item>-->
+        <!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+        <!--        <item name="colorSecondary">@color/teal_200</item>-->
+        <!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
+        <!--        <item name="colorOnSecondary">@color/black</item>-->
+        <!--         Status bar color. -->
+        <item name="android:statusBarColor">@color/button_canvas</item>
+        <!--        Customize your theme here.-->
+
+        <!--        <item name="android:statusBarColor">@color/black_191919</item>-->
+        <!-- Primary brand color. -->
+        <item name="android:textColor">@color/black_000000</item>
+        <item name="colorPrimaryDark">@color/black_191919</item>
+        <item name="colorPrimary">@color/black_191919</item>
+        <item name="colorPrimaryVariant">@color/button_canvas</item>
+        <item name="colorOnPrimary">@color/button_canvas</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/button_canvas</item>
+        <item name="colorSecondaryVariant">@color/button_canvas</item>
+        <item name="colorOnSecondary">@color/button_canvas</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+        <!--        <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Night">-->
+        <!--            <item name="android:statusBarColor">@color/black_191919</item>-->
+        <!--        </style>-->
+    </style>
+
+
+    <style name="OtpWidget.OtpView" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+
+    <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+    <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+    <!-- Customize your theme here. -->
+
+
+    <!--    Login/signUp THEME+ CREATE ACCOUNT THEME-->
+
+    <!--Login signup text view - CREATE ACCOUNT text view-->
+    <style name="login_signup">
+        <item name="android:textSize">
+            21sp
+        </item>
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+    </style>
+    <!--    Hello welcome to account textview- Trust is investment text view-->
+    <style name="hello_welcome">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+    </style>
+    <!--    PHONE NUMBER - EMAIL ADDRESS textview theme -->
+    <style name="phone_number">
+        <item name="android:textSize">
+            16sp
+        </item>
+        <item name="android:textColor">
+            @color/background_light_text
+        </item>
+    </style>
+    <!--    Request OTP-->
+    <style name="request_otp">
+
+        <item name="android:textSize">
+            22sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
+    </style>
+
+    <!--    OTP styles-->
+    <style name="otp">
+
+        <item name="android:textSize">
+            25sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
+    </style>
+
+    <style name="verification_code">
+
+        <item name="android:textSize">
+            26sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
     </style>
 </resources>

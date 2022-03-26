@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--    https://stackoverflow.com/questions/30464234/android-lollipop-set-status-bar-text-color-->
     <!--    this for the font adn the background: https://www.murrayc.com/permalink/2014/10/28/android-changing-the-toolbars-text-color-and-overflow-icon-color/-->
     <!--    WORKAROUND FOR MUKESH SOLANKIS PIN VIEW https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
-    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:statusBarColor">@color/black_000000</item>
-        <item name="android:windowLightStatusBar">true</item>
+    <style name="Theme.Stocktick" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!--        <item name="android:statusBarColor">@color/black_000000</item>-->
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:textColor">@color/white_FFFFFF</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black_000000</item>
@@ -15,6 +15,7 @@
         <item name="colorSecondary">@color/button_canvas</item>
         <item name="colorSecondaryVariant">@color/button_canvas</item>
         <item name="colorOnSecondary">@color/button_canvas</item>
+        <!--        <item name="android:statusBarColor">@color/button_canvas</item>-->
 
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
@@ -25,9 +26,93 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
-        <item name="android:statusBarColor">@color/black_000000</item>
-        <item name="android:windowLightStatusBar">false</item>
+    <!--    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">-->
+    <!--        <item name="android:statusBarColor">@color/black_191919</item>-->
+    <!--    </style>-->
+
+
+    <!--    Login/signUp THEME+ CREATE ACCOUNT THEME-->
+
+    <!--Login signup text view - CREATE ACCOUNT text view-->
+    <style name="login_signup">
+        <item name="android:textSize">
+            21sp
+        </item>
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+    </style>
+    <!--    Hello welcome to account textview- Trust is investment text view-->
+    <style name="hello_welcome">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+    </style>
+    <!--    PHONE NUMBER - EMAIL ADDRESS textview theme -->
+    <style name="phone_number">
+        <item name="android:textSize">
+            16sp
+        </item>
+        <item name="android:textColor">
+            @color/background_light_text
+        </item>
+    </style>
+    <!--    Request OTP-->
+    <style name="request_otp">
+
+        <item name="android:textSize">
+            22sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
     </style>
 
-</resources>
+    <!--    OTP styles-->
+    <style name="otp">
+
+        <item name="android:textSize">
+            25sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
+    </style>
+
+    <style name="verification_code">
+
+        <item name="android:textSize">
+            26sp
+        </item>
+
+        <item name="android:textColor">
+            @color/white_FFFFFF
+        </item>
+
+    </style>
+<!--    &lt;!&ndash;NIGHT&ndash;&gt;-->
+<!--    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar" tools:ignore="DuplicateDefinition">-->
+<!--        &lt;!&ndash;        <item name="android:statusBarColor">@color/black_191919</item>&ndash;&gt;-->
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="android:textColor">@color/black_000000</item>-->
+<!--        <item name="android:windowLightStatusBar">false</item>-->
+<!--        <item name="colorPrimary">@color/black_191919</item>-->
+<!--        <item name="colorPrimaryVariant">@color/button_canvas</item>-->
+<!--        <item name="colorOnPrimary">@color/button_canvas</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/button_canvas</item>-->
+<!--        <item name="colorSecondaryVariant">@color/button_canvas</item>-->
+<!--        <item name="colorOnSecondary">@color/button_canvas</item>-->
+<!--        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>-->
+<!--        &lt;!&ndash;        <item name="android:statusBarColor">@color/button_canvas</item>&ndash;&gt;-->
+<!--    </style>-->
+
+
+</resources><!--    https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android-->

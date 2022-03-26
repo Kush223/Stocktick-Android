@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
@@ -52,6 +54,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+        AppCompatDelegate.setDefaultNightMode(
+            AppCompatDelegate.MODE_NIGHT_YES);
+
         val navView = binding.bottomNavigationView
         binding.bottomNavigationView.background = null
 
@@ -59,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_mutual_funds,
-            R.id.navigation_insurance,R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education
+            R.id.navigation_insurance, R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education
         )
             .build()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
