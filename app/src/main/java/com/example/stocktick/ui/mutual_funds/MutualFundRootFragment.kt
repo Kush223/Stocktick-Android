@@ -9,19 +9,17 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentMutualFundRootBinding
 import com.example.stocktick.ui.customviews.MutualFundCard
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
-import com.example.stocktick.utility.Constant.EDUCATION
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.utility.Constant.MUTUAL_FUND
-import kotlinx.coroutines.runInterruptible
 
 
 private const val TAG = "MutualFundRootFragment"
 class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
-    private lateinit var mutualFundRootBinding: FragmentMutualFundRootBinding
+    private lateinit var binding: FragmentMutualFundRootBinding
     private lateinit var riskFactorCard : MutualFundCard
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +31,18 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mutualFundRootBinding = FragmentMutualFundRootBinding.bind(view)
-        riskFactorCard = mutualFundRootBinding.riskFactor
+        binding = FragmentMutualFundRootBinding.bind(view)
+        riskFactorCard = binding.riskFactor
         riskFactorCard.onButtonClickedListener{
             Log.d(TAG, "onViewCreated: clicked")
             val intent = Intent(requireActivity(), RiskFactorActivity::class.java)
             startActivity(intent)
         }
+        binding.finance.onButtonClickedListener{
+            val intent = Intent(requireActivity(), HostActivity::class.java)  //host activity of stressed about finance section
+            startActivity(intent)
+        }
+
 
         (activity as AppCompatActivity).supportActionBar?.title = MUTUAL_FUND
 

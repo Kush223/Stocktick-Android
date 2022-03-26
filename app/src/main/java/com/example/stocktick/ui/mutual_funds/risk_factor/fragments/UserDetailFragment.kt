@@ -33,7 +33,10 @@ val genders = listOf(
 
 
 private const val TAG = "UserDetailFragmentT"
-class UserDetailFragment : Fragment(R.layout.fragment_user_detail), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class UserDetailFragment :
+    Fragment(R.layout.fragment_user_detail),
+    View.OnClickListener,
+    AdapterView.OnItemSelectedListener {
 
     private val viewModel: RiskFactorViewModel by activityViewModels()
     private lateinit var binding :FragmentUserDetailBinding
