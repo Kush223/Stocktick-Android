@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSkip"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Lets estimate your\nAnnual Expenses(In Rs.)"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.razerdp.widget.animatedpieview.AnimatedPieView
+                android:id="@+id/pieChart"
+                android:layout_width="0dp"
+                android:layout_height="375dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/tvInvestAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Investment Amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pieChart" />
+
+            <TextView
+                android:id="@+id/tvHousehold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Household Expenses"
+                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/tvInvestAmount" />
+
+            <TextView
+                android:id="@+id/tvLifestyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Lifestyle Expenses"
+                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/tvHousehold" />
+
+            <TextView
+                android:id="@+id/tvSurplus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Surplus"
+                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/tvLifestyle" />
+
+            <TextView
+                android:id="@+id/tvTax"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Tax Paid"
+                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/tvSurplus" />
+
+            <TextView
+                android:id="@+id/tvEmi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="EMI Paid"
+                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toBottomOf="@+id/tvTax" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etInvestmentAmount"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvInvestAmount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvInvestAmount"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etHousehold"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHousehold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvHousehold"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etLifestyle"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLifestyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvLifestyle"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etSurplus"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSurplus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvSurplus"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etTax"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTax"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTax"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etEmi"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvEmi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvEmi"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btNext"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btSkip"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btSkip"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

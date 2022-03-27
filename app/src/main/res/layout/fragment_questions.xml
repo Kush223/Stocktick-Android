@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mutual_funds.risk_factor.questions_fragment.QuestionsFragment">
+    tools:context=".ui.mutual_funds.risk_factor.fragments.questions_fragment.QuestionsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"

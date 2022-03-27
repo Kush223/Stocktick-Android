@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -18,13 +18,12 @@ import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentUserDetailBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 import com.example.stocktick.utility.extension_functions.getResizedBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 val genders = listOf(
     "Male",
@@ -34,7 +33,10 @@ val genders = listOf(
 
 
 private const val TAG = "UserDetailFragmentT"
-class UserDetailFragment : Fragment(R.layout.fragment_user_detail), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class UserDetailFragment :
+    Fragment(R.layout.fragment_user_detail),
+    View.OnClickListener,
+    AdapterView.OnItemSelectedListener {
 
     private val viewModel: RiskFactorViewModel by activityViewModels()
     private lateinit var binding :FragmentUserDetailBinding

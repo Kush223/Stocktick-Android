@@ -7,10 +7,10 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.customviews.PerformanceLabel
-import com.example.stocktick.ui.mutual_funds.models.domain_models.GetRangeResultDM
-import com.example.stocktick.ui.mutual_funds.models.network_models.PostUserProfile
-import com.example.stocktick.ui.mutual_funds.models.network_models.PostUserResponse
-import com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment.Question
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.domain_models.Result
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.ProfileDto
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
+import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.Question
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -81,16 +81,16 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     fun postUserResponse(
-        postUserResponse: PostUserResponse,
+        answersDto: AnswersDto,
         onResponse: (isSuccessful: Boolean) -> Unit
     ) {
-        Log.d(TAG, "postUserResponse: postUserResponse :$postUserResponse , token :$tokenSharedPreference")
+        Log.d(TAG, "postUserResponse: postUserResponse :$answersDto , token :$tokenSharedPreference")
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.submitResponse(
                         tokenSharedPreference,
-                        postUserResponse
+                        answersDto
                     )
                 Log.d(TAG, "postUserResponse: ${response.body()}")
                 withContext(Dispatchers.Main){
@@ -120,7 +120,7 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
             try {
                 val response = RetrofitClientInstance.retrofitService.postUserProfile(
                     authToken = tokenSharedPreference,
-                    userProfile = PostUserProfile(
+                    userProfileDto = ProfileDto(
                         age = age,
                         email = email,
                         gender = gender,
@@ -148,11 +148,10 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
 
     fun getRangeResult(onResponse: (
         isSuccessful: Boolean,
-        getRangeResultDM: GetRangeResultDM?
+        result: Result?
     ) -> Unit)
     {
         viewModelScope.launch(Dispatchers.IO){
-
             try {
                 val response = RetrofitClientInstance.retrofitService.getRangeResult(
                     authToken = tokenSharedPreference
@@ -162,7 +161,7 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
                     withContext(Dispatchers.Main) {
                         onResponse(
                             true,
-                            GetRangeResultDM(
+                            Result(
                                 category = when (response.body()?.get(0)?.risk_profile) {
                                     "Wealth Steady" -> PerformanceLabel.WEALTH_STEADY
                                     "Wealth Protect" -> PerformanceLabel.WEALTH_PROTECT
@@ -174,7 +173,7 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
                                 },
                                 description = response.body()?.get(0)?.description
                                     ?: "No description found",
-                                score = (response.body()?.get(0)?.value1 ?: "80") as String
+                                score = (response.body()?.get(0)?.value1 ?: "80").toString()
                             )
                         )
                     }

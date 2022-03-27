@@ -1,4 +1,4 @@
-package com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment
+package com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment
 
 import android.content.Context
 import android.util.Log
@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
-import com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment.QuestionsAdapter.*
+import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.QuestionsAdapter.*
 import soup.neumorphism.NeumorphButton
 
 
@@ -99,12 +99,12 @@ constructor(
                 options = question.options,
                 onClick = {
                     //question numbering starts for 1 and not 0
-                    answers[key] = (it+1).toString()
+                    answers[key] = (it + 1).toString()
                     adapter?.optionChosen = it
                     adapter?.notifyDataSetChanged()
                     Log.d(TAG, "onBindViewHolder: $answers")
                 },
-                optionChosen = if (answers.containsKey(key) && answers[key]!=null) answers[key]!!.toInt() else -1
+                optionChosen = if (answers.containsKey(key) && answers[key] != null) answers[key]!!.toInt() else -1
             )
             holder.question.text = "${position + 1 +(page-1)*5}. ${question.question}"
             holder.options.layoutManager = LinearLayoutManager(context)

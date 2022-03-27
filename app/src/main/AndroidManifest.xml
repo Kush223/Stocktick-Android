@@ -14,9 +14,11 @@
         android:theme="@style/Theme.Stocktick"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.mutual_funds.stressed_about_finance.HostActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.mutual_funds.risk_factor.RiskFactorActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.stocktick.databinding.ActivityMutualFundsBinding
-import com.example.stocktick.ui.mutual_funds.risk_factor.questions_fragment.Question
+import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.Question
 
 class RiskFactorActivity : AppCompatActivity() {
 

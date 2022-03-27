@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_background"
+    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page3">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSkip"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Current Asset Allocation"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.razerdp.widget.animatedpieview.AnimatedPieView
+                android:id="@+id/pieChart"
+                android:layout_width="0dp"
+                android:layout_height="320dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/tvGold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Gold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pieChart" />
+
+            <TextView
+                android:id="@+id/tvEquity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Equity"
+                app:layout_constraintStart_toStartOf="@+id/tvGold"
+                app:layout_constraintTop_toBottomOf="@+id/tvGold" />
+
+            <TextView
+                android:id="@+id/tvRealState"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Real State"
+                app:layout_constraintStart_toStartOf="@+id/tvEquity"
+                app:layout_constraintTop_toBottomOf="@+id/tvEquity" />
+
+            <TextView
+                android:id="@+id/tvDebt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:text="Debt"
+                app:layout_constraintStart_toStartOf="@+id/tvRealState"
+                app:layout_constraintTop_toBottomOf="@+id/tvRealState" />
+
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etGold"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvGold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvGold"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etEquity"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvEquity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvEquity"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etRealState"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRealState"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRealState"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etDebt"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5000"
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDebt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvDebt"
+                app:prefix="₹"
+                app:usePrefix="true" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btNext"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btSkip"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btSkip"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
