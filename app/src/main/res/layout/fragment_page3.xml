@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_background"
-    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page2">
+    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page3">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,14 +16,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            >
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="Lets estimate your\nAnnual Expenses(In Rs.)"
+                android:text="Current Asset Allocation"
                 android:textAlignment="textStart"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -34,149 +35,106 @@
             <com.razerdp.widget.animatedpieview.AnimatedPieView
                 android:id="@+id/pieChart"
                 android:layout_width="0dp"
-                android:layout_height="375dp"
+                android:layout_height="320dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/tvInvestAmount"
+                android:id="@+id/tvGold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Investment Amount"
+                android:text="Gold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.17"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pieChart" />
 
             <TextView
-                android:id="@+id/tvHousehold"
+                android:id="@+id/tvEquity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
-                android:text="Household Expenses"
-                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
-                app:layout_constraintTop_toBottomOf="@+id/tvInvestAmount" />
+                android:text="Equity"
+                app:layout_constraintStart_toStartOf="@+id/tvGold"
+                app:layout_constraintTop_toBottomOf="@+id/tvGold" />
 
             <TextView
-                android:id="@+id/tvLifestyle"
+                android:id="@+id/tvRealState"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
-                android:text="Lifestyle Expenses"
-                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
-                app:layout_constraintTop_toBottomOf="@+id/tvHousehold" />
+                android:text="Real State"
+                app:layout_constraintStart_toStartOf="@+id/tvEquity"
+                app:layout_constraintTop_toBottomOf="@+id/tvEquity" />
 
             <TextView
-                android:id="@+id/tvSurplus"
+                android:id="@+id/tvDebt"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
-                android:text="Surplus"
-                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
-                app:layout_constraintTop_toBottomOf="@+id/tvLifestyle" />
+                android:text="Debt"
+                app:layout_constraintStart_toStartOf="@+id/tvRealState"
+                app:layout_constraintTop_toBottomOf="@+id/tvRealState" />
 
-            <TextView
-                android:id="@+id/tvTax"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
-                android:text="Tax Paid"
-                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
-                app:layout_constraintTop_toBottomOf="@+id/tvSurplus" />
-
-            <TextView
-                android:id="@+id/tvEmi"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
-                android:text="EMI Paid"
-                app:layout_constraintStart_toStartOf="@+id/tvInvestAmount"
-                app:layout_constraintTop_toBottomOf="@+id/tvTax" />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etInvestmentAmount"
+                android:id="@+id/etGold"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 app:hint="5000"
                 app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvInvestAmount"
+                app:layout_constraintBottom_toBottomOf="@+id/tvGold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvInvestAmount"
+                app:layout_constraintTop_toTopOf="@+id/tvGold"
                 app:prefix="₹"
                 app:usePrefix="true" />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etHousehold"
+                android:id="@+id/etEquity"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 app:hint="5000"
                 app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvHousehold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvEquity"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvHousehold"
+                app:layout_constraintTop_toTopOf="@+id/tvEquity"
                 app:prefix="₹"
                 app:usePrefix="true" />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etLifestyle"
+                android:id="@+id/etRealState"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 app:hint="5000"
                 app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvLifestyle"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRealState"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvLifestyle"
+                app:layout_constraintTop_toTopOf="@+id/tvRealState"
                 app:prefix="₹"
                 app:usePrefix="true" />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etSurplus"
+                android:id="@+id/etDebt"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 app:hint="5000"
                 app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvSurplus"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDebt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvSurplus"
+                app:layout_constraintTop_toTopOf="@+id/tvDebt"
                 app:prefix="₹"
                 app:usePrefix="true" />
 
-            <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etTax"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:hint="5000"
-                app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvTax"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvTax"
-                app:prefix="₹"
-                app:usePrefix="true" />
-
-            <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etEmi"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:hint="5000"
-                app:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/tvEmi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvEmi"
-                app:prefix="₹"
-                app:usePrefix="true" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
     <soup.neumorphism.NeumorphButton
         android:id="@+id/btNext"
         style="@style/Widget.Neumorph.Button"
@@ -214,6 +172,5 @@
         app:neumorph_shadowColorLight="#333333"
         app:neumorph_shadowElevation="5dp"
         app:neumorph_shapeType="flat" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

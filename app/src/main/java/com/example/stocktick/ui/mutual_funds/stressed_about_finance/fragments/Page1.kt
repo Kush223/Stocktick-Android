@@ -1,6 +1,8 @@
 package com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -89,4 +91,17 @@ class Page1 :
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.help, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
 }

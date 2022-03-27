@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_background"
+    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page6">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSkip"
+        app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Family Vision"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.08"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/subHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Enter goals of your family for next  5 years"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/field1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Goals"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.146"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subHeader" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/field1"
+                android:id="@+id/recyclerView"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="5dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inGoal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter Goal"
+                app:layout_constraintEnd_toStartOf="@+id/btAdd"
+                app:layout_constraintStart_toStartOf="@+id/recyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                android:layout_marginStart="27dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                app:boxStrokeColor="@color/outline_selector"
+                app:boxStrokeWidth="2dp"
+                app:hintTextColor="@color/yellow"
+                android:textColorHint="@color/secondary_text_color"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:id="@+id/etGoal"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btAdd"
+                android:layout_width="95dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/yellow"
+                android:text="Add"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_add"
+                app:iconTint="@color/yellow"
+                app:strokeColor = "@color/yellow"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                app:layout_constraintBottom_toBottomOf="@+id/inGoal"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+                app:layout_constraintTop_toTopOf="@+id/inGoal"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btNext"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btSkip"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btSkip"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

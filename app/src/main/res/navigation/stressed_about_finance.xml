@@ -26,5 +26,50 @@
         android:id="@+id/page2"
         android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page2"
         android:label="fragment_page2"
-        tools:layout="@layout/fragment_page2" />
+        tools:layout="@layout/fragment_page2" >
+        <action
+            android:id="@+id/action_page2_to_page3"
+            app:destination="@id/page3" />
+    </fragment>
+    <fragment
+        android:id="@+id/page3"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page3"
+        android:label="fragment_page3"
+        tools:layout="@layout/fragment_page3" >
+        <action
+            android:id="@+id/action_page3_to_page4"
+            app:destination="@id/page4" />
+    </fragment>
+    <fragment
+        android:id="@+id/page4"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page4"
+        android:label="fragment_page4"
+        tools:layout="@layout/fragment_page4" >
+        <action
+            android:id="@+id/action_page4_to_page5"
+            app:destination="@id/page5" />
+    </fragment>
+    <fragment
+        android:id="@+id/page5"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page5"
+        android:label="fragment_page5"
+        tools:layout="@layout/fragment_page5" >
+        <action
+            android:id="@+id/action_page5_to_page6"
+            app:destination="@id/page6" />
+    </fragment>
+    <fragment
+        android:id="@+id/page6"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6"
+        android:label="fragment_page6"
+        tools:layout="@layout/fragment_page6" >
+        <action
+            android:id="@+id/action_page6_to_page7"
+            app:destination="@id/page7" />
+    </fragment>
+    <fragment
+        android:id="@+id/page7"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page7"
+        android:label="fragment_page7"
+        tools:layout="@layout/fragment_page7" />
 </navigation>
