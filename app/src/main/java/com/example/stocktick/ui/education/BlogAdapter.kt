@@ -29,7 +29,6 @@ class BlogAdapter(
         const val VIEW_TYPE_IMAGE = 0
     }
 
-
     private lateinit var youTubePlayerView: YouTubePlayerView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -91,7 +90,7 @@ class BlogVideoViewHolder(context: Context, private var binding: EduBlogItemVide
                 youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
                 defaultPlayerUiController.apply {
                     showMenuButton(false)
-                    showFullscreenButton(true)
+                    showFullscreenButton(false)
                     showVideoTitle(false)
                     showPlayPauseButton(true)
                     showYouTubeButton(true)
