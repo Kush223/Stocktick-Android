@@ -42,7 +42,7 @@ import java.util.regex.Pattern
 
 //immediately
 //TODO () -- ADD MUTUAL FUNDS CARDS
-//TODO() -- FIX BACK BUTTON AND THE APP BAR CONFIGURATIONS.
+//TODO() -- FIX BACK BUTTON
 //TODO() -- FIX THE MENU ITEMS TO SHOW LOGOUT and help in one part of the menu.
 
 class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
@@ -260,7 +260,6 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
             setSupportZoom(true)
         }
         mWebViewWebinar.loadUrl(blogLink.toString())
-
         mWebViewWebinar.visibility = View.VISIBLE
         mProgressBar.visibility = View.INVISIBLE
     }
