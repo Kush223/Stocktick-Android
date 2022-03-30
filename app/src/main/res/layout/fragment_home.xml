@@ -1,295 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#212121"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    tools:context=".ui.home.HomeFragment">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/home_pic"/>
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/credit_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="14dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/credit_img"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:textColor="#909090"
-                    android:textAlignment="center"
-                    android:text="@string/credit"
-                    android:textSize="12sp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:textColor="#FFC700"
-                    android:textAlignment="center"
-                    android:text="12342"
-                    android:textSize="24sp"/>
-            </LinearLayout>
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        tools:context=".ui.home.HomeFragment">
 
-        </soup.neumorphism.NeumorphCardView>
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/debit_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="14dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/debit_img"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:textColor="#909090"
-                    android:textAlignment="center"
-                    android:text="@string/debit"
-                    android:textSize="12sp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:textColor="#FFC700"
-                    android:textAlignment="center"
-                    android:text="12342"
-                    android:textSize="24sp"/>
-            </LinearLayout>
-
-        </soup.neumorphism.NeumorphCardView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="60dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:background="#858585" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/invest_money"
-            android:textColor="#BABABA"
-            android:textSize="14sp" />
-
-        <View
-            android:layout_width="60dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="24dp"
-            android:background="#858585" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:orientation="horizontal">
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/mutual_fund_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="26dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/mutual_fund_img"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#909090"
-                    android:textAlignment="center"
-                    android:text="@string/mutual_fund"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-        </soup.neumorphism.NeumorphCardView>
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/insur_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="26dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/insurance_home"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:textColor="#909090"
-                    android:textAlignment="center"
-                    android:text="@string/insurance"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-        </soup.neumorphism.NeumorphCardView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFC0AE"
-        android:layout_marginTop="33dp"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="49dp"
-            android:layout_marginBottom="49dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#1F1F1F"
-                android:text="@string/financial_independence"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="28dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#7E7C79"
-                android:layout_marginTop="13dp"
-                android:text="@string/algo_eq"
-                android:textSize="10sp"
-                android:layout_marginStart="28dp"/>
-        </LinearLayout>
         <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="31dp"
-            android:layout_marginBottom="31dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/home2_img"/>
-    </LinearLayout>
+            android:src="@drawable/home_pic" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="60dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:background="#858585" />
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/credit_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:neumorph_shadowColorDark="@color/canvas_background"
+                app:neumorph_shadowColorLight="#505050"
+                app:neumorph_shadowElevation="2dp"
+                app:neumorph_shapeType="flat">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/credit_img" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/credit"
+                        android:textAlignment="center"
+                        android:textColor="#909090"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="12342"
+                        android:textAlignment="center"
+                        android:textColor="#FFC700"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/debit_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:neumorph_shadowColorDark="@color/canvas_background"
+                app:neumorph_shadowColorLight="#505050"
+                app:neumorph_shadowElevation="2dp"
+                app:neumorph_shapeType="flat">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/debit_img" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/debit"
+                        android:textAlignment="center"
+                        android:textColor="#909090"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="12342"
+                        android:textAlignment="center"
+                        android:textColor="#FFC700"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:background="#858585" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/invest_money"
+                android:textColor="#BABABA"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="24dp"
+                android:background="#858585" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:orientation="horizontal">
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/mutual_fund_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:neumorph_shadowColorDark="@color/canvas_background"
+                app:neumorph_shadowColorLight="#505050"
+                app:neumorph_shadowElevation="2dp"
+                app:neumorph_shapeType="flat">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginBottom="26dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mutual_fund_img" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/mutual_fund"
+                        android:textAlignment="center"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/insur_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:neumorph_shadowColorDark="@color/canvas_background"
+                app:neumorph_shadowColorLight="#505050"
+                app:neumorph_shadowElevation="2dp"
+                app:neumorph_shapeType="flat">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginBottom="26dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/insurance_home" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/insurance"
+                        android:textAlignment="center"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:background="#FFC0AE"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="49dp"
+                android:layout_marginBottom="49dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:text="@string/financial_independence"
+                    android:textColor="#1F1F1F"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="13dp"
+                    android:text="@string/algo_eq"
+                    android:textColor="#7E7C79"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:layout_marginBottom="31dp"
+                android:layout_weight="1"
+                android:src="@drawable/home2_img" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:background="#858585" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/our_services"
+                android:textColor="#BABABA"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="24dp"
+                android:background="#858585" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_services"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/home_services" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/our_services"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            android:text="You are logged in as abc9999@xyz.com"
             android:textColor="#BABABA"
-            android:textSize="14sp" />
+            android:textSize="8sp" />
 
-        <View
-            android:layout_width="60dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="24dp"
-            android:background="#858585" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/privacy_policy"
+            android:textColor="#BABABA"
+            android:textSize="6sp" />
+
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/home_services"
-        tools:listitem="@layout/home_services"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:text="You are logged in as abc9999@xyz.com"
-        android:textColor="#BABABA"
-        android:textSize="8sp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/privacy_policy"
-        android:textColor="#BABABA"
-        android:layout_marginBottom="20dp"
-        android:textSize="6sp"/>
-
-</LinearLayout>
 </ScrollView>
