@@ -3,8 +3,8 @@ package com.example.stocktick.ui.loan
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -29,6 +29,7 @@ class LoanFragment : Fragment() {
     private lateinit var loanViewModel: LoanViewModel
 
     private lateinit var binding: FragmentLoanBinding
+    private lateinit var mProgressBar: ProgressBar
 
     private var loanList: MutableList<LoanItem> = ArrayList()
     private lateinit var recyclerView: RecyclerView
@@ -59,9 +60,10 @@ class LoanFragment : Fragment() {
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference = sharedPreferences.getString(TOKEN, "a").toString()
-        recyclerView.adapter=loanAdapter
+        recyclerView.adapter = loanAdapter
 
-
+        mProgressBar = binding.progressLoan
+        mProgressBar.visibility = View.VISIBLE
         loanList.clear()
         getLoans()
     }
@@ -70,16 +72,24 @@ class LoanFragment : Fragment() {
     private fun getLoans() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
+                showViewsAfterReload()
                 val response =
                     RetrofitClientInstance.retrofitService.getLoans(tokenSharedPreference, "M")
                 setAdapter(response)
+                mProgressBar.visibility = View.INVISIBLE
 
             } catch (error: Exception) {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
+                showNetworkViews()
             }
 
         }
+    }
+
+    private fun showViewsAfterReload() {
+        binding.btTryAgain.visibility = View.INVISIBLE
+        binding.loanNetworkErrorTv.visibility = View.INVISIBLE
     }
 
     private fun setAdapter(response: Response<List<LoanItem>>) {
@@ -94,6 +104,15 @@ class LoanFragment : Fragment() {
             recyclerView.adapter = loanAdapter
         } else {
             Toast.makeText(requireActivity(), "Bad Request", Toast.LENGTH_SHORT).show()
+            showNetworkViews()
+        }
+    }
+
+    private fun showNetworkViews() {
+        binding.loanNetworkErrorTv.visibility = View.VISIBLE
+        binding.btTryAgain.visibility = View.VISIBLE
+        binding.btTryAgain.setOnClickListener {
+            getLoans()
         }
     }
 

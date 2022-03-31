@@ -16,7 +16,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +42,7 @@ import java.util.regex.Pattern
 
 //immediately
 //TODO () -- ADD MUTUAL FUNDS CARDS
-//TODO() -- FIX BACK BUTTON AND THE APP BAR CONFIGURATIONS.
+//TODO() -- FIX BACK BUTTON
 //TODO() -- FIX THE MENU ITEMS TO SHOW LOGOUT and help in one part of the menu.
 
 class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
@@ -296,7 +295,7 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
 
         val alreadyTv: TextView? = dialog.findViewById(R.id.already_dialog_text_view)
         val successTv: TextView? = dialog.findViewById(R.id.success_tv)
-        val networkTv: TextView? = dialog.findViewById(R.id.edu_network_error_tv)
+        val networkTv: TextView? = dialog.findViewById(R.id.loan_network_error_tv)
 
         if (code == 200 && hostedBy.toString() == "self") {
             alreadyTv?.visibility = View.INVISIBLE

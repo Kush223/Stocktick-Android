@@ -5,10 +5,9 @@
         android:icon="@drawable/mutual_fund_nav_icon"
         android:title="@string/mutual_funds" />
     <item
-        android:id="@+id/navigation_education"
+        android:id="@+id/navigation_insurance"
         android:icon="@drawable/loan_icon"
-        android:title="@string/learn" />
-
+        android:title="@string/title_insurance" />
     <item
         android:id="@+id/navigation_home"
         android:title=""/>
@@ -17,9 +16,8 @@
         android:id="@+id/navigation_loan"
         android:icon="@drawable/insurance_icon"
         android:title="@string/title_loan" />
-
     <item
-        android:id="@+id/navigation_insurance"
+        android:id="@+id/navigation_education"
         android:icon="@drawable/loan_icon"
-        android:title="@string/title_insurance" />
+        android:title="@string/learn" />
 </menu>

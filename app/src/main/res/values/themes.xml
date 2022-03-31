@@ -3,12 +3,12 @@
     <!--    https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android-->
     <!--MUKESH SOLANKI PINVIEW WORKAROUND https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
     <!--    this for the font adn the background: https://www.murrayc.com/permalink/2014/10/28/android-changing-the-toolbars-text-color-and-overflow-icon-color/-->
-    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-
-        <item name="android:statusBarColor">@color/black_000000</item>
+    <!--    https://stackoverflow.com/questions/54239674/android-studio-3-3-not-showing-action-bar-and-status-bar-in-its-preview-window-a-->
+    <style name="Theme.Stocktick" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!--        <item name="android:statusBarColor">@color/black_191919</item>-->
         <!-- Primary brand color. -->
         <item name="android:textColor">@color/black_000000</item>
-        <item name="colorPrimary">@color/black_000000</item>
+        <item name="colorPrimary">@color/black_191919</item>
         <item name="colorPrimaryVariant">@color/button_canvas</item>
         <item name="colorOnPrimary">@color/button_canvas</item>
         <!-- Secondary brand color. -->
@@ -16,6 +16,7 @@
         <item name="colorSecondaryVariant">@color/button_canvas</item>
         <item name="colorOnSecondary">@color/button_canvas</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+<!--        <item name="android:statusBarColor">@color/button_canvas</item>-->
     </style>
 
 
@@ -26,13 +27,13 @@
     </style>
 
 
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
-        <!-- Customize your theme here. -->
+    <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+    <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+    <!-- Customize your theme here. -->
 
-    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
-        <item name="android:statusBarColor">@color/black_000000</item>
-    </style>
+    <!--    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">-->
+    <!--        <item name="android:statusBarColor">@color/black_191919</item>-->
+    <!--    </style>-->
 
 
     <!--    Login/signUp THEME+ CREATE ACCOUNT THEME-->
@@ -101,6 +102,4 @@
         </item>
 
     </style>
-
-
 </resources>
