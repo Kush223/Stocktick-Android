@@ -15,6 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.mutual_funds.stressed_about_finance.HostActivity"
+            android:theme="@style/Theme.MaterialComponents"
             android:exported="false" />
         <activity
             android:name=".ui.mutual_funds.risk_factor.RiskFactorActivity"
