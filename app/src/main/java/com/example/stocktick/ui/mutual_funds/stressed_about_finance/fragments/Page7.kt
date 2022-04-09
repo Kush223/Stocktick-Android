@@ -7,6 +7,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage7Binding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 
 
 class Page7 : Fragment(R.layout.fragment_page7) {
@@ -15,6 +17,8 @@ class Page7 : Fragment(R.layout.fragment_page7) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage7Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(6)
 
     }
 

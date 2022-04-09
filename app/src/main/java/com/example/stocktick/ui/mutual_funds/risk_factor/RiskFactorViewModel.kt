@@ -156,13 +156,13 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
                 val response = RetrofitClientInstance.retrofitService.getRangeResult(
                     authToken = tokenSharedPreference
                 )
-                Log.d(TAG, "getRangeResult: $response")
+                Log.d(TAG, "getRangeResult: ${response.body()}")
                 if (response.isSuccessful){
                     withContext(Dispatchers.Main) {
                         onResponse(
                             true,
                             Result(
-                                category = when (response.body()?.get(0)?.risk_profile) {
+                                category = when (response.body()?.range?.get(0)?.risk_profile) {
                                     "Wealth Steady" -> PerformanceLabel.WEALTH_STEADY
                                     "Wealth Protect" -> PerformanceLabel.WEALTH_PROTECT
                                     "Wealth Conserve" -> PerformanceLabel.WEALTH_CONSERVE
@@ -171,9 +171,9 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
                                     "Wealth Multiply" -> PerformanceLabel.WEALTH_MULTIPLY
                                     else -> PerformanceLabel.WEALTH_BUILD
                                 },
-                                description = response.body()?.get(0)?.description
+                                description = response.body()?.range?.get(0)?.description
                                     ?: "No description found",
-                                score = (response.body()?.get(0)?.value1 ?: "80").toString()
+                                score = (response.body()?.totalScore ?: "80").toString()
                             )
                         )
                     }

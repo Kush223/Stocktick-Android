@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage6Binding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter2
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Goal
@@ -27,6 +29,8 @@ class Page6 : Fragment(R.layout.fragment_page6) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage6Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(5)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         goals.add("Plan Capital for Entrepreneur")

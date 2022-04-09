@@ -63,7 +63,7 @@ interface ApiServiceInterface {
     @GET("/riskfactor/result/")
     suspend fun getRangeResult(
         @Header("authToken") authToken : String
-    ) : Response<List<ResultDto>>
+    ) : Response<ResultDto>
 
     @POST("riskfactor/user/")
     suspend fun postUserProfile(

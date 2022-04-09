@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentScreen1Binding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 
 
 class Page1 :
@@ -45,6 +47,10 @@ class Page1 :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentScreen1Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(0)
+        tracker.visibility = View.VISIBLE
+
         binding.btNext.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_page1_to_page2)
         }

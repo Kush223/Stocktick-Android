@@ -12,6 +12,8 @@ import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage2Binding
 import com.example.stocktick.ui.customviews.NeumorphEditText
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.razerdp.widget.animatedpieview.AnimatedPieView
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig
 import com.razerdp.widget.animatedpieview.DefaultCirclePieLegendsView
@@ -44,6 +46,8 @@ class Page2 : Fragment(R.layout.fragment_page2) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage2Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(1)
         etInvestAmount = binding.etInvestmentAmount
         etHouseholdExpenses = binding.etHousehold
         etLifestyleExpenses = binding.etLifestyle

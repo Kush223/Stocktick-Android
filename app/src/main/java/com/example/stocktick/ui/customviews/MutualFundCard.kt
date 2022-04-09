@@ -21,9 +21,9 @@ MutualFundCard(
     context: Context?,
     attrs: AttributeSet?)
     : ConstraintLayout(context!!, attrs) {
-    private val  attributes : TypedArray =
-        context!!.obtainStyledAttributes(attrs, R.styleable.MutualFundCard)
-    private  var imageView : ImageView
+        private val  attributes : TypedArray =
+            context!!.obtainStyledAttributes(attrs, R.styleable.MutualFundCard)
+        private  var imageView : ImageView
     private  var  let1 : TextView
     private  var let2 : TextView
     private  var button : NeumorphButton

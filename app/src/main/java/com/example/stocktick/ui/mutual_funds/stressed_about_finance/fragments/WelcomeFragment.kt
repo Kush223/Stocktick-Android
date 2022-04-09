@@ -9,6 +9,8 @@ import android.widget.Spinner
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentWelcomeBinding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 
 val genders = listOf(
     "Mr.",
@@ -24,6 +26,10 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemS
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWelcomeBinding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.visibility = View.GONE
+
+
         gender = binding.gender
 
         gender.onItemSelectedListener= this

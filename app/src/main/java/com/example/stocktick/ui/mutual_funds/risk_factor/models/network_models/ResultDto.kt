@@ -1,6 +1,14 @@
 package com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models
 
+import com.squareup.moshi.Json
+
+
 data class ResultDto(
+    val range: List<Range>,
+    @Json(name = "total score")
+    val totalScore: String
+)
+data class Range(
     val created_at: String? = "",
     val created_by: Any? = Any(),
     val description: String = "",

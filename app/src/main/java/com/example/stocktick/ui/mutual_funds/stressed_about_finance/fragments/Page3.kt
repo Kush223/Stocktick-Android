@@ -13,6 +13,8 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage3Binding
 import com.example.stocktick.databinding.NeumorphEditTextBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.razerdp.widget.animatedpieview.AnimatedPieView
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo
@@ -37,6 +39,8 @@ class Page3 : Fragment(R.layout.fragment_page3) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage3Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(2)
         pieChart = binding.pieChart
 
         etGold = binding.etGold

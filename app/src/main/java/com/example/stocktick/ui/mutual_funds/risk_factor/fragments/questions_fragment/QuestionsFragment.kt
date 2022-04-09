@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentQuestionsBinding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 import kotlin.math.ceil
@@ -44,6 +45,11 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentQuestionsBinding.bind(view)
+
+        val tracker = (activity as RiskFactorActivity).customTracker
+        tracker.setPosition(0)
+        tracker.visibility = View.VISIBLE
+
         questionsRecyclerView = binding.questions
         questionsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -77,6 +83,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                                 ).show()
                                 return@newInstance false
                             }
+                            tracker.move()
+
 
 
                             val postUserResponse = AnswersDto(
@@ -124,6 +132,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                                 return@newInstance false
 
                             }
+                            tracker.move()
+
 
                             adapter.questions = allQuestions.subList(
                                 5 * page, allQuestions.size
@@ -146,6 +156,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                                 ).show()
                                 return@newInstance false
                             }
+                            tracker.move()
+
                             adapter.questions = allQuestions.subList(5 * (page), 5 * (page + 1))
                             adapter.notifyDataSetChanged()
                             questionsRecyclerView.smoothScrollToPosition(0)

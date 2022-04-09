@@ -38,14 +38,13 @@
 
             <EditText
                 android:id="@+id/mainEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="5dp"
-                android:layout_marginEnd="8dp"
                 android:hint="Name"
                 android:minWidth="50dp"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColorHint="@color/secondary_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

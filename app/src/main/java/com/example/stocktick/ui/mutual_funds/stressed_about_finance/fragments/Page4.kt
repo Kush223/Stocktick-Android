@@ -13,6 +13,8 @@ import br.com.felix.horizontalbargraph.HorizontalBar
 import br.com.felix.horizontalbargraph.model.BarItem
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage4Binding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import kotlinx.coroutines.*
 
 
@@ -30,6 +32,8 @@ class Page4 : Fragment(R.layout.fragment_page4) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage4Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(3)
         hBarGraph = binding.hBarGraph
         hBarGraph.init(requireContext()).apply {
             add(BarItem("FD", fd, Color.parseColor("#30BA00"), Color.WHITE))

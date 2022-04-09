@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentResultBinding
 import com.example.stocktick.ui.customviews.PerformanceMeter
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
 
 
@@ -25,6 +26,8 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentResultBinding.bind(view)
         meter = binding.performanceMEter
+
+        (activity as RiskFactorActivity).customTracker.visibility = View.GONE
         
         viewModel.getRangeResult{isSuccessful, getRangeResultDM ->  
             if (isSuccessful){

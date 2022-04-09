@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage5Binding
+import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Goal
 import java.lang.IndexOutOfBoundsException
@@ -29,6 +31,8 @@ class Page5 : Fragment(R.layout.fragment_page5) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage5Binding.bind(view)
+        val tracker = (activity as HostActivity).customTracker
+        tracker.move(4)
         recyclerView = binding.recyclerView
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
