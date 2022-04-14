@@ -49,7 +49,7 @@ constructor(
         if (optionChosen == holder.layoutPosition) {
             holder.option.setTextColor(Color.parseColor("#FFC400"))
         }
-        else holder.option.setTextColor(Color.WHITE)
+        else holder.option.setTextColor(Color.parseColor("#D0D0D0"))
         holder.optionCardView.setOnClickListener{
             Log.d(TAG, "onBindViewHolder: Clicked :$position")
             onClick(position)

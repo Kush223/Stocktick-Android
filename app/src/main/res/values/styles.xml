@@ -8,4 +8,9 @@
         <item name="neumorph_cornerSizeTopLeft">32dp</item>
         <item name="neumorph_cornerSizeTopRight">32dp</item>
     </style>
+
+    <style name="CustomShapeAppearance">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <item name="neumorph_cornerSize">20dp</item>
+    </style>
 </resources>

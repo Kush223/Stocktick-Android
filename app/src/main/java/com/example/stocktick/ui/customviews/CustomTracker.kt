@@ -94,15 +94,15 @@ class CustomTracker @JvmOverloads constructor(
     private fun linearMoveAnimator(finalPosition: Float){
         GlobalScope.launch(Dispatchers.Default){
             val swapLength = finalPosition - pointerX
-            val delLength = swapLength/60.0f
+            val delLength = swapLength/30.0f
             Log.d(TAG, "linearMoveAnimator: Del len :$delLength")
-            for (i in 0..60){
+            for (i in 0..30){
                 pointerX+= delLength
                 Log.d(TAG, "linearMoveAnimator: pointer X :$pointerX and i :$i")
                 withContext(Dispatchers.Main) {
                     postInvalidate()
                 }
-                delay(10)
+                delay(9)
             }
         }
     }
