@@ -61,7 +61,7 @@ class Page6 : Fragment(R.layout.fragment_page6) {
 
         binding.btNext.setOnClickListener{
             Log.d(TAG, "onViewCreated: Goals :$goals")
-            view?.findNavController()?.navigate(R.id.action_page6_to_page7)
+            view?.findNavController()?.navigate(R.id.action_page6_to_page6dot1)
         }
 
     }
