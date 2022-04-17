@@ -64,12 +64,48 @@
         android:label="fragment_page6"
         tools:layout="@layout/fragment_page6" >
         <action
-            android:id="@+id/action_page6_to_page7"
-            app:destination="@id/page7" />
+            android:id="@+id/action_page6_to_page6dot1"
+            app:destination="@id/page6dot1" />
     </fragment>
     <fragment
         android:id="@+id/page7"
         android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page7"
         android:label="fragment_page7"
         tools:layout="@layout/fragment_page7" />
+    <fragment
+        android:id="@+id/page6dot1"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6dot1"
+        android:label="fragment_page6dot1"
+        tools:layout="@layout/fragment_page6dot1" >
+        <action
+            android:id="@+id/action_page6dot1_to_page6dot2"
+            app:destination="@id/page6dot2" />
+    </fragment>
+    <fragment
+        android:id="@+id/page6dot2"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6dot2"
+        android:label="fragment_page6dot2"
+        tools:layout="@layout/fragment_page6dot2" >
+        <action
+            android:id="@+id/action_page6dot2_to_page6dot3"
+            app:destination="@id/page6dot3" />
+    </fragment>
+    <fragment
+        android:id="@+id/page6dot3"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6dot3"
+        android:label="fragment_page6dot3"
+        tools:layout="@layout/fragment_page6dot3" >
+        <action
+            android:id="@+id/action_page6dot3_to_page6dot4"
+            app:destination="@id/page6dot4" />
+    </fragment>
+    <fragment
+        android:id="@+id/page6dot4"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6dot4"
+        android:label="fragment_page6dot4"
+        tools:layout="@layout/fragment_page6dot4" >
+        <action
+            android:id="@+id/action_page6dot4_to_page7"
+            app:destination="@id/page7" />
+    </fragment>
 </navigation>

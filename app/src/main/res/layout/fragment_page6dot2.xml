@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/canvas_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page6dot2">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btSkip"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Education Calculator"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/subHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                android:text="In a knowledge economy that we live in today, education plays a pivotal role. Education empowers us to reach new heights in our career, enables to live a respectable life, elevates our standard of living, aids accomplish financial goals, and much more!"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btNext"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btSkip"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+    <soup.neumorphism.NeumorphButton
+        android:id="@+id/btSkip"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="#333333"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
