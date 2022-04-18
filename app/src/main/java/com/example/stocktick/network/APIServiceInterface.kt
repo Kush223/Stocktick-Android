@@ -10,6 +10,8 @@ import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.PostResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -70,5 +72,14 @@ interface ApiServiceInterface {
         @Header("authToken") authToken: String,
         @Body userProfileDto: ProfileDto
     ) : Response<PostUserProfileFeedback>
+
+    //Financial planning requests
+    @POST("finantialplanning/finnantial-Q1/")
+    suspend fun postPage1(
+            @Header("authToken") authToken: String,
+            @Body page1Dto: Page1Dto
+    ) : Response<PostResponse>
+
+
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages

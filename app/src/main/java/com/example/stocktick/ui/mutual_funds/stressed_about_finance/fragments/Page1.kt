@@ -7,17 +7,23 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentScreen1Binding
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
 
 
 class Page1 :
     Fragment(R.layout.fragment_screen1),
     AdapterView.OnItemSelectedListener {
+
+    private val viewModel: MainViewModel by activityViewModels()
 
     private val maritalStatus = listOf(
         "Married",
@@ -52,7 +58,7 @@ class Page1 :
         tracker.visibility = View.VISIBLE
 
         binding.btNext.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_page1_to_page2)
+            handleOnClick()
         }
         maritalStatusSpinner = binding.spStatus
         childrenSpinner = binding.spChildren
@@ -89,6 +95,32 @@ class Page1 :
         parentsSpinner.adapter = adapterParents
 
 
+    }
+
+    private fun handleOnClick() {
+        val children = when (childrenSpinner.selectedItem.toString()){
+            "NA"->0
+            "One"->1
+            "Two"->2
+            "Three"->3
+            "Four"->4
+            "Five"->5
+            "Six"->6
+            else ->0
+        }
+        viewModel.postPage1(
+                page1Dto = Page1Dto(
+                        children = children,
+                        parents = parentsSpinner.selectedItem.toString(),
+                        status = maritalStatusSpinner.selectedItem.toString()
+                )
+        ){
+            if (it){
+                view?.findNavController()?.navigate(R.id.action_page1_to_page2)
+            } else {
+                Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
