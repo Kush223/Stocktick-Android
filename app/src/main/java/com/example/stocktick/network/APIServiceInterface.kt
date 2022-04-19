@@ -10,8 +10,7 @@ import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.PostResponse
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -74,10 +73,46 @@ interface ApiServiceInterface {
     ) : Response<PostUserProfileFeedback>
 
     //Financial planning requests
-    @POST("finantialplanning/finnantial-Q1/")
+    @POST("/finantialplanning/finnantial-Q1")
     suspend fun postPage1(
             @Header("authToken") authToken: String,
             @Body page1Dto: Page1Dto
+    ) : Response<PostResponse>
+
+    //Financial planning requests
+    @POST("/finantialplanning/finnantial-Q2")
+    suspend fun postPage2(
+            @Header("authToken") authToken: String,
+            @Body page2Dto: Page2Dto
+    ) : Response<PostResponse>
+
+
+    //Financial planning requests
+    @POST("/finantialplanning/finnantial-Q3")
+    suspend fun postPage3(
+            @Header("authToken") authToken: String,
+            @Body page3Dto: Page3Dto
+    ) : Response<PostResponse>
+
+    //Financial planning requests
+    @POST("/finantialplanning/finnantial-Q4")
+    suspend fun postPage4(
+            @Header("authToken") authToken: String,
+            @Body page4Dto: Page4Dto
+    ) : Response<PostResponse>
+
+    //Financial planning requests
+    @POST("/finantialplanning/finnantial-Q5")
+    suspend fun postPage5(
+            @Header("authToken") authToken: String,
+            @Body page5Dto: Page5Dto
+    ) : Response<PostResponse>
+
+    //Financial planning requests
+    @POST("/finantialplanning/finnantial-Q6")
+    suspend fun postPage6(
+            @Header("authToken") authToken: String,
+            @Body page6Dto: Page6Dto
     ) : Response<PostResponse>
 
 

@@ -59,7 +59,7 @@
         <entry key="app/src/main/res/layout/blog_image.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/bottom_navigation_neumorph_card.xml" value="0.2526720820863617" />
         <entry key="app/src/main/res/layout/button_custom.xml" value="0.19265639165911153" />
-        <entry key="app/src/main/res/layout/create_account_layout.xml" value="0.10733695652173914" />
+        <entry key="app/src/main/res/layout/create_account_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/edu_blog_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/edu_blog_item_image.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/edu_blog_item_video.xml" value="0.26507054296707994" />
@@ -73,9 +73,10 @@
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_mutual_fund.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/fragment_mutual_fund_root.xml" value="0.26507054296707994" />
+        <entry key="app/src/main/res/layout/fragment_page2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_page3.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_page4.xml" value="0.1921875" />
-        <entry key="app/src/main/res/layout/fragment_page5.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_page5.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_page6.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_page6dot1.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_page6dot2.xml" value="0.1921875" />

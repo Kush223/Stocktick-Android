@@ -5,28 +5,32 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.core.view.isEmpty
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage5Binding
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Goal
-import java.lang.IndexOutOfBoundsException
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Data
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page5Dto
 
 
 private const val TAG = "Page5"
 class Page5 : Fragment(R.layout.fragment_page5) {
     private lateinit var binding: FragmentPage5Binding
     private lateinit var recyclerView: RecyclerView
+    private val viewModel: MainViewModel by activityViewModels()
 
     private  lateinit var adapter: GoalsAdapter
 
     private val goals = mutableListOf<Goal>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,7 +71,27 @@ class Page5 : Fragment(R.layout.fragment_page5) {
 
         binding.btNext.setOnClickListener{
             Log.d(TAG, "onViewCreated: Goals :$goals")
-            view?.findNavController()?.navigate(R.id.action_page5_to_page6)
+            handleOnClick()
+        }
+    }
+
+    private fun handleOnClick() {
+        viewModel.postPage5(
+            page5Dto = Page5Dto(
+                goals.map {
+                    Data(
+                        goal = it.text,
+                        priority = it.priority.toString()
+                    )
+                }
+            )
+        ){
+            if (it){
+                view?.findNavController()?.navigate(R.id.action_page5_to_page6)
+            } else {
+                view?.findNavController()?.navigate(R.id.action_page5_to_page6) //remove it later
+                Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

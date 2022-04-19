@@ -5,18 +5,18 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage6Binding
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.adapters.GoalsAdapter2
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Goal
-import java.lang.IndexOutOfBoundsException
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page6Dto
 
 
 private const val TAG = "Page6"
@@ -25,6 +25,7 @@ class Page6 : Fragment(R.layout.fragment_page6) {
     private lateinit var recyclerView: RecyclerView
     private  lateinit var adapter: GoalsAdapter2
     private val goals = mutableListOf<String>()
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,9 +62,24 @@ class Page6 : Fragment(R.layout.fragment_page6) {
 
         binding.btNext.setOnClickListener{
             Log.d(TAG, "onViewCreated: Goals :$goals")
-            view?.findNavController()?.navigate(R.id.action_page6_to_page6dot1)
+            handleOnClick()
         }
 
+    }
+
+    private fun handleOnClick() {
+        viewModel.postPage6(
+            page6Dto = Page6Dto(
+                goals = goals
+            )
+        ){
+            if (it){
+                view?.findNavController()?.navigate(R.id.action_page6_to_page6dot1)
+            } else {
+                view?.findNavController()?.navigate(R.id.action_page6_to_page6dot1) //remove it later
+                Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

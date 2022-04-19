@@ -6,18 +6,19 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage2Binding
 import com.example.stocktick.ui.customviews.NeumorphEditText
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page2Dto
 import com.razerdp.widget.animatedpieview.AnimatedPieView
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig
-import com.razerdp.widget.animatedpieview.DefaultCirclePieLegendsView
-import com.razerdp.widget.animatedpieview.data.IPieInfo
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo
 import kotlinx.coroutines.*
 import soup.neumorphism.NeumorphButton
@@ -43,6 +44,9 @@ class Page2 : Fragment(R.layout.fragment_page2) {
     private var taxPaid = 5000.0
     private var emi = 5000.0
 
+
+    private val viewModel: MainViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPage2Binding.bind(view)
@@ -62,6 +66,17 @@ class Page2 : Fragment(R.layout.fragment_page2) {
             getConfig(duration = 1500)
         )
         pieChart.start()
+
+
+        //setting initial values in edit-texts
+        etInvestAmount.setText(investmentAmount.toString())
+        etHouseholdExpenses.setText(householdExpenses.toString())
+        etLifestyleExpenses.setText(lifestyleExpenses.toString())
+        etSurplus.setText(surplus.toString())
+        etTax.setText(taxPaid.toString())
+        etEmi.setText(emi.toString())
+
+
 
 
         var job: Job? = null
@@ -159,10 +174,32 @@ class Page2 : Fragment(R.layout.fragment_page2) {
         }
 
         btNext.setOnClickListener{
-            view?.findNavController()?.navigate(R.id.action_page2_to_page3)
+            handleOnClick()
+
         }
 
 
+
+    }
+
+    private fun handleOnClick() {
+        viewModel.postPage2(
+           page2Dto = Page2Dto(
+               emi_paid = emi.toInt(),
+               household_expns = householdExpenses.toInt(),
+               invst_amount = investmentAmount.toInt(),
+               lifestyle_expns = lifestyleExpenses.toInt(),
+               surplus = surplus.toInt(),
+               tax_paid = taxPaid.toInt()
+           )
+        ){
+            if (it){
+                view?.findNavController()?.navigate(R.id.action_page2_to_page3)
+            } else {
+                view?.findNavController()?.navigate(R.id.action_page2_to_page3) //remove it later
+                Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun getConfig(

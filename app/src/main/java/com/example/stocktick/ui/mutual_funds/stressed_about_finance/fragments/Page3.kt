@@ -6,15 +6,17 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage3Binding
-import com.example.stocktick.databinding.NeumorphEditTextBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page3Dto
 import com.razerdp.widget.animatedpieview.AnimatedPieView
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo
@@ -34,6 +36,7 @@ class Page3 : Fragment(R.layout.fragment_page3) {
     private var equity = 5000.0
     private var realState = 5000.0
     private var debt = 5000.0
+    private val viewModel: MainViewModel by activityViewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,6 +55,14 @@ class Page3 : Fragment(R.layout.fragment_page3) {
             getConfig(duration = 1500)
         )
         pieChart.start()
+
+        //setting values
+        etGold.setText(gold.toString())
+        etEquity.setText(equity.toString())
+        etRealState.setText(realState.toString())
+        etDebt.setText(debt.toString())
+
+
 
 
 
@@ -120,11 +131,27 @@ class Page3 : Fragment(R.layout.fragment_page3) {
         }
 
         binding.btNext.setOnClickListener{
-            view?.findNavController()?.navigate(R.id.action_page3_to_page4)
+            handleOnClick()
         }
 
     }
-
+    private fun handleOnClick() {
+        viewModel.postPage3(
+            page3Dto = Page3Dto(
+                debt = debt.toInt(),
+                equity = equity.toInt(),
+                estate = realState.toInt(),
+                gold = gold.toInt()
+            )
+        ){
+            if (it){
+                view?.findNavController()?.navigate(R.id.action_page3_to_page4)
+            } else {
+                view?.findNavController()?.navigate(R.id.action_page3_to_page4) //remove it later
+                Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     private fun getConfig(
         gold: Double= this.gold,

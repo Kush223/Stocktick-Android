@@ -1,7 +1,7 @@
 package com.example.stocktick.utility
 
 object Constant {
-    const val BASE_URL = "http://65.0.178.97"
+    const val BASE_URL = "http://65.0.71.66:8000"
     const val TOKEN = "token"
     const val USER = "USER"
     const val LOG_TAG ="TEST123"

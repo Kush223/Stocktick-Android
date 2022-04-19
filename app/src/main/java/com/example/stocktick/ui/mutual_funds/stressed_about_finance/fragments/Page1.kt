@@ -13,7 +13,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentScreen1Binding
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
@@ -118,6 +117,7 @@ class Page1 :
             if (it){
                 view?.findNavController()?.navigate(R.id.action_page1_to_page2)
             } else {
+                view?.findNavController()?.navigate(R.id.action_page1_to_page2) //remove it later
                 Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
             }
         }

@@ -7,14 +7,13 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stocktick.network.RetrofitClientInstance
-import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val TAG = "MainViewModel"
+    private const val TAG = "MainViewModel"
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var tokenSharedPreference: String
 
@@ -31,11 +30,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             onResponse: (isSuccessful: Boolean) -> Unit
     ) {
         Log.d(TAG, "postPage1 :$page1Dto , token :$tokenSharedPreference")
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO){
             try {
                 val response =
                         RetrofitClientInstance.retrofitService.postPage1(
-                                tokenSharedPreference,
+                                "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
                                 page1Dto
                         )
                 Log.d(TAG, "postUserResponse: ${response.body()}")
@@ -52,4 +51,151 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun postPage2(
+        page2Dto: Page2Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage2 :$page2Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage2(
+                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        page2Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+    fun postPage3(
+        page3Dto: Page3Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage3 :$page3Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage3(
+                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        page3Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                       response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+    fun postPage4(
+        page4Dto: Page4Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage4 :$page4Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage4(
+                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        page4Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+
+    fun postPage5(
+        page5Dto: Page5Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage5 :$page5Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage5(
+                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        page5Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+
+    fun postPage6(
+        page6Dto: Page6Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage6 :$page6Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage6(
+                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        page6Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
 }
