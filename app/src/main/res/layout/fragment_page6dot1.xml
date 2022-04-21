@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/canvas_background"
     tools:context=".ui.mutual_funds.stressed_about_finance.fragments.Page6dot1">
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvAge"
+                android:id="@+id/tvCurrentSaving"
                 android:text="1. How old are you?"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
@@ -45,15 +46,17 @@
                 />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etAge"
+                android:id="@+id/etCurrentSaving"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 app:hint="26"
+                app:prefix=""
+                app:usePrefix="true"
                 app:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvAge"
-                app:layout_constraintBottom_toBottomOf="@+id/tvAge" />
+                app:layout_constraintTop_toTopOf="@+id/tvCurrentSaving"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCurrentSaving" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +66,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvAge"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentSaving"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 />
@@ -109,7 +112,7 @@
 
                 <Spinner
                     android:id="@+id/spType"
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/white"
@@ -144,7 +147,7 @@
 
                 <Spinner
                     android:id="@+id/spSaving"
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/white"
