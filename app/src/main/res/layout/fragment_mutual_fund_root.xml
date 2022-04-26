@@ -54,12 +54,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:neumorph_shadowColorDark="#131313"
-                app:neumorph_shadowColorLight="#252525"
+                app:neumorph_shadowColorLight="@color/color_background"
                 app:neumorph_shadowElevation="10dp"
                 app:neumorph_shapeType="flat">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:background="#303030"
                     android:layout_height="match_parent">
 
                     <ImageView

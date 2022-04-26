@@ -25,6 +25,8 @@
                 android:textAlignment="textStart"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.372"
                 app:layout_constraintStart_toStartOf="parent"
