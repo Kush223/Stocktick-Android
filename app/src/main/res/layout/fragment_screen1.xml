@@ -81,8 +81,8 @@
        app:layout_constraintStart_toEndOf="@+id/tvMaritalStatus"
        app:layout_constraintTop_toTopOf="@+id/tvMaritalStatus"
        app:neumorph_shadowColorDark="#131313"
-       app:neumorph_shadowColorLight="#333333"
-       app:neumorph_shadowElevation="5dp"
+       app:neumorph_shadowColorLight="@color/color_background"
+       app:neumorph_shadowElevation="10dp"
        app:neumorph_shapeType="flat">
 
       <Spinner

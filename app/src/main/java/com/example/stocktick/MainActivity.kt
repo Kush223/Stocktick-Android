@@ -1,21 +1,14 @@
 package com.example.stocktick
 
-import android.app.UiModeManager.MODE_NIGHT_YES
-import android.content.res.Configuration.UI_MODE_NIGHT_MASK
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-import androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
-import java.lang.reflect.Array.get
-import java.security.AccessController.getContext
 
 class MainActivity : AppCompatActivity() {
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
@@ -73,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController)
     }
 
