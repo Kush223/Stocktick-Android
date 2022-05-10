@@ -158,6 +158,15 @@
                 app:image="@drawable/lazy_man"
                 app:let1="Explore more about"
                 app:let2="Mutual Funds" />
+
+            <com.example.stocktick.ui.customviews.MutualFundCard
+                android:id="@+id/calculators"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:buttonText="Explore More"
+                app:image="@drawable/lazy_man"
+                app:let1="Calculate your"
+                app:let2="finances with us" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

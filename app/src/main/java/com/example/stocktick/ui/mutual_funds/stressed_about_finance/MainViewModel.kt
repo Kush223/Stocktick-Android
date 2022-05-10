@@ -34,7 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                         RetrofitClientInstance.retrofitService.postPage1(
-                                "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                                authToken = tokenSharedPreference,
                                 page1Dto
                         )
                 Log.d(TAG, "postUserResponse: ${response.body()}")
@@ -62,7 +62,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.postPage2(
-                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        tokenSharedPreference,
                         page2Dto
                     )
                 Log.d(TAG, "postUserResponse: $response")
@@ -91,7 +91,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.postPage3(
-                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        tokenSharedPreference,
                         page3Dto
                     )
                 Log.d(TAG, "postUserResponse: $response")
@@ -120,7 +120,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.postPage4(
-                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        tokenSharedPreference,
                         page4Dto
                     )
                 Log.d(TAG, "postUserResponse: $response")
@@ -150,7 +150,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.postPage5(
-                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        tokenSharedPreference,
                         page5Dto
                     )
                 Log.d(TAG, "postUserResponse: $response")
@@ -180,7 +180,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response =
                     RetrofitClientInstance.retrofitService.postPage6(
-                        "aaaa1425-f6b9-4c45-85bf-0f0fbebf6629",
+                        tokenSharedPreference,
                         page6Dto
                     )
                 Log.d(TAG, "postUserResponse: $response")
