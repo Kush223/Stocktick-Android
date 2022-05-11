@@ -55,7 +55,8 @@
         <entry key="app/src/main/res/drawable/progress_bar.xml" value="0.106" />
         <entry key="app/src/main/res/drawable/spinner_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/wealth_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_host.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_host.xml" value="0.2640449438202247" />
+        <entry key="app/src/main/res/layout/activity_host2.xml" value="0.13072916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32791327913279134" />
         <entry key="app/src/main/res/layout/activity_mutual_funds.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3229166666666667" />
@@ -76,7 +77,8 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_login_otp.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_mutual_fund.xml" value="0.26507054296707994" />
-        <entry key="app/src/main/res/layout/fragment_mutual_fund_root.xml" value="0.26507054296707994" />
+        <entry key="app/src/main/res/layout/fragment_mutual_fund_root.xml" value="0.2556390977443609" />
+        <entry key="app/src/main/res/layout/fragment_navigation_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_page2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_page3.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_page4.xml" value="0.1921875" />

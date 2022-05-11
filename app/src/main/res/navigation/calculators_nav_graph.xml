@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calculators_nav_graph"
+    app:startDestination="@id/navigationScreenFragment">
+
+    <fragment
+        android:id="@+id/navigationScreenFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.NavigationScreenFragment"
+        android:label="fragment_navigation_screen"
+        tools:layout="@layout/fragment_navigation_screen" />
+</navigation>

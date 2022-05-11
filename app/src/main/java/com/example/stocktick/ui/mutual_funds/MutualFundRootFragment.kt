@@ -6,9 +6,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentMutualFundRootBinding
 import com.example.stocktick.ui.customviews.MutualFundCard
@@ -40,6 +40,11 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
         }
         binding.finance.onButtonClickedListener{
             val intent = Intent(requireActivity(), HostActivity::class.java)  //host activity of stressed about finance section
+            startActivity(intent)
+        }
+
+        binding.calculators.onButtonClickedListener{
+            val intent = Intent(requireActivity(), com.example.stocktick.ui.mutual_funds.calculators.HostActivity::class.java)
             startActivity(intent)
         }
 
