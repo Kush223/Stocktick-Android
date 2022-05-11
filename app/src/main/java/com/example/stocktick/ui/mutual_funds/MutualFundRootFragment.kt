@@ -6,9 +6,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentMutualFundRootBinding
@@ -46,6 +46,10 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
         }
 
         utilsService = UtilsService(requireContext())
+        binding.calculators.onButtonClickedListener{
+            val intent = Intent(requireActivity(), com.example.stocktick.ui.mutual_funds.calculators.HostActivity::class.java)
+            startActivity(intent)
+        }
 
         (activity as AppCompatActivity).supportActionBar?.title = MUTUAL_FUND
 
