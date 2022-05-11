@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="Sip Calculator"
+                android:text="SIP Calculator"
                 android:textAlignment="textStart"
                 android:textSize="24sp"
                 android:textColor="@color/white"
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvAmount"
-                android:text="1. How much are you planning for an emergency fund?"
+                android:text="1. Monthly investment"
                 android:layout_marginEnd="50dp"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvTimePeriod"
-                android:text="2. In what time period you want to build the fund?"
+                android:text="2. Expected return rate (p.a.)"
                 android:layout_marginEnd="50dp"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvCurrentSaving"
-                android:text="3. How much you have saved for an emergency fund?"
+                android:text="3. Time period"
                 android:layout_marginEnd="50dp"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
@@ -105,31 +105,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvCurrentSaving" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvMonthlySaving"
-                android:text="4. How much can you save monthly for this purpose?"
-                android:layout_marginEnd="50dp"
-                android:textSize="16sp"
-                android:textColor="@color/secondary_text_color"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCurrentSaving"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                />
 
-            <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etMonthlySaving"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:hint="20"
-                app:prefix="₹"
-                app:usePrefix="true"
-                app:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMonthlySaving" />
 
             <soup.neumorphism.NeumorphCardView
                 android:id="@+id/resultCard"
@@ -139,7 +115,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginHorizontal="5dp"
-                app:layout_constraintTop_toBottomOf="@+id/etMonthlySaving"
+                app:layout_constraintTop_toBottomOf="@+id/etCurrentSaving"
                 android:layout_marginTop="40dp"
                 app:neumorph_shadowColorDark="#131313"
                 app:neumorph_shadowColorLight="#333333"
@@ -154,7 +130,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="Amount you will get for your Emergency"
+                        android:text="Investment amount"
                         android:textSize="16sp"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +154,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="You are outperforming by"
+                        android:text="Est. returns"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvResultAmount"
@@ -204,7 +180,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="Required amount"
+                        android:text="Total value"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPerMonthSaving"
@@ -225,34 +201,6 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvDeficitCorpus"
                         android:layout_marginEnd="10dp"
                         />
-
-
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Projected amount"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDeficitCorpus"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/tvLumpsum"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₹17,300"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvLumpsum"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvLumpsum"
-                        android:layout_marginEnd="10dp"
-                        />
-
 
 
 
