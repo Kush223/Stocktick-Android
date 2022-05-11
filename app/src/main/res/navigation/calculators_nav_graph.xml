@@ -9,5 +9,62 @@
         android:id="@+id/navigationScreenFragment"
         android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.NavigationScreenFragment"
         android:label="fragment_navigation_screen"
-        tools:layout="@layout/fragment_navigation_screen" />
+        tools:layout="@layout/fragment_navigation_screen" >
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_emergencyCalculatorFragment"
+            app:destination="@id/emergencyCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_childEducationCalculatorFragment"
+            app:destination="@id/childEducationCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_emiCalculatorFragment"
+            app:destination="@id/emiCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_goalCalculatorFragment"
+            app:destination="@id/goalCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_SIPCalculatorFragment"
+            app:destination="@id/SIPCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_childMarriageCalculatorFragment"
+            app:destination="@id/childMarriageCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_retirementCalculatorFragment"
+            app:destination="@id/retirementCalculatorFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_sipTopUpFragment"
+            app:destination="@id/sipTopUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childEducationCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.ChildEducationCalculatorFragment"
+        android:label="ChildEducationCalculatorFragment" />
+    <fragment
+        android:id="@+id/emergencyCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.EmergencyCalculatorFragment"
+        android:label="EmergencyCalculatorFragment" />
+    <fragment
+        android:id="@+id/childMarriageCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.ChildMarriageCalculatorFragment"
+        android:label="ChildMarriageCalculatorFragment" />
+    <fragment
+        android:id="@+id/emiCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.EmiCalculatorFragment"
+        android:label="EmiCalculatorFragment" />
+    <fragment
+        android:id="@+id/retirementCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.RetirementCalculatorFragment"
+        android:label="RetirementCalculatorFragment" />
+    <fragment
+        android:id="@+id/goalCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.GoalCalculatorFragment"
+        android:label="GoalCalculatorFragment" />
+    <fragment
+        android:id="@+id/SIPCalculatorFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.SIPCalculatorFragment"
+        android:label="SIPCalculatorFragment" />
+    <fragment
+        android:id="@+id/sipTopUpFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.SipTopUpFragment"
+        android:label="SipTopUpFragment" />
 </navigation>
