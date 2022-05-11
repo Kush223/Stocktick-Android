@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stocktick.R
+import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentMutualFundRootBinding
 import com.example.stocktick.ui.customviews.MutualFundCard
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.utility.Constant.MUTUAL_FUND
+import com.example.stocktick.utility.UtilsService
 
 
 private const val TAG = "MutualFundRootFragment"
@@ -22,12 +24,12 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
     private lateinit var binding: FragmentMutualFundRootBinding
     private lateinit var riskFactorCard : MutualFundCard
 
+    private lateinit var utilsService: UtilsService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +45,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
             startActivity(intent)
         }
 
+        utilsService = UtilsService(requireContext())
 
         (activity as AppCompatActivity).supportActionBar?.title = MUTUAL_FUND
 
@@ -57,6 +60,9 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
         val id = item.itemId
         if (id == R.id.logout_button) {
             // do something here
+            utilsService.logout()
+            val intent = Intent(context, LoginSignupActivity::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
 

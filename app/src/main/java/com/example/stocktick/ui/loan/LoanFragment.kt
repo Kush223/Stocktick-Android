@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.loan
 
 import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
@@ -12,11 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
+import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentLoanBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOAN
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
+import com.example.stocktick.utility.UtilsService
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -36,6 +39,7 @@ class LoanFragment : Fragment() {
     private lateinit var loanAdapter: LoanAdapter
 
     private lateinit var tokenSharedPreference: String
+    private lateinit var utilsService: UtilsService
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,7 +60,7 @@ class LoanFragment : Fragment() {
         linearLayoutManager.stackFromEnd = true
 
         recyclerView.layoutManager = linearLayoutManager
-
+        utilsService = UtilsService(requireContext())
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, Activity.MODE_PRIVATE)
         tokenSharedPreference = sharedPreferences.getString(TOKEN, "a").toString()
@@ -138,6 +142,10 @@ class LoanFragment : Fragment() {
         val id = item.itemId
         if (id == R.id.logout_button) {
             // do something here
+            // Logout
+            utilsService.logout()
+            val intent = Intent(context, LoginSignupActivity::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
