@@ -49,13 +49,13 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.help_button) {
+        if (id == R.id.logout_button) {
             // do something here
         }
         return super.onOptionsItemSelected(item)

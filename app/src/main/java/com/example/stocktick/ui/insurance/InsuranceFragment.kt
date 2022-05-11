@@ -2,12 +2,12 @@ package com.example.stocktick.ui.insurance
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +15,11 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.stocktick.R
+import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.databinding.FragmentInsuranceBinding
 import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.utility.UtilsService
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -114,12 +116,14 @@ class InsuranceFragment : Fragment() {
     private lateinit var manuDropdown: Spinner
     private lateinit var familyDropdown: Spinner
 
+    private lateinit var utilsService: UtilsService
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModelFactory = InsuranceViewModelFactory(requireContext())
         insuranceViewModel = ViewModelProvider(
-            this, viewModelFactory
+                this, viewModelFactory
         )[InsuranceViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = "Insurance"
 
@@ -128,10 +132,10 @@ class InsuranceFragment : Fragment() {
         lifeCard = binding.homeCard
 
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
+                requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         token = sharedPreferences.getString("token", "a").toString()
 
-
+        utilsService = UtilsService(requireContext())
         motorCard.setOnClickListener {
             val dialog = Dialog(requireActivity())
             dialog.setCancelable(true)
@@ -210,25 +214,25 @@ class InsuranceFragment : Fragment() {
                         "N"
                     }
                     val item = InsuranceModel(
-                        "motor",
-                        name.text.toString(),
-                        email.text.toString(),
-                        phone.text.toString(),
-                        null,
-                        manuEdit.text.toString(),
-                        variantEdit.text.toString(),
-                        insurerEdit.text.toString(),
-                        pucEdit.text.toString(),
-                        policyTypeEdit.text.toString(),
-                        null,
-                        manu,
-                        fuel,
-                        modelEdit.text.toString(),
-                        pucString,
-                        polString,
-                        vehicleNum.text.toString(),
-                        ownString,
-                        policyTypeEdit.text.toString()
+                            "motor",
+                            name.text.toString(),
+                            email.text.toString(),
+                            phone.text.toString(),
+                            null,
+                            manuEdit.text.toString(),
+                            variantEdit.text.toString(),
+                            insurerEdit.text.toString(),
+                            pucEdit.text.toString(),
+                            policyTypeEdit.text.toString(),
+                            null,
+                            manu,
+                            fuel,
+                            modelEdit.text.toString(),
+                            pucString,
+                            polString,
+                            vehicleNum.text.toString(),
+                            ownString,
+                            policyTypeEdit.text.toString()
                     )
                     submitInsuranceDetails(item, dialog)
                 }
@@ -304,34 +308,34 @@ class InsuranceFragment : Fragment() {
                     email.error = "Please enter your email"
                 } else {
                     val item = InsuranceModel(
-                        "life",
-                        name.text.toString(),
-                        email.text.toString(),
-                        phone.text.toString(),
-                        addressEdit.text.toString(),
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        dobEdit.text.toString(),
-                        coverLifeEdit.text.toString(),
-                        coverUptoEdit.text.toString(),
-                        amountEdit.text.toString()
+                            "life",
+                            name.text.toString(),
+                            email.text.toString(),
+                            phone.text.toString(),
+                            addressEdit.text.toString(),
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            dobEdit.text.toString(),
+                            coverLifeEdit.text.toString(),
+                            coverUptoEdit.text.toString(),
+                            amountEdit.text.toString()
                     )
                     submitInsuranceDetails(item, dialog)
                 }
@@ -408,34 +412,34 @@ class InsuranceFragment : Fragment() {
                     email.error = "Please enter your email"
                 } else {
                     val item = InsuranceModel(
-                        "health",
-                        name.text.toString(),
-                        email.text.toString(),
-                        phone.text.toString(),
-                        addressEdit.text.toString(),
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        family,
-                        insurerEdit.text.toString(),
-                        null,
-                        age.text.toString(),
-                        medical.text.toString(),
-                        null,
-                        null,
-                        null,
-                        null
+                            "health",
+                            name.text.toString(),
+                            email.text.toString(),
+                            phone.text.toString(),
+                            addressEdit.text.toString(),
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            family,
+                            insurerEdit.text.toString(),
+                            null,
+                            age.text.toString(),
+                            medical.text.toString(),
+                            null,
+                            null,
+                            null,
+                            null
                     )
                     submitInsuranceDetails(item, dialog)
                 }
@@ -451,8 +455,8 @@ class InsuranceFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsuranceBinding.inflate(inflater, container, false)
         return binding.root
@@ -464,14 +468,17 @@ class InsuranceFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.help_button) {
-            // do something here
+        if (id == R.id.logout_button) {
+            // Logout
+            utilsService.logout()
+            val intent = Intent(context, LoginSignupActivity::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -481,12 +488,12 @@ class InsuranceFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClientInstance.retrofitService.addInsuranceDetails(token, item)
+                        RetrofitClientInstance.retrofitService.addInsuranceDetails(token, item)
                 setAdapter(response, dialog)
 
             } catch (error: Exception) {
                 Toast.makeText(context, "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
 //                Log.d("ERROR_INSURANCEFRAGMENT", error.toString())
             }
 
@@ -598,15 +605,15 @@ class InsuranceFragment : Fragment() {
 
         manuDropdown = dialog.findViewById(R.id.loan_form_manufacture) as Spinner
         val manuItems = arrayOf(
-            "CHEVROLET",
-            "FORD",
-            "HONDA",
-            "HYUNDAI",
-            "MARUTI",
-            "RENAULT",
-            "KIA",
-            "TATA",
-            "VOLKSWAGEN"
+                "CHEVROLET",
+                "FORD",
+                "HONDA",
+                "HYUNDAI",
+                "MARUTI",
+                "RENAULT",
+                "KIA",
+                "TATA",
+                "VOLKSWAGEN"
         )
         val manuAdapter = ArrayAdapter(requireActivity(), R.layout.spinner_item, manuItems)
         manuDropdown.adapter = manuAdapter
