@@ -3,10 +3,8 @@ package com.example.stocktick.ui.loan
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
@@ -14,13 +12,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
@@ -28,7 +23,6 @@ import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.databinding.LoanBottomBinding
 import com.example.stocktick.databinding.LoanItemBinding
 import com.example.stocktick.network.RetrofitClientInstance
-import com.example.stocktick.ui.insurance.InsuranceFragment
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -37,37 +31,42 @@ import retrofit2.Response
 
 
 class LoanAdapter(private val loanList: MutableList<LoanItem>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//    private val itemHeader = 21
+    //    private val itemHeader = 21
     private val itemBody = 20
     private val itemFooter = 22
     private val phoneREGEXPattern = Regex("^[0-9]{9,12}$")
-    private lateinit var dialog : Dialog
+    private lateinit var dialog: Dialog
     private lateinit var token: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         //val v = LayoutInflater.from(parent.context).inflate(R.layout.loan_item, parent, false)
         val sharedPreferences: SharedPreferences = context.getSharedPreferences("USER", Activity.MODE_PRIVATE)
-        token = sharedPreferences.getString("token","a").toString()
-        return when(viewType){
-            itemBody ->  LoanViewHolder(LoanItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            else ->  FooterHolder(LoanBottomBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        token = sharedPreferences.getString("token", "").toString()
+        return when (viewType) {
+            itemBody -> LoanViewHolder(LoanItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            else -> FooterHolder(LoanBottomBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 //            else -> FooterHolder(LoanBottomBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position == loanList.size-1){
+        if (position == loanList.size - 1) {
             return
         }
 
-        val body : LoanViewHolder = holder as LoanViewHolder
-        with(loanList[position]){
+        val body: LoanViewHolder = holder as LoanViewHolder
+        with(loanList[position]) {
+            Log.d("ANAM: title ", this.image_url.toString())
             body.binding.loanTitle.text = this.category
             body.binding.loanInterest.text = this.interest
             body.binding.loanCard.setCardBackgroundColor(Color.parseColor(this.color_code))
             body.binding.loanShortDesc.text = this.short_desc
-            Glide.with(context).load(this.image_url).into(body.binding.loanImg);
-            body.binding.getQuote.setOnClickListener{
+            Glide.with(context)
+                    .load(this.image_url)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .into(body.binding.loanImg)
+
+            body.binding.getQuote.setOnClickListener {
                 dialog = Dialog(context)
                 //dialog.setTitle("Information")
                 dialog.setCancelable(true)
@@ -125,36 +124,36 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 val ownership = dialog.findViewById(R.id.ownership_transfer_title) as TextView
 
 
-                medical.visibility= View.GONE
-                medicalCard.visibility= View.GONE
-                address.visibility=View.GONE
-                addressCard.visibility=View.GONE
-                policyClaimCard.visibility=View.GONE
-                ownership.visibility=View.GONE
-                ownershipCard.visibility=View.GONE
-                policyType.visibility=View.GONE
-                fuelCard.visibility=View.GONE
-                fuelType.visibility=View.GONE
-                manuYear.visibility=View.GONE
-                manuYearCard.visibility=View.GONE
-                modelCard.visibility=View.GONE
-                manuCard.visibility=View.GONE
-                manu.visibility=View.GONE
-                variantCard.visibility=View.GONE
-                variant.visibility=View.GONE
-                pucCard.visibility=View.GONE
-                pucExpCard.visibility=View.GONE
-                vehicleCard.visibility=View.GONE
-                insurerCard.visibility=View.GONE
-                policyExpCard.visibility=View.GONE
-                policyTypeCard.visibility=View.GONE
+                medical.visibility = View.GONE
+                medicalCard.visibility = View.GONE
+                address.visibility = View.GONE
+                addressCard.visibility = View.GONE
+                policyClaimCard.visibility = View.GONE
+                ownership.visibility = View.GONE
+                ownershipCard.visibility = View.GONE
+                policyType.visibility = View.GONE
+                fuelCard.visibility = View.GONE
+                fuelType.visibility = View.GONE
+                manuYear.visibility = View.GONE
+                manuYearCard.visibility = View.GONE
+                modelCard.visibility = View.GONE
+                manuCard.visibility = View.GONE
+                manu.visibility = View.GONE
+                variantCard.visibility = View.GONE
+                variant.visibility = View.GONE
+                pucCard.visibility = View.GONE
+                pucExpCard.visibility = View.GONE
+                vehicleCard.visibility = View.GONE
+                insurerCard.visibility = View.GONE
+                policyExpCard.visibility = View.GONE
+                policyTypeCard.visibility = View.GONE
                 puc.visibility = View.GONE
                 pucExp.visibility = View.GONE
                 policyClaim.visibility = View.GONE
                 policyExp.visibility = View.GONE
                 insurer.visibility = View.GONE
                 vehicle.visibility = View.GONE
-                model.visibility=View.GONE
+                model.visibility = View.GONE
                 dob.visibility = View.GONE
                 dobCard.visibility = View.GONE
                 coverLife.visibility = View.GONE
@@ -163,48 +162,42 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
                 coverUptoCard.visibility = View.GONE
                 amount.visibility = View.GONE
                 amountCard.visibility = View.GONE
-                age.visibility= View.GONE
-                ageCard.visibility= View.GONE
-                family.visibility= View.GONE
-                familyCard.visibility= View.GONE
+                age.visibility = View.GONE
+                ageCard.visibility = View.GONE
+                family.visibility = View.GONE
+                familyCard.visibility = View.GONE
 
 
-                if(this.category?.length!! >8 && this.category.substring(0,8) == "Business"){
-                    businessCard.visibility= View.VISIBLE
-                    businessTitle.visibility= View.VISIBLE
+                if (this.category?.length!! > 8 && this.category.substring(0, 8) == "Business") {
+                    businessCard.visibility = View.VISIBLE
+                    businessTitle.visibility = View.VISIBLE
                     submitBtn.setOnClickListener {
                         if (name.text.isEmpty()) {
                             name.error = "Please enter your name"
                         } else if (email.text.isEmpty()) {
                             email.error = "Please enter your email id"
-                        }
-                        else if(!phone.text.matches(phoneREGEXPattern)){
+                        } else if (!phone.text.matches(phoneREGEXPattern)) {
                             phone.error = "Please enter a correct number"
-                        }
-                        else if(business.text.isEmpty()){
+                        } else if (business.text.isEmpty()) {
                             business.error = "Please enter your organization name"
-                        }
-                        else{
-                            val item = LoanFormItem(name.text.toString(), phone.text.toString().trim(),email.text.toString().trim(),this.category,business.text.toString())
+                        } else {
+                            val item = LoanFormItem(name.text.toString(), phone.text.toString().trim(), email.text.toString().trim(), this.category, business.text.toString())
                             //Toast.makeText(context,"DONE",Toast.LENGTH_SHORT).show()
                             submitLoanDetails(item)
                         }
                     }
-                }
-                else{
-                    businessCard.visibility= View.GONE
-                    businessTitle.visibility= View.GONE
+                } else {
+                    businessCard.visibility = View.GONE
+                    businessTitle.visibility = View.GONE
                     submitBtn.setOnClickListener {
                         if (name.text.isEmpty()) {
                             name.error = "Please enter your name"
                         } else if (email.text.isEmpty()) {
                             email.error = "Please enter your email id"
-                        }
-                        else if(!phone.text.matches(phoneREGEXPattern)){
+                        } else if (!phone.text.matches(phoneREGEXPattern)) {
                             phone.error = "Please enter a correct number"
-                        }
-                        else{
-                            val item = LoanFormItem(name.text.toString(), phone.text.toString().trim(),email.text.toString().trim(),this.category,business.text.toString())
+                        } else {
+                            val item = LoanFormItem(name.text.toString(), phone.text.toString().trim(), email.text.toString().trim(), this.category, business.text.toString())
                             //Toast.makeText(context,"DONE",Toast.LENGTH_SHORT).show()
                             submitLoanDetails(item)
                         }
@@ -221,11 +214,12 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             }
         }
     }
+
     @DelicateCoroutinesApi
-    private fun submitLoanDetails(item: LoanFormItem){
+    private fun submitLoanDetails(item: LoanFormItem) {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClientInstance.retrofitService.addLoanDetails(token,item)
+                val response = RetrofitClientInstance.retrofitService.addLoanDetails(token, item)
                 setAdapter(response)
 
             } catch (error: Exception) {
@@ -235,8 +229,9 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
 
         }
     }
-    private fun setAdapter(response: Response<GetOtpModel>){
-        if(response.code()==200){
+
+    private fun setAdapter(response: Response<GetOtpModel>) {
+        if (response.code() == 200) {
             dialog.dismiss()
             val dia = Dialog(context)
             //dialog.setTitle("Information")
@@ -248,18 +243,18 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             val height = metrics.heightPixels
             //yourDialog.getWindow().setLayout((6 * width)/7, )
             dia.window?.setLayout((4 * width) / 5, ViewGroup.LayoutParams.WRAP_CONTENT)
-            val mainHandler =  Handler(Looper.getMainLooper())
+            val mainHandler = Handler(Looper.getMainLooper())
             dia.show()
-        }
-        else{
-            Toast.makeText(context,"Bad Request",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Bad Request", Toast.LENGTH_SHORT).show()
         }
     }
+
     override fun getItemViewType(position: Int): Int {
         return when (position) {
             //0 -> itemFooter
-            loanList.size-1 -> itemFooter
-            else ->itemBody
+            loanList.size - 1 -> itemFooter
+            else -> itemBody
         }
     }
 
@@ -270,6 +265,7 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
     override fun getItemCount(): Int {
         return loanList.size
     }
+
     class LoanViewHolder(val binding: LoanItemBinding) : RecyclerView.ViewHolder(binding.root)
-    class FooterHolder(val binding : LoanBottomBinding) : RecyclerView.ViewHolder(binding.root)
+    class FooterHolder(val binding: LoanBottomBinding) : RecyclerView.ViewHolder(binding.root)
 }

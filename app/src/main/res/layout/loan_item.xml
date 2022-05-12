@@ -29,8 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Category"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/loan_short_desc"
@@ -39,7 +40,7 @@
                 android:layout_marginTop="6dp"
                 android:text="rkjvengnregerjgnergerjgrejgnrrejgngregnerergre"
                 android:textColor="#424242"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/loan_interest"
@@ -48,6 +49,7 @@
                 android:layout_marginStart="41dp"
                 android:layout_marginTop="15dp"
                 android:text="18%"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 
@@ -58,7 +60,7 @@
                 android:layout_marginTop="6dp"
                 android:text="@string/Interest"
                 android:textColor="#424242"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
