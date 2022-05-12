@@ -2,6 +2,7 @@ package com.example.stocktick.network
 
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.models.HeadlineModel
 import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
@@ -25,6 +26,10 @@ interface ApiServiceInterface {
 
     @POST("/auth/validateotp/")
     suspend fun validateOtp(@Body phoneModel: PhoneModel): GetOtpModel
+
+    //Headlines
+    @GET("/get/headlines/")
+    suspend fun getHeadline(@Header("page") page: String,@Header("platform") platform: String): Response<HeadlineModel>
 
     //LOAN
     @GET("/get/loans/")

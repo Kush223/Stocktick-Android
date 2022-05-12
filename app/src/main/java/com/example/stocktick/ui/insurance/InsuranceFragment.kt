@@ -18,6 +18,7 @@ import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.databinding.FragmentInsuranceBinding
+import com.example.stocktick.models.HeadlineModel
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.UtilsService
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -118,6 +119,8 @@ class InsuranceFragment : Fragment() {
 
     private lateinit var utilsService: UtilsService
 
+    private lateinit var insuranceHeadline: TextView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -135,7 +138,12 @@ class InsuranceFragment : Fragment() {
                 requireActivity().getSharedPreferences("USER", Activity.MODE_PRIVATE)
         token = sharedPreferences.getString("token", "a").toString()
 
+        insuranceHeadline = binding.insuranceTop
+
         utilsService = UtilsService(requireContext())
+
+        handleHeadline()
+
         motorCard.setOnClickListener {
             val dialog = Dialog(requireActivity())
             dialog.setCancelable(true)
@@ -481,6 +489,34 @@ class InsuranceFragment : Fragment() {
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun handleHeadline() {
+        fetchHeadline()
+    }
+
+    @DelicateCoroutinesApi
+    private fun fetchHeadline() {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response =
+                        RetrofitClientInstance.retrofitService.getHeadline("I", "M")
+//                setAdapter(response, dialog)
+
+                if (response.code() == 200) {
+                    val headline: HeadlineModel? = response.body()
+                    insuranceHeadline.text = headline?.headline
+                }
+
+
+            } catch (error: Exception) {
+                Toast.makeText(context, "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                        .show()
+//                Log.d("ERROR_INSURANCEFRAGMENT", error.toString())
+            }
+
+        }
     }
 
     @DelicateCoroutinesApi
