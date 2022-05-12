@@ -38,8 +38,8 @@ class SplashActivity : AppCompatActivity() {
             val granted = sharedPreferences.getInt(smsPerm,0)
             //Log.d("sds", granted.toString())
             if(granted==1){
-                val token = sharedPreferences.getString(TOKEN,"a")
-                if(token == "a"){
+                val token = sharedPreferences.getString(TOKEN,"")
+                if(token == ""){
                     val mainHandler =  Handler(Looper.getMainLooper())
                     mainHandler.postDelayed({
                         val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)

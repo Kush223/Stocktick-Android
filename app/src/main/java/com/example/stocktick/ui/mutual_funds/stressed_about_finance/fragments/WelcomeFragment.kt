@@ -9,7 +9,6 @@ import android.widget.Spinner
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentWelcomeBinding
-import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 
 val genders = listOf(
@@ -56,7 +55,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemS
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

@@ -137,7 +137,7 @@ class Page1 :
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

@@ -2,6 +2,7 @@ package com.example.stocktick.ui.education
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -22,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
+import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentEducationBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.education.model.BlogItem
@@ -31,6 +33,7 @@ import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
+import com.example.stocktick.utility.UtilsService
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -60,11 +63,9 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
     private lateinit var webinarAdapter: WebinarAdapter
     private lateinit var blogAdapter: BlogAdapter
     private lateinit var mWebViewWebinar: WebView
-
     private lateinit var dialog: Dialog
-
-
     private lateinit var tokenSharedPreference: String
+    private lateinit var utilsService: UtilsService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentEducationBinding.inflate(inflater, container, false)
@@ -78,6 +79,8 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
         val viewModelFactory = EducationViewModelFactory(requireContext())
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
         (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
+
+        utilsService = UtilsService(requireContext())
 
         //webinar
         mRecyclerViewWebinar = _binding.eduWebinarList
@@ -209,14 +212,18 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.help_button) {
+        if (id == R.id.logout_button) {
             // do something here
+            // Logout
+            utilsService.logout()
+            val intent = Intent(context, LoginSignupActivity::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }

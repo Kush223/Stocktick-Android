@@ -20,13 +20,13 @@ class HostActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater?.inflate(R.menu.help, menu)
+        menuInflater?.inflate(R.menu.logout, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.help_button) {
+        if (id == R.id.logout_button) {
             // do something here
         }
         return super.onOptionsItemSelected(item)
