@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.text.InputType
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -51,6 +50,9 @@ NeumorphEditText(
                 }
                 2 -> {
                     editText.inputType = InputType.TYPE_CLASS_NUMBER
+                }
+                3 -> {
+                    editText.inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL
                 }
             }
 
