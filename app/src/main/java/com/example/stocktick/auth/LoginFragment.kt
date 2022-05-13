@@ -195,6 +195,7 @@ class LoginFragment : Fragment() {
             _binding.otpCard.visibility = View.INVISIBLE
 
             mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
+
             val name = mCreateAccountLayoutBinding.etCreateAccountUserName
             val email = mCreateAccountLayoutBinding.etCreateAccountEmailAddress
             val submitButton = mCreateAccountLayoutBinding.btCreateAccountSubmit

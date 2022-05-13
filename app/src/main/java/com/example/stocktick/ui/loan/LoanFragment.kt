@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentLoanBinding
+import com.example.stocktick.models.HeadlineModel
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOAN
 import com.example.stocktick.utility.Constant.TOKEN
@@ -41,6 +43,8 @@ class LoanFragment : Fragment() {
     private lateinit var tokenSharedPreference: String
     private lateinit var utilsService: UtilsService
 
+    private lateinit var loanHeadline: TextView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,6 +70,8 @@ class LoanFragment : Fragment() {
         tokenSharedPreference = sharedPreferences.getString(TOKEN, "a").toString()
         recyclerView.adapter = loanAdapter
 
+        loanHeadline=binding.loanTop
+
         mProgressBar = binding.progressLoan
         mProgressBar.visibility = View.VISIBLE
         loanList.clear()
@@ -86,6 +92,33 @@ class LoanFragment : Fragment() {
                 Toast.makeText(requireActivity(), "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
                     .show()
                 showNetworkViews()
+            }
+
+        }
+    }
+
+    private fun handleHeadline() {
+        fetchHeadline()
+    }
+
+    @DelicateCoroutinesApi
+    private fun fetchHeadline() {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response =
+                        RetrofitClientInstance.retrofitService.getHeadline("L", "M")
+//                setAdapter(response, dialog)
+
+                if (response.code() == 200) {
+                    val headline: HeadlineModel? = response.body()
+                    loanHeadline.text = headline?.headline
+                }
+
+
+            } catch (error: Exception) {
+                Toast.makeText(context, "Request failed CATCH ERROR", Toast.LENGTH_SHORT)
+                        .show()
+//                Log.d("ERROR_INSURANCEFRAGMENT", error.toString())
             }
 
         }

@@ -12,7 +12,7 @@
         android:text="@string/loan_bottom_title"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -21,5 +21,5 @@
         android:layout_marginTop="9dp"
         android:text="@string/loan_para1"
         android:textColor="@color/white"
-        android:textSize="9sp" />
+        android:textSize="12sp" />
 </LinearLayout>
