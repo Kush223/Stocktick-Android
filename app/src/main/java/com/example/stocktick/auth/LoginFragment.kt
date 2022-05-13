@@ -1,9 +1,7 @@
 package com.example.stocktick.auth
 
 import android.app.Activity.MODE_PRIVATE
-import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +12,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.stocktick.MainActivity
 import com.example.stocktick.SmsBroadcastReceiver
@@ -26,7 +23,6 @@ import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOG_TAG
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
-import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.hbb20.CountryCodePicker
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -185,7 +181,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun handleViewPostOTP(res: GetOtpModel) {
-        val old = res.old_user
+        val old = res.Old_User
         val sharedPreferences: SharedPreferences =
             requireActivity().getSharedPreferences(USER, MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -199,6 +195,7 @@ class LoginFragment : Fragment() {
             _binding.otpCard.visibility = View.INVISIBLE
 
             mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
+
             val name = mCreateAccountLayoutBinding.etCreateAccountUserName
             val email = mCreateAccountLayoutBinding.etCreateAccountEmailAddress
             val submitButton = mCreateAccountLayoutBinding.btCreateAccountSubmit

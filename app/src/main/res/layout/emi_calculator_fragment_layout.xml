@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="EMI Calculator"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAmount"
+                android:text="1. Loan amount"
+                android:layout_marginEnd="50dp"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etAmount"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="500000"
+                app:prefix="₹"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTimePeriod"
+                android:text="2. Rate of interest (p.a.)"
+                android:layout_marginEnd="50dp"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAmount"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etTimePeriod"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="5"
+                app:prefix="yrs"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimePeriod" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCurrentSaving"
+                android:text="3. Loan teanure"
+                android:layout_marginEnd="50dp"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTimePeriod"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etCurrentSaving"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="10"
+                app:prefix="₹"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentSaving" />
+
+
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/resultCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginHorizontal="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/etCurrentSaving"
+                android:layout_marginTop="40dp"
+                app:neumorph_shadowColorDark="#131313"
+                app:neumorph_shadowColorLight="#333333"
+                app:neumorph_shadowElevation="5dp"
+                app:neumorph_shapeType="flat">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    >
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Monthly EMI"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/tvResultAmount"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹11,36,56,234"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvResultAmount"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvResultAmount"
+                        android:layout_marginEnd="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Principal amount"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvResultAmount"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/tvPerMonthSaving"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹17,300"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPerMonthSaving"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvPerMonthSaving"
+                        android:layout_marginEnd="10dp"
+                        />
+
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Total interest"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPerMonthSaving"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/tvDeficitCorpus"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹17,300"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvDeficitCorpus"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDeficitCorpus"
+                        android:layout_marginEnd="10dp"
+                        />
+
+
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDeficitCorpus"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/tvLumpsum"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹17,300"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvLumpsum"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvLumpsum"
+                        android:layout_marginEnd="10dp"
+                        />
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </soup.neumorphism.NeumorphCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/question"
         android:textSize="20sp"
+        android:textColor="@color/white"
         android:text="This will be the question"
         app:layout_constraintTop_toTopOf="parent"
         />

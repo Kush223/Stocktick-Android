@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.text.InputType
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -82,6 +81,14 @@ NeumorphEditText(
 
     fun getText(): String{
         return editText.text.toString()
+    }
+
+    fun setHint(text: String){
+        editText.hint = text
+    }
+
+    fun getHint(): String{
+        return editText.hint.toString()
     }
 
 

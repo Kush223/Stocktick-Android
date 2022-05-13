@@ -25,7 +25,7 @@
 
     <!--login page strings-->
     <string name="login_signup">Login/Signup</string>
-    <string name="hello_welcome">Hello, welcome to your account</string>
+    <string name="hello_welcome">Hello, welcome back to your account</string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="request_otp">Request OTP</string>
 
@@ -35,7 +35,7 @@
     <string name="get_quote">GET QUOTE</string>
     <!--    HELP-->
 
-    <string name="help">Help</string>
+    <string name="logout">Logout</string>
     <string name="Motor">Motor</string>
     <string name="Life">Life</string>
     <string name="Health">Health</string>

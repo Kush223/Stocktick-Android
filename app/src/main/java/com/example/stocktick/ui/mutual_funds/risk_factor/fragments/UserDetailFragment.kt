@@ -1,18 +1,14 @@
 package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.core.view.isEmpty
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.stocktick.R
@@ -66,6 +62,8 @@ class UserDetailFragment :
         gender = binding.gender
         age = binding.age
 
+        autofill()
+
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
         lifecycleScope.launch(Dispatchers.Default){
@@ -88,7 +86,7 @@ class UserDetailFragment :
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.help, menu)
+        activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
     
@@ -125,5 +123,34 @@ class UserDetailFragment :
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
+    }
+
+    private fun autofill(){
+        viewModel.getUserProfile { isSuccessful, userProfile ->
+            if (isSuccessful && userProfile!=null){
+                val autoFillName = userProfile.name
+                if (autoFillName != null)
+                name.setText(autoFillName)
+                val autofillEmail = userProfile.email
+                if (autofillEmail != null)
+                    email.setText(autofillEmail)
+
+                val autofillAge = userProfile.age
+                if (autofillAge != null){
+                    age.setText(autofillAge.toString())
+                }
+
+                when (userProfile.gender){
+                    "Male"-> gender.setSelection(0)
+                    "Female"-> gender.setSelection(1)
+                }
+            }
+            else {
+                name.setHint("Name")
+                email.setHint("Email")
+                age.hint = "Age"
+            }
+
+        }
     }
 }
