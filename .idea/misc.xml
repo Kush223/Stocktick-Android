@@ -44,6 +44,7 @@
         <entry key="app/src/main/res/drawable/dialog_box.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/divider_bottom_nav.xml" value="0.232" />
         <entry key="app/src/main/res/drawable/education_title_line.xml" value="0.247" />
+        <entry key="app/src/main/res/drawable/fragment_login_bt_submit_phone.xml" value="0.1595" />
         <entry key="app/src/main/res/drawable/fragment_login_et_phone_edit.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/gradient_webinar_outside.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_webinar_self_hosted.xml" value="0.1465" />
@@ -100,7 +101,7 @@
         <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.15670289855072464" />
         <entry key="app/src/main/res/layout/fragment_verify_otp.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_welcome_page.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/fragment_welcome_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/goal_calculator_fragment_layout.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/home_services.xml" value="0.8" />
         <entry key="app/src/main/res/layout/loan_bottom.xml" value="0.2864583333333333" />
