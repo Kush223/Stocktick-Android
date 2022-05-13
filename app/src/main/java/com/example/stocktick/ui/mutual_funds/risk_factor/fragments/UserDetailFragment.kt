@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -61,6 +61,8 @@ class UserDetailFragment :
         email = binding.emailCard
         gender = binding.gender
         age = binding.age
+
+        autofill()
 
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
@@ -121,5 +123,34 @@ class UserDetailFragment :
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
+    }
+
+    private fun autofill(){
+        viewModel.getUserProfile { isSuccessful, userProfile ->
+            if (isSuccessful && userProfile!=null){
+                val autoFillName = userProfile.name
+                if (autoFillName != null)
+                name.setText(autoFillName)
+                val autofillEmail = userProfile.email
+                if (autofillEmail != null)
+                    email.setText(autofillEmail)
+
+                val autofillAge = userProfile.age
+                if (autofillAge != null){
+                    age.setText(autofillAge.toString())
+                }
+
+                when (userProfile.gender){
+                    "Male"-> gender.setSelection(0)
+                    "Female"-> gender.setSelection(1)
+                }
+            }
+            else {
+                name.setHint("Name")
+                email.setHint("Email")
+                age.hint = "Age"
+            }
+
+        }
     }
 }

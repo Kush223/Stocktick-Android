@@ -120,6 +120,12 @@ interface ApiServiceInterface {
             @Body page6Dto: Page6Dto
     ) : Response<PostResponse>
 
+    //user profile
+    @GET("/get/userinfo")
+    suspend fun getUserInfo(
+        @Header("authToken") authToken: String
+    ) : Response<UserProfileDto>
+
 
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages

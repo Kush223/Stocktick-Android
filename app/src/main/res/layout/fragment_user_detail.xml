@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/micMan"
         android:layout_marginTop="25dp"
         android:layout_marginHorizontal="15dp"
-        app:hint = "Name"
+        app:hint = "autofill...(Name)"
         android:id="@+id/nameCard"
         >
     </com.example.stocktick.ui.customviews.NeumorphEditText>
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameCard"
-        app:hint="Email"
+        app:hint="autofill...(Email)"
         android:layout_marginHorizontal="15dp"
         android:id="@+id/emailCard"
         >
@@ -93,7 +93,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age"
+            android:hint="autofill...(Age)"
             android:id="@+id/age"
             android:textColor="@color/white"
             android:inputType="number"

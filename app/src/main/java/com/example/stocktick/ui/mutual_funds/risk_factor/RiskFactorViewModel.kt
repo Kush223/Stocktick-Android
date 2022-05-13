@@ -4,13 +4,17 @@ import android.app.Activity
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.customviews.PerformanceLabel
-import com.example.stocktick.ui.mutual_funds.risk_factor.models.domain_models.Result
-import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.ProfileDto
-import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
 import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.Question
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.domain_models.Result
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.domain_models.UserProfile
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.AnswersDto
+import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.ProfileDto
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -204,6 +208,65 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
 
     }
 
+    fun getUserProfile(onResponse: (
+        isSuccessful: Boolean,
+        userProfile: UserProfile?
+    ) -> Unit)
+    {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.getUserInfo(
+                    authToken = tokenSharedPreference
+                )
+                Log.d(TAG, "getRangeResult: ${response.body()}")
+                if (response.isSuccessful){
+                    withContext(Dispatchers.Main) {
+                        onResponse(
+                            true,
+                            UserProfile(
+                                name = response.body()?.name,
+                                email = response.body()?.email,
+                                gender = when (response.body()?.gender) {
+                                    "M"->{
+                                        "Male"}
+
+                                        "F"-> {
+                                            "Female"
+                                        }
+                                    null -> null
+                                    else -> null
+
+                                },
+                                age = response.body()?.age
+                            )
+                        )
+                    }
+                }
+                else {
+                    withContext(Dispatchers.Main){
+                        onResponse(
+                            false,
+                            null
+                        )
+                    }
+                }
+
+
+            } catch (e: Exception){
+                Log.e(TAG, "getRangeResult: ${e.localizedMessage}" )
+                withContext(Dispatchers.Main) {
+                    onResponse(
+                        false,
+                        null
+                    )
+                }
+            }
+
+        }
+
+
+
+    }
 
 
 
