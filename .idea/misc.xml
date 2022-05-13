@@ -93,6 +93,7 @@
         <entry key="app/src/main/res/layout/fragment_page6dot3.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_page6dot4.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_page7.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/fragment_questions.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_result.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_screen1.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.15670289855072464" />
@@ -108,7 +109,7 @@
         <entry key="app/src/main/res/layout/neumorph_edit_text.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/option_layout.xml" value="0.26507054296707994" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.1767905711695376" />
-        <entry key="app/src/main/res/layout/question.xml" value="0.26507054296707994" />
+        <entry key="app/src/main/res/layout/question.xml" value="0.24125874125874125" />
         <entry key="app/src/main/res/layout/retirement_calculator_fragment_layout.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/sip_calculator_fragment.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/sip_top_up_calculato_fragment_layout.xml" value="0.1921875" />
