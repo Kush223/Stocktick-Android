@@ -94,6 +94,9 @@ class Page1 :
         parentsSpinner.adapter = adapterParents
 
 
+        autofill()
+
+
     }
 
     private fun handleOnClick() {
@@ -139,6 +142,30 @@ class Page1 :
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun autofill(){
+        viewModel.getPage1 { isSuccessful, page1 ->
+            if (isSuccessful && page1!=null){
+                when (page1.status) {
+                    "Married" -> maritalStatusSpinner.setSelection(0)
+                    "Single" -> maritalStatusSpinner.setSelection(1)
+                    else -> {
+                    }
+                }
+                if (page1.children != null &&  page1.children <= 6)
+                childrenSpinner.setSelection(page1.children)
+
+                when (page1.parents){
+                    "Both Alive"-> parentsSpinner.setSelection(0)
+                    "One Alive"-> parentsSpinner.setSelection(1)
+                    "None Alive"-> parentsSpinner.setSelection(2)
+                }
+
+            }
+
+
+        }
     }
 
 
