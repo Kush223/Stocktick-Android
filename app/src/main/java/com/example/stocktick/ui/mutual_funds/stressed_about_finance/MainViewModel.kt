@@ -372,11 +372,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 val response = RetrofitClientInstance.retrofitService.getPage5(
                     authToken = tokenSharedPreference
                 )
-                if (response.isSuccessful){
+                if (response.isSuccessful && !response.body().isNullOrEmpty()){
                     withContext(Dispatchers.Main) {
                         onResponse(
                             true,
-                            response.body()
+                            Page5Dto(
+                                response.body()!!
+                            )
                         )
                     }
                 }
@@ -409,11 +411,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 val response = RetrofitClientInstance.retrofitService.getPage6(
                     authToken = tokenSharedPreference
                 )
-                if (response.isSuccessful){
+                if (response.isSuccessful && !response.body().isNullOrEmpty()){
                     withContext(Dispatchers.Main) {
                         onResponse(
                             true,
-                            response.body()
+                            Page6Dto(
+                                response.body()!!
+                            )
                         )
                     }
                 }

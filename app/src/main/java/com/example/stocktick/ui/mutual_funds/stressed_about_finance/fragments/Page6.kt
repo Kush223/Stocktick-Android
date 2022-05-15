@@ -24,7 +24,7 @@ class Page6 : Fragment(R.layout.fragment_page6) {
     private lateinit var binding: FragmentPage6Binding
     private lateinit var recyclerView: RecyclerView
     private  lateinit var adapter: GoalsAdapter2
-    private var goals = mutableListOf<String>()
+    private val goals = mutableListOf<String>()
     private val viewModel: MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,8 +98,13 @@ class Page6 : Fragment(R.layout.fragment_page6) {
 
     private fun autofill(){
         viewModel.getPage6{ isSuccessful, page6 ->
-            if (isSuccessful && page6!=null){
-                goals = page6.goals as MutableList<String>
+            if (isSuccessful && page6!=null && !page6.goals.isNullOrEmpty()){
+                goals.clear()
+                for (goal in page6.goals){
+                    goals.add(
+                        goal
+                    )
+                }
                 adapter.notifyDataSetChanged()
             }
 

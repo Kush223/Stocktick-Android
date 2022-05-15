@@ -29,7 +29,7 @@ class Page5 : Fragment(R.layout.fragment_page5) {
 
     private  lateinit var adapter: GoalsAdapter
 
-    private var goals = mutableListOf<Goal>()
+    private val goals = mutableListOf<Goal>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -107,21 +107,25 @@ class Page5 : Fragment(R.layout.fragment_page5) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
     private fun autofill(){
         viewModel.getPage5{ isSuccessful, page5 ->
             Log.d(TAG, "autofill: Goals ")
-            if (isSuccessful && page5!=null){
-                goals = page5.data.map {
-                    Goal(
-                        it.goal,
-                        when (it.priority){
-                            "High"->0
-                            "Medium"->1
-                            "Low"->2
-                            else ->1
-                        }
+            if (isSuccessful && page5!=null && page5.data!= null){
+                goals.clear()
+                for (item in  page5.data){
+                    goals.add(
+                        Goal(
+                            item.goal,
+                            when (item.priority){
+                                "High"->0
+                                "Medium"->1
+                                "Low"->2
+                                else ->1
+                            }
+                        )
                     )
-                } as MutableList<Goal>
+                }
                 Log.d(TAG, "autofill: Goals are :$goals")
                 adapter.notifyDataSetChanged()
             }

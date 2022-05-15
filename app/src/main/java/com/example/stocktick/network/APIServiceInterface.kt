@@ -151,13 +151,13 @@ interface ApiServiceInterface {
     @GET("/finantialplanning/finnantial-Q5")
     suspend fun getPage5(
         @Header("authToken") authToken: String
-    ) : Response<Page5Dto>
+    ) : Response<List<Data>>
 
 
     @GET("/finantialplanning/finnantial-Q6")
     suspend fun getPage6(
         @Header("authToken") authToken: String
-    ) : Response<Page6Dto>
+    ) : Response<List<String>>
 
 
 
