@@ -32,6 +32,9 @@ class Page6dot1 : Fragment(R.layout.fragment_page6dot1), AdapterView.OnItemSelec
         binding.btNext.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_page6dot1_to_page6dot2)
         }
+        binding.btSkip.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_page6dot1_to_page6dot2)
+        }
 
 
         val type = binding.spType

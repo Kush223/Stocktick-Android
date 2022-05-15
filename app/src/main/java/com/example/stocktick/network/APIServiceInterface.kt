@@ -5,6 +5,7 @@ import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.models.response.HeadlineModel
 import com.example.stocktick.models.response.StandardSuccessResponse
+import com.example.stocktick.models.UserProfile
 import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
@@ -138,38 +139,40 @@ interface ApiServiceInterface {
     // get requests of financial plannings
     @GET("/finantialplanning/finnantial-Q1")
     suspend fun getPage1(
-        @Header("authToken") authToken: String
-    ) : Response<List<Page1GetDto>>
+            @Header("authToken") authToken: String
+    ): Response<List<Page1GetDto>>
 
     @GET("/finantialplanning/finnantial-Q2")
     suspend fun getPage2(
-        @Header("authToken") authToken: String
-    ) : Response<List<Page2GetDto>>    //This api is not working
+            @Header("authToken") authToken: String
+    ): Response<List<Page2GetDto>>    //This api is not working
 
     @GET("/finantialplanning/finnantial-Q3")
     suspend fun getPage3(
-        @Header("authToken") authToken: String
-    ) : Response<Page3Dto>
+            @Header("authToken") authToken: String
+    ): Response<Page3Dto>
 
     @GET("/finantialplanning/finnantial-Q4")
     suspend fun getPage4(
-        @Header("authToken") authToken: String
-    ) : Response<Page4Dto>
+            @Header("authToken") authToken: String
+    ): Response<Page4Dto>
 
 
     @GET("/finantialplanning/finnantial-Q5")
     suspend fun getPage5(
-        @Header("authToken") authToken: String
-    ) : Response<List<Data>>
+            @Header("authToken") authToken: String
+    ): Response<List<Data>>
 
 
     @GET("/finantialplanning/finnantial-Q6")
     suspend fun getPage6(
-        @Header("authToken") authToken: String
-    ) : Response<List<String>>
+            @Header("authToken") authToken: String
+    ): Response<List<String>>
 
-
-
+    @GET("/get/userinfo")
+    suspend fun getUserDetails(
+            @Header("authToken") authToken: String
+    ): Response<UserProfile>
 
 
 }

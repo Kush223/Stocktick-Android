@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Page2
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.UserProfileDomainModel
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
@@ -198,6 +199,82 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+
+    /*
+    *Not implemented yet*/
+    fun postUserDetail(
+        page6Dto: Page6Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        Log.d(TAG, "postPage6 :$page6Dto , token :$tokenSharedPreference")
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage6(
+                        tokenSharedPreference,
+                        page6Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+
+    fun getUserDetail(onResponse: (
+        isSuccessful: Boolean,
+        userProfile: UserProfileDomainModel?
+    ) -> Unit)
+    {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.getUserDetails(
+                    authToken = tokenSharedPreference
+                )
+                if (response.isSuccessful && response.body() != null && response.body()!=null
+                ){
+                    withContext(Dispatchers.Main) {
+                        onResponse(
+                            true,
+                           UserProfileDomainModel(
+                               name = response.body()!!.name?: "",
+                               age = response.body()!!.age,
+                               gender =  response.body()!!.gender ?: "Male"
+                           )
+                        )
+                    }
+                }
+                else {
+                    withContext(Dispatchers.Main){
+                        onResponse(
+                            false,
+                            null
+                        )
+                    }
+                }
+            } catch (e: Exception){
+                withContext(Dispatchers.Main) {
+                    onResponse(
+                        false,
+                        null
+                    )
+                }
+            }
+        }
+    }
+
 
     fun getPage1(onResponse: (
         isSuccessful: Boolean,

@@ -59,6 +59,9 @@ class Page1 :
         binding.btNext.setOnClickListener {
             handleOnClick()
         }
+        binding.btSkip.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_page1_to_page2)
+        }
         maritalStatusSpinner = binding.spStatus
         childrenSpinner = binding.spChildren
         parentsSpinner = binding.spParents

@@ -126,6 +126,9 @@ class Page4 : Fragment(R.layout.fragment_page4) {
         binding.btNext.setOnClickListener{
             handleOnClick()
         }
+        binding.btSkip.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_page4_to_page5)
+        }
 
     }
     private fun handleOnClick() {
