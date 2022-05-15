@@ -75,6 +75,9 @@ class Page5 : Fragment(R.layout.fragment_page5) {
             Log.d(TAG, "onViewCreated: Goals :$goals")
             handleOnClick()
         }
+        binding.btSkip.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_page5_to_page6)
+        }
     }
 
     private fun handleOnClick() {
