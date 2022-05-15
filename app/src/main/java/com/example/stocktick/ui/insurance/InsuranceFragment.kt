@@ -18,7 +18,7 @@ import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.databinding.FragmentInsuranceBinding
-import com.example.stocktick.models.HeadlineModel
+import com.example.stocktick.models.response.HeadlineModel
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.UtilsService
 import kotlinx.coroutines.DelicateCoroutinesApi
