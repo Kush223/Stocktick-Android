@@ -2,14 +2,16 @@ package com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments
 
 import android.os.Bundle
 import android.view.*
+import android.widget.*
 import androidx.fragment.app.Fragment
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentWelcomeBinding
+import com.example.stocktick.ui.customviews.NeumorphEditText
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page1Dto
 
 val genders = listOf(
     "Mr.",
@@ -18,8 +20,13 @@ val genders = listOf(
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemSelectedListener {
 
+
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentWelcomeBinding
     private lateinit var gender: Spinner
+
+    private lateinit var etName: EditText
+    private lateinit var etAge: EditText
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,6 +37,8 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemS
 
 
         gender = binding.gender
+        etName = binding.etUserName
+        etAge = binding.age
 
         gender.onItemSelectedListener= this
         val adapter = ArrayAdapter(requireContext(), R.layout.gender_spinner_dropdown, genders)
@@ -39,6 +48,8 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemS
         binding.btGetStarted.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_welcomeFragment_to_page1)
         }
+
+        autofill()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -57,6 +68,25 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome), AdapterView.OnItemS
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    private fun autofill(){
+        viewModel.getUserDetail{ isSuccessful, userDetail ->
+            if (isSuccessful && userDetail!=null ){
+                when (userDetail.gender){
+                    "Male"-> gender.setSelection(0)
+                    "Female"-> gender.setSelection(1)
+                }
+                etName.setText(userDetail.name)
+                etAge.setText(userDetail.age.toString())
+
+
+
+            }
+
+
+        }
     }
 
 

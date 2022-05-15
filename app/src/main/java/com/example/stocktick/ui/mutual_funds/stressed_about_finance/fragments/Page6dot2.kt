@@ -19,6 +19,9 @@ class Page6dot2 : Fragment(R.layout.fragment_page6dot2) {
         binding.btNext.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_page6dot2_to_page6dot3)
         }
+        binding.btSkip.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_page6dot2_to_page6dot3)
+        }
 
     }
 }

@@ -3,6 +3,7 @@ package com.example.stocktick.network
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.models.HeadlineModel
+import com.example.stocktick.models.UserProfile
 import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
@@ -158,6 +159,11 @@ interface ApiServiceInterface {
     suspend fun getPage6(
         @Header("authToken") authToken: String
     ) : Response<List<String>>
+
+    @GET("/get/userinfo")
+    suspend fun getUserDetails(
+        @Header("authToken") authToken: String
+    ) : Response<UserProfile>
 
 
 
