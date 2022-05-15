@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentLoanBinding
-import com.example.stocktick.models.HeadlineModel
+import com.example.stocktick.models.response.HeadlineModel
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOAN
 import com.example.stocktick.utility.Constant.TOKEN

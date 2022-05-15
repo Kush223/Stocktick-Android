@@ -19,6 +19,7 @@ import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.databinding.CreateAccountLayoutBinding
 import com.example.stocktick.databinding.FragmentLoginOtpBinding
+import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant.LOG_TAG
 import com.example.stocktick.utility.Constant.TOKEN
@@ -62,6 +63,7 @@ class LoginFragment : Fragment() {
     private val REQ_USER_CONSENT = 200
     private lateinit var phone: String
     private lateinit var otp: String
+    private lateinit var authToken: String
 
 
     private fun initialiseVariables() {
@@ -88,8 +90,8 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginOtpBinding.inflate(layoutInflater)
         val view: View = _binding.root
@@ -166,6 +168,10 @@ class LoginFragment : Fragment() {
         }
     }
 
+    fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
     @DelicateCoroutinesApi
     private fun handleSubmitOTP(phoneModel: PhoneModel) {
         GlobalScope.launch(Dispatchers.Main) {
@@ -183,10 +189,12 @@ class LoginFragment : Fragment() {
     private fun handleViewPostOTP(res: GetOtpModel) {
         val old = res.Old_User
         val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences(USER, MODE_PRIVATE)
+                requireActivity().getSharedPreferences(USER, MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(TOKEN, res.authToken)
         editor.apply()
+
+        authToken = res.authToken.toString()
 
         if (old == true) {
             val intent = Intent(activity, MainActivity::class.java)
@@ -204,11 +212,12 @@ class LoginFragment : Fragment() {
             submitButton.setOnClickListener {
                 if (name.text.isEmpty()) {
                     name.error = "Please enter your name"
-                } else if (email.text.isEmpty()) {
-                    email.error = "Please enter your email id"
+                } else if (email.text.isEmpty() || !isEmailValid(email.text.toString())) {
+                    email.error = "Please enter a valid email id"
                 } else {
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
+
+                    val userProfile = UpdateUserProfileDTO(name = name.text.toString(), email = email.text.toString())
+                    updateProfile(userProfile)
                 }
             }
 
@@ -216,9 +225,23 @@ class LoginFragment : Fragment() {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
-
         }
+    }
 
+    @DelicateCoroutinesApi
+    private fun updateProfile(userProfile: UpdateUserProfileDTO) {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val resp = RetrofitClientInstance.retrofitService.updateUserProfile(authToken, userProfile)
+                Log.d(LOG_TAG, resp.toString())
+
+                val intent = Intent(activity, MainActivity::class.java)
+                startActivity(intent)
+
+            } catch (error: Exception) {
+                showToast("Request failed")
+            }
+        }
     }
 
     private fun showToast(msg: String) {
