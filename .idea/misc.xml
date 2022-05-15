@@ -35,6 +35,11 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/help.xml" value="0.1796875" />
         <entry key="..\:/Users/hp/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
         <entry key="..\:/Users/hp/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_host.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page3.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page4.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page5.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_screen1.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/bottom_nav_shape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_border.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/button_highlighter.xml" value="0.1" />
@@ -131,5 +136,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="Stocktick.app" />
+      </set>
+    </option>
   </component>
 </project>

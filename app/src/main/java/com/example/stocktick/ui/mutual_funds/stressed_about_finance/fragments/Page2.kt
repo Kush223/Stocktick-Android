@@ -76,6 +76,8 @@ class Page2 : Fragment(R.layout.fragment_page2) {
         etTax.setText(taxPaid.toString())
         etEmi.setText(emi.toString())
 
+        autofill()
+
 
 
 
@@ -272,6 +274,22 @@ class Page2 : Fragment(R.layout.fragment_page2) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun autofill(){
+        viewModel.getPage2{ isSuccessful, page2 ->
+            if (isSuccessful && page2!=null){
+                etInvestAmount.setText(page2!!.invst_amount.toString())
+                etHouseholdExpenses.setText(page2!!.household_expns.toString())
+                etLifestyleExpenses.setText(page2!!.lifestyle_expns.toString())
+                etSurplus.setText(page2!!.surplus.toString())
+                etEmi.setText(page2!!.emi_paid.toString())
+                etTax.setText(page2!!.tax_paid.toString())
+
+            }
+
+
+        }
     }
 
 

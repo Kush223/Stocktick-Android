@@ -67,6 +67,8 @@ class Page4 : Fragment(R.layout.fragment_page4) {
         }
             .build()
 
+        autofill()
+
 
 
         var job: Job? = null
@@ -165,6 +167,26 @@ class Page4 : Fragment(R.layout.fragment_page4) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+    private fun autofill(){
+        viewModel.getPage4{ isSuccessful, page4 ->
+            if (isSuccessful && page4!=null){
+                fd = page4!!.md.toDouble()
+                mf = page4!!.mf.toDouble()
+                epf = page4!!.nps.toDouble()
+                shares = page4!!.shares.toDouble()
+                etFd.setText(fd.toString())
+                etMf.setText(mf.toString())
+                etEpf.setText(epf.toString())
+                etShares.setText(shares.toString())
+                update()
+
+            }
+
+
+        }
+    }
+
 
 
 

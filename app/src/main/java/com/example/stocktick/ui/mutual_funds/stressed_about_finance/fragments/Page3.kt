@@ -63,6 +63,9 @@ class Page3 : Fragment(R.layout.fragment_page3) {
         etDebt.setText(debt.toString())
 
 
+        autofill()
+
+
 
 
 
@@ -208,6 +211,20 @@ class Page3 : Fragment(R.layout.fragment_page3) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun autofill(){
+        viewModel.getPage3{ isSuccessful, page3 ->
+            if (isSuccessful && page3!=null){
+                etGold.setText(page3!!.gold.toString())
+                etEquity.setText(page3!!.equity.toString())
+                etRealState.setText(page3!!.estate.toString())
+                etDebt.setText(page3!!.debt.toString())
+
+            }
+
+
+        }
     }
 
 
