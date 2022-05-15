@@ -47,6 +47,8 @@ class Page6 : Fragment(R.layout.fragment_page6) {
 
         recyclerView.adapter = adapter
 
+        autofill()
+
         val etGoal = binding.etGoal
         binding.btAdd.setOnClickListener{
             if (etGoal.text?.isEmpty() == true){
@@ -91,6 +93,23 @@ class Page6 : Fragment(R.layout.fragment_page6) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    private fun autofill(){
+        viewModel.getPage6{ isSuccessful, page6 ->
+            if (isSuccessful && page6!=null && !page6.goals.isNullOrEmpty()){
+                goals.clear()
+                for (goal in page6.goals){
+                    goals.add(
+                        goal
+                    )
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+
+        }
     }
 
 

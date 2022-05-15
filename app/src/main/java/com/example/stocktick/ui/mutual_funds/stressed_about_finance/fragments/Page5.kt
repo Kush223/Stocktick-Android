@@ -55,6 +55,8 @@ class Page5 : Fragment(R.layout.fragment_page5) {
 
         recyclerView.adapter = adapter
 
+        autofill()
+
 
         val etGoal = binding.etGoal
         binding.btAdd.setOnClickListener{
@@ -105,6 +107,31 @@ class Page5 : Fragment(R.layout.fragment_page5) {
         activity?.menuInflater?.inflate(R.menu.logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+    private fun autofill(){
+        viewModel.getPage5{ isSuccessful, page5 ->
+            Log.d(TAG, "autofill: Goals ")
+            if (isSuccessful && page5!=null && page5.data!= null){
+                goals.clear()
+                for (item in  page5.data){
+                    goals.add(
+                        Goal(
+                            item.goal,
+                            when (item.priority){
+                                "High"->0
+                                "Medium"->1
+                                "Low"->2
+                                else ->1
+                            }
+                        )
+                    )
+                }
+                Log.d(TAG, "autofill: Goals are :$goals")
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+
 
 
 }

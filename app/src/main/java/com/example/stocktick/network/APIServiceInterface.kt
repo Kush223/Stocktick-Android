@@ -126,6 +126,42 @@ interface ApiServiceInterface {
         @Header("authToken") authToken: String
     ) : Response<UserProfileDto>
 
+    // get requests of financial plannings
+    @GET("/finantialplanning/finnantial-Q1")
+    suspend fun getPage1(
+        @Header("authToken") authToken: String
+    ) : Response<List<Page1GetDto>>
+
+    @GET("/finantialplanning/finnantial-Q2")
+    suspend fun getPage2(
+        @Header("authToken") authToken: String
+    ) : Response<List<Page2GetDto>>    //This api is not working
+
+    @GET("/finantialplanning/finnantial-Q3")
+    suspend fun getPage3(
+        @Header("authToken") authToken: String
+    ) : Response<Page3Dto>
+
+    @GET("/finantialplanning/finnantial-Q4")
+    suspend fun getPage4(
+        @Header("authToken") authToken: String
+    ) : Response<Page4Dto>
+
+
+    @GET("/finantialplanning/finnantial-Q5")
+    suspend fun getPage5(
+        @Header("authToken") authToken: String
+    ) : Response<List<Data>>
+
+
+    @GET("/finantialplanning/finnantial-Q6")
+    suspend fun getPage6(
+        @Header("authToken") authToken: String
+    ) : Response<List<String>>
+
+
+
+
 
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages
