@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/color_background">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_background"
+    tools:context=".ui.mutual_funds.calculators.fragments.EmiCalculatorFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,10 +50,10 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:hint="500000"
+                app:hint="0000"
                 app:prefix="₹"
                 app:usePrefix="true"
-                app:inputType="number"
+                app:inputType="decimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
 
@@ -73,10 +76,10 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:hint="5"
-                app:prefix="yrs"
+                app:hint="00"
+                app:prefix="%"
                 app:usePrefix="true"
-                app:inputType="number"
+                app:inputType="decimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTimePeriod" />
 
@@ -99,10 +102,10 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:hint="10"
-                app:prefix="₹"
+                app:hint="00"
+                app:prefix="yrs"
                 app:usePrefix="true"
-                app:inputType="number"
+                app:inputType="decimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvCurrentSaving" />
 
@@ -142,9 +145,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹11,36,56,234"
+                        android:text="₹0000"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:id="@+id/tvMonthlyEmi"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvResultAmount"
@@ -167,9 +171,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹17,300"
+                        android:text="₹0000"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:id="@+id/tvPrincipalAmount"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvPerMonthSaving"
@@ -193,9 +198,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹17,300"
+                        android:text="₹0000"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:id="@+id/tvTotalInterest"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvDeficitCorpus"
@@ -220,7 +226,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹17,300"
+                        android:text="₹0000"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"
@@ -228,6 +234,7 @@
                         app:layout_constraintTop_toTopOf="@+id/tvLumpsum"
                         app:layout_constraintBottom_toBottomOf="@+id/tvLumpsum"
                         android:layout_marginEnd="10dp"
+                        android:id="@+id/tvTotalAmount"
                         />
 
 
