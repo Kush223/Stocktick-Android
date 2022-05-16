@@ -66,11 +66,11 @@ class EmiCalculatorFragment : Fragment(R.layout.emi_calculator_fragment_layout){
         try {
             val p = loanAmount.getText().toDouble()
             val n = loanTenure.getText().toDouble()*12
-            val r = rateOfInterest.getText().toDouble()/12
+            val r = rateOfInterest.getText().toDouble()/1200
 
             emi = (p*r* (1 + r).pow(n))/((1+r).pow(n) - 1)
 
-            val tAmount = emi*n*12
+            val tAmount = emi*n
             val tInterest = tAmount -  p
 
             //Strings
@@ -79,7 +79,7 @@ class EmiCalculatorFragment : Fragment(R.layout.emi_calculator_fragment_layout){
             val sTotalInterest = "₹${String.format("%.2f",tInterest)}"
             val sTotalAmount = "₹${String.format("%.2f",tAmount)}"
 
-            monthlyEmi.text = sEmi
+                monthlyEmi.text = sEmi
             principalAmount.text = sPrincipalAmount
             totalInterest.text = sTotalInterest
             totalAmount.text = sTotalAmount
