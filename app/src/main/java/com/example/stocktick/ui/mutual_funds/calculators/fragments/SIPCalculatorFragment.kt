@@ -56,11 +56,11 @@ class SIPCalculatorFragment : Fragment(R.layout.sip_calculator_fragment){
         try {
             //variables
             val p = etMonthlyInvestment.getText().toDouble()
-            val i = etExpectedReturnRate.getText().toDouble()
+            val i = etExpectedReturnRate.getText().toDouble()/1200
             val n = etTimePeriod.getText().toDouble()*12
 
             val totalInvestment = p*n
-            val totalReturns = p * (((1+i)*n-1)/i)*(i+1)
+            val totalReturns = p * (((1+i).pow(n)-1)/i)*(i+1)
             val returns = totalReturns - totalInvestment
 
             val sTotalReturns ="₹${String.format("%.2f",totalReturns)}"
