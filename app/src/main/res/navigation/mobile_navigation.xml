@@ -20,6 +20,18 @@
             android:id="@+id/action_navigation_home_to_mutualFundRootFragment2"
             app:destination="@id/navigation_mutual_funds"
             />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_education"
+            app:destination="@id/navigation_education" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_loan"
+            app:destination="@id/navigation_loan" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_insurance"
+            app:destination="@id/navigation_insurance" />
+        <action
+            android:id="@+id/action_navigation_home_to_debitCreditFragment"
+            app:destination="@id/debitCreditFragment" />
     </fragment>
 
     <fragment
@@ -37,5 +49,9 @@
         android:id="@+id/navigation_mutual_funds"
         android:name="com.example.stocktick.ui.mutual_funds.MutualFundRootFragment"
         android:label="MutualFundRootFragment" />
+    <fragment
+        android:id="@+id/debitCreditFragment"
+        android:name="com.example.stocktick.ui.debit_credit.DebitCreditFragment"
+        android:label="DebitCreditFragment" />
 
 </navigation>

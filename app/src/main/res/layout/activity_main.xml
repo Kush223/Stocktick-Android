@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
+    android:clipChildren="false"
     android:layout_height="match_parent"
-    android:background="#212121"
+    android:background="@color/color_background"
     android:orientation="vertical">
 
     <androidx.fragment.app.FragmentContainerView
@@ -31,6 +32,8 @@
         app:neumorph_shadowColorDark="@color/canvas_background"
         app:neumorph_shadowColorLight="#252525"
         app:neumorph_shadowElevation="6dp"
+        app:neumorph_backgroundColor="#303030"
+        android:background="#00000000"
         app:neumorph_shapeType="flat">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_gravity="center"
+            android:background="#303030"
+            android:clipChildren="false"
             app:itemIconTint="@drawable/button_highlighter"
             app:itemTextColor="@drawable/button_highlighter"
             app:menu="@menu/bottom_nav_menu">

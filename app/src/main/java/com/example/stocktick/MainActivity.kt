@@ -10,12 +10,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.stocktick.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
     private lateinit var binding: ActivityMainBinding
+    public lateinit var navView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -69,8 +71,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val navView = binding.bottomNavigationView
+        navView = binding.bottomNavigationView
         binding.bottomNavigationView.background = null
+
+        navView.selectedItemId = R.id.navigation_insurance
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -79,11 +83,14 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_insurance, R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education
         )
             .build()
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
-         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+
         NavigationUI.setupWithNavController(navView, navController)
+
     }
 
 //    override fun onResume() {
