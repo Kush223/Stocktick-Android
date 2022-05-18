@@ -75,10 +75,10 @@ class ChildMarriageCalculatorFragment: Fragment(R.layout.child_marriage_calculat
         try {
             //variables
             val pv = etCurrentCostOfMarriage.getText().toDouble()
-            val ir = etInflation.getText().toDouble()
+            val i = etInflation.getText().toDouble()
             val n = etMarriageAge.getText().toDouble() - etCurrentAge.getText().toDouble()
 
-            val fv = pv * (1+ir/100).pow(n)
+            val fv = pv * (1+i/100).pow(n)
 
 
         }
