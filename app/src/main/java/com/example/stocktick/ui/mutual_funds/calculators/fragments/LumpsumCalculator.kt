@@ -5,45 +5,40 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.stocktick.R
-import com.example.stocktick.databinding.SipTopUpCalculatoFragmentLayoutBinding
+import com.example.stocktick.databinding.FragmentLumpsumCalculatorBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
 import kotlin.math.pow
 
-class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout) {
-    private lateinit var binding: SipTopUpCalculatoFragmentLayoutBinding
 
+class LumpsumCalculator : Fragment(R.layout.fragment_lumpsum_calculator) {
+    private lateinit var binding: FragmentLumpsumCalculatorBinding
     //input fields
-    private lateinit var etMonthlyInvestment: NeumorphEditText
-    private lateinit var etAnnualStepUp: NeumorphEditText
-    private lateinit var etExpectedReturnRate: NeumorphEditText
+    private lateinit var etTotalValue: NeumorphEditText
+    private lateinit var etExpectedReturn: NeumorphEditText
     private lateinit var etTimePeriod: NeumorphEditText
+
 
     //output fields
     private lateinit var tvInvestedAmount: TextView
-    private lateinit var tvEstReturns: TextView
+    private lateinit var tvEstimatedReturns: TextView
     private lateinit var tvTotalValue: TextView
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = SipTopUpCalculatoFragmentLayoutBinding.bind(view)
+        binding = FragmentLumpsumCalculatorBinding.bind(view)
 
-        //view initializations
-        etMonthlyInvestment = binding.etMonthlyInvestment
-        etAnnualStepUp = binding.etAnnualStepUp
-        etExpectedReturnRate = binding.etExpectedReturnRate
+        //field initializations
+        etTotalValue = binding.etTotalInvestment
+        etExpectedReturn = binding.etExpectedReturnRate
         etTimePeriod = binding.etTimePeriod
 
         tvInvestedAmount = binding.tvResInvestedAmount
-        tvEstReturns = binding.tvResEstimatedReturns
+        tvEstimatedReturns = binding.tvResEstimatedReturns
         tvTotalValue = binding.tvResTotalValue
 
-        etMonthlyInvestment.listen()
-        etAnnualStepUp.listen()
-        etExpectedReturnRate.listen()
+        etTotalValue.listen()
+        etExpectedReturn.listen()
         etTimePeriod.listen()
-
 
     }
 
@@ -57,22 +52,24 @@ class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout)
     private fun calculate(){
         try {
             //input parameters
-            val x = etMonthlyInvestment.getText().toDouble()
-            val sr = etAnnualStepUp.getText().toDouble()
-            val r = etExpectedReturnRate.getText().toDouble()
+            val p = etTotalValue.getText().toDouble()
+            val r = etExpectedReturn.getText().toDouble()
             val t = etTimePeriod.getText().toDouble()
 
-
-
             //calculation
-
-
-
+            val totalValue = p * (1+r/100).pow(t)
+            val estReturn = totalValue - p
 
 
             //formatting the output
+            val sTotalInvestment ="₹${String.format("%.2f",p)}"
+            val sEstReturn = "₹${String.format("%.2f",estReturn)}"
+            val sTotalValue = "₹${String.format("%.2f",totalValue)}"
 
             //Writing the result the result
+            tvInvestedAmount.text = sTotalInvestment
+            tvEstimatedReturns.text = sEstReturn
+            tvTotalValue.text = sTotalValue
 
 
 
@@ -83,4 +80,5 @@ class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout)
         catch (e: NumberFormatException){
         }
     }
+
 }

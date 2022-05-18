@@ -19,17 +19,16 @@ class ChildMarriageCalculatorFragment: Fragment(R.layout.child_marriage_calculat
     private lateinit var etInflation: NeumorphEditText
     private lateinit var etCurrentAge: NeumorphEditText
     private lateinit var etMarriageAge: NeumorphEditText
-    private lateinit var etCurrentInvestment: NeumorphEditText
+   // private lateinit var etCurrentInvestment: NeumorphEditText
     private lateinit var etExpectedReturns: NeumorphEditText
 
-    // results parameters
-    private var emi  = 0.0
+
 
     //Output widgets
     private lateinit var tvFutureCost: TextView
-    private lateinit var tvAppreciation: TextView
-    private lateinit var tvDeficitCorpus: TextView
-    private lateinit var tvLumpsum: TextView
+//    private lateinit var tvAppreciation: TextView
+//    private lateinit var tvDeficitCorpus: TextView
+//    private lateinit var tvLumpsum: TextView
     private lateinit var tvMonthlyInvestmentRequired: TextView
 
 
@@ -43,22 +42,22 @@ class ChildMarriageCalculatorFragment: Fragment(R.layout.child_marriage_calculat
         etInflation = binding.etTimePeriod
         etCurrentAge = binding.etCurrentSaving
         etMarriageAge = binding.etMonthlySaving
-        etCurrentInvestment = binding.etInvestAmount
+//        etCurrentInvestment = binding.etInvestAmount
         etExpectedReturns = binding.etExpectedReturn
 
 
         //output view initialization
         tvFutureCost = binding.futureCostOfMarriage
-        tvAppreciation = binding.appreciation
-        tvDeficitCorpus = binding.deficitCorpus
-        tvLumpsum = binding.lumpsum
+//        tvAppreciation = binding.appreciation
+//        tvDeficitCorpus = binding.deficitCorpus
+//        tvLumpsum = binding.lumpsum
         tvMonthlyInvestmentRequired = binding.monthlyEmi
 
-        etCurrentInvestment.listen()
+
         etInflation.listen()
         etCurrentAge.listen()
         etMarriageAge.listen()
-        etCurrentInvestment.listen()
+        //etCurrentInvestment.listen()
         etExpectedReturns.listen()
 
     }
@@ -77,9 +76,19 @@ class ChildMarriageCalculatorFragment: Fragment(R.layout.child_marriage_calculat
             val pv = etCurrentCostOfMarriage.getText().toDouble()
             val i = etInflation.getText().toDouble()
             val n = etMarriageAge.getText().toDouble() - etCurrentAge.getText().toDouble()
+            var r = etExpectedReturns.getText().toDouble()
 
+            //calculations
             val fv = pv * (1+i/100).pow(n)
+            r /= 1200
+            val mi = fv / ((((1+r).pow(n*12)-1)/r)*(r+1))
 
+            //writing to output
+            val sFv = "₹${String.format("%.2f",fv)}"
+            val sMi = "₹${String.format("%.2f",mi)}"
+
+            tvFutureCost.text = sFv
+            tvMonthlyInvestmentRequired.text = sMi
 
         }
         catch (e: ArithmeticException){

@@ -133,41 +133,41 @@
                 app:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMonthlySaving" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/tvCurrentInvestment"-->
+<!--                android:text="5. Amount which you can invest now for your goal"-->
+<!--                android:layout_marginEnd="50dp"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textColor="@color/secondary_text_color"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/etMaturityAge"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                />-->
+
+<!--            <com.example.stocktick.ui.customviews.NeumorphEditText-->
+<!--                android:id="@+id/etCurrentInvestment"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                app:hint="00"-->
+<!--                app:prefix="₹"-->
+<!--                app:usePrefix="true"-->
+<!--                app:inputType="number"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tvCurrentInvestment" />-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvCurrentInvestment"
-                android:text="5. Amount which you can invest now for your goal"
+                android:id="@+id/tvExpectedReturn"
+                android:text="5. Expected Investment Returns"
                 android:layout_marginEnd="50dp"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etMaturityAge"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                />
-
-            <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etCurrentInvestment"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:hint="00"
-                app:prefix="₹"
-                app:usePrefix="true"
-                app:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCurrentInvestment" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvExpectedReturn"
-                android:text="6. Expected Investment Returns"
-                android:layout_marginEnd="50dp"
-                android:textSize="16sp"
-                android:textColor="@color/secondary_text_color"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCurrentInvestment"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 />
@@ -229,86 +229,86 @@
                         android:layout_marginEnd="10dp"
                         />
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Appreciation of investments made today"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvResultAmount"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/tvPerMonthSaving"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₹000"
-                        android:id="@+id/tvResultAppreciationOfInvestments"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvPerMonthSaving"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvPerMonthSaving"
-                        android:layout_marginEnd="10dp"
-                        />
+<!--                    <TextView-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Appreciation of investments made today"-->
+<!--                        android:textSize="16sp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tvResultAmount"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:id="@+id/tvPerMonthSaving"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="₹000"-->
+<!--                        android:id="@+id/tvResultAppreciationOfInvestments"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/tvPerMonthSaving"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/tvPerMonthSaving"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        />-->
 
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Deficit Corpus"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvPerMonthSaving"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/tvDeficitCorpus"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₹000"
-                        android:id="@+id/tvResultDeficitCorpus"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvDeficitCorpus"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvDeficitCorpus"
-                        android:layout_marginEnd="10dp"
-                        />
+<!--                    <TextView-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Deficit Corpus"-->
+<!--                        android:textSize="16sp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tvPerMonthSaving"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:id="@+id/tvDeficitCorpus"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="₹000"-->
+<!--                        android:id="@+id/tvResultDeficitCorpus"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/tvDeficitCorpus"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/tvDeficitCorpus"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        />-->
 
 
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Lumpsum Funding Required"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDeficitCorpus"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/tvLumpsum"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₹000"
-                        android:id="@+id/tvResultLumpsum"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvLumpsum"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvLumpsum"
-                        android:layout_marginEnd="10dp"
-                        />
+<!--                    <TextView-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Lumpsum Funding Required"-->
+<!--                        android:textSize="16sp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tvDeficitCorpus"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:id="@+id/tvLumpsum"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="₹000"-->
+<!--                        android:id="@+id/tvResultLumpsum"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/tvLumpsum"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/tvLumpsum"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        />-->
 
                     <TextView
                         android:layout_width="200dp"
@@ -316,7 +316,7 @@
                         android:text="Monthly Investments Required"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLumpsum"
+                        app:layout_constraintTop_toBottomOf="@+id/tvResultAmount"
                         android:layout_marginTop="20dp"
                         android:textColor="@color/white"
                         android:layout_marginStart="10dp"
