@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_navigationScreenFragment_to_sipTopUpFragment"
             app:destination="@id/sipTopUpFragment" />
+        <action
+            android:id="@+id/action_navigationScreenFragment_to_lumpsumCalculator"
+            app:destination="@id/lumpsumCalculator" />
     </fragment>
     <fragment
         android:id="@+id/childEducationCalculatorFragment"
@@ -67,4 +70,9 @@
         android:id="@+id/sipTopUpFragment"
         android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.SipTopUpFragment"
         android:label="SipTopUpFragment" />
+    <fragment
+        android:id="@+id/lumpsumCalculator"
+        android:name="com.example.stocktick.ui.mutual_funds.calculators.fragments.LumpsumCalculator"
+        android:label="fragment_lumpsum_calculator"
+        tools:layout="@layout/fragment_lumpsum_calculator" />
 </navigation>

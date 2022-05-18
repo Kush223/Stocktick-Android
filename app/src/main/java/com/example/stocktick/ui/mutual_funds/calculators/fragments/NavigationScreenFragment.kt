@@ -45,6 +45,7 @@ class NavigationScreenFragment : Fragment(R.layout.fragment_navigation_screen) {
             navController?.navigate(R.id.action_navigationScreenFragment_to_sipTopUpFragment)
         }
         binding.unknownCalculator.setOnClickListener{
+            navController?.navigate(R.id.action_navigationScreenFragment_to_lumpsumCalculator)
         }
 
     }
