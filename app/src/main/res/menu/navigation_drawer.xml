@@ -7,7 +7,7 @@
         android:checkableBehavior="single"
         >
         <item
-            android:id="@+id/profile"
+            android:id="@+id/viewProfile"
             android:title="Profile"
             />
         <item

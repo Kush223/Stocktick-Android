@@ -16,10 +16,7 @@ import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiServiceInterface {
 
@@ -173,6 +170,13 @@ interface ApiServiceInterface {
     suspend fun getUserDetails(
             @Header("authToken") authToken: String
     ): Response<UserProfile>
+
+    @PUT("/update/userinfo/")
+    suspend fun updateUserInfo(
+        @Header("authToken") authToken: String,
+        @Body profile: UpdateUserProfileDTO
+    ) : Response<StandardSuccessResponse>
+
 
 
 }

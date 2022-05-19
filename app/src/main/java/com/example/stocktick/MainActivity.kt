@@ -16,15 +16,18 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.example.stocktick.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     lateinit var navView: BottomNavigationView
+    lateinit var drawerNavView: NavigationView
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
     }
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        drawerNavView = binding.navView
 
 
 
@@ -105,6 +109,8 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         NavigationUI.setupWithNavController(navView, navController)
+        drawerNavView.setupWithNavController(navController)
+
         
 
     }

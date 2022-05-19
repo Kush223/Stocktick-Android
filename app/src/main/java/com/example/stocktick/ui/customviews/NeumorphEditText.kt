@@ -51,6 +51,9 @@ NeumorphEditText(
                 2 -> {
                     editText.inputType = InputType.TYPE_CLASS_NUMBER
                 }
+                3 -> {
+                    editText.inputType = InputType.TYPE_CLASS_TEXT
+                }
             }
 
             editText.addTextChangedListener(
