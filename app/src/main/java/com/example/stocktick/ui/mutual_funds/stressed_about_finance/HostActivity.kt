@@ -16,11 +16,12 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.topAppBar)
         customTracker = binding.tracker
         customTracker.setDivisions(11)
         customTracker.setPosition(0)
 
-        supportActionBar?.title = "Financial Plannings"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
 

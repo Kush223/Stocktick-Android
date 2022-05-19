@@ -15,7 +15,6 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.mutual_funds.calculators.HostActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
             android:exported="false" />
         <activity
             android:name=".ui.mutual_funds.stressed_about_finance.HostActivity"

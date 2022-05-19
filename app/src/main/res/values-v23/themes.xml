@@ -4,7 +4,11 @@
     <!--    this for the font adn the background: https://www.murrayc.com/permalink/2014/10/28/android-changing-the-toolbars-text-color-and-overflow-icon-color/-->
     <!--    WORKAROUND FOR MUKESH SOLANKIS PIN VIEW https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:statusBarColor">#404040</item>
+        <item name="android:statusBarColor">#252525</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="textColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
         <item name="android:navigationBarColor">@color/color_background</item>
     </style>
 

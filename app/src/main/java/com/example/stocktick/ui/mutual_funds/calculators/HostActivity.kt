@@ -14,8 +14,8 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHost2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.topAppBar)
 
-        supportActionBar?.title = "Calculators"
 
     }
 

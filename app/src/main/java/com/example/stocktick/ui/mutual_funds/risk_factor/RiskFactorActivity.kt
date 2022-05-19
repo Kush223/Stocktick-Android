@@ -19,6 +19,7 @@ class RiskFactorActivity : AppCompatActivity() {
         setContentView(binding.root)
         customTracker = binding.tracker
         customTracker.setDivisions(2)
+        setSupportActionBar(binding.topAppBar)
 
     }
 
