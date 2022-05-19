@@ -1,38 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Stocktick" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">#404040</item>
+        <item name="android:navigationBarColor">@color/color_background</item>
 
-        <!--        <item name="colorPrimary">@color/purple_200</item>-->
-        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-        <!--        <item name="colorOnPrimary">@color/black</item>-->
-        <!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-        <!--        <item name="colorSecondary">@color/teal_200</item>-->
-        <!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
-        <!--        <item name="colorOnSecondary">@color/black</item>-->
-        <!--         Status bar color. -->
-        <item name="android:statusBarColor">@color/button_canvas</item>
-        <!--        Customize your theme here.-->
-
-        <!--        <item name="android:statusBarColor">@color/black_191919</item>-->
-        <!-- Primary brand color. -->
-        <item name="android:textColor">@color/black_000000</item>
-        <item name="colorPrimaryDark">@color/black_191919</item>
-        <item name="colorPrimary">@color/black_191919</item>
-        <item name="colorPrimaryVariant">@color/button_canvas</item>
-        <item name="colorOnPrimary">@color/button_canvas</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/button_canvas</item>
-        <item name="colorSecondaryVariant">@color/button_canvas</item>
-        <item name="colorOnSecondary">@color/button_canvas</item>
-        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
-        <!--        <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Night">-->
-        <!--            <item name="android:statusBarColor">@color/black_191919</item>-->
-        <!--        </style>-->
     </style>
 
 

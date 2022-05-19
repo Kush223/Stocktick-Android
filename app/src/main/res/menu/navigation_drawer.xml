@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/profile_group"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/viewProfile"
+            android:title="Profile"
+            />
+        <item
+            android:id="@+id/logout"
+            android:title="Logout"
+            />
+    </group>
+    <group
+        android:id="@+id/navigation"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/navigation_mutual_funds"
+            android:title="Mutual Funds"
+            />
+        <item
+            android:id="@+id/navigation_insurance"
+            android:title="Insurance"
+            />
+        <item
+            android:id="@+id/navigation_loan"
+            android:title="Loan"
+            />
+        <item
+            android:id="@+id/nav_education"
+            android:title="Education"
+            />
+        <item
+            android:id="@+id/nav_calculator"
+            android:title="Calculators"
+            />
+        <item
+            android:id="@+id/debitCreditFragment"
+            android:title="Finance Analysis"
+            />
+
+    </group>
+
+</menu>

@@ -1,10 +1,13 @@
 package com.example.stocktick.ui.home
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
@@ -112,4 +115,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.VISIBLE
+
+    }
+
 }

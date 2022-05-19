@@ -3,22 +3,31 @@
     <!--    https://stackoverflow.com/questions/30464234/android-lollipop-set-status-bar-text-color-->
     <!--    this for the font adn the background: https://www.murrayc.com/permalink/2014/10/28/android-changing-the-toolbars-text-color-and-overflow-icon-color/-->
     <!--    WORKAROUND FOR MUKESH SOLANKIS PIN VIEW https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
-    <style name="Theme.Stocktick" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!--        <item name="android:statusBarColor">@color/black_000000</item>-->
+    <style name="Theme.Stocktick" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="backgroundColor">#303030</item>
+        <item name="android:colorBackground">#303030</item>
+        <item name="android:statusBarColor">#252525</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="textColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:navigationBarColor">@color/color_background</item>
+
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:textColor">@color/white_FFFFFF</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black_000000</item>
-        <item name="colorPrimaryVariant">@color/button_canvas</item>
-        <item name="colorOnPrimary">@color/button_canvas</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/button_canvas</item>
-        <item name="colorSecondaryVariant">@color/button_canvas</item>
-        <item name="colorOnSecondary">@color/button_canvas</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!--        <item name="android:statusBarColor">@color/button_canvas</item>-->
 
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
+
+
 
     <style name="OtpWidget.OtpView" parent="Widget.AppCompat.EditText">
         <item name="android:background">@null</item>

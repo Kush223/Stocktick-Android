@@ -52,7 +52,6 @@ class LoanFragment : Fragment() {
         loanViewModel = ViewModelProvider(
             this, viewModelFactory
         )[LoanViewModel::class.java]
-        (activity as AppCompatActivity).supportActionBar?.title = LOAN
 
 
         recyclerView = binding.loanList
