@@ -78,7 +78,7 @@ class EducationFragment : Fragment(), EducationInterface, LifecycleObserver {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = EducationViewModelFactory(requireContext())
         eduViewModel = ViewModelProvider(this, viewModelFactory)[EducationViewModel::class.java]
-        (activity as AppCompatActivity).supportActionBar?.title = EDUCATION
+
 
         utilsService = UtilsService(requireContext())
 

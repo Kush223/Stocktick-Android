@@ -51,8 +51,6 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
             startActivity(intent)
         }
 
-        (activity as AppCompatActivity).supportActionBar?.title = MUTUAL_FUND
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

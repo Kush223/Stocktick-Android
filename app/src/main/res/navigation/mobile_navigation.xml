@@ -43,15 +43,15 @@
     <fragment
         android:id="@+id/navigation_insurance"
         android:name="com.example.stocktick.ui.insurance.InsuranceFragment"
-        android:label="@string/insurance_title"
+        android:label="@string/title_insurance"
         tools:layout="@layout/fragment_insurance" />
     <fragment
         android:id="@+id/navigation_mutual_funds"
         android:name="com.example.stocktick.ui.mutual_funds.MutualFundRootFragment"
-        android:label="MutualFundRootFragment" />
+        android:label="Mutual Funds" />
     <fragment
         android:id="@+id/debitCreditFragment"
         android:name="com.example.stocktick.ui.debit_credit.DebitCreditFragment"
-        android:label="DebitCreditFragment" />
+        android:label="Finance Analysis" />
 
 </navigation>

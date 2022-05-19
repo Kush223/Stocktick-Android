@@ -128,7 +128,6 @@ class InsuranceFragment : Fragment() {
         insuranceViewModel = ViewModelProvider(
                 this, viewModelFactory
         )[InsuranceViewModel::class.java]
-        (activity as AppCompatActivity).supportActionBar?.title = "Insurance"
 
         motorCard = binding.bikeCard
         healthCard = binding.carCard

@@ -35,9 +35,11 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/help.xml" value="0.1796875" />
         <entry key="..\:/Users/hp/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
         <entry key="..\:/Users/hp/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/circle_img_background.xml" value="0.1685" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/credit_img.xml" value="0.208" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/debit_img.xml" value="0.208" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/default_dot.xml" value="0.208" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_home_24dp.xml" value="0.1685" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/selected_dot.xml" value="0.208" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/tab_selector.xml" value="0.208" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_host.xml" value="0.21197916666666666" />
@@ -55,9 +57,11 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_screen1.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_welcome.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/home_services.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/nav_drawer_header_layout.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/sip_calculator_fragment.xml" value="0.1838768115942029" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/view_pager_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/menu/navigation_drawer.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/drawable/bottom_nav_shape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_border.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/button_highlighter.xml" value="0.1" />
