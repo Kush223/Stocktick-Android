@@ -32,6 +32,7 @@
                 <ImageView
                     android:id="@+id/profileImage"
                     android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
                     android:layout_height="match_parent"
                     android:src="@mipmap/profile_placeholder" />
             </androidx.cardview.widget.CardView>

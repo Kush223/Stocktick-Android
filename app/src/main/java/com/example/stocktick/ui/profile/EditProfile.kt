@@ -1,37 +1,48 @@
 package com.example.stocktick.ui.profile
 
 import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEditProfileBinding
 import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant
+import com.example.stocktick.utility.FileUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStreamReader
 
 
-val genders = listOf(
-    "Male",
-    "Female",
-    "Others"
-)
-
+private const val TAG = "EditProfileTAG"
 class EditProfile : Fragment(R.layout.fragment_edit_profile),
     View.OnClickListener,
     AdapterView.OnItemSelectedListener {
+
+    private var profileUrl : String = ""
 
 
     private val navController by lazy {
@@ -47,6 +58,7 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditProfileBinding.bind(view)
         binding.submitBtn.setOnClickListener(this)
+        binding.profileImage.setOnClickListener(this)
 
 
         val sharedPreferences: SharedPreferences =
@@ -66,8 +78,13 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
         )
         adapter.setDropDownViewResource(R.layout.gender_spinner_dropdown)
         gender.adapter = adapter
+        autofill()
 
 
+
+    }
+
+    private fun autofill(){
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val response = RetrofitClientInstance.retrofitService.getUserDetails(
@@ -85,6 +102,8 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                             "Female" -> gender.setSelection(1)
                             "Others" -> gender.setSelection(2)
                         }
+                        profileUrl = body.profile_url ?: ""
+                        Glide.with(requireActivity()).load(profileUrl).into(binding.profileImage)
                     }
                 } else {
                     withContext(Dispatchers.Main) {
@@ -105,7 +124,6 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                 }
             }
         }
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -114,6 +132,32 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
+    }
+
+    private fun openFile() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "image/*"
+
+            // Optionally, specify a URI for the file that should appear in the
+            // system file picker when it loads.
+        }
+
+        startForResult.launch(intent)
+    }
+
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            // Handle the Intent
+            Log.d(TAG, "Result :${intent?.data}")
+            val uri = intent?.data ?: return@registerForActivityResult
+
+
+            uploadFile(
+                uri
+            )
+        }
     }
 
     override fun onClick(v: View?) {
@@ -129,8 +173,65 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                     }
                 }
             }
+
+            R.id.profileImage -> {
+                openFile()
+            }
         }
     }
+
+    private fun uploadFile(
+        uri: Uri)
+    {
+        lifecycleScope.launch(Dispatchers.IO){
+            try {
+                val docFile = DocumentFile.fromSingleUri(requireContext(), uri) ?: return@launch
+                val suffix = when (docFile.type){
+                    "image/jpeg"->".jpg"
+                    "image/pjeg" -> ".jpg"
+                    "image/png" -> ".png"
+                    else ->".jpg"
+                }
+                Log.d(TAG, "uploadFile: format from docFile :${docFile.type}")
+                val inputStream = requireContext().contentResolver.openInputStream(uri) ?: return@launch
+                val tempFile = File.createTempFile("toUpload", suffix, requireActivity().getExternalFilesDir(null))
+                FileOutputStream(tempFile, false).use { outputStream->
+                    var read: Int
+                    val bytes = ByteArray(DEFAULT_BUFFER_SIZE)
+                    while (inputStream.read(bytes).also { read = it } != -1) {
+                        outputStream.write(bytes, 0, read)
+                    }
+                }
+
+
+
+                val requestBody = tempFile
+                    .asRequestBody(requireContext().contentResolver.getType(uri)?.let { it.toMediaTypeOrNull() })
+
+                val body = MultipartBody.Part.createFormData("file",docFile.name, requestBody);
+                val response =
+                    RetrofitClientInstance.retrofitService.uploadFile(
+                       authToken = tokenSharedPreference,
+                        file = body
+                    )
+
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Profile photo uploaded", Toast.LENGTH_SHORT).show()
+                    if (response.body() != null && response.body()!!.file != null)
+                    profileUrl = response.body()!!.file!!
+
+                    Glide.with(requireActivity()).load(profileUrl).into(binding.profileImage)
+                    Log.d(TAG, "onSubmit: ${response.body()}")
+                }
+                tempFile.delete()
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main) {
+
+                }
+                Log.d(TAG, error.toString())
+            }
+        }
+        }
 
     private fun onSubmit(
         onResponse: (
@@ -147,11 +248,11 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                             age = binding.etAge.getText().toInt(),
                             email = binding.etEmail.getText(),
                             gender = gender.selectedItem.toString(),
-                            profile_url = ""
+                            profile_url = profileUrl
                         )
                     )
                 withContext(Dispatchers.Main) {
-                    Log.d("asdfasdf", "onSubmit: ${response.body()}")
+                    Log.d(TAG, "onSubmit: ${response.body()}")
                     onResponse(
                         response.isSuccessful
                     )
