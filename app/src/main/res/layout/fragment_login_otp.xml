@@ -8,14 +8,14 @@
     android:layout_width="match_parent"
     android:visibility="visible"
     android:layout_height="match_parent"
-    android:background="@color/canvas_all">
+    android:background="@color/color_background">
 
     <!--        PHONE NUMBER CARD-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/phone_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/canvas_background"
+        android:background="@color/color_background"
         android:visibility="visible"
         tools:context=".auth.LoginFragment">
 
@@ -24,7 +24,6 @@
             android:id="@+id/login_canvas1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/canvas_background"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -134,7 +133,6 @@
         android:id="@+id/otp_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/canvas_background"
         android:visibility="invisible"
         tools:context=".auth.LoginFragment">
         <!--OTP CARD-->
@@ -142,7 +140,6 @@
             android:id="@+id/otp_canvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/canvas_background"
             android:orientation="vertical"
             tools:context=".auth.LoginFragment">
 
@@ -298,7 +295,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:background="@color/canvas_background"
+                android:background="@color/color_background"
                 android:orientation="vertical">
 
                 <!--                SUBMIT OTP BUTTON-->
@@ -329,7 +326,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white_FFFFFF"
                     android:textSize="18sp"
-                    app:backgroundTint="@color/black_000000" />
+                    app:backgroundTint="@color/color_background" />
             </LinearLayout>
         </LinearLayout>
 

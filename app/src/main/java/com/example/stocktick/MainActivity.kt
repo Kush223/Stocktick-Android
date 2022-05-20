@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.ImageView
@@ -26,6 +27,7 @@ import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.ActivityMainBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant
+import com.example.stocktick.utility.UtilsService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
@@ -33,11 +35,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.w3c.dom.Text
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
     lateinit var binding: ActivityMainBinding
     lateinit var navView: BottomNavigationView
     lateinit var drawerNavView: NavigationView
+    private lateinit var utilsService: UtilsService
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
     }
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         drawerNavView = binding.navView
+        utilsService = UtilsService(this)
 
 
 
@@ -113,15 +117,15 @@ class MainActivity : AppCompatActivity() {
             .setOpenableLayout(binding.container)
             .build()
 
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-//        navController = navHostFragment.navController
-        //val navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         NavigationUI.setupWithNavController(navView, navController)
         drawerNavView.setupWithNavController(navController)
 
         updateDrawerProfile()
+        drawerNavView.setNavigationItemSelectedListener(this)
+
 
     }
 
@@ -157,6 +161,28 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, binding.container) || super.onSupportNavigateUp()
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.navigation_home -> navView.selectedItemId = R.id.navigation_home
+            R.id.navigation_insurance -> navView.selectedItemId = R.id.navigation_insurance
+            R.id.navigation_mutual_funds -> navView.selectedItemId = R.id.navigation_mutual_funds
+            R.id.navigation_education -> navView.selectedItemId = R.id.navigation_education
+            R.id.navigation_loan -> navView.selectedItemId = R.id.navigation_loan
+            R.id.debitCreditFragment-> {
+                navController.navigate(R.id.action_navigation_home_to_debitCreditFragment)
+            }
+            R.id.viewProfile ->{
+                navController.navigate(R.id.action_navigation_home_to_viewProfile)
+            }
+            R.id.logout ->{
+                utilsService.logout()
+                finish()
+            }
+
+        }
+        binding.container.closeDrawer(Gravity.LEFT)
+        return true
+    }
 
 
 //    override fun onResume() {

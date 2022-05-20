@@ -1,13 +1,14 @@
 package com.example.stocktick.ui.mutual_funds
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ContentInfoCompat
 import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
@@ -15,7 +16,6 @@ import com.example.stocktick.databinding.FragmentMutualFundRootBinding
 import com.example.stocktick.ui.customviews.MutualFundCard
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
-import com.example.stocktick.utility.Constant.MUTUAL_FUND
 import com.example.stocktick.utility.UtilsService
 
 
@@ -50,6 +50,13 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
             val intent = Intent(requireActivity(), com.example.stocktick.ui.mutual_funds.calculators.HostActivity::class.java)
             startActivity(intent)
         }
+        binding.cardButton.setOnClickListener{
+            val intent =
+                Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.fundzbazar.com/"))
+            startActivity(intent)
+        }
+
+
 
     }
 
@@ -64,7 +71,9 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root) {
             // do something here
             utilsService.logout()
             val intent = Intent(context, LoginSignupActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+
         }
         return super.onOptionsItemSelected(item)
 

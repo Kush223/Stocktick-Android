@@ -34,9 +34,9 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="FUNDZ"
+                android:text="Explore more about"
                 android:id="@+id/alet1"
                 android:textSize="18dp"
                 android:textColor="@color/education_page_title_colour"
@@ -54,7 +54,7 @@
                 android:id="@+id/alet2"
                 android:textSize="18sp"
                 app:layout_constraintTop_toBottomOf="@+id/alet1"
-                app:layout_constraintEnd_toEndOf="@+id/alet1"
+                app:layout_constraintStart_toStartOf="@+id/alet1"
                 />
 
             <soup.neumorphism.NeumorphButton

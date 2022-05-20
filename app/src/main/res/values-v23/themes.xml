@@ -6,7 +6,7 @@
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="backgroundColor">#303030</item>
         <item name="android:colorBackground">#303030</item>
-        <item name="android:statusBarColor">#252525</item>
+        <item name="android:statusBarColor">#222222</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="textColor">@color/white</item>
         <item name="android:textColorSecondary">@color/white</item>
