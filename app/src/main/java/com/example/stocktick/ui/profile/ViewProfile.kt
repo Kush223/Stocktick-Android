@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentViewProfileBinding
@@ -56,6 +57,7 @@ class ViewProfile : Fragment(R.layout.fragment_view_profile) {
                         binding.tvPhoneNo.text = body.phone
                         binding.tvGender.text = body.gender
                         binding.tvAge.text = "${body.age.toString()} yrs"
+                        Glide.with(requireActivity()).load(body.profile_url).into(binding.profileImage)
                     }
                 }
                 else {

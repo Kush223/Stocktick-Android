@@ -6,6 +6,7 @@ import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.models.response.HeadlineModel
 import com.example.stocktick.models.response.StandardSuccessResponse
 import com.example.stocktick.models.UserProfile
+import com.example.stocktick.models.response.FileUploadResponse
 import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
@@ -15,6 +16,8 @@ import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -176,6 +179,13 @@ interface ApiServiceInterface {
         @Header("authToken") authToken: String,
         @Body profile: UpdateUserProfileDTO
     ) : Response<StandardSuccessResponse>
+
+    @Multipart
+    @POST("/fileUploader")
+    suspend fun uploadFile(
+        @Header("authToken") authToken: String,
+        @Part file : MultipartBody.Part
+    ) : Response<FileUploadResponse>
 
 
 
