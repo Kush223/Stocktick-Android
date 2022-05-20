@@ -1,5 +1,7 @@
 package com.example.stocktick
 
+import android.app.Activity
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +9,9 @@ import android.provider.Telephony
 import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -17,11 +22,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.ActivityMainBinding
+import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.utility.Constant
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
@@ -111,8 +121,36 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(navView, navController)
         drawerNavView.setupWithNavController(navController)
 
-        
+        updateDrawerProfile()
 
+    }
+
+    private fun updateDrawerProfile() {
+        lifecycleScope.launch(Dispatchers.IO){
+            try {
+                val sharedPreferences: SharedPreferences =
+                   getSharedPreferences(Constant.USER, Activity.MODE_PRIVATE)
+                val tokenSharedPreference =
+                    sharedPreferences.getString(Constant.TOKEN, Constant.SHAREDPREFERENCES_TOKEN_A).toString()
+                val response = RetrofitClientInstance.retrofitService.getUserDetails(
+                    authToken = tokenSharedPreference
+                )
+                if (response.isSuccessful){
+                    withContext(Dispatchers.Main) {
+                        val body = response.body() ?: return@withContext
+                        val drawerHeaderView = drawerNavView.getHeaderView(0)
+                        val tvName: TextView = drawerHeaderView.findViewById(R.id.tvUserName)
+                        val tvPhoneNo: TextView = drawerHeaderView.findViewById(R.id.tvPhoneNo)
+                        val ivProfile: ImageView = drawerHeaderView.findViewById(R.id.ivProfilePic)
+                        tvName.text = body.name ?: "No Name"
+                        tvPhoneNo.text = body.phone
+                        Glide.with(this@MainActivity).load(body.profile_url).into(ivProfile)
+                    }
+                }
+            } catch (e: Exception){
+
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

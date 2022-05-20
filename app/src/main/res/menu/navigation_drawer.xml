@@ -32,12 +32,8 @@
             android:title="Loan"
             />
         <item
-            android:id="@+id/nav_education"
+            android:id="@+id/navigation_education"
             android:title="Education"
-            />
-        <item
-            android:id="@+id/nav_calculator"
-            android:title="Calculators"
             />
         <item
             android:id="@+id/debitCreditFragment"

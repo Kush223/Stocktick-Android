@@ -16,6 +16,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:id="@+id/ivProfilePic"
             android:src="@mipmap/profile_placeholder"
             />
     </androidx.cardview.widget.CardView>
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sandra Adams"
+        android:id="@+id/tvUserName"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="+91 6003440569"
+        android:id="@+id/tvPhoneNo"
         android:textColor="@color/secondary_text_color"
         />
 
