@@ -64,7 +64,8 @@ NeumorphEditText(
 
 
             editText.hint = hint
-            editText.setTextColor(Color.WHITE)
+            val textColor = attributes.getColor(R.styleable.NeumorphEdittext_textColor, Color.WHITE)
+            editText.setTextColor(textColor)
         }
         catch (e: Exception){
             Log.e(TAG, "Error :${e.localizedMessage} ", )

@@ -59,6 +59,7 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
         binding = FragmentEditProfileBinding.bind(view)
         binding.submitBtn.setOnClickListener(this)
         binding.profileImage.setOnClickListener(this)
+        binding.imgEditBtn.setOnClickListener(this)
 
 
         val sharedPreferences: SharedPreferences =
@@ -177,6 +178,9 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
             R.id.profileImage -> {
                 openFile()
             }
+            R.id.imgEditBtn ->{
+                openFile()
+            }
         }
     }
 
@@ -209,6 +213,9 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                     .asRequestBody(requireContext().contentResolver.getType(uri)?.let { it.toMediaTypeOrNull() })
 
                 val body = MultipartBody.Part.createFormData("file",docFile.name, requestBody);
+                withContext(Dispatchers.Main){
+                    Toast.makeText(requireContext(), "Uploading... Please wait.", Toast.LENGTH_SHORT).show()
+                }
                 val response =
                     RetrofitClientInstance.retrofitService.uploadFile(
                        authToken = tokenSharedPreference,
@@ -226,6 +233,7 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                 tempFile.delete()
             } catch (error: Exception) {
                 withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Failed to upload file", Toast.LENGTH_SHORT).show()
 
                 }
                 Log.d(TAG, error.toString())
@@ -244,9 +252,9 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                     RetrofitClientInstance.retrofitService.updateUserInfo(
                         authToken = tokenSharedPreference,
                         UpdateUserProfileDTO(
-                            name = binding.etName.getText(),
-                            age = binding.etAge.getText().toInt(),
-                            email = binding.etEmail.getText(),
+                            name = binding.etName.text.toString(),
+                            age = binding.etAge.text.toString().toInt(),
+                            email = binding.etEmail.text.toString(),
                             gender = gender.selectedItem.toString(),
                             profile_url = profileUrl
                         )
