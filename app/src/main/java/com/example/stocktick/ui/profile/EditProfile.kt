@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -19,12 +18,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentEditProfileBinding
 import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant
-import com.example.stocktick.utility.FileUtils
 import com.example.stocktick.utility.extension_functions.copyExif
 import com.example.stocktick.utility.extension_functions.reduceImageSize
 import kotlinx.coroutines.Dispatchers
@@ -33,10 +32,8 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
-import java.io.InputStreamReader
 
 
 private const val TAG = "EditProfileTAG"
@@ -168,8 +165,9 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
             R.id.submitBtn -> {
                 onSubmit {
                     if (it){
-                        navController.popBackStack(R.id.navigation_home, false)
                         Toast.makeText(requireContext(), "Updated Successfully", Toast.LENGTH_SHORT).show()
+                        (activity as MainActivity).updateDrawerProfile()
+                        navController.popBackStack(R.id.navigation_home, false)
                     }
                     else {
                         Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
@@ -221,9 +219,9 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
 
 
                 val requestBody = tempFile
-                    .asRequestBody(requireContext().contentResolver.getType(uri)?.let { it.toMediaTypeOrNull() })
+                    .asRequestBody(requireContext().contentResolver.getType(uri)?.toMediaTypeOrNull())
 
-                val body = MultipartBody.Part.createFormData("file",docFile.name, requestBody);
+                val body = MultipartBody.Part.createFormData("file",docFile.name, requestBody)
                 withContext(Dispatchers.Main){
                     Toast.makeText(requireContext(), "Uploading... Please wait.", Toast.LENGTH_SHORT).show()
                 }

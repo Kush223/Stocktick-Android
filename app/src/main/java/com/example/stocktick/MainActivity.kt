@@ -3,25 +3,19 @@ package com.example.stocktick
 import android.app.Activity
 import android.content.SharedPreferences
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
-import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.ActivityMainBinding
@@ -33,7 +27,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
@@ -60,16 +53,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setSupportActionBar(binding.topAppBar)
         lifecycleScope.launch(Dispatchers.IO){
             try {
-                val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
+                val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null)
 
                 if (cursor != null) {
                     if (cursor.moveToFirst()) { // must check the result to prevent exception
                         do {
                             var msgData = ""
                             for (idx in 0 until cursor.columnCount) {
-                                val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
-                                val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                                val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                                val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))
+                                val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS))
+                                val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY))
                                 //val dateFormat= Date(smsDate)
 //                        val type
 //                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
@@ -94,6 +87,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                         // empty box, no SMS
                     }
                 }
+                cursor?.close()
             }
             catch (e: Exception){
 
@@ -129,7 +123,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     }
 
-    private fun updateDrawerProfile() {
+    fun updateDrawerProfile() {
         lifecycleScope.launch(Dispatchers.IO){
             try {
                 val sharedPreferences: SharedPreferences =
@@ -180,7 +174,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
 
         }
-        binding.container.closeDrawer(Gravity.LEFT)
+        binding.container.closeDrawer(GravityCompat.START)
         return true
     }
 
