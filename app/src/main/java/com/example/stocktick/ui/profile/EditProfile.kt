@@ -25,6 +25,8 @@ import com.example.stocktick.models.requests.UpdateUserProfileDTO
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.utility.Constant
 import com.example.stocktick.utility.FileUtils
+import com.example.stocktick.utility.extension_functions.copyExif
+import com.example.stocktick.utility.extension_functions.reduceImageSize
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -197,15 +199,24 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                     else ->".jpg"
                 }
                 Log.d(TAG, "uploadFile: format from docFile :${docFile.type}")
-                val inputStream = requireContext().contentResolver.openInputStream(uri) ?: return@launch
+                var inputStream = requireContext().contentResolver.openInputStream(uri) ?: return@launch
                 val tempFile = File.createTempFile("toUpload", suffix, requireActivity().getExternalFilesDir(null))
-                FileOutputStream(tempFile, false).use { outputStream->
+                //reduces image size
+                inputStream.reduceImageSize(tempFile)
+                inputStream.close()
+                val tempFileOriginal = File.createTempFile("toUpload", suffix, requireActivity().getExternalFilesDir(null))
+
+                inputStream = requireContext().contentResolver.openInputStream(uri) ?: return@launch
+                FileOutputStream(tempFileOriginal, false).use { outputStream->
                     var read: Int
                     val bytes = ByteArray(DEFAULT_BUFFER_SIZE)
                     while (inputStream.read(bytes).also { read = it } != -1) {
                         outputStream.write(bytes, 0, read)
                     }
                 }
+                copyExif(tempFileOriginal.absolutePath,tempFile.absolutePath)
+
+
 
 
 
@@ -231,6 +242,7 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                     Log.d(TAG, "onSubmit: ${response.body()}")
                 }
                 tempFile.delete()
+                tempFileOriginal.delete()
             } catch (error: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(requireContext(), "Failed to upload file", Toast.LENGTH_SHORT).show()
