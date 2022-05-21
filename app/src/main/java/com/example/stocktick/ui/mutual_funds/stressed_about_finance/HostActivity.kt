@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.stressed_about_finance
 
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +44,7 @@ class HostActivity : AppCompatActivity() {
     private fun confirmationDialog(
         onResponse: (onYes: Boolean)->Unit
     ) {
-        val dialogBuilder = AlertDialog.Builder(this)
+        val dialogBuilder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialog))
         dialogBuilder.setTitle("Do you want to quit?")
         dialogBuilder.setMessage("Click yes if you want to quit financial planning calculation")
         dialogBuilder.setPositiveButton("Yes"){dialog, which->
@@ -54,6 +55,7 @@ class HostActivity : AppCompatActivity() {
             dialog.dismiss()
             onResponse(false)
         }
+
         dialogBuilder.show()
     }
 }
