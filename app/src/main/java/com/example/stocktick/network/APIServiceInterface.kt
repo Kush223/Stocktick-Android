@@ -123,6 +123,12 @@ interface ApiServiceInterface {
             @Body page6Dto: Page6Dto
     ): Response<PostResponse>
 
+    @POST("/finantialplanning/finnantial-Q7")
+    suspend fun postPage7(
+            @Header("authToken") authToken: String,
+            @Body page7Dto: Page7Dto
+    ): Response<StandardSuccessResponse>
+
     //user profile
     @GET("/get/userinfo")
     suspend fun getUserInfo(

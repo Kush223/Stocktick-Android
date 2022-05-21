@@ -10,10 +10,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:neumorph_shadowColorDark="#131313"
-        app:neumorph_shadowColorLight="#333333"
-        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
         app:neumorph_shapeType="flat"
+        app:neumorph_backgroundColor="#303030"
         android:id="@+id/optionCardView"
+        android:paddingStart="20dp"
         >
         <TextView
             android:layout_width="match_parent"

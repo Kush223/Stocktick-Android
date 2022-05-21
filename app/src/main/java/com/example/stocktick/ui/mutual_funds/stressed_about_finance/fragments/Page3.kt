@@ -38,6 +38,11 @@ class Page3 : Fragment(R.layout.fragment_page3) {
     private var debt = 5000.0
     private val viewModel: MainViewModel by activityViewModels()
 
+    private fun Double.getPercentage(): String {
+        val p = this*100/(gold + equity + realState + debt )
+        return  "(${p.toInt()}%)"
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -172,28 +177,28 @@ class Page3 : Fragment(R.layout.fragment_page3) {
                 SimplePieInfo(
                     gold,
                     Color.parseColor("#FF0000"),
-                    "Gold"
+                    "Gold ${gold.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     equity,
                     Color.parseColor("#04B500"),
-                    "Equity"
+                    "Equity ${equity.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     realState,
                     Color.parseColor("#EED600"),
-                    "Real State"
+                    "Real State ${realState.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     debt,
                     Color.parseColor("#0032E5"),
-                    "Debt"
+                    "Debt ${debt.getPercentage()}"
                 )
             )
 

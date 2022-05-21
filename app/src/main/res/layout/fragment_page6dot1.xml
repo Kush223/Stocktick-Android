@@ -106,9 +106,10 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tvRetirementType"
                 android:layout_marginEnd="20dp"
                 app:neumorph_shadowColorDark="#131313"
-                app:neumorph_shadowColorLight="#333333"
-                app:neumorph_shadowElevation="5dp"
-                app:neumorph_shapeType="flat">
+                app:neumorph_shadowColorLight="@color/color_background"
+                app:neumorph_shadowElevation="10dp"
+                app:neumorph_shapeType="flat"
+                app:neumorph_backgroundColor="#303030">
 
                 <Spinner
                     android:id="@+id/spType"
@@ -143,6 +144,7 @@
                 app:neumorph_shadowColorDark="#131313"
                 app:neumorph_shadowColorLight="#333333"
                 app:neumorph_shadowElevation="5dp"
+                style="@style/neumorph_combinations"
                 app:neumorph_shapeType="flat">
 
                 <Spinner
@@ -164,10 +166,8 @@
                 android:layout_marginHorizontal="5dp"
                 app:layout_constraintTop_toBottomOf="@+id/tvSaving"
                 android:layout_marginTop="40dp"
-                app:neumorph_shadowColorDark="#131313"
-                app:neumorph_shadowColorLight="#333333"
-                app:neumorph_shadowElevation="5dp"
-                app:neumorph_shapeType="flat">
+                style="@style/neumorph_combinations"
+                >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -235,7 +235,7 @@
     </ScrollView>
     <soup.neumorphism.NeumorphButton
         android:id="@+id/btNext"
-        style="@style/Widget.Neumorph.Button"
+        style="@style/neumorph_button_combinations"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -247,14 +247,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btSkip"
         app:neumorph_lightSource="leftTop"
-        app:neumorph_shadowColorDark="#131313"
-        app:neumorph_shadowColorLight="#333333"
-        app:neumorph_shadowElevation="5dp"
-        app:neumorph_shapeType="flat" />
+     />
 
     <soup.neumorphism.NeumorphButton
         android:id="@+id/btSkip"
-        style="@style/Widget.Neumorph.Button"
+        style="@style/neumorph_button_combinations"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -266,10 +263,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btNext"
         app:layout_constraintStart_toStartOf="parent"
         app:neumorph_lightSource="leftTop"
-        app:neumorph_shadowColorDark="#131313"
-        app:neumorph_shadowColorLight="#333333"
-        app:neumorph_shadowElevation="5dp"
-        app:neumorph_shapeType="flat" />
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

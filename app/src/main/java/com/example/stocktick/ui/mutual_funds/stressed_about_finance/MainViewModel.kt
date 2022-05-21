@@ -201,6 +201,37 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+
+
+    fun postPage7(
+        page7Dto: Page7Dto,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postPage7(
+                        tokenSharedPreference,
+                        page7Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+
+
     /*
     *Not implemented yet*/
     fun postUserDetail(

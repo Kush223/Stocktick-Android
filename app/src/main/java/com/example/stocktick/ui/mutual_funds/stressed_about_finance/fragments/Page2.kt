@@ -44,6 +44,11 @@ class Page2 : Fragment(R.layout.fragment_page2) {
     private var taxPaid = 5000.0
     private var emi = 5000.0
 
+    private fun Double.getPercentage(): String {
+        val p = this*100/(investmentAmount+householdExpenses+lifestyleExpenses+surplus+taxPaid+emi)
+        return  "(${p.toInt()}%)"
+    }
+
 
     private val viewModel: MainViewModel by activityViewModels()
 
@@ -222,42 +227,42 @@ class Page2 : Fragment(R.layout.fragment_page2) {
                 SimplePieInfo(
                     emi,
                     Color.parseColor("#FF0000"),
-                    "EMI"
+                    "EMI ${emi.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     investmentAmt,
                     Color.parseColor("#0032E5"),
-                    "Investment Amt"
+                    "Investment Amt ${investmentAmt.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     household,
                     Color.parseColor("#EED600"),
-                    "Household"
+                    "Household ${household.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     lifestyle,
                     Color.parseColor("#04B500"),
-                    "Lifestyle"
+                    "Lifestyle ${lifestyle.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     surplus,
                     Color.parseColor("#FC7900"),
-                    "Surplus"
+                    "Surplus ${surplus.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     tax,
                     Color.parseColor("#FF7EFA"),
-                    "Taxes"
+                    "Taxes ${tax.getPercentage()}"
                 )
             )
             autoSize(true)

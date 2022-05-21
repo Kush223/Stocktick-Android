@@ -38,7 +38,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
 
@@ -181,9 +181,9 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         return true
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.logout, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        activity?.menuInflater?.inflate(R.menu.logout, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
 
 }

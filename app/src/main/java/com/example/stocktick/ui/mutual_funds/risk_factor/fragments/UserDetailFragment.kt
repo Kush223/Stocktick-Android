@@ -64,16 +64,16 @@ class UserDetailFragment :
 
         autofill()
 
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
-        lifecycleScope.launch(Dispatchers.Default){
-            var profilePic = BitmapFactory.decodeResource(resources,R.mipmap.profile_pic_placeholder)
-            profilePic = profilePic.getResizedBitmap(90,90)
-            withContext(Dispatchers.Main){
-                (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(BitmapDrawable(resources, profilePic));
-            }
-        }
-        (activity as AppCompatActivity).supportActionBar?.title = ""
+//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
+//        lifecycleScope.launch(Dispatchers.Default){
+//            var profilePic = BitmapFactory.decodeResource(resources,R.mipmap.profile_pic_placeholder)
+//            profilePic = profilePic.getResizedBitmap(90,90)
+//            withContext(Dispatchers.Main){
+//                (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(BitmapDrawable(resources, profilePic));
+//            }
+//        }
+//        (activity as AppCompatActivity).supportActionBar?.title = ""
 
 
         gender.onItemSelectedListener= this
@@ -85,10 +85,7 @@ class UserDetailFragment :
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.logout, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+
     
 
     override fun onClick(v: View?) {

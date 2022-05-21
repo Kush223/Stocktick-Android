@@ -150,9 +150,10 @@
         app:layout_constraintStart_toEndOf="@+id/btSkip"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowColorDark="#131313"
-        app:neumorph_shadowColorLight="#333333"
-        app:neumorph_shadowElevation="5dp"
-        app:neumorph_shapeType="flat" />
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat"
+        app:neumorph_backgroundColor="#303030" />
 
     <soup.neumorphism.NeumorphButton
         android:id="@+id/btSkip"
@@ -169,8 +170,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowColorDark="#131313"
-        app:neumorph_shadowColorLight="#333333"
-        app:neumorph_shadowElevation="5dp"
-        app:neumorph_shapeType="flat" />
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat"
+        app:neumorph_backgroundColor="#303030"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

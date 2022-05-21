@@ -56,10 +56,10 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        activity?.menuInflater?.inflate(R.menu.logout, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        activity?.menuInflater?.inflate(R.menu.logout, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
 
 
 }

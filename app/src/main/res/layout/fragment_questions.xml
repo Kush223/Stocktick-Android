@@ -39,12 +39,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        app:neumorph_shadowColorDark="@color/canvas_background"
-        app:neumorph_shadowColorLight="#505050"
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
         app:neumorph_shapeType="flat"
+        app:neumorph_backgroundColor="#303030"
         android:id="@+id/riskFactorDescription"
-        android:layout_marginTop="15dp"
         >
         <TextView
             android:layout_width="match_parent"

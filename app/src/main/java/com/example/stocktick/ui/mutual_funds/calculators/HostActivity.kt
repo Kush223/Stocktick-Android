@@ -1,8 +1,10 @@
 package com.example.stocktick.ui.mutual_funds.calculators
 
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.ActivityHost2Binding
@@ -16,6 +18,9 @@ class HostActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.topAppBar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+
 
     }
 
@@ -24,12 +29,20 @@ class HostActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.logout_button) {
-            // do something here
-        }
-        return super.onOptionsItemSelected(item)
 
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.logout_button ->{
+                //Do something here
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
+
 }
