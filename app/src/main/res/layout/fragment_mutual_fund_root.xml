@@ -44,9 +44,10 @@
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/mainContentLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
+            android:layout_marginHorizontal="5dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/description">
@@ -61,8 +62,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:background="#303030"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#303030">
 
                     <ImageView
                         android:layout_width="85dp"
@@ -105,8 +106,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Invest Anytime,Anywhere"
-                        android:textStyle="italic"
                         android:textColor="@color/secondary_text_color"
+                        android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="@id/let2"
                         app:layout_constraintTop_toBottomOf="@id/let2" />
 
@@ -120,8 +121,8 @@
                         android:scaleX="0.8"
                         android:scaleY="0.8"
                         android:text="Visit"
-                        android:textColor="@color/button_canvas"
                         android:textAllCaps="false"
+                        android:textColor="@color/button_canvas"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:neumorph_lightSource="leftTop"
@@ -134,7 +135,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </soup.neumorphism.NeumorphCardView>
-
 
             <com.example.stocktick.ui.customviews.MutualFundCard
                 android:id="@+id/riskFactor"
@@ -171,7 +171,285 @@
                 app:image="@drawable/lazy_man"
                 app:let1="Calculate your"
                 app:let2="finances with us" />
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:src="@color/secondary_text_color"
+            app:layout_constraintTop_toBottomOf="@+id/mainContentLinearLayout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_background"
+            android:paddingHorizontal="10dp"
+            android:text="Discover Mutual Funds"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintBottom_toBottomOf="@id/divider"
+            app:layout_constraintEnd_toEndOf="@id/divider"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@id/divider" />
+
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/category1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/category2"
+            app:layout_constraintTop_toBottomOf="@+id/divider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_growth"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/img1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/category2"
+            app:layout_constraintEnd_toStartOf="@+id/category3"
+            app:layout_constraintStart_toEndOf="@+id/category1"
+            app:layout_constraintTop_toBottomOf="@+id/divider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_growth"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/img2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/category3"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category2"
+            app:layout_constraintTop_toBottomOf="@+id/divider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                >
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_locked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:id="@+id/category4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/category5"
+            app:layout_constraintTop_toBottomOf="@+id/category1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_locked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/img4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/category5"
+            app:layout_constraintEnd_toStartOf="@+id/category6"
+            app:layout_constraintStart_toEndOf="@+id/category4"
+            app:layout_constraintTop_toBottomOf="@+id/category2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_locked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/img5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/category6"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category5"
+            app:layout_constraintTop_toBottomOf="@+id/category3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                >
+
+                <ImageView
+                    android:id="@+id/img6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_locked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img6" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

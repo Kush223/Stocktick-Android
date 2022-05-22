@@ -51,7 +51,11 @@
     <fragment
         android:id="@+id/navigation_mutual_funds"
         android:name="com.example.stocktick.ui.mutual_funds.MutualFundRootFragment"
-        android:label="Mutual Funds" />
+        android:label="Mutual Funds" >
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_mfLists2"
+            app:destination="@id/mfLists2" />
+    </fragment>
     <fragment
         android:id="@+id/debitCreditFragment"
         android:name="com.example.stocktick.ui.debit_credit.DebitCreditFragment"
@@ -70,5 +74,10 @@
         android:name="com.example.stocktick.ui.profile.EditProfile"
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/mfLists2"
+        android:name="com.example.stocktick.ui.mutual_funds.discover_mutual_funds.MfLists"
+        android:label="All Mutual Funds"
+        tools:layout="@layout/fragment_mf_lists" />
 
 </navigation>

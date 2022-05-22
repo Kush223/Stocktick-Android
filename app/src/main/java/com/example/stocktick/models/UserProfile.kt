@@ -6,5 +6,5 @@ data class UserProfile(
     val age: Int=0,
     val phone: String?,
     val email: String?,
-    val profile_url: String?
+    val profile_url: String?,
 )

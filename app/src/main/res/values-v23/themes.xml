@@ -41,6 +41,11 @@
         <item name="neumorph_shapeType">flat</item>
         <item name="neumorph_backgroundColor">#303030</item>
     </style>
+
+
+
+
+
     <style name="neumorph_button_combinations" parent="Widget.Neumorph.Button">
         <item name="neumorph_shadowColorDark">#131313</item>
         <item name="neumorph_shadowColorLight">@color/color_background</item>
