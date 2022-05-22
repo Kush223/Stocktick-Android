@@ -9,12 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
-import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.MfModel
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.domain_models.MfModel
 
-enum class ReturnType
-{
-    ONE_DAY, ONE_YEAR, THREE_YEAR
-}
+
 class MfAdapter
     constructor(
         private val mfList: List<MfModel>,

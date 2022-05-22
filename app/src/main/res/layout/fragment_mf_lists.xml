@@ -32,11 +32,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RETURNS"
+        android:paddingVertical="15dp"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="15dp"
+        android:paddingEnd="15dp"
         android:textSize="15sp"
         android:id="@+id/tvReturnHeader"
         />
@@ -49,7 +50,6 @@
         android:text="3 Years"
         app:layout_constraintTop_toBottomOf="@+id/tvReturnHeader"
         app:layout_constraintStart_toStartOf="@+id/tvReturnHeader"
-        android:layout_marginTop="15dp"
         android:id="@+id/tvReturnInterval"
         />
 

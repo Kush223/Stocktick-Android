@@ -14,6 +14,7 @@ import com.example.stocktick.ui.education.model.WebinarItem
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import okhttp3.MultipartBody
@@ -192,6 +193,12 @@ interface ApiServiceInterface {
         @Header("authToken") authToken: String,
         @Part file : MultipartBody.Part
     ) : Response<FileUploadResponse>
+
+    //Explore more part
+    @GET("/discover-mutual-funds/catg")
+    suspend fun getCategories(
+        @Header("authToken") authToken: String
+    ) : Response<List<GetCategories>>
 
 
 

@@ -78,6 +78,11 @@
         android:id="@+id/mfLists2"
         android:name="com.example.stocktick.ui.mutual_funds.discover_mutual_funds.MfLists"
         android:label="All Mutual Funds"
-        tools:layout="@layout/fragment_mf_lists" />
+        tools:layout="@layout/fragment_mf_lists" >
+
+        <argument
+            android:name="category_index"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
