@@ -95,7 +95,6 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
                         val body = response.body() ?: return@withContext
                         binding.etName.setText(body.name ?: "")
                         binding.etEmail.setText(body.email ?: "")
-                        binding.etPhoneNo.setText(body.phone ?: "")
                         binding.etAge.setText(body.age.toString())
                         when (body.gender) {
                             "Male" -> gender.setSelection(0)

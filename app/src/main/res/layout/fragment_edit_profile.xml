@@ -104,20 +104,6 @@
             android:textSize="15sp"
             android:hint="Email" />
 
-        <com.example.stocktick.ui.customviews.NeumorphEditText
-            android:id="@+id/etPhoneNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:hint="Phone no."
-            app:textColor="@color/secondary_text_color"
-
-            app:inputType="number"
-            app:layout_constraintBottom_toBottomOf="@+id/tvGold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvGold"
-            app:prefix=""
-            app:usePrefix="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

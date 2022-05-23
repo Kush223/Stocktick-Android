@@ -1,5 +1,6 @@
 package com.example.stocktick.network
 
+import android.text.style.TabStopSpan
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
 import com.example.stocktick.models.requests.UpdateUserProfileDTO
@@ -11,6 +12,7 @@ import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
 import com.example.stocktick.ui.education.model.WebinarItem
+import com.example.stocktick.ui.get_assistant.QueryModel
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
@@ -199,6 +201,13 @@ interface ApiServiceInterface {
     suspend fun getCategories(
         @Header("authToken") authToken: String
     ) : Response<List<GetCategories>>
+
+    //Get Assistant
+    @POST("/getassistance/")
+    suspend fun postQuery(
+        @Header("authToken") authToken: String,
+        @Body query: QueryModel
+    ) : Response<StandardSuccessResponse>
 
 
 

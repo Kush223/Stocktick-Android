@@ -20,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.stocktick.databinding.ActivityMainBinding
 import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.ui.get_assistant.GetAssistantDialog
 import com.example.stocktick.utility.Constant
 import com.example.stocktick.utility.UtilsService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -119,6 +120,13 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         updateDrawerProfile()
         drawerNavView.setNavigationItemSelectedListener(this)
+
+        binding.getAssistantFab.setOnClickListener{
+            GetAssistantDialog().show(
+                supportFragmentManager,
+                GetAssistantDialog.TAG
+            )
+        }
 
 
     }
