@@ -95,7 +95,7 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         Log.d(TAG, "onItemSelected: Item selected :$position")
-        TODO("Here you should call the api and populate the recycler view")
+        //You should populate recycler view here
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
