@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.ActivityHost2Binding
+import com.example.stocktick.ui.get_assistant.GetAssistantDialog
 
 class HostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHost2Binding
@@ -20,6 +21,13 @@ class HostActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+
+        binding.getAssistantFab.setOnClickListener{
+            GetAssistantDialog().show(
+                supportFragmentManager,
+                GetAssistantDialog.TAG
+            )
+        }
 
 
     }

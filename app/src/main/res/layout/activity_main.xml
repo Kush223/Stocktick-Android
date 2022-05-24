@@ -52,7 +52,8 @@
             android:backgroundTint="#DADADA"
             app:tint="#278804"
             android:layout_alignParentEnd="true"
-            android:layout_above="@+id/layout_bottom_neumorph"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="120dp"
             />
 
         <!--    BOTTOM NAVIGATION-->

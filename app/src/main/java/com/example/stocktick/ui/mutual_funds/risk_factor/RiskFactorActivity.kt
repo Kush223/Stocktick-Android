@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.stocktick.R
 import com.example.stocktick.databinding.ActivityMutualFundsBinding
 import com.example.stocktick.ui.customviews.CustomTracker
+import com.example.stocktick.ui.get_assistant.GetAssistantDialog
 import com.example.stocktick.ui.mutual_funds.risk_factor.fragments.questions_fragment.Question
 
 class RiskFactorActivity : AppCompatActivity() {
@@ -30,6 +31,13 @@ class RiskFactorActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+
+        binding.getAssistantFab.setOnClickListener{
+            GetAssistantDialog().show(
+                supportFragmentManager,
+                GetAssistantDialog.TAG
+            )
+        }
 
     }
 
