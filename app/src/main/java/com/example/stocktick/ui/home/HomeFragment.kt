@@ -1,8 +1,12 @@
 package com.example.stocktick.ui.home
 
+import android.content.res.Resources.getSystem
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -12,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.asksira.loopingviewpager.LoopingViewPager
+import com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
 import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentHomeBinding
@@ -29,13 +35,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var insuranceCard : ConstraintLayout
     private lateinit var loanCard : ConstraintLayout
 
-    private lateinit var viewPager: ViewPager
+    private lateinit var viewPager: LoopingViewPager
+    private lateinit var indicator: CustomShapePagerIndicator
     private lateinit var pagerAdapter: PagerAdapter
+
+    val Int.px: Int get() = (this * getSystem().displayMetrics.density).toInt()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
         viewPager = binding.photosViewPager
+        indicator = binding.indicator
+        indicator.highlighterViewDelegate = {
+            val highlighter = View(requireContext())
+            highlighter.layoutParams = FrameLayout.LayoutParams(20.px, 4.px)
+            highlighter.setBackgroundColor(Color.WHITE)
+            highlighter
+        }
+        indicator.unselectedViewDelegate = {
+            val unselected = View(requireContext())
+            unselected.layoutParams = LinearLayout.LayoutParams(20.px, 4.px)
+            unselected.setBackgroundColor(Color.WHITE)
+            unselected.alpha = 0.4f
+            unselected
+        }
         pagerAdapter = PhotosAdapter(
             requireContext(),
             listOf(
@@ -52,6 +75,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
 
         viewPager.adapter = pagerAdapter
+        viewPager.onIndicatorProgress = { selectingPosition, progress ->
+            indicator.onPageScrolled(selectingPosition, progress)
+        }
+
+        indicator.updateIndicatorCounts(viewPager.indicatorCount)
 
 
         creditCard = binding.creditSection
@@ -118,8 +146,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onResume() {
         super.onResume()
+        viewPager.resumeAutoScroll()
+
         (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.VISIBLE
 
+    }
+
+
+    override fun onPause() {
+        viewPager.pauseAutoScroll()
+        super.onPause()
     }
 
 }
