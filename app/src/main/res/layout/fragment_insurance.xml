@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="9dp"
         android:background="#686868"
         android:gravity="center"
         android:text="Get 10% off on first purchase with us. Code - GYNX"
@@ -96,11 +95,7 @@
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/bike_card"
-            app:cardCornerRadius="15dp"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
+            style="@style/neumorph_button_combinations"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -128,10 +123,7 @@
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/car_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
+            style="@style/neumorph_button_combinations"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -151,18 +143,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
+                    android:textColor="#909090"
                     android:text="@string/Health"
-                    android:textColor="#FFC700"
                     android:textSize="12sp" />
             </LinearLayout>
         </soup.neumorphism.NeumorphCardView>
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/home_card"
-            app:neumorph_shadowColorDark="@color/canvas_background"
-            app:neumorph_shadowColorLight="#505050"
-            app:neumorph_shadowElevation="2dp"
-            app:neumorph_shapeType="flat"
+            style="@style/neumorph_button_combinations"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
