@@ -15,14 +15,14 @@ class HomeAdapter(private val serviceList: List<HomeItem>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pos = serviceList[position]
+        val pos = serviceList[position % serviceList.size]
         holder.itemView
         pos.img?.let { holder.imageView.setImageResource(it) }
         holder.textView.text = pos.txt
     }
 
     override fun getItemCount(): Int {
-        return serviceList.size
+        return serviceList.size*2
     }
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView){
         val imageView: ImageView = itemView.findViewById(R.id.service_image)

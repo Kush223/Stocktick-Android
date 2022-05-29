@@ -20,6 +20,7 @@ import com.example.stocktick.ui.mutual_funds.stressed_about_finance.HostActivity
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.MainViewModel
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.Page4Dto
 import kotlinx.coroutines.*
+import java.util.*
 
 
 private const val TAG = "Page4"
@@ -65,10 +66,9 @@ class Page4 : Fragment(R.layout.fragment_page4) {
             add(BarItem("EPF/NPS", epf, Color.parseColor("#30BA00"), Color.WHITE))
             add(BarItem("Share", shares, Color.parseColor("#30BA00"), Color.WHITE))
         }
-            .build()
+            .build(Locale("hi", "IN"))
 
         autofill()
-
 
 
         var job: Job? = null

@@ -3,21 +3,18 @@ package com.example.stocktick.ui.home
 import android.content.Context
 import android.content.res.Resources.getSystem
 import android.graphics.Color
+import android.graphics.DiscretePathEffect
 import android.os.Bundle
-import android.provider.Telephony
-import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.asksira.loopingviewpager.LoopingViewPager
 import com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
 import com.example.stocktick.MainActivity
@@ -25,6 +22,10 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentHomeBinding
 import com.example.stocktick.utility.Constant
 import com.example.stocktick.utility.SmsReader
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 //    https://material.io/components/bottom-navigation/android#using-bottom-navigation
@@ -98,6 +99,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         linearLayoutManager.stackFromEnd = true
         recyclerView.layoutManager = linearLayoutManager
 
+
         serviceList = listOf(
             HomeItem(R.drawable.financial_home,"Financial\n" +
                     "Independence"),
@@ -110,7 +112,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         serviceAdapter = HomeAdapter(serviceList)
         recyclerView.adapter = serviceAdapter
 
+
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val firstItemVisible = linearLayoutManager.findFirstVisibleItemPosition()
+                if (firstItemVisible != 0 && firstItemVisible % 3 === 0) {
+                    recyclerView.layoutManager!!.scrollToPosition(0)
+                }
+            }
+        }
+        )
+        //It is memory intensive, use it if you really need
+        //autoScroll()
+
         updateCreditDebit()
+    }
+
+    private fun autoScroll(){
+        lifecycleScope.launch(Dispatchers.Main){
+            while (true){
+                    recyclerView.scrollBy(2,0)
+                delay(100)
+            }
+
+        }
     }
 
     private fun updateCreditDebit() {
