@@ -1,16 +1,28 @@
 package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
+import android.app.DownloadManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentResultBinding
 import com.example.stocktick.ui.customviews.PerformanceMeter
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorActivity
 import com.example.stocktick.ui.mutual_funds.risk_factor.RiskFactorViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.BufferedInputStream
+import java.io.File
+import java.net.URL
 
 
 class ResultFragment : Fragment(R.layout.fragment_result) {
@@ -19,6 +31,8 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     private lateinit var meter : PerformanceMeter
     
     private val viewModel: RiskFactorViewModel by activityViewModels()
+
+    private var file: File? = null
 
 
 
@@ -42,17 +56,67 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
                 Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
             }
 
-            binding.btRetry.setOnClickListener{
-                view?.findNavController()?.navigate(R.id.action_resultFragment_to_questionsFragment)
+        }
+
+        binding.btRetry.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_resultFragment_to_questionsFragment)
+        }
+        binding.btDownloadPdf.setOnClickListener{
+            Toast.makeText(requireContext(), "Downloading..", Toast.LENGTH_SHORT).show()
+            val manager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager?
+            val uri =
+                Uri.parse("http://www.africau.edu/images/default/sample.pdf")
+            val request = DownloadManager.Request(uri)
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+            val reference: Long = manager?.enqueue(request) ?: return@setOnClickListener
+        }
+
+        downloadInExtDir(
+            URL("http://www.africau.edu/images/default/sample.pdf")
+        )
+
+        binding.btShare.setOnClickListener{
+            if (file == null) return@setOnClickListener
+            val uri: Uri = FileProvider.getUriForFile(
+                requireContext(),
+                requireContext().packageName.toString() + ".provider",
+                file!!
+            )
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "application/pdf"
+                putExtra(Intent.EXTRA_TEXT, "Risk Factor analysis result")
+                putExtra(Intent.EXTRA_STREAM, uri)
             }
+            startActivity(Intent.createChooser(intent,null))
         }
         
 
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+    }
+
+    private fun downloadInExtDir(url: URL){
+        file = File.createTempFile("RiskFactor", ".pdf",requireActivity().getExternalFilesDir(null)) ?: return
+        lifecycleScope.launch(Dispatchers.IO){
+            BufferedInputStream(url.openStream()).use {
+                val fos = file!!.outputStream()
+                val dataBuffer = ByteArray(1024)
+                var bytesRead = it.read(dataBuffer, 0,1024)
+                while (bytesRead  != -1){
+                    fos.write(dataBuffer, 0, bytesRead)
+                    bytesRead = it.read(dataBuffer, 0 , 1024)
+                }
+                fos.close()
+
+            }
+        }
+
     }
 
 

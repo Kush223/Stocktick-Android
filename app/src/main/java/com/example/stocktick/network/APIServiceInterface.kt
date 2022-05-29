@@ -17,6 +17,8 @@ import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsBody
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsModel
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import okhttp3.MultipartBody
@@ -208,6 +210,13 @@ interface ApiServiceInterface {
         @Header("authToken") authToken: String,
         @Body query: QueryModel
     ) : Response<StandardSuccessResponse>
+
+    //mf list in details
+    @GET("/discover-mutual-funds/funds/")
+    suspend fun getMfList(
+        @Query("authToken") authToken: String,
+        @Body body: GetDetailsBody
+    ) : Response<List<GetDetailsModel>>
 
 
 

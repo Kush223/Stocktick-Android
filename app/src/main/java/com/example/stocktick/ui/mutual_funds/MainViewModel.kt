@@ -9,7 +9,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.load.engine.cache.DiskCacheAdapter
 import com.example.stocktick.network.RetrofitClientInstance
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.domain_models.MfModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsBody
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Page1
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +31,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val mfCategories : MutableLiveData<List<GetCategories>> by lazy {
         MutableLiveData<List<GetCategories>>()
+    }
+
+    val mfList: MutableLiveData<List<MfModel>> by lazy {
+        MutableLiveData<List<MfModel>>()
     }
 
 
@@ -74,6 +80,46 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun updateMfList(
+        cat: Int
+    ){
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.getMfList(
+                    authToken = tokenSharedPreference,
+                    body = GetDetailsBody(
+                        catg_id = cat.toString()
+                    )
+                )
+                if (response.isSuccessful && response.body() != null && response.body()!!
+                        .isNotEmpty()
+                ){
+                    Log.d(TAG, "updateMfCategories: ${response.body()}")
+                    val localMfList = response.body() ?: return@launch
+                    withContext(Dispatchers.Main){
+
+                         mfList.value = localMfList.map {
+                             MfModel(
+                                 mfName = it.fundName ?: "Fund name not found",
+                                 iconUrl = it.icon ?: "",
+                                 oneDayR = it.oneday.toString(),
+                                 oneYearR = it.oneyear.toString(),
+                                 threeYearR = it.threeyear.toString(),
+                                 shortDescription = it.longDesc ?: "",
+                                 redirectUrl = it.fetchUrl ?: "",
+                                 lockStatus = it.lockStatus ?: "UNLOCKED"
+                             )
+                         }
+                    }
+                }
+            } catch (e: Exception){
+                Log.e(TAG, "updateMfCategories: Error in updating categories :${e.localizedMessage}", )
+            }
+        }
+    }
+
+
 
 
 

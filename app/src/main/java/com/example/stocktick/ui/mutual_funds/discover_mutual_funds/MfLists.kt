@@ -29,6 +29,8 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
 
     private val args : MfListsArgs by navArgs()
 
+    private var mfList = listOf<MfModel>()
+
 
     private val defCategories = listOf(
         "Category 1",
@@ -64,12 +66,7 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
 
         //recycler view
         mfAdapter = MfAdapter(
-            listOf(
-                MfModel(),
-                MfModel(mfName = "ICICI Prudential private limited"),
-                MfModel(mfName = "TATA ki bohot achchi mutual fund"),
-                MfModel(mfName = "Reliance ki mutual fund")
-            ),
+            mfList ,
             ReturnType.THREE_YEAR,
             requireContext()
         )
@@ -80,6 +77,12 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
 
         binding.tvReturnHeader.setOnClickListener(this)
         tvReturnInterval.setOnClickListener(this)
+
+        viewModel.mfList.observe(requireActivity()){
+            Log.d(TAG, "Observer called :$it")
+            mfList = it
+            adapter.notifyDataSetChanged()
+        }
 
 
 
@@ -96,6 +99,7 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         Log.d(TAG, "onItemSelected: Item selected :$position")
         //You should populate recycler view here
+        viewModel.updateMfList(position+1)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

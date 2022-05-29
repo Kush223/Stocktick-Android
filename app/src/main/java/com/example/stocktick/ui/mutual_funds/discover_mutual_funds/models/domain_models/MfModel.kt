@@ -7,5 +7,6 @@ data class MfModel(
     val oneYearR: String="00.01%",
     val threeYearR: String="00.02%",
     val shortDescription: String="",
-    val redirectUrl: String=""
+    val redirectUrl: String="",
+    val lockStatus: String = "UNLOCKED"
 )
