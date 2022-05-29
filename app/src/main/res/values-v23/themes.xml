@@ -30,7 +30,7 @@
 
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
-    <style name="AlertDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+    <style name="AlertDialog" parent="Theme.AppCompat.Dialog.Alert">
 
     </style>
 

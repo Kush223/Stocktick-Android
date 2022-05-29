@@ -24,7 +24,7 @@
     <string name="Interest">INTEREST RATE</string>
 
     <!--login page strings-->
-    <string name="login_signup">Login/Signup</string>
+    <string name="login_signup">LOGIN/SIGNUP</string>
     <string name="hello_welcome">Hello, welcome back to your account</string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="request_otp">Request OTP</string>

@@ -3,6 +3,7 @@ package com.example.stocktick
 import android.Manifest.permission.READ_SMS
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
@@ -11,14 +12,21 @@ import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
 import com.example.stocktick.utility.Constant.permSms
 import com.example.stocktick.utility.Constant.smsPerm
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.jar.Manifest
 
 
@@ -28,36 +36,60 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        if (ContextCompat.checkSelfPermission(this, READ_SMS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    arrayOf(READ_SMS),
-                    permSms)
-        }
-        else{
-            val sharedPreferences: SharedPreferences = this.getSharedPreferences(USER, Activity.MODE_PRIVATE)
-            val granted = sharedPreferences.getInt(smsPerm,0)
-            //Log.d("sds", granted.toString())
-            if(granted==1){
-                val token = sharedPreferences.getString(TOKEN,"")
-                if(token == ""){
-                    val mainHandler =  Handler(Looper.getMainLooper())
-                    mainHandler.postDelayed({
-                        val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
-                        //opened the login signup activity.
-                        //this activity now will have the welcome screen fragment.
-                        startActivity(intent)
-                    }, 2000)
+        lifecycleScope.launch(Dispatchers.Main){
+            val backgroundImage: ImageView = findViewById(R.id.splashImage)
+            val slideAnimation = AnimationUtils.loadAnimation(this@SplashActivity, R.anim.side_slide)
+            backgroundImage.startAnimation(slideAnimation)
+            delay(1200)
+
+            if (ContextCompat.checkSelfPermission(this@SplashActivity, READ_SMS) != PackageManager.PERMISSION_GRANTED) {
+                val dialogBuilder = AlertDialog.Builder(this@SplashActivity,R.style.AlertDialog)
+                dialogBuilder.setTitle("SMS reading permission")
+                dialogBuilder.setMessage("This app need sms reading permission to analyze your total monthly income and expenditure")
+                dialogBuilder.setPositiveButton("GIVE PERMISSION"){dialog, which->
+                    dialog.dismiss()
+                    ActivityCompat.requestPermissions(this@SplashActivity,
+                        arrayOf(READ_SMS),
+                        permSms)
                 }
-                else{
-                    val intent = Intent(this@SplashActivity,MainActivity::class.java)
-                    //inside main activity navigation embedded all the main app functionalities.
-                    startActivity(intent)
+                dialogBuilder.setNegativeButton("NO"){dialog, which->
+                    dialog.dismiss()
+                    finish()
                 }
+                dialogBuilder.show()
+
             }
             else{
-                Toast.makeText(this,"Please give sms reading permission from settings to proceed",Toast.LENGTH_LONG).show()
+                val sharedPreferences: SharedPreferences = this@SplashActivity.getSharedPreferences(USER, Activity.MODE_PRIVATE)
+                val granted = sharedPreferences.getInt(smsPerm,0)
+                //Log.d("sds", granted.toString())
+                if(granted==1){
+                    val token = sharedPreferences.getString(TOKEN,"")
+                    if(token == ""){
+                            val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
+                            //opened the login signup activity.
+                            //this activity now will have the welcome screen fragment.
+                            startActivity(intent)
+                            finish()
+
+                    }
+                    else{
+                            val intent = Intent(this@SplashActivity,MainActivity::class.java)
+                            //inside main activity navigation embedded all the main app functionalities.
+                            startActivity(intent)
+                            finish()
+
+
+                    }
+                }
+                else{
+                    Toast.makeText(this@SplashActivity,"Please give sms reading permission from settings to proceed",Toast.LENGTH_LONG).show()
+                }
             }
         }
+
+
+
 
         //stackoverflow link for handlers: https://stackoverflow.com/questions/61023968/what-do-i-use-now-that-handler-is-deprecated
     }
@@ -72,13 +104,11 @@ class SplashActivity : AppCompatActivity() {
             editor.apply()
             val token = sharedPreferences.getString("token","a")
             if(token == "a"){
-                val mainHandler =  Handler(Looper.getMainLooper())
-                mainHandler.postDelayed({
                     val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
                     //opened the login signup activity.
                     //this activity now will have the welcome screen fragment.
                     startActivity(intent)
-                }, 2000)
+                    finish()
             }
             else{
                 editor.putInt(smsPerm,0)
@@ -86,6 +116,7 @@ class SplashActivity : AppCompatActivity() {
                 val intent = Intent(this@SplashActivity,MainActivity::class.java)
                 //inside mainactiivty navigation embedded all the main app functionalities.
                 startActivity(intent)
+                finish()
             }
         }
         else{

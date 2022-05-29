@@ -23,9 +23,10 @@
         <LinearLayout
             android:id="@+id/login_canvas1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <!-- Login/Signup -->
@@ -34,18 +35,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="25dp"
                 android:gravity="top"
                 android:text="@string/login_signup"
-                android:textAppearance="@style/login_signup"
-                android:textColor="@color/white_FFFFFF" />
+                android:textColor="@color/white_FFFFFF"
+                android:textSize="35dp" />
             <!-- Hello, welcome back to your account -->
             <TextView
                 android:id="@+id/tv_login_hello_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/hello_welcome"
                 android:textAppearance="@style/hello_welcome"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="70dp"
                 android:gravity="top"
                 android:text="@string/phone_number"
                 android:textAppearance="@style/phone_number" />
@@ -110,21 +110,20 @@
             </LinearLayout>
 
             <!--            WHAT DOES THIS BUTTON DO?-->
-            <Button
+            <soup.neumorphism.NeumorphButton
                 android:id="@+id/bt_login_request_otp"
+                style="@style/neumorph_button_combinations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/fragment_login_bt_submit_phone"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/request_otp"
                 android:textAppearance="@style/request_otp"
-                android:textColor="@color/black_000000"
-                android:textSize="20sp"
-                app:backgroundTint="@color/button_canvas"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintBaseline_toBottomOf="@id/phone_card"
-                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+                app:layout_constraintTop_toBottomOf="@id/et_login_phone_number"
+                app:neumorph_backgroundColor="@color/button_canvas" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,10 +4,10 @@
     android:padding="10dp"
     android:shape="rectangle">
     <!--   Divider vertical:  https://stackoverflow.com/questions/34541433/android-edittext-draw-a-divider-line-between-its-drawable-and-its-text-->
-    <solid android:color="@color/black_000000" />
+    <solid android:color="@color/on_background" />
     <stroke
         android:width="2.5dip"
-        android:color="@color/button_canvas" />
+        android:color="#8C8C8C" />
     <padding
         android:bottom="1dip"
         android:left="10dip"
