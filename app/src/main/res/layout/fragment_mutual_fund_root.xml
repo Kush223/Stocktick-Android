@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:text="The text will be fetched from the api. So for no ed from the api. So for n ed from the api. So for n w I am just writing random stuff"
+            android:text="A mutual fund is a company that pools money from many investors and invests the money in securities such as stocks, bonds, and short-term debt"
             android:textAlignment="center"
             android:textColor="@color/secondary_text_color"
             app:layout_constraintTop_toBottomOf="@id/necessity" />

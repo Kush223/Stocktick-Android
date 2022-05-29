@@ -48,7 +48,7 @@ class DebitCreditFragment : Fragment(R.layout.fragment_debit_credit),
         timeSpinner.onItemSelectedListener = this
         val adapter = ArrayAdapter(
             requireContext(),
-            R.layout.gender_spinner_dropdown,
+            R.layout.debit_credit_spinner,
             smsReader.getLastSixMonthsName()
         )
         adapter.setDropDownViewResource(R.layout.gender_spinner_dropdown)

@@ -73,7 +73,7 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
         gender.onItemSelectedListener = this
         val adapter = ArrayAdapter(
             requireContext(),
-            R.layout.gender_spinner_dropdown,
+            R.layout.debit_credit_spinner,
             com.example.stocktick.ui.mutual_funds.risk_factor.fragments.genders
         )
         adapter.setDropDownViewResource(R.layout.gender_spinner_dropdown)
