@@ -1,8 +1,10 @@
 package com.example.stocktick.ui.home
 
+import android.content.Context
 import android.content.res.Resources.getSystem
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.Telephony
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
@@ -21,6 +23,8 @@ import com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
 import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentHomeBinding
+import com.example.stocktick.utility.Constant
+import com.example.stocktick.utility.SmsReader
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 //    https://material.io/components/bottom-navigation/android#using-bottom-navigation
@@ -105,20 +109,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         serviceAdapter = HomeAdapter(serviceList)
         recyclerView.adapter = serviceAdapter
+
+        updateCreditDebit()
     }
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?, savedInstanceState: Bundle?
-//    ): View? {
-//
-//////        binding = FragmentHomeBinding.inflate(inflater,container, false)
-////        val viewModelFactory = HomeViewModelFactory(requireContext())
-////
-////        homeViewModel = ViewModelProvider(this,viewModelFactory)[HomeViewModel::class.java]
-//
-//
-//        return binding.root
-//    }
+
+    private fun updateCreditDebit() {
+        val sharedPreferences = requireContext().getSharedPreferences(Constant.SMS_SHARED_PREFS, Context.MODE_PRIVATE)
+        val credit = sharedPreferences.getFloat(Constant.LAST_MONTH_CREDIT,-1f )
+        if (credit == -1f){
+            val smsReader = SmsReader.getInstance(requireContext())
+            smsReader.readMonthSms(SmsReader.LAST_MONTH){ data ->
+                binding.creditAmount.text = "${data.credit}INR"
+                binding.debitAmount.text = "${data.debit}INR"
+            }
+        }
+        else {
+            val debit = sharedPreferences.getFloat(Constant.LAST_MONTH_DEBIT, 000f)
+            binding.creditAmount.text = "${credit}INR"
+            binding.debitAmount.text = "${debit}INR"
+        }
+    }
 
     override fun onStart() {
         super.onStart()

@@ -35,17 +35,6 @@
             app:indicator_spacing="4dp"/>
 
 
-<!--        <androidx.viewpager.widget.ViewPager-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="250dp"-->
-<!--            android:id="@+id/photos_view_pager"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            >-->
-
-
-<!--            </com.google.android.material.tabs.TabLayout>-->
-<!--        </androidx.viewpager.widget.ViewPager>-->
-
         <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="18,000 INR"
+                        android:text="000 INR"
                         android:layout_marginStart="3dp"
                         android:textColor="@color/white"
                         android:id="@+id/credit_amount"
@@ -149,7 +138,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="18,000 INR"
+                        android:text="000 INR"
                         android:layout_marginStart="3dp"
                         android:textColor="@color/white"
                         android:id="@+id/debit_amount"

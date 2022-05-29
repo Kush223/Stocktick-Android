@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.provider.Telephony
 import android.util.Log
 import android.view.Gravity
@@ -22,13 +23,17 @@ import com.example.stocktick.databinding.ActivityMainBinding
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.get_assistant.GetAssistantDialog
 import com.example.stocktick.utility.Constant
+import com.example.stocktick.utility.SmsReader
 import com.example.stocktick.utility.UtilsService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
+
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     //    https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
     lateinit var binding: ActivityMainBinding
@@ -52,49 +57,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         setSupportActionBar(binding.topAppBar)
-        lifecycleScope.launch(Dispatchers.IO){
-            try {
-                val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null)
 
-                if (cursor != null) {
-                    if (cursor.moveToFirst()) { // must check the result to prevent exception
-                        do {
-                            var msgData = ""
-                            for (idx in 0 until cursor.columnCount) {
-                                val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))
-                                val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS))
-                                val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY))
-                                //val dateFormat= Date(smsDate)
-//                        val type
-//                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
-//                            case Telephony.Sms.MESSAGE_TYPE_INBOX:
-//                            type = "inbox";
-//                            break;
-//                            case Telephony.Sms.MESSAGE_TYPE_SENT:
-//                            type = "sent";
-//                            break;
-//                            case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
-//                            type = "outbox";
-//                            break;
-//                            default:
-//                            break;
-//                        }
-                                msgData += body
-                            }
-                            Log.d("msg", msgData)
-                            // use msgData
-                        } while (cursor.moveToNext())
-                    } else {
-                        // empty box, no SMS
-                    }
-                }
-                cursor?.close()
-            }
-            catch (e: Exception){
 
-            }
-
-        }
 
 
 
@@ -127,7 +91,18 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 GetAssistantDialog.TAG
             )
         }
+        readSMS()
 
+
+
+    }
+
+    private fun readSMS() {
+
+        val smsReader = SmsReader.getInstance(this)
+        smsReader.readMonthSms(SmsReader.LAST_MONTH){
+
+        }
 
     }
 
@@ -186,45 +161,4 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return true
     }
 
-
-//    override fun onResume() {
-//        super.onResume()
-//        val cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
-//
-//        if (cursor != null) {
-//            if (cursor.moveToFirst()) { // must check the result to prevent exception
-//                do {
-//                    var msgData = ""
-////                    for(idx in 0 until cursor.columnCount)
-////                    {
-//                    val smsDate = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE));
-//                    val number = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-//                    val body = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-//                    //val dateFormat= Date(smsDate)
-////                        val type
-////                        switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
-////                            case Telephony.Sms.MESSAGE_TYPE_INBOX:
-////                            type = "inbox";
-////                            break;
-////                            case Telephony.Sms.MESSAGE_TYPE_SENT:
-////                            type = "sent";
-////                            break;
-////                            case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
-////                            type = "outbox";
-////                            break;
-////                            default:
-////                            break;
-////                        }
-//                    msgData += body
-////                    }
-//                    Log.d("msg", msgData)
-//                    //Log.d("msg","end")
-//                    // use msgData
-//                } while (cursor.moveToNext())
-//                cursor.close()
-//            } else {
-//                // empty box, no SMS
-//            }
-//        }
-//    }
 }

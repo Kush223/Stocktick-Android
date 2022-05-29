@@ -29,7 +29,6 @@ import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
 import com.example.stocktick.ui.education.model.WebinarItem
-import com.example.stocktick.utility.Constant.EDUCATION
 import com.example.stocktick.utility.Constant.SHAREDPREFERENCES_TOKEN_A
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
