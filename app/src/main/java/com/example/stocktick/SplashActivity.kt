@@ -35,6 +35,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val sharedPreferences: SharedPreferences = getSharedPreferences(USER, MODE_PRIVATE)
+        val granted = sharedPreferences.getInt(smsPerm,22)
 
         lifecycleScope.launch(Dispatchers.Main){
             val backgroundImage: ImageView = findViewById(R.id.splashImage)
@@ -60,9 +62,7 @@ class SplashActivity : AppCompatActivity() {
 
             }
             else{
-                val sharedPreferences: SharedPreferences = this@SplashActivity.getSharedPreferences(USER, Activity.MODE_PRIVATE)
-                val granted = sharedPreferences.getInt(smsPerm,0)
-                //Log.d("sds", granted.toString())
+                Log.d("sds", granted.toString())
                 if(granted==1){
                     val token = sharedPreferences.getString(TOKEN,"")
                     if(token == ""){
@@ -97,7 +97,7 @@ class SplashActivity : AppCompatActivity() {
                                    permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val granted = if(checkPermissionGranted(requestCode, permissions, grantResults)) 1 else 0
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(USER, Activity.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = getSharedPreferences(USER, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         if(granted==1){
             editor.putInt(smsPerm,1)
@@ -111,8 +111,6 @@ class SplashActivity : AppCompatActivity() {
                     finish()
             }
             else{
-                editor.putInt(smsPerm,0)
-                editor.apply()
                 val intent = Intent(this@SplashActivity,MainActivity::class.java)
                 //inside mainactiivty navigation embedded all the main app functionalities.
                 startActivity(intent)
