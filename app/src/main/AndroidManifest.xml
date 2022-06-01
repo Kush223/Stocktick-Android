@@ -22,6 +22,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+        <service android:name=".notification.PushNotificationService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+
+        </service>
         <activity
             android:name=".ui.mutual_funds.calculators.HostActivity"
             android:exported="false" />

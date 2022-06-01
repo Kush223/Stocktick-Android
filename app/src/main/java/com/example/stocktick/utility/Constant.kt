@@ -13,4 +13,7 @@ object Constant {
     const val LAST_MONTH_CREDIT="last_month_credit"
     const val LAST_MONTH_DEBIT = "last_month_debit"
     const val SYNC_TIME="sync_time"
+
+    //notification
+    const val CHANNEL_ID = "HeadsUpNotification"
 }

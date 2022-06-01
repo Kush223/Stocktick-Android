@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536498494378",
+    "project_id": "stocktick-95a7f",
+    "storage_bucket": "stocktick-95a7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536498494378:android:f1398f48cd7d0a8bafe9d3",
+        "android_client_info": {
+          "package_name": "com.example.stocktick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536498494378-8hsitl2bie5fkajhpgi4voapiop4qdh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB7ggI1_zXJzYROvkW1gyuWE5mELzgCZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536498494378-8hsitl2bie5fkajhpgi4voapiop4qdh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
