@@ -2,15 +2,12 @@ package com.example.stocktick
 
 import android.app.Activity
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
-import android.provider.CalendarContract
-import android.provider.Telephony
 import android.util.Log
-import android.view.Gravity
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
@@ -27,10 +24,10 @@ import com.example.stocktick.utility.SmsReader
 import com.example.stocktick.utility.UtilsService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 
 
 private const val TAG = "MainActivity"
@@ -53,6 +50,17 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentView(binding.root)
         drawerNavView = binding.navView
         utilsService = UtilsService(this)
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
+            .addOnCompleteListener { task ->
+                var msg = "Subscribed"
+                if (!task.isSuccessful) {
+                    msg = "Subscribe failed"
+                }
+                Log.d(TAG, msg)
+                Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+            }
 
 
 
@@ -147,6 +155,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.navigation_loan -> navView.selectedItemId = R.id.navigation_loan
             R.id.debitCreditFragment-> {
                 navController.navigate(R.id.action_navigation_home_to_debitCreditFragment)
+            }
+            R.id.navigation_notifications ->{
+                navController.navigate(R.id.action_navigation_home_to_notificationFragment)
             }
             R.id.viewProfile ->{
                 navController.navigate(R.id.action_navigation_home_to_viewProfile)

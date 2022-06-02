@@ -78,9 +78,6 @@ class EmergencyCalculatorFragment : Fragment(R.layout.emergency_calculator_fragm
             tvMonthlyInvestments.text = sSip
 
 
-
-
-
         }
         catch (e: ArithmeticException){
         }

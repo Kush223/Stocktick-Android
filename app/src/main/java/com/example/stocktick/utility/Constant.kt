@@ -16,4 +16,6 @@ object Constant {
 
     //notification
     const val CHANNEL_ID = "HeadsUpNotification"
+    //database
+    const val DB_NAME="stocktick"
 }
