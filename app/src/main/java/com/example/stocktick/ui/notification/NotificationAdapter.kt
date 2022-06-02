@@ -10,6 +10,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocktick.R
 import com.example.stocktick.room_db.entities.Notification
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NotificationAdapter
     constructor(
@@ -36,6 +38,7 @@ class NotificationAdapter
             R.id.body
         )
         val delete: ImageButton = itemView.findViewById(R.id.deleteBtn)
+        val date: TextView = itemView.findViewById(R.id.dateTime)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,13 +48,16 @@ class NotificationAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val notification = notifications[position]
-        holder.title.text = notification.title.uppercase()
+        holder.title.text = notification.title
         holder.body.text = notification.body
         holder.delete.setOnClickListener{
             onRemoveClicked(
                  holder.layoutPosition
             )
         }
+        val date = Date(notification.date)
+        val dateString = SimpleDateFormat("dd MMM, yyyy 'at' hh:mm a").format(date)
+        holder.date.text = dateString
     }
 
     override fun getItemCount(): Int {

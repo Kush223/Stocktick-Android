@@ -2,20 +2,16 @@ package com.example.stocktick
 
 import android.Manifest.permission.READ_SMS
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.os.Handler
-import android.os.Looper
+import android.net.Uri
+import android.os.Bundle
 import android.util.Log
-import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -27,22 +23,55 @@ import com.example.stocktick.utility.Constant.smsPerm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.jar.Manifest
-
 
 @SuppressLint("CustomSplashScreen")
+const val LOGIN = 1
+const val MAIN = 2
+
 class SplashActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val sharedPreferences: SharedPreferences = getSharedPreferences(USER, MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(USER, MODE_PRIVATE)
         val granted = sharedPreferences.getInt(smsPerm,22)
 
-        lifecycleScope.launch(Dispatchers.Main){
-            val backgroundImage: ImageView = findViewById(R.id.splashImage)
-            val slideAnimation = AnimationUtils.loadAnimation(this@SplashActivity, R.anim.side_slide)
-            backgroundImage.startAnimation(slideAnimation)
-            delay(1200)
+        when (jump(granted)){
+            LOGIN ->{
+                lifecycleScope.launch(Dispatchers.Main){
+                    delay(4500)
+                    val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
+            }
+            MAIN ->{
+
+                lifecycleScope.launch(Dispatchers.Main){
+                    delay(4500)
+                    val intent = Intent(this@SplashActivity,MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        try {
+            val videoHolder : VideoView= findViewById(R.id.videoView)
+            val video: Uri = Uri.parse("android.resource://" + packageName + "/" + R.raw.vid_splash)
+            videoHolder.setVideoURI(video)
+            videoHolder.setOnCompletionListener{
+            }
+            videoHolder.start()
+        } catch (ex: Exception) {
+        }
+
+
+    }
+
+    private fun jump(granted: Int): Int{
 
             if (ContextCompat.checkSelfPermission(this@SplashActivity, READ_SMS) != PackageManager.PERMISSION_GRANTED) {
                 val dialogBuilder = AlertDialog.Builder(this@SplashActivity,R.style.AlertDialog)
@@ -54,7 +83,7 @@ class SplashActivity : AppCompatActivity() {
                         arrayOf(READ_SMS),
                         permSms)
                 }
-                dialogBuilder.setNegativeButton("NO"){dialog, which->
+                dialogBuilder.setNegativeButton("NO"){ dialog, _ ->
                     dialog.dismiss()
                     finish()
                 }
@@ -65,33 +94,19 @@ class SplashActivity : AppCompatActivity() {
                 Log.d("sds", granted.toString())
                 if(granted==1){
                     val token = sharedPreferences.getString(TOKEN,"")
-                    if(token == ""){
-                            val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
-                            //opened the login signup activity.
-                            //this activity now will have the welcome screen fragment.
-                            startActivity(intent)
-                            finish()
-
-                    }
-                    else{
-                            val intent = Intent(this@SplashActivity,MainActivity::class.java)
-                            //inside main activity navigation embedded all the main app functionalities.
-                            startActivity(intent)
-                            finish()
-
-
+                    return if(token == ""){
+                        LOGIN
+                    } else{
+                        MAIN
                     }
                 }
                 else{
                     Toast.makeText(this@SplashActivity,"Please give sms reading permission from settings to proceed",Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        return 0
 
 
-
-
-        //stackoverflow link for handlers: https://stackoverflow.com/questions/61023968/what-do-i-use-now-that-handler-is-deprecated
     }
     override fun onRequestPermissionsResult(requestCode: Int,
                                    permissions: Array<String>, grantResults: IntArray) {
@@ -105,14 +120,11 @@ class SplashActivity : AppCompatActivity() {
             val token = sharedPreferences.getString("token","a")
             if(token == "a"){
                     val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
-                    //opened the login signup activity.
-                    //this activity now will have the welcome screen fragment.
                     startActivity(intent)
                     finish()
             }
             else{
                 val intent = Intent(this@SplashActivity,MainActivity::class.java)
-                //inside mainactiivty navigation embedded all the main app functionalities.
                 startActivity(intent)
                 finish()
             }
@@ -120,7 +132,6 @@ class SplashActivity : AppCompatActivity() {
         else{
             Toast.makeText(this,"Please give sms reading permission from settings to proceed",Toast.LENGTH_LONG).show()
         }
-        //Toast.makeText(this,granted, Toast.LENGTH_SHORT).show()
     }
 
     private fun checkPermissionGranted(requestCode: Int,

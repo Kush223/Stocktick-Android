@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     msg = "Subscribe failed"
                 }
                 Log.d(TAG, msg)
-                Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
             }
 
 

@@ -5,7 +5,7 @@
     <!--    WORKAROUND FOR MUKESH SOLANKIS PIN VIEW https://github.com/mukeshsolanki/android-otpview-pinview/issues/39-->
     <style name="Theme.Stocktick" parent="Theme.MaterialComponents.NoActionBar">
         <item name="backgroundColor">#303030</item>
-        <item name="android:colorBackground">#303030</item>
+        <item name="android:colorBackground">#212121</item>
         <item name="android:statusBarColor">#222222</item>
         <item name="colorPrimaryDark">@color/secondary_text_color</item>
         <item name="textColor">@color/white</item>
