@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
@@ -89,7 +90,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         binding.category6.setOnClickListener(this)
 
 
-        val navController = findNavController()
+        val navController = view.findNavController()
 
         riskFactorCard.onButtonClickedListener {
             Log.d(TAG, "onViewCreated: clicked")
@@ -121,6 +122,9 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
             val action =
                 MutualFundRootFragmentDirections.actionNavigationMutualFundsToMfLists2(0)
             navController.navigate(action)
+        }
+        binding.assetRecorder.onButtonClickedListener{
+            navController.navigate(R.id.action_navigation_mutual_funds_to_assetRecorderHome)
         }
 
 

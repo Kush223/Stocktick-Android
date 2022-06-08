@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="130dp"
+    android:layout_height="150dp"
+    style="@style/neumorph_button_combinations">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/assetCardConsLayout"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/mutual_fund_img"
+            app:layout_constraintBottom_toTopOf="@+id/tvAssetCategoryName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/tvAssetCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FD"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</soup.neumorphism.NeumorphCardView>

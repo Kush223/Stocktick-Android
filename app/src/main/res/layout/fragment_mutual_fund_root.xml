@@ -165,6 +165,15 @@
                 app:let2="Mutual Funds" />
 
             <com.example.stocktick.ui.customviews.MutualFundCard
+                android:id="@+id/assetRecorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:buttonText="Explore More"
+                app:image="@drawable/lazy_man"
+                app:let1="Asset Recorder"
+                app:let2="" />
+
+            <com.example.stocktick.ui.customviews.MutualFundCard
                 android:id="@+id/calculators"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

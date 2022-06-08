@@ -7,6 +7,11 @@
         <attr name="buttonText" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="AssetCard">
+        <attr name="imgsrc" format="reference"/>
+        <attr name="title" format="string"/>
+    </declare-styleable>
+
     <declare-styleable name="NeumorphEdittext">
         <attr name="text" format="string"/>
         <attr name="textColor" format="color"/>

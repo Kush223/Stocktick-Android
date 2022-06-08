@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.mutual_funds.asset_recorder.fragments.fd.fragments.FdDetailsEdit">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
+            >
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/bankNameLabel"
+                android:text = "Bank Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/bankName"
+               
+                android:hint = "YOUR BANK NAME"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/branchAddressLabel"
+                android:text = "Branch Address"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/branchAddress"
+               
+                android:hint = "YOUR BRANCH ADDRESS"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/depositHoldersNameLabel"
+                android:text = "Deposit Holder's Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/depositHoldersName"
+               
+                android:hint = "YOUR DEPOSIT HOLDERS NAME"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/amountInvestedLabel"
+                android:text = "Amount Invested"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/amountInvested"
+               
+                android:hint = "YOUR AMOUNT INVESTED"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/investmentDateLabel"
+                android:text = "Investment Date"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/investmentDate"
+               
+                android:hint = "YOUR INVESTMENT DATE"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/investmentDurationLabel"
+                android:text = "Investment Duration"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+               
+                android:id = "@+id/investmentDuration"
+                android:hint = "YOUR INVESTMENT DURATION"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/rateOfInterestLabel"
+                android:text = "Rate of Interest"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/rateOfInterest"
+               
+                android:hint = "YOUR RATE OF INTEREST"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/maturityDateLabel"
+                android:text = "Maturity Date"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/maturityDate"
+                android:hint = "YOUR MATURITY DATE"
+               
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/maturityAmountLabel"
+                android:text = "Maturity Amount"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/maturityAmount"
+               
+                android:hint = "YOUR MATURITY AMOUNT"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/nomineeNameLabel"
+                android:text = "Nominee Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/nomineeName"
+               
+                android:hint = "YOUR NOMINEE NAME"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/relationshipLabel"
+                android:text = "Relationship"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+               
+                android:id = "@+id/relationship"
+                android:hint = "YOUR RELATIONSHIP"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/AllocationLabel"
+                android:text = "% Allocation"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/Allocation"
+               
+                android:hint = "YOUR  ALLOCATION"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/nomineeNameLabel2"
+                android:text = "Nominee Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+               
+                android:id = "@+id/nomineeName2"
+                android:hint = "YOUR NOMINEE NAME"
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/relationshipLabel2"
+                android:text = "Relationship"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/relationship2"
+                android:hint = "YOUR RELATIONSHIP"
+               
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/allocationLabel2"
+                android:text = "% Allocation"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/allocation2"
+                android:hint = "YOUR  ALLOCATION"
+                android:textSize = "16sp"
+               
+                />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_done"
+        app:neumorph_backgroundColor="#303030"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat" />
+
+</RelativeLayout>

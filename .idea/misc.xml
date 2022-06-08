@@ -44,7 +44,9 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/fragment_login_bt_submit_phone.xml" value="0.1" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/fragment_login_et_phone_edit.xml" value="0.127" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/home_card.xml" value="0.1" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_close.xml" value="0.1" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_done.xml" value="0.134" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_edit.xml" value="0.102" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_growth.xml" value="0.111" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_home_24dp.xml" value="0.1685" />
@@ -59,14 +61,20 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_mutual_funds.xml" value="0.19384057971014493" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/asset_card.xml" value="0.4" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/child_education_calculator_fragment_layout.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/child_marriage_calculator_fragment_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/create_account_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/debit_credit_spinner.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/emergency_calculator_fragment_layout.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/emi_calculator_fragment_layout.xml" value="0.264" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fd_item_layout.xml" value="0.4" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_asset_recorder_home.xml" value="0.264" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_debit_credit.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.2" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_fd_details.xml" value="0.1917808219178082" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_fd_details_edit.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_fixed_deposits.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_get_assistant_dialog.xml" value="0.2" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_insurance.xml" value="0.23229166666666667" />

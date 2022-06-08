@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_navigation_mutual_funds_to_mfLists2"
             app:destination="@id/mfLists2" />
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_assetRecorderHome"
+            app:destination="@id/assetRecorderHome" />
     </fragment>
     <fragment
         android:id="@+id/debitCreditFragment"
@@ -92,5 +95,47 @@
         android:name="com.example.stocktick.ui.notification.NotificationFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/assetRecorderHome"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.AssetRecorderHome"
+        android:label="Asset Recorder"
+        tools:layout="@layout/fragment_asset_recorder_home" >
+        <action
+            android:id="@+id/action_assetRecorderHome_to_fixedDeposits"
+            app:destination="@id/fixedDeposits" />
+    </fragment>
+    <fragment
+        android:id="@+id/fixedDeposits"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FixedDeposits"
+        android:label="Fixed Deposits"
+        tools:layout="@layout/fragment_fixed_deposits" >
+        <action
+            android:id="@+id/action_fixedDeposits_to_fdDetails"
+            app:destination="@id/fdDetails" />
+        <action
+            android:id="@+id/action_fixedDeposits_to_fdDetailsEdit"
+            app:destination="@id/fdDetailsEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fdDetails"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FdDetails"
+        android:label="FD Details"
+        tools:layout="@layout/fragment_fd_details" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fdDetails_to_fdDetailsEdit"
+            app:destination="@id/fdDetailsEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fdDetailsEdit"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FdDetailsEdit"
+        android:label="Edit"
+        tools:layout="@layout/fragment_fd_details_edit" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
