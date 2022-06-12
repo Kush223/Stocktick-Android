@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/neumorph_button_combinations"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Purchase Price "
+            android:textColor="@color/secondary_text_color"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvPurchasePriceLabel"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Entered"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/tvPurchasePrice"
+            app:layout_constraintStart_toStartOf="@+id/tvPurchasePriceLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvPurchasePriceLabel"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instrument name   : "
+            android:id="@+id/tvInstrumentNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvPurchasePrice"
+            app:layout_constraintStart_toStartOf="@+id/tvPurchasePriceLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvInstrumentNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvInstrumentNameLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvInstrumentNameLabel"
+            android:text="Not Entered"
+            android:id="@+id/tvInstrumentName"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Broker Name          : "
+            android:id="@+id/tvBrokerNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvInstrumentName"
+            app:layout_constraintStart_toStartOf="@+id/tvPurchasePriceLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="2dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvBrokerNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvBrokerNameLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvBrokerNameLabel"
+            android:text="Not Entered"
+            android:id="@+id/tvBrokerName"
+            />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_remove"
+            android:background="@color/on_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvPurchasePriceLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPurchasePriceLabel"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/imgBtnRemove"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</soup.neumorphism.NeumorphCardView>

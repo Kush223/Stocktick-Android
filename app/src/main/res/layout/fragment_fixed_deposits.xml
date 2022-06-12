@@ -4,8 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.mutual_funds.asset_recorder.fragments.fd.FixedDeposits">
-
+    tools:context=".ui.mutual_funds.asset_recorder.fragments.fd.fragments.FixedDeposits">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/tvEmpty"
+            android:text="EMPTY"
+            android:textAlignment="center"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

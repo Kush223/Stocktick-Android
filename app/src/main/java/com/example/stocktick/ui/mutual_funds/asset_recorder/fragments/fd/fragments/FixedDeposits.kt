@@ -1,7 +1,6 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -64,6 +63,10 @@ class FixedDeposits : Fragment(R.layout.fragment_fixed_deposits) {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.fdList.collect(){
+                    if (it.isNotEmpty())
+                    {
+                        binding.tvEmpty.visibility = View.GONE
+                    }
                     adapter.fdList = it.toMutableList()
                 }
             }

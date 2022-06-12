@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/neumorph_button_combinations"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount invested"
+            android:textColor="@color/secondary_text_color"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvAmountInvestedLabel"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000,000 INR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/tvAmountInvested"
+            app:layout_constraintStart_toStartOf="@+id/tvAmountInvestedLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountInvestedLabel"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMC Name      : "
+            android:id="@+id/tvAmcNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountInvested"
+            app:layout_constraintStart_toStartOf="@+id/tvAmountInvestedLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvAmcNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvAmcNameLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAmcNameLabel"
+            android:text="Not Entered"
+            android:id="@+id/tvAmcName"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AIF Name         : "
+            android:id="@+id/tvAifNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmcName"
+            app:layout_constraintStart_toStartOf="@+id/tvAmountInvestedLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="2dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvAifNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvAifNameLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAifNameLabel"
+            android:text="Not Entered"
+            android:id="@+id/tvAifName"
+            />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_remove"
+            android:background="@color/on_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvAmountInvestedLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAmountInvestedLabel"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/imgBtnRemove"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</soup.neumorphism.NeumorphCardView>

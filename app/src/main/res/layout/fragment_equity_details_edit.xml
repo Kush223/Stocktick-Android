@@ -1,13 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.mutual_funds.asset_recorder.fragments.equity.fragments.EquityDetailsEdit">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
-</androidx.core.widget.NestedScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
+            >
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/brokerNameLabel"
+                android:text = "Broker Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/brokerName"
+                android:hint = "YOUR BROKER NAME"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/accountNumberLabel"
+                android:text = "Account Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/accountNumber"
+                android:hint = "YOUR ACCOUNT NUMBER"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/instrumentNameLabel"
+                android:text = "Instrument Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/instrumentName"
+                android:hint = "YOUR INSTRUMENT NAME"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/qtyLabel"
+                android:text = "Qty"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/qty"
+                android:hint = "YOUR QTY"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/purchasePriceLabel"
+                android:text = "Purchase Price"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/purchasePrice"
+                android:hint = "YOUR PURCHASE PRICE"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/purchaseValueLabel"
+                android:text = "Purchase Value"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/purchaseValue"
+                android:hint = "YOUR PURCHASE VALUE"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/marketPriceLabel"
+                android:text = "Market Price"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/marketPrice"
+                android:hint = "YOUR MARKET PRICE"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/marketValueLabel"
+                android:text = "Market Value"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/marketValue"
+                android:hint = "YOUR MARKET VALUE"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/nomineeNameLabel"
+                android:text = "Nominee Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/nomineeName"
+                android:hint = "YOUR NOMINEE NAME"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/relationshipLabel"
+                android:text = "Relationship"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/relationship"
+                android:hint = "YOUR RELATIONSHIP"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/allocationPercentLabel"
+                android:text = "Allocation Percent"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/allocationPercent"
+                android:hint = "YOUR ALLOCATION PERCENT"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/nomineeName2Label"
+                android:text = "Nominee Name2 "
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/nomineeName2"
+                android:hint = "YOUR NOMINEE NAME2 "
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/Relationship2Label"
+                android:text = "Relationship2"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/Relationship2"
+                android:hint = "YOUR RELATIONSHIP2"
+
+                android:textSize = "16sp"
+                />
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:id = "@+id/allocationPercent2Label"
+                android:text = "Allocation Percent2"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <EditText
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/allocationPercent2"
+                android:hint = "YOUR ALLOCATION PERCENT2"
+
+                android:textSize = "16sp"
+                />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_done"
+        app:neumorph_backgroundColor="#303030"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat" />
+
+</RelativeLayout>
