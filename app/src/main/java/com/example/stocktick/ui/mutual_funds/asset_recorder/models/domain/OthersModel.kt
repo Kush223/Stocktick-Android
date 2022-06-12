@@ -1,8 +1,11 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
-data class EpfModel(
-    var epf_no : String = "",
-    var balance : String = "",
+data class OthersModel(
+    var instrument_name : String = "",
+    var purchase_value : String = "",
+    var current_current : String = "",
+    var purchase_date : String = "",
+    var no_of_units : String = "",
     var nominee_name : String = "",
     var relationship : String = "",
     var allocation_percent : String = "",

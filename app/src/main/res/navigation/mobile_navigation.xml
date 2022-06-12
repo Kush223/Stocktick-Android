@@ -103,34 +103,10 @@
         <action
             android:id="@+id/action_assetRecorderHome_to_fixedDeposits"
             app:destination="@id/fixedDeposits" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_baList"
-            app:destination="@id/baList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_aifList"
-            app:destination="@id/aifList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_pmsList"
-            app:destination="@id/pmsList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_bondsList"
-            app:destination="@id/bondsList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_offList"
-            app:destination="@id/offList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_cryptoList"
-            app:destination="@id/cryptoList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_equityList"
-            app:destination="@id/equityList" />
-        <action
-            android:id="@+id/action_assetRecorderHome_to_usList"
-            app:destination="@id/usList" />
     </fragment>
     <fragment
         android:id="@+id/fixedDeposits"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FixedDeposits"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.DataList"
         android:label="Fixed Deposits"
         tools:layout="@layout/fragment_fixed_deposits" >
         <action
@@ -139,10 +115,13 @@
         <action
             android:id="@+id/action_fixedDeposits_to_fdDetailsEdit"
             app:destination="@id/fdDetailsEdit" />
+        <argument
+            android:name="category"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fdDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FdDetails"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.DataDetails"
         android:label="Details"
         tools:layout="@layout/fragment_fd_details" >
         <argument
@@ -151,301 +130,20 @@
         <action
             android:id="@+id/action_fdDetails_to_fdDetailsEdit"
             app:destination="@id/fdDetailsEdit" />
+        <argument
+            android:name="category"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fdDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.fd.fragments.FdDetailsEdit"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.DataDetailsEdit"
         android:label="Add/Edit"
         tools:layout="@layout/fragment_fd_details_edit" >
         <argument
             android:name="position"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/baList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bank_account.fragments.BaList"
-        android:label="Bank"
-        tools:layout="@layout/fragment_ba_list" >
-        <action
-            android:id="@+id/action_baList_to_baDetais"
-            app:destination="@id/baDetais" />
-        <action
-            android:id="@+id/action_baList_to_baDetailsEdit"
-            app:destination="@id/baDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/baDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bank_account.fragments.BaDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_ba_details_edit">
         <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/baDetais"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bank_account.fragments.BaDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_ba_details" >
-        <action
-            android:id="@+id/action_baDetais_to_baDetailsEdit"
-            app:destination="@id/baDetailsEdit" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/aifDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.aif.fragments.AifDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_aif_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/aifList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.aif.fragments.AifList"
-        android:label="Aif"
-        tools:layout="@layout/fragment_aif_list" >
-        <action
-            android:id="@+id/action_aifList_to_aifDetailsEdit"
-            app:destination="@id/aifDetailsEdit" />
-        <action
-            android:id="@+id/action_aifList_to_aifDetails"
-            app:destination="@id/aifDetails" />
-    </fragment>
-    <fragment
-        android:id="@+id/aifDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.aif.fragments.AifDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_aif_details" >
-        <action
-            android:id="@+id/action_aifDetails_to_aifDetailsEdit"
-            app:destination="@id/aifDetailsEdit" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/pmsList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.pms.fragments.PmsList"
-        android:label="Pms"
-        tools:layout="@layout/fragment_pms_list" >
-        <action
-            android:id="@+id/action_pmsList_to_pmsDetailsEdit"
-            app:destination="@id/pmsDetailsEdit" />
-        <action
-            android:id="@+id/action_pmsList_to_pmsDetails"
-            app:destination="@id/pmsDetails" />
-    </fragment>
-    <fragment
-        android:id="@+id/pmsDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.pms.fragments.PmsDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_pms_details" >
-        <action
-            android:id="@+id/action_pmsDetails_to_pmsDetailsEdit"
-            app:destination="@id/pmsDetailsEdit" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/pmsDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.pms.fragments.PmsDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_pms_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/bondsList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bonds.fragments.BondsList"
-        android:label="Bonds"
-        tools:layout="@layout/fragment_bonds_list" >
-        <action
-            android:id="@+id/action_bondsList_to_bondsDetails"
-            app:destination="@id/bondsDetails" />
-        <action
-            android:id="@+id/action_bondsList_to_bondsDetailsEdit"
-            app:destination="@id/bondsDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/bondsDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bonds.fragments.BondsDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_bonds_details" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_bondsDetails_to_bondsDetailsEdit"
-            app:destination="@id/bondsDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/bondsDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.bonds.fragments.BondsDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_bonds_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/offList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.off_market.fragments.OffList"
-        android:label="Off Market"
-        tools:layout="@layout/fragment_off_list" >
-        <action
-            android:id="@+id/action_offList_to_offDetails"
-            app:destination="@id/offDetails" />
-        <action
-            android:id="@+id/action_offList_to_offDetailsEdit"
-            app:destination="@id/offDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/offDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.off_market.fragments.OffDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_off_details" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_offDetails_to_offDetailsEdit"
-            app:destination="@id/offDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/offDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.off_market.fragments.OffDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_off_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/cryptoList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.crypto.fragments.CryptoList"
-        android:label="Crypto"
-        tools:layout="@layout/fragment_crypto_list" >
-        <action
-            android:id="@+id/action_cryptoList_to_cryptoDetails"
-            app:destination="@id/cryptoDetails" />
-        <action
-            android:id="@+id/action_cryptoList_to_cryptoDetailsEdit"
-            app:destination="@id/cryptoDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/cryptoDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.crypto.fragments.CryptoDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_crypto_details" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_cryptoDetails_to_cryptoDetailsEdit"
-            app:destination="@id/cryptoDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/cryptoDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.crypto.fragments.CryptoDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_crypto_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/equityList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.equity.fragments.EquityList"
-        android:label="Indian Equity"
-        tools:layout="@layout/fragment_equity_list">
-        <action
-            android:id="@+id/action_equityList_to_equityDetials"
-            app:destination="@id/equityDetails" />
-        <action
-            android:id="@+id/action_equityList_to_equityDetailsEdit"
-            app:destination="@id/equityDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/equityDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.equity.fragments.EquityDetials"
-        android:label="Details"
-        tools:layout="@layout/fragment_equity_detials">
-        <action
-            android:id="@+id/action_equityDetials_to_equityDetailsEdit"
-            app:destination="@id/equityDetailsEdit" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/equityDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.equity.fragments.EquityDetailsEdit"
-        android:label="Add/Rdit"
-        tools:layout="@layout/fragment_equity_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/usList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.us_equity.fragments.UsList"
-        android:label="Us Equity"
-        tools:layout="@layout/fragment_us_list">
-        <action
-            android:id="@+id/action_usList_to_usDetails"
-            app:destination="@id/usDetails" />
-        <action
-            android:id="@+id/action_usList_to_usDetailsEdit"
-            app:destination="@id/usDetailsEdit" />
-    </fragment>
-    <fragment
-        android:id="@+id/usDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.us_equity.fragments.UsDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_us_details">
-        <action
-            android:id="@+id/action_usDetails_to_usDetailsEdit"
-            app:destination="@id/usDetailsEdit" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/usDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.us_equity.fragments.UsDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_us_details_edit" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/epfList"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.epf.fragments.EpfList"
-        android:label="Epf"
-        tools:layout="@layout/fragment_epf_list" />
-    <fragment
-        android:id="@+id/epfDetails"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.epf.fragments.EpfDetails"
-        android:label="Details"
-        tools:layout="@layout/fragment_epf_details" >
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/epfDetailsEdit"
-        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.epf.fragments.EpfDetailsEdit"
-        android:label="Add/Edit"
-        tools:layout="@layout/fragment_epf_details_edit" >
-        <argument
-            android:name="position"
+            android:name="category"
             app:argType="integer" />
     </fragment>
 

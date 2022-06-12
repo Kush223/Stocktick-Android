@@ -18,32 +18,34 @@ class AssetRecorderHome : Fragment(R.layout.fragment_asset_recorder_home){
 
 
         binding.fdCard.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_fixedDeposits)
+            val action = AssetRecorderHomeDirections.actionAssetRecorderHomeToFixedDeposits(category = AppData.FIXED_DEPOSIT)
+            navController.navigate(action)
         }
         binding.aif.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_aifList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_aifList)
         }
         binding.pms.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_pmsList)
+           // navController.navigate(R.id.action_assetRecorderHome_to_pmsList)
         }
         binding.bankAccount.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_baList)
+           // navController.navigate(R.id.action_assetRecorderHome_to_baList)
         }
         binding.bonds.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_bondsList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_bondsList)
         }
         binding.offMarket.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_offList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_offList)
         }
         binding.crypto.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_cryptoList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_cryptoList)
         }
         binding.indianEquity.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_equityList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_equityList)
         }
         binding.usEquity.onButtonClickedListener{
-            navController.navigate(R.id.action_assetRecorderHome_to_usList)
+            //navController.navigate(R.id.action_assetRecorderHome_to_usList)
         }
+
 
     }
 

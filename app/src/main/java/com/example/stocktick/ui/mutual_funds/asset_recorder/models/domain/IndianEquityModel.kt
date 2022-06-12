@@ -1,6 +1,6 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
-data class CryptoModel(
+data class IndianEquityModel(
     var broker_name : String = "",
     var account_number : String = "",
     var instrument_name : String = "",

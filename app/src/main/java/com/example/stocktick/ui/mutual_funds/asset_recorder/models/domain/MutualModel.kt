@@ -1,12 +1,14 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
-data class PmsModel(
-    var amc_name : String = "",
-    var pms_aif_name : String = "",
-    var invested_value : String = "",
+data class MutualModel(
+    var scheme_name : String = "",
+    var purchase_amount : String = "",
+    var purchase_nav : String = "",
+    var current_nav : String = "",
     var current_amount : String = "",
-    var account_number : String = "",
-    var invested_date : String = "",
+    var div_amount : String = "",
+    var gain_short_term : String = "",
+    var gain_long_term : String = "",
     var return_absolute : String = "",
     var return_cagr : String = "",
     var nominee_name : String = "",

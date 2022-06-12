@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/neumorph_button_combinations"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount invested"
+            android:textColor="@color/secondary_text_color"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvTitleLabel"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Entered"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleLabel"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank Name      : "
+            android:id="@+id/tvParticular1Label"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvParticular1Label"
+            app:layout_constraintTop_toTopOf="@+id/tvParticular1Label"
+            app:layout_constraintBottom_toBottomOf="@+id/tvParticular1Label"
+            android:text="Not Entered"
+            android:id="@+id/tvParticular1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maturity Date  : "
+            android:id="@+id/tvParticular2Label"
+            app:layout_constraintTop_toBottomOf="@+id/tvParticular1"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLabel"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginTop="2dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvParticular2Label"
+            app:layout_constraintTop_toTopOf="@+id/tvParticular2Label"
+            app:layout_constraintBottom_toBottomOf="@+id/tvParticular2Label"
+            android:text="Not Entered"
+            android:id="@+id/tvParticular2"
+            />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_remove"
+            android:background="@color/on_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitleLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitleLabel"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/imgBtnRemove"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</soup.neumorphism.NeumorphCardView>
