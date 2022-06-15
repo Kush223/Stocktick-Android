@@ -11,7 +11,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/tvEmpty"
-            android:text="EMPTY"
+            android:text="EMPTY\nCLICK + TO ADD"
+            android:textColor="@color/secondary_text_color"
             android:textAlignment="center"
             />
 
@@ -29,7 +30,7 @@
             app:neumorph_shadowColorDark="#131313"
             app:neumorph_shadowColorLight="@color/color_background"
             app:neumorph_shadowElevation="10dp"
-            app:neumorph_backgroundColor="#303030"
+            app:neumorph_backgroundColor="#515151"
             app:neumorph_shapeType="flat"
             android:src="@drawable/ic_add"
             android:scaleType="center"

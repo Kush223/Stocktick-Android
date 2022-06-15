@@ -23,7 +23,7 @@
         android:layout_marginEnd="10dp"
         android:scaleType="center"
         android:src="@drawable/ic_edit"
-        app:neumorph_backgroundColor="#303030"
+        app:neumorph_backgroundColor="#515151"
         app:neumorph_shadowColorDark="#131313"
         app:neumorph_shadowColorLight="@color/color_background"
         app:neumorph_shadowElevation="10dp"

@@ -48,96 +48,58 @@
             android:layout_height="wrap_content"
             app:imgsrc="@drawable/ass_key_peoples"
             app:layout_constraintBottom_toBottomOf="@+id/profileCard"
-            app:layout_constraintEnd_toStartOf="@+id/fdCard"
+            app:layout_constraintEnd_toStartOf="@+id/bankAccount"
             app:layout_constraintStart_toEndOf="@+id/profileCard"
             app:layout_constraintTop_toTopOf="@+id/profileCard"
             app:title="Key People" />
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/fdCard"
+            android:id="@+id/bankAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_fixed_deposits"
+            app:imgsrc="@drawable/ass_bank_acc"
             app:layout_constraintBottom_toBottomOf="@+id/keyPeopleCard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.238"
             app:layout_constraintStart_toEndOf="@+id/keyPeopleCard"
             app:layout_constraintTop_toTopOf="@+id/keyPeopleCard"
             app:layout_constraintVertical_bias="0.0"
-            app:title="Fixed Deposits" />
+            app:title="Bank Account" />
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/bankAccount"
+            android:id="@+id/locker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:imgsrc="@drawable/ass_bank_acc"
+            app:imgsrc="@drawable/ass_locker"
             app:layout_constraintEnd_toStartOf="@+id/keyPeopleCard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileCard"
-            app:title="Bank Account" />
+            app:title="Locker" />
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/fdCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imgsrc="@drawable/ass_fixed_deposits"
+            app:layout_constraintBottom_toBottomOf="@+id/locker"
+            app:layout_constraintEnd_toStartOf="@+id/mutualFunds"
+            app:layout_constraintStart_toEndOf="@+id/locker"
+            app:layout_constraintTop_toTopOf="@+id/locker"
+            app:title="Fixed Deposits" />
 
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/mutualFunds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:imgsrc="@drawable/ass_mutual_funds"
-            app:layout_constraintBottom_toBottomOf="@+id/bankAccount"
-            app:layout_constraintEnd_toStartOf="@+id/locker"
-            app:layout_constraintStart_toEndOf="@+id/bankAccount"
-            app:layout_constraintTop_toTopOf="@+id/bankAccount"
+            app:layout_constraintBottom_toBottomOf="@+id/fdCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintStart_toEndOf="@+id/fdCard"
+            app:layout_constraintTop_toTopOf="@+id/fdCard"
+            app:layout_constraintVertical_bias="0.0"
             app:title="Mutual Funds" />
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/locker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_locker"
-            app:layout_constraintBottom_toBottomOf="@+id/mutualFunds"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/mutualFunds"
-            app:layout_constraintTop_toTopOf="@+id/mutualFunds"
-            app:layout_constraintVertical_bias="0.0"
-            app:title="Locker" />
-
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/loan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:imgsrc="@drawable/ass_loan"
-            app:layout_constraintEnd_toStartOf="@+id/bonds"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bankAccount"
-            app:title="Loan" />
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/bonds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_bonds"
-            app:layout_constraintBottom_toBottomOf="@+id/loan"
-            app:layout_constraintEnd_toStartOf="@+id/aif"
-            app:layout_constraintStart_toEndOf="@+id/loan"
-            app:layout_constraintTop_toTopOf="@+id/loan"
-            app:title="Bonds" />
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/aif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imgsrc="@drawable/mutual_fund_img"
-            app:layout_constraintBottom_toBottomOf="@+id/bonds"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/bonds"
-            app:layout_constraintTop_toTopOf="@+id/bonds"
-            app:layout_constraintVertical_bias="0.0"
-            app:title="AIF" />
-
-<!--        Fourth Line-->
 
 
         <com.example.stocktick.ui.customviews.AssetCard
@@ -145,139 +107,140 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:imgsrc="@drawable/ass_epf"
-            app:layout_constraintEnd_toStartOf="@+id/ppf"
+            app:imgsrc="@drawable/ass_bonds"
+            app:layout_constraintEnd_toStartOf="@+id/bonds"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loan"
-            app:title="EPF" />
+            app:layout_constraintTop_toBottomOf="@+id/locker"
+            app:title="Bonds" />
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/ppf"
+            android:id="@+id/bonds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imgsrc="@drawable/mutual_fund_img"
+            app:imgsrc="@drawable/ass_epf"
             app:layout_constraintBottom_toBottomOf="@+id/epf"
-            app:layout_constraintEnd_toStartOf="@+id/realState"
+            app:layout_constraintEnd_toStartOf="@+id/nps"
             app:layout_constraintStart_toEndOf="@+id/epf"
             app:layout_constraintTop_toTopOf="@+id/epf"
-            app:title="PPF" />
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/realState"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_real_estate"
-            app:layout_constraintBottom_toBottomOf="@+id/ppf"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/ppf"
-            app:layout_constraintTop_toTopOf="@+id/ppf"
-            app:layout_constraintVertical_bias="0.0"
-            app:title="Real Estate" />
-
-<!--        fifth line-->
-
+            app:title="EPF" />
 
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/nps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             app:imgsrc="@drawable/ass_nps"
-            app:layout_constraintEnd_toStartOf="@+id/other"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/epf"
-            app:title="NPS-Tier-1" />
+            app:layout_constraintBottom_toBottomOf="@+id/bonds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintStart_toEndOf="@+id/bonds"
+            app:layout_constraintTop_toTopOf="@+id/bonds"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="NPS" />
+
+        <!--        Fourth Line-->
+
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/other"
+            android:id="@+id/ppf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:imgsrc="@drawable/mutual_fund_img"
+            app:layout_constraintEnd_toStartOf="@+id/pms"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/epf"
+            app:title="PPF" />
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/pms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:imgsrc="@drawable/mutual_fund_img"
-            app:layout_constraintBottom_toBottomOf="@+id/nps"
-            app:layout_constraintEnd_toStartOf="@+id/lifeInsurance"
-            app:layout_constraintStart_toEndOf="@+id/nps"
-            app:layout_constraintTop_toTopOf="@+id/nps"
-            app:title="Other" />
+            app:layout_constraintBottom_toBottomOf="@+id/ppf"
+            app:layout_constraintEnd_toStartOf="@+id/aif"
+            app:layout_constraintStart_toEndOf="@+id/ppf"
+            app:layout_constraintTop_toTopOf="@+id/ppf"
+            app:title="PMS" />
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/lifeInsurance"
+            android:id="@+id/aif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_life_insurance"
-            app:layout_constraintBottom_toBottomOf="@+id/other"
+            app:imgsrc="@drawable/mutual_fund_img"
+            app:layout_constraintBottom_toBottomOf="@+id/pms"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/other"
-            app:layout_constraintTop_toTopOf="@+id/other"
+            app:layout_constraintStart_toEndOf="@+id/pms"
+            app:layout_constraintTop_toTopOf="@+id/pms"
             app:layout_constraintVertical_bias="0.0"
-            app:title="Life Insurance" />
+            app:title="AIF" />
 
-<!--        Sixth Line -->
+        <!--        fifth line-->
 
-
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/healthInsurance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:imgsrc="@drawable/ass_health_insurance"
-            app:layout_constraintEnd_toStartOf="@+id/motorInsurance"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nps"
-            app:title="Health Insurance" />
-
-        <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/motorInsurance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:imgsrc="@drawable/ass_motor_insurance"
-            app:layout_constraintBottom_toBottomOf="@+id/healthInsurance"
-            app:layout_constraintEnd_toStartOf="@+id/indianEquity"
-            app:layout_constraintStart_toEndOf="@+id/healthInsurance"
-            app:layout_constraintTop_toTopOf="@+id/healthInsurance"
-            app:title="Motor Insurance" />
 
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/indianEquity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             app:imgsrc="@drawable/ass_equity"
-            app:layout_constraintBottom_toBottomOf="@+id/motorInsurance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/motorInsurance"
-            app:layout_constraintTop_toTopOf="@+id/motorInsurance"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/usEquity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ppf"
             app:title="Indian Equity" />
 
-<!--        7th row -->
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/usEquity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             app:imgsrc="@drawable/ass_us_equity"
+            app:layout_constraintBottom_toBottomOf="@+id/indianEquity"
+            app:layout_constraintEnd_toStartOf="@+id/offMarket"
+            app:layout_constraintStart_toEndOf="@+id/indianEquity"
+            app:layout_constraintTop_toTopOf="@+id/indianEquity"
+            app:title="US Equity" />
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/offMarket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imgsrc="@drawable/mutual_fund_img"
+            app:layout_constraintBottom_toBottomOf="@+id/usEquity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintStart_toEndOf="@+id/usEquity"
+            app:layout_constraintTop_toTopOf="@+id/usEquity"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="Off Market" />
+
+        <!--        Sixth Line -->
+
+
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/realState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:imgsrc="@drawable/ass_real_estate"
             app:layout_constraintEnd_toStartOf="@+id/crypto"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/healthInsurance"
-            app:title="US Equity" />
+            app:layout_constraintTop_toBottomOf="@+id/indianEquity"
+            app:title="Real Estate" />
 
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/crypto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:imgsrc="@drawable/ass_crypto"
-            app:layout_constraintBottom_toBottomOf="@+id/usEquity"
-            app:layout_constraintStart_toEndOf="@+id/usEquity"
-            app:layout_constraintEnd_toStartOf="@+id/offMarket"
-            app:layout_constraintTop_toTopOf="@+id/usEquity"
-            app:title="Motor Insurance" />
-
+            app:layout_constraintBottom_toBottomOf="@+id/realState"
+            app:layout_constraintEnd_toStartOf="@+id/other"
+            app:layout_constraintStart_toEndOf="@+id/realState"
+            app:layout_constraintTop_toTopOf="@+id/realState"
+            app:title="Crypto" />
 
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/offMarket"
+            android:id="@+id/other"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:imgsrc="@drawable/mutual_fund_img"
@@ -287,19 +250,56 @@
             app:layout_constraintStart_toEndOf="@+id/crypto"
             app:layout_constraintTop_toTopOf="@+id/crypto"
             app:layout_constraintVertical_bias="0.0"
-            app:title="Off Market" />
+            app:title="Other" />
 
-<!--        8th line-->
+        <!--        7th row -->
         <com.example.stocktick.ui.customviews.AssetCard
-            android:id="@+id/pms"
+            android:id="@+id/lifeInsurance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:imgsrc="@drawable/mutual_fund_img"
-            app:layout_constraintEnd_toStartOf="@+id/crypto"
+            app:imgsrc="@drawable/ass_life_insurance"
+            app:layout_constraintEnd_toStartOf="@+id/healthInsurance"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usEquity"
-            app:title="PMS" />
+            app:layout_constraintTop_toBottomOf="@+id/realState"
+            app:title="Life Insurance" />
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/healthInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imgsrc="@drawable/ass_health_insurance"
+            app:layout_constraintBottom_toBottomOf="@+id/lifeInsurance"
+            app:layout_constraintStart_toEndOf="@+id/lifeInsurance"
+            app:layout_constraintEnd_toStartOf="@+id/motorInsurance"
+            app:layout_constraintTop_toTopOf="@+id/lifeInsurance"
+            app:title="Health Insurance" />
+
+
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/motorInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imgsrc="@drawable/ass_motor_insurance"
+            app:layout_constraintBottom_toBottomOf="@+id/healthInsurance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintStart_toEndOf="@+id/healthInsurance"
+            app:layout_constraintTop_toTopOf="@+id/healthInsurance"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="Motor Insurance" />
+
+        <!--        8th line-->
+        <com.example.stocktick.ui.customviews.AssetCard
+            android:id="@+id/loan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:imgsrc="@drawable/ass_loan"
+            app:layout_constraintEnd_toStartOf="@+id/healthInsurance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lifeInsurance"
+            app:title="Loan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

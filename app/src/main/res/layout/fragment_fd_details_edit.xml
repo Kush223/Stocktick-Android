@@ -7,13 +7,12 @@
     tools:context=".ui.mutual_funds.asset_recorder.fragments.DataDetailsEdit">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/editDetailsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/editDetailsRecyclerView"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="15dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     <soup.neumorphism.NeumorphFloatingActionButton
         android:id="@+id/fabDone"
         android:layout_width="100dp"
@@ -23,7 +22,7 @@
         android:layout_marginEnd="10dp"
         android:scaleType="center"
         android:src="@drawable/ic_done"
-        app:neumorph_backgroundColor="#303030"
+        app:neumorph_backgroundColor="#515151"
         app:neumorph_shadowColorDark="#131313"
         app:neumorph_shadowColorLight="@color/color_background"
         app:neumorph_shadowElevation="10dp"
