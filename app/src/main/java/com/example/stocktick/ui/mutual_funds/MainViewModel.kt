@@ -7,15 +7,12 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.load.engine.cache.DiskCacheAdapter
 import com.example.stocktick.network.RetrofitClientInstance
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.domain_models.MfModel
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.ClickCountModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
-import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsBody
-import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.domain_models.Page1
 import com.example.stocktick.utility.Constant
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -88,9 +85,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val response = RetrofitClientInstance.retrofitService.getMfList(
                     authToken = tokenSharedPreference,
-                    body = GetDetailsBody(
-                        catg_id = cat.toString()
-                    )
+                        catg_id = cat
                 )
                 if (response.isSuccessful && response.body() != null && response.body()!!
                         .isNotEmpty()
@@ -108,10 +103,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                                  threeYearR = it.threeyear.toString(),
                                  shortDescription = it.longDesc ?: "",
                                  redirectUrl = it.fetchUrl ?: "",
-                                 lockStatus = it.lockStatus ?: "UNLOCKED"
+                                 lockStatus = it.lockStatus ?: "UNLOCKED",
+                                 fundId = it.id ?: 1
                              )
                          }
                     }
+                }
+            } catch (e: Exception){
+                Log.e(TAG, "updateMfCategories: Error in updating categories :${e.localizedMessage}", )
+            }
+        }
+    }
+    fun clickCount(
+        catgId: Int,
+        fund_id : Int
+    ){
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.mfClickCount(
+                    authToken = tokenSharedPreference,
+                    ClickCountModel(
+                        catgId.toString(),
+                        fund_id.toString()
+                    )
+                )
+                if (response.isSuccessful && response.body() != null
+                ){
+
+
                 }
             } catch (e: Exception){
                 Log.e(TAG, "updateMfCategories: Error in updating categories :${e.localizedMessage}", )

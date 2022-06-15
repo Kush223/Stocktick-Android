@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
@@ -14,29 +15,20 @@ import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.domain
 
 class MfAdapter
     constructor(
-        private val mfList: List<MfModel>,
+        var mfList: List<MfModel>,
         var returnType: ReturnType,
-        private val context: Context
+        private val context: Context, 
+        val onClick : (url : String, fundId : Int)  -> Unit
     )
     : RecyclerView.Adapter<MfAdapter.ViewHolder>() {
 
-    companion object {
-        fun newInstance(
-            mfList: List<MfModel>,
-            returnType: ReturnType,
-            context: Context
-        ) = MfAdapter(
-            mfList = mfList,
-            returnType = returnType,
-            context = context
-        )
-    }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mfTitle: TextView = itemView.findViewById(R.id.mfTitle)
         val mfReturn : TextView = itemView.findViewById(R.id.tvReturn)
         val mfIcon : ImageView = itemView.findViewById(R.id.mfIcon)
+        val mfConsLayout : ConstraintLayout = itemView.findViewById(R.id.mfConsLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -52,8 +44,13 @@ class MfAdapter
             ReturnType.ONE_YEAR -> holder.mfReturn.text = mfModel.oneYearR
             ReturnType.THREE_YEAR -> holder.mfReturn.text = mfModel.threeYearR
         }
+
+        holder.mfConsLayout.setOnClickListener{
+            onClick(mfModel.redirectUrl, mfModel.fundId)
+        }
+
         if (mfModel.iconUrl.isNotEmpty())
-        Glide.with(context).load(mfModel.iconUrl).into(holder.mfIcon)
+        Glide.with(context).load(mfModel.iconUrl).error(R.drawable.mutual_fund_img).placeholder(R.drawable.mutual_fund_img).into(holder.mfIcon)
 
     }
 

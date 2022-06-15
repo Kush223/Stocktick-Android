@@ -5,16 +5,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
-import android.widget.VideoView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.utility.Constant.TOKEN
 import com.example.stocktick.utility.Constant.USER
@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
         when (jump(granted)){
             LOGIN ->{
                 lifecycleScope.launch(Dispatchers.Main){
-                    delay(4500)
+                    delay(3000)
                     val intent = Intent(this@SplashActivity, LoginSignupActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -51,7 +51,7 @@ class SplashActivity : AppCompatActivity() {
             MAIN ->{
 
                 lifecycleScope.launch(Dispatchers.Main){
-                    delay(4500)
+                    delay(3500)
                     val intent = Intent(this@SplashActivity,MainActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -59,12 +59,8 @@ class SplashActivity : AppCompatActivity() {
             }
         }
         try {
-            val videoHolder : VideoView= findViewById(R.id.videoView)
-            val video: Uri = Uri.parse("android.resource://" + packageName + "/" + R.raw.vid_splash)
-            videoHolder.setVideoURI(video)
-            videoHolder.setOnCompletionListener{
-            }
-            videoHolder.start()
+            val gifView : ImageView = findViewById(R.id.gifView)
+            Glide.with(this).load(R.mipmap.vid_splash).into(gifView)
         } catch (ex: Exception) {
         }
 

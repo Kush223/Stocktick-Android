@@ -24,6 +24,4 @@ data class GetDetailsModel(
     @Json(name ="lock_status"  ) var lockStatus  : String? = null
 )
 
-data class GetDetailsBody(
-    val catg_id: String="1"
-)
+

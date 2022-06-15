@@ -18,8 +18,8 @@ import com.example.stocktick.ui.loan.LoanItem
 import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.KeyPeopleModel
 import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.PersonalDetailsModel
 import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.PersonalDetailsResponseModel
+import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.ClickCountModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
-import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsBody
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsModel
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
@@ -216,7 +216,7 @@ interface ApiServiceInterface {
     @GET("/discover-mutual-funds/funds/")
     suspend fun getMfList(
         @Query("authToken") authToken: String,
-        @Body body: GetDetailsBody
+        @Query("catg_id") catg_id: Int
     ) : Response<List<GetDetailsModel>>
 
 
@@ -242,6 +242,12 @@ interface ApiServiceInterface {
     suspend fun getKeyPeople(
         @Query("authToken") authToken: String,
         ) : Response<List<KeyPeopleModel>>
+
+    @GET("/discover-mutual-funds/count/")
+    suspend fun mfClickCount(
+        @Header("authToken") authToken: String,
+        @Body body : ClickCountModel
+    ) : Response<StandardSuccessResponse>
 
 
 

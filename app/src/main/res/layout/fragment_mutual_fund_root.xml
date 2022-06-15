@@ -170,8 +170,8 @@
                 android:layout_height="wrap_content"
                 app:buttonText="Explore More"
                 app:image="@drawable/lazy_man"
-                app:let1="Asset Recorder"
-                app:let2="" />
+                app:let1="Asset"
+                app:let2="Reconciliation" />
 
             <com.example.stocktick.ui.customviews.MutualFundCard
                 android:id="@+id/calculators"
@@ -466,6 +466,51 @@ android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img6" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            style="@style/neumorph_combinations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:id="@+id/category7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/category5"
+            app:layout_constraintTop_toBottomOf="@+id/category4">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img7"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_locked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.38"
+                    />
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="High Return"
+                    android:textSize="12sp"
+                    android:id="@+id/tvCategory7"
+                    android:textAlignment="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/secondary_text_color"
+                    app:layout_constraintTop_toBottomOf="@+id/img7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

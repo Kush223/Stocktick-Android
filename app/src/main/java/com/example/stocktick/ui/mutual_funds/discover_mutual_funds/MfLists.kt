@@ -1,9 +1,15 @@
 package com.example.stocktick.ui.mutual_funds.discover_mutual_funds
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.webkit.WebView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
@@ -14,6 +20,7 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentMfListsBinding
 import com.example.stocktick.ui.mutual_funds.MainViewModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.domain_models.MfModel
+
 
 private const val TAG = "MfLists"
 class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelectedListener, View.OnClickListener{
@@ -26,6 +33,7 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
     private lateinit var mfAdapter: MfAdapter
     private var selectedReturnInterval: ReturnType = ReturnType.THREE_YEAR
     private lateinit var tvReturnInterval: TextView
+    private lateinit var theWebPage : WebView
 
     private val args : MfListsArgs by navArgs()
 
@@ -38,7 +46,8 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
         "Category 3",
         "Category 4",
         "Category 5",
-        "Category 6"
+        "Category 6",
+        "Category 7"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +61,7 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMfListsBinding.bind(view)
+        theWebPage = WebView(requireContext())
 
         tvReturnInterval = binding.tvReturnInterval
 
@@ -69,7 +79,15 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
             mfList ,
             ReturnType.THREE_YEAR,
             requireContext()
-        )
+        ){ url , fundId->
+
+            val intent =
+                Intent(Intent.ACTION_VIEW).setData(Uri.parse(url))
+            startActivity(intent)
+
+            viewModel.clickCount(categorySpinner.selectedItemPosition+1, fundId)
+        }
+
         mfRecyclerView = binding.mfRecyclerView
         mfRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         mfRecyclerView.adapter = mfAdapter
@@ -80,8 +98,8 @@ class MfLists : Fragment(R.layout.fragment_mf_lists) , AdapterView.OnItemSelecte
 
         viewModel.mfList.observe(requireActivity()){
             Log.d(TAG, "Observer called :$it")
-            mfList = it
-            adapter.notifyDataSetChanged()
+            mfAdapter.mfList = it
+            mfAdapter.notifyDataSetChanged()
         }
 
 

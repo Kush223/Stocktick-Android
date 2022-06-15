@@ -47,6 +47,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
     private lateinit var tvCategory4: TextView
     private lateinit var tvCategory5: TextView
     private lateinit var tvCategory6: TextView
+    private lateinit var tvCategory7: TextView
 
     //2. Icons
     private lateinit var iconCategory1: ImageView
@@ -55,6 +56,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
     private lateinit var iconCategory4: ImageView
     private lateinit var iconCategory5: ImageView
     private lateinit var iconCategory6: ImageView
+    private lateinit var iconCategory7: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +75,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         tvCategory4 = binding.tvCategory4
         tvCategory5 = binding.tvCategory5
         tvCategory6 = binding.tvCategory6
+        tvCategory7 = binding.tvCategory7
 
         iconCategory1 = binding.img1
         iconCategory2 = binding.img2
@@ -80,6 +83,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         iconCategory4 = binding.img4
         iconCategory5 = binding.img5
         iconCategory6 = binding.img6
+        iconCategory7 = binding.img7
 
         //setting on click listeners
         binding.category1.setOnClickListener(this)
@@ -88,6 +92,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         binding.category4.setOnClickListener(this)
         binding.category5.setOnClickListener(this)
         binding.category6.setOnClickListener(this)
+        binding.category7.setOnClickListener(this)
 
 
         val navController = view.findNavController()
@@ -142,15 +147,27 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val categoryList = viewModel.mfCategories.value
+        if (!categoryList.isNullOrEmpty())
+            try {
+                updateCategoryWidgets(categoryList)
+            } catch (e: IndexOutOfBoundsException) {
+                Log.e(TAG, "onViewCreated: Index out of bound")
+            }
+    }
+
     @Throws(IndexOutOfBoundsException::class)
     private fun updateCategoryWidgets(categoryList: List<GetCategories>) {
-        if (categoryList.size > 6) throw IndexOutOfBoundsException()
+        if (categoryList.size > 7) throw IndexOutOfBoundsException()
         populateCategoryCard(tvCategory1, iconCategory1, categoryList[0])
         populateCategoryCard(tvCategory2, iconCategory2, categoryList[1])
         populateCategoryCard(tvCategory3, iconCategory3, categoryList[2])
         populateCategoryCard(tvCategory4, iconCategory4, categoryList[3])
         populateCategoryCard(tvCategory5, iconCategory5, categoryList[4])
         populateCategoryCard(tvCategory6, iconCategory6, categoryList[5])
+        populateCategoryCard(tvCategory7, iconCategory7, categoryList[6])
 
     }
 
@@ -235,6 +252,12 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
                 navigate(
                     categoryList[5],
                     5
+                )
+            }
+            R.id.category7 -> {
+                navigate(
+                    categoryList[6],
+                    6
                 )
             }
 
