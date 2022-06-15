@@ -51,6 +51,7 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_growth.xml" value="0.111" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_home_24dp.xml" value="0.1685" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_locked.xml" value="0.111" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_outline_add.xml" value="0.155" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/ic_search.xml" value="0.111" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/selected_dot.xml" value="0.208" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/drawable/tab_selector.xml" value="0.208" />
@@ -62,7 +63,7 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_mutual_funds.xml" value="0.19384057971014493" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/aif_item_layout.xml" value="0.3577981651376147" />
-        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/asset_card.xml" value="0.4" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/asset_card.xml" value="0.72" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/asset_recorder_data_card_layout.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/ba_item_layout.xml" value="0.4" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/bonds_item_layout.xml" value="0.3577981651376147" />
@@ -103,6 +104,8 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_health_list.xml" value="0.1431159420289855" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_insurance.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_key_people.xml" value="0.4" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_key_people_edit.xml" value="0.35620300751879697" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_life_list.xml" value="0.1431159420289855" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_loan_list.xml" value="0.1431159420289855" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_locker_list.xml" value="0.1431159420289855" />
@@ -129,6 +132,8 @@
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page6dot3.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page6dot4.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_page7.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_personal_details.xml" value="0.2545454545454545" />
+        <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_personal_details_edit.xml" value="0.264" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_pms_details.xml" value="0.4" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_pms_details_edit.xml" value="0.35822306238185253" />
         <entry key="..\:/Users/sayee/AndroidStudioProjects/stocktick-mobile/app/src/main/res/layout/fragment_pms_list.xml" value="0.1431159420289855" />

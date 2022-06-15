@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.mutual_funds.asset_recorder.static_pages.key_people.KeyPeopleFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            >
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:text = "FAMILY DOCTOR"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvDoctorName"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvDoctorContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Alternate Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvDoctorAlternateContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:text = "Chartered Accountant"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize = "16sp"
+                android:layout_marginTop="25dp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvCharName"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvCharContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Alternate Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvCharAlternateContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:text = "Advocate"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize = "16sp"
+                android:layout_marginTop="25dp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvAdvocateName"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvAdvocateContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Alternate Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvAdvocateAlternateContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:text = "Financial Adviser"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize = "16sp"
+                android:layout_marginTop="25dp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Name"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvFinName"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvFinContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "10dp"
+                android:text = "Alternate Contact Number"
+                android:textColor = "@color/secondary_text_color"
+                />
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:id = "@+id/tvFinAlternateContactNo"
+                android:text = "NOT ENTERED"
+                android:textAllCaps="true"
+                android:textSize = "16sp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_edit"
+        app:neumorph_backgroundColor="#303030"
+        app:neumorph_shadowColorDark="#131313"
+        app:neumorph_shadowColorLight="@color/color_background"
+        app:neumorph_shadowElevation="10dp"
+        app:neumorph_shapeType="flat" />
+</RelativeLayout>

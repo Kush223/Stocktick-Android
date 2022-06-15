@@ -38,11 +38,17 @@ class DataList : Fragment(R.layout.fragment_fixed_deposits) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.GONE
+        (activity as MainActivity).binding.topAppBar.title = args.name
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.populateCardDataList(args.category)
+    }
+
+    override fun onPause() {
+        viewModel.cardDataList.value.clear()
+        super.onPause()
     }
 
 
@@ -69,7 +75,7 @@ class DataList : Fragment(R.layout.fragment_fixed_deposits) {
                  }
                 }
             },
-            dataListCardModel = AppData.dataListCardModels.getValue(args.category)
+            dataListCardModel = AppData.getDataListCardModels((args.category))
         )
         fdRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         fdRecyclerView.adapter = adapter

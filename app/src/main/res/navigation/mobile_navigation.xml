@@ -98,17 +98,23 @@
     <fragment
         android:id="@+id/assetRecorderHome"
         android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.AssetRecorderHome"
-        android:label="Asset Recorder"
-        tools:layout="@layout/fragment_asset_recorder_home" >
+        android:label="Asset Reconciliation"
+        tools:layout="@layout/fragment_asset_recorder_home">
         <action
             android:id="@+id/action_assetRecorderHome_to_fixedDeposits"
             app:destination="@id/fixedDeposits" />
+        <action
+            android:id="@+id/action_assetRecorderHome_to_personalDetailsFragment"
+            app:destination="@id/personalDetailsFragment" />
+        <action
+            android:id="@+id/action_assetRecorderHome_to_keyPeopleFragment"
+            app:destination="@id/keyPeopleFragment" />
     </fragment>
     <fragment
         android:id="@+id/fixedDeposits"
         android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.fragments.DataList"
-        android:label="Fixed Deposits"
-        tools:layout="@layout/fragment_fixed_deposits" >
+        android:label="Recorder"
+        tools:layout="@layout/fragment_fixed_deposits">
         <action
             android:id="@+id/action_fixedDeposits_to_fdDetails"
             app:destination="@id/fdDetails" />
@@ -118,6 +124,9 @@
         <argument
             android:name="category"
             app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fdDetails"
@@ -146,5 +155,33 @@
             android:name="category"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/personalDetailsFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.personal_details.PersonalDetailsFragment"
+        android:label="Personal Details"
+        tools:layout="@layout/fragment_personal_details">
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_personalDetailsEditFragment"
+            app:destination="@id/personalDetailsEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalDetailsEditFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.personal_details.PersonalDetailsEditFragment"
+        android:label="Add/Edit"
+        tools:layout="@layout/fragment_personal_details_edit" />
+    <fragment
+        android:id="@+id/keyPeopleFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.key_people.KeyPeopleFragment"
+        android:label="Key People"
+        tools:layout="@layout/fragment_key_people">
+        <action
+            android:id="@+id/action_keyPeopleFragment_to_keyPeopleEditFragment"
+            app:destination="@id/keyPeopleEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/keyPeopleEditFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.key_people.KeyPeopleEditFragment"
+        android:label="Add/Edit"
+        tools:layout="@layout/fragment_key_people_edit" />
 
 </navigation>

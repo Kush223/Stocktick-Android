@@ -1,13 +1,12 @@
 package com.example.stocktick.network
 
-import android.text.style.TabStopSpan
 import com.example.stocktick.auth.model.GetOtpModel
 import com.example.stocktick.auth.model.PhoneModel
+import com.example.stocktick.models.UserProfile
 import com.example.stocktick.models.requests.UpdateUserProfileDTO
+import com.example.stocktick.models.response.FileUploadResponse
 import com.example.stocktick.models.response.HeadlineModel
 import com.example.stocktick.models.response.StandardSuccessResponse
-import com.example.stocktick.models.UserProfile
-import com.example.stocktick.models.response.FileUploadResponse
 import com.example.stocktick.ui.education.ResponseRegisterWebinar
 import com.example.stocktick.ui.education.model.BlogItem
 import com.example.stocktick.ui.education.model.RegisterWebinarModel
@@ -16,13 +15,15 @@ import com.example.stocktick.ui.get_assistant.QueryModel
 import com.example.stocktick.ui.insurance.InsuranceModel
 import com.example.stocktick.ui.loan.LoanFormItem
 import com.example.stocktick.ui.loan.LoanItem
+import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.KeyPeopleModel
+import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.PersonalDetailsModel
+import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.PersonalDetailsResponseModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsBody
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsModel
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -217,6 +218,30 @@ interface ApiServiceInterface {
         @Query("authToken") authToken: String,
         @Body body: GetDetailsBody
     ) : Response<List<GetDetailsModel>>
+
+
+    //Asset Recorder
+    @POST("/asset-recorder/pers/")
+    suspend fun postPersonalDetails(
+        @Query("authToken") authToken: String,
+        @Body body : PersonalDetailsModel
+    ) : Response<PersonalDetailsResponseModel>
+
+    @GET("/asset-recorder/pers/")
+    suspend fun getPersonalDetails(
+        @Query("authToken") authToken: String
+    ) : Response<List<PersonalDetailsModel>>
+
+    @POST("/asset-recorder/keyp/")
+    suspend fun postKeyPeople(
+        @Query("authToken") authToken: String,
+        @Body body: KeyPeopleModel
+    ) : Response<StandardSuccessResponse>
+
+    @GET("/asset-recorder/keyp/")
+    suspend fun getKeyPeople(
+        @Query("authToken") authToken: String,
+        ) : Response<List<KeyPeopleModel>>
 
 
 
