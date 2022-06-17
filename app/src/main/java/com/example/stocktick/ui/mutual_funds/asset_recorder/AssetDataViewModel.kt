@@ -81,11 +81,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -104,11 +104,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -127,11 +127,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -150,11 +150,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -173,11 +173,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -196,11 +196,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -219,11 +219,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -242,11 +242,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -265,11 +265,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -288,11 +288,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -311,11 +311,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -334,11 +334,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -357,11 +357,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -380,11 +380,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -403,11 +403,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -426,11 +426,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -449,11 +449,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -472,11 +472,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -495,11 +495,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
@@ -518,11 +518,11 @@ class AssetDataViewModel(application: Application) : AndroidViewModel(applicatio
                             }
                         }
                         else {
-                            result(false)
+                            withContext(Dispatchers.Main){result(false) }
                         }
                     } catch (e : Exception){
                         Log.e(TAG, "deleteElement: Error :${e.localizedMessage}", )
-                        result(false)
+                        withContext(Dispatchers.Main){result(false) }
                     }
 
                 }
