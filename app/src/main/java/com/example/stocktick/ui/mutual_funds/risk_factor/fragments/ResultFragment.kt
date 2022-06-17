@@ -5,9 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -61,19 +60,33 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         binding.btRetry.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_resultFragment_to_questionsFragment)
         }
-        binding.btDownloadPdf.setOnClickListener{
+/*        binding.btDownloadPdf.setOnClickListener{
             Toast.makeText(requireContext(), "Downloading..", Toast.LENGTH_SHORT).show()
-            val manager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager?
-            val uri =
-                Uri.parse("http://www.africau.edu/images/default/sample.pdf")
-            val request = DownloadManager.Request(uri)
-            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-            val reference: Long = manager?.enqueue(request) ?: return@setOnClickListener
-        }
+            viewModel.downloadPdf {
+                if (!it){
+                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }*/
+        binding.btDownloadPdf.setOnClickListener{
+            viewModel.getDownloadUrl{isSuccessful, url ->
+                if (isSuccessful){
+                    Toast.makeText(requireContext(), "Downloading..", Toast.LENGTH_SHORT).show()
+                    val manager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager?
+                    val uri =
+                        Uri.parse(url)
+                    val request = DownloadManager.Request(uri)
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+                    val reference = manager?.enqueue(request)
+                }
+                else Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
 
-        downloadInExtDir(
-            URL("http://www.africau.edu/images/default/sample.pdf")
-        )
+            }
+
+        }
+        viewModel.getDownloadUrl{ success, url ->
+            if (success) downloadInExtDir(URL(url))
+        }
 
         binding.btShare.setOnClickListener{
             if (file == null) return@setOnClickListener

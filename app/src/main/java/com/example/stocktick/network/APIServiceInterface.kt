@@ -288,6 +288,11 @@ interface ApiServiceInterface {
         @Query("deleteId") deleteId : String
         ) : Response<Void>
 
+    @GET("/riskfactor/pdf")
+    suspend fun getRiskFactorPdf(
+        @Query("authToken") authToken: String,
+        ) : Response<Map<String, String>>
+
 
 }
 //JSON STRUCTURE AT https://codeshare.io/wn39rK for education pages

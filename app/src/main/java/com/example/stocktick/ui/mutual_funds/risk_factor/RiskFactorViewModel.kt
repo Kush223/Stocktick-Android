@@ -37,6 +37,30 @@ class RiskFactorViewModel(application: Application) : AndroidViewModel(applicati
             sharedPreferences.getString(Constant.TOKEN, Constant.SHAREDPREFERENCES_TOKEN_A).toString()
     }
 
+    fun getDownloadUrl( result : (isSuccessful : Boolean, url : String) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.getRiskFactorPdf(
+                    authToken = tokenSharedPreference
+                )
+                if (response.isSuccessful && response.body()?.get("url") != null){
+                    withContext(Dispatchers.Main){
+                        result(true, response.body()?.get("url")!!)
+                    }
+                }
+                else withContext(Dispatchers.Main){
+                    Log.d(TAG, "downloadPdf: Error : ${response.body()}")
+                    result(false, "")
+                }
+            } catch (e : Exception){
+                Log.d(TAG, "downloadPdf: Error :${e.localizedMessage}")
+                withContext(Dispatchers.Main){
+                    result(false, "")
+                }
+            }
+        }
+    }
+
 
     fun getAllQuestions(){
         viewModelScope.launch {
