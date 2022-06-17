@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class NpsTierModel(
+    var id : String = "0",
     var pran : String = "",
     var _current_balance : String = "",
     var type_of_account_ : String = "",

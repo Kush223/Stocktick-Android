@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +39,9 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
     }
+
+    private val topLevelDestinations = setOf(R.id.navigation_mutual_funds,
+        R.id.navigation_insurance, R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,12 +78,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_mutual_funds,
-            R.id.navigation_insurance, R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.navigation_mutual_funds,
+                R.id.navigation_insurance, R.id.navigation_home, R.id.navigation_loan, R.id.navigation_education),
+
+            binding.container
         )
-            .setOpenableLayout(binding.container)
-            .build()
 
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
@@ -142,6 +144,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        if (navController.currentDestination?.let { topLevelDestinations.contains(it.id) } == true) {
+            binding.container.openDrawer(GravityCompat.START)
+            return true
+        }
+
         return NavigationUI.navigateUp(navController, binding.container) || super.onSupportNavigateUp()
     }
 
@@ -153,13 +160,14 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.navigation_education -> navView.selectedItemId = R.id.navigation_education
             R.id.navigation_loan -> navView.selectedItemId = R.id.navigation_loan
             R.id.debitCreditFragment-> {
-                navController.navigate(R.id.action_navigation_home_to_debitCreditFragment)
+                navController.navigate(returnId(1))
             }
             R.id.navigation_notifications ->{
-                navController.navigate(R.id.action_navigation_home_to_notificationFragment)
+
+                navController.navigate(returnId(2))
             }
             R.id.viewProfile ->{
-                navController.navigate(R.id.action_navigation_home_to_viewProfile)
+                navController.navigate(returnId(3))
             }
             R.id.logout ->{
                 utilsService.logout()
@@ -169,6 +177,53 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
         binding.container.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    /**
+     * 1 Debit Credit fragment
+     * 2 Notification Fragment
+     * 3 View Profile Fragment*/
+    private fun returnId(which  : Int) : Int {
+        when (navController.currentDestination?.id) {
+            R.id.navigation_home -> {
+                when (which){
+                    1 -> return R.id.action_navigation_home_to_debitCreditFragment
+                    2 -> return R.id.action_navigation_home_to_notificationFragment
+                    3 -> return R.id.action_navigation_home_to_viewProfile
+                }
+            }
+
+            R.id.navigation_loan -> {
+                when (which){
+                    1 -> return R.id.action_navigation_loan_to_debitCreditFragment
+                    2 -> return R.id.action_navigation_loan_to_notificationFragment
+                    3 -> return R.id.action_navigation_loan_to_viewProfile
+                }
+            }
+            R.id.navigation_education -> {
+                when (which){
+                    1 -> return R.id.action_navigation_education_to_debitCreditFragment
+                    2 -> return R.id.action_navigation_education_to_notificationFragment
+                    3 -> return R.id.action_navigation_education_to_viewProfile
+                }
+            }
+            R.id.navigation_insurance -> {
+                when (which){
+                    1 -> return R.id.action_navigation_insurance_to_debitCreditFragment
+                    2 -> return R.id.action_navigation_insurance_to_notificationFragment
+                    3 -> return R.id.action_navigation_insurance_to_viewProfile
+                }
+            }
+            R.id.navigation_mutual_funds -> {
+                when (which){
+                    1 -> return R.id.action_navigation_mutual_funds_to_debitCreditFragment
+                    2 -> return R.id.action_navigation_mutual_funds_to_notificationFragment
+                    3 -> return R.id.action_navigation_mutual_funds_to_viewProfile
+                }
+            }
+        }
+        return 1
+
     }
 
 }

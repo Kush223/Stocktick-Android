@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class LockerModel(
+    var id : String = "0",
     var bank_name : String = "",
     var bank_address : String = "",
     var locker_number : String = "",

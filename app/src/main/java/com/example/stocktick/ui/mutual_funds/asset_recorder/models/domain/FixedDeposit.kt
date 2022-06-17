@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class FixedDeposit(
+    var id : String = "0",
     var bank_name: String="",
     var branch_addr: String="",
     var deposit_holders_name: String="",

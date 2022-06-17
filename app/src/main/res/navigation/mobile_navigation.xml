@@ -9,26 +9,23 @@
         android:id="@+id/navigation_education"
         android:name="com.example.stocktick.ui.education.EducationFragment"
         android:label="@string/title_education"
-        tools:layout="@layout/fragment_education" />
+        tools:layout="@layout/fragment_education" >
+        <action
+            android:id="@+id/action_navigation_education_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_navigation_education_to_debitCreditFragment"
+            app:destination="@id/debitCreditFragment" />
+        <action
+            android:id="@+id/action_navigation_education_to_viewProfile"
+            app:destination="@id/viewProfile" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.stocktick.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_mutualFundRootFragment2"
-            app:destination="@id/navigation_mutual_funds"
-            />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_education"
-            app:destination="@id/navigation_education" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_loan"
-            app:destination="@id/navigation_loan" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_insurance"
-            app:destination="@id/navigation_insurance" />
         <action
             android:id="@+id/action_navigation_home_to_debitCreditFragment"
             app:destination="@id/debitCreditFragment" />
@@ -44,13 +41,33 @@
         android:id="@+id/navigation_loan"
         android:name="com.example.stocktick.ui.loan.LoanFragment"
         android:label="@string/title_loan"
-        tools:layout="@layout/fragment_loan" />
+        tools:layout="@layout/fragment_loan" >
+        <action
+            android:id="@+id/action_navigation_loan_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_navigation_loan_to_debitCreditFragment"
+            app:destination="@id/debitCreditFragment" />
+        <action
+            android:id="@+id/action_navigation_loan_to_viewProfile"
+            app:destination="@id/viewProfile" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_insurance"
         android:name="com.example.stocktick.ui.insurance.InsuranceFragment"
         android:label="@string/title_insurance"
-        tools:layout="@layout/fragment_insurance" />
+        tools:layout="@layout/fragment_insurance" >
+        <action
+            android:id="@+id/action_navigation_insurance_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_navigation_insurance_to_debitCreditFragment"
+            app:destination="@id/debitCreditFragment" />
+        <action
+            android:id="@+id/action_navigation_insurance_to_viewProfile"
+            app:destination="@id/viewProfile" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_mutual_funds"
         android:name="com.example.stocktick.ui.mutual_funds.MutualFundRootFragment"
@@ -61,6 +78,15 @@
         <action
             android:id="@+id/action_navigation_mutual_funds_to_assetRecorderHome"
             app:destination="@id/assetRecorderHome" />
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_debitCreditFragment"
+            app:destination="@id/debitCreditFragment" />
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_viewProfile"
+            app:destination="@id/viewProfile" />
     </fragment>
     <fragment
         android:id="@+id/debitCreditFragment"

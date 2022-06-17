@@ -8,11 +8,11 @@ import android.view.*
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentLoanBinding
@@ -43,6 +43,12 @@ class LoanFragment : Fragment() {
     private lateinit var utilsService: UtilsService
 
     private lateinit var loanHeadline: TextView
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.VISIBLE
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

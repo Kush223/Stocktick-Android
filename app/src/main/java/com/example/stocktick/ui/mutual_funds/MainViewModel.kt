@@ -129,8 +129,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 )
                 if (response.isSuccessful && response.body() != null
                 ){
-
-
+                    Log.d(TAG, "clickCount: Item added successfully :${response.body()}")
                 }
             } catch (e: Exception){
                 Log.e(TAG, "updateMfCategories: Error in updating categories :${e.localizedMessage}", )

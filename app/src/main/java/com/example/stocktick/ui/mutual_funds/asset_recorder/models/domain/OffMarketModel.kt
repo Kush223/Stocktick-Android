@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class OffMarketModel(
+    var id : String = "0",
     var broker_name : String = "",
     var account_number : String = "",
     var instrument_name : String = "",

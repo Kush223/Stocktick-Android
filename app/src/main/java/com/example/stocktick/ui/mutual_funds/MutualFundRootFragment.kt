@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.stocktick.MainActivity
 import com.example.stocktick.R
 import com.example.stocktick.auth.LoginSignupActivity
 import com.example.stocktick.databinding.FragmentMutualFundRootBinding
@@ -63,6 +64,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -148,6 +150,8 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
     }
 
     override fun onResume() {
+        (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.VISIBLE
+
         super.onResume()
         val categoryList = viewModel.mfCategories.value
         if (!categoryList.isNullOrEmpty())

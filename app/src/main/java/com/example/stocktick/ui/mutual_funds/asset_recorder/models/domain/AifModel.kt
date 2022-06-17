@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class AifModel(
+    var id : String = "0",
     var amc_name : String = "",
     var pms_aif_name : String = "",
     var invested_value : String = "",

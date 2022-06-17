@@ -1,6 +1,7 @@
 package com.example.stocktick.ui.mutual_funds.asset_recorder.models.domain
 
 data class LifeInsuranceModel(
+    var id : String = "0",
     var plan_name : String = "",
     var policy_number : String = "",
     var policy_holders_name : String = "",

@@ -25,7 +25,6 @@ class DataDetailsEdit : Fragment(R.layout.fragment_fd_details_edit) {
 
         binding.fabDone.setOnClickListener {
             updateList()
-            view.findNavController().navigateUp()
         }
 
         val recyclerView  = binding.editDetailsRecyclerView
@@ -48,6 +47,8 @@ class DataDetailsEdit : Fragment(R.layout.fragment_fd_details_edit) {
                     Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT)
                         .show()
                 }
+                view?.findNavController()?.navigateUp()
+
             }
         }
         else viewModel.addElement(category = args.category , list = adapter.list ){ successful ->
@@ -56,6 +57,7 @@ class DataDetailsEdit : Fragment(R.layout.fragment_fd_details_edit) {
             } else {
                 Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
             }
+            view?.findNavController()?.navigateUp()
         }
     }
 
