@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.viewpager.widget.PagerAdapter
 import com.asksira.loopingviewpager.LoopingPagerAdapter
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
-import java.util.*
 
 class PhotosAdapter
     constructor(
@@ -29,4 +26,5 @@ class PhotosAdapter
     override fun inflateView(viewType: Int, container: ViewGroup, listPosition: Int): View {
         return layoutInflater.inflate(R.layout.view_pager_layout, container, false)
     }
+
 }

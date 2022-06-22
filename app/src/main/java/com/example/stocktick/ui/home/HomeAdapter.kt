@@ -1,32 +1,33 @@
 package com.example.stocktick.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.asksira.loopingviewpager.LoopingPagerAdapter
 import com.example.stocktick.R
 
-class HomeAdapter(private val serviceList: List<HomeItem>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.home_services, parent, false)
-        return ViewHolder(v)
+class HomeAdapter
+constructor(
+    private val context: Context,
+    private val serviceList: List<HomeItem>,
+    val layoutInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+): LoopingPagerAdapter<HomeItem>(serviceList,true)  {
+
+
+    override fun bindView(convertView: View, listPosition: Int, viewType: Int) {
+        val imageView: ImageView =  convertView.findViewById(R.id.service_image)
+        val textView: TextView = convertView.findViewById(R.id.service_text)
+        val pos = serviceList[listPosition % serviceList.size]
+        pos.img?.let { imageView.setImageResource(it) }
+        textView.text = pos.txt
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pos = serviceList[position % serviceList.size]
-        holder.itemView
-        pos.img?.let { holder.imageView.setImageResource(it) }
-        holder.textView.text = pos.txt
-    }
+    override fun inflateView(viewType: Int, container: ViewGroup, listPosition: Int): View {
+        return layoutInflater.inflate(R.layout.home_services, container, false)
 
-    override fun getItemCount(): Int {
-        return serviceList.size*2
-    }
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView){
-        val imageView: ImageView = itemView.findViewById(R.id.service_image)
-        val textView: TextView = itemView.findViewById(R.id.service_text)
     }
 
 

@@ -3,18 +3,15 @@ package com.example.stocktick.ui.home
 import android.content.Context
 import android.content.res.Resources.getSystem
 import android.graphics.Color
-import android.graphics.DiscretePathEffect
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.asksira.loopingviewpager.LoopingViewPager
 import com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
 import com.example.stocktick.MainActivity
@@ -22,17 +19,13 @@ import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentHomeBinding
 import com.example.stocktick.utility.Constant
 import com.example.stocktick.utility.SmsReader
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 //    https://material.io/components/bottom-navigation/android#using-bottom-navigation
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
     private lateinit var serviceList: List<HomeItem>
-    private lateinit var recyclerView : RecyclerView
+    private lateinit var bottomPager : ViewPager
     private lateinit var serviceAdapter: HomeAdapter
     private lateinit var debitCard : ConstraintLayout
     private lateinit var creditCard : ConstraintLayout
@@ -57,6 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             highlighter.setBackgroundColor(Color.WHITE)
             highlighter
         }
+
         indicator.unselectedViewDelegate = {
             val unselected = View(requireContext())
             unselected.layoutParams = LinearLayout.LayoutParams(20.px, 4.px)
@@ -93,12 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         insuranceCard = binding.insurance
         loanCard = binding.loan
 
-        recyclerView = binding.homeServices
-        val linearLayoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, true)
-        linearLayoutManager.reverseLayout = false
-        linearLayoutManager.stackFromEnd = true
-        recyclerView.layoutManager = linearLayoutManager
-
+        bottomPager = binding.homeServices
 
         serviceList = listOf(
             HomeItem(R.drawable.financial_home,"Financial\n" +
@@ -109,35 +98,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     "Protection")
         )
 
-        serviceAdapter = HomeAdapter(serviceList)
-        recyclerView.adapter = serviceAdapter
+        serviceAdapter = HomeAdapter(requireContext(),
+            serviceList)
+        bottomPager.offscreenPageLimit = 4
+        bottomPager.adapter = serviceAdapter
 
-
-
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val firstItemVisible = linearLayoutManager.findFirstVisibleItemPosition()
-                if (firstItemVisible != 0 && firstItemVisible % 3 === 0) {
-                    recyclerView.layoutManager!!.scrollToPosition(0)
-                }
-            }
-        }
-        )
         //It is memory intensive, use it if you really need
-        //autoScroll()
 
         updateCreditDebit()
-    }
-
-    private fun autoScroll(){
-        lifecycleScope.launch(Dispatchers.Main){
-            while (true){
-                    recyclerView.scrollBy(2,0)
-                delay(100)
-            }
-
-        }
     }
 
     private fun updateCreditDebit() {
