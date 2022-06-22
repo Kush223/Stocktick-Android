@@ -18,26 +18,40 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:minHeight="350dp"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/fdRecyclerView"
             />
-        <soup.neumorphism.NeumorphFloatingActionButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/fabEdit"
-            android:layout_alignParentBottom="true"
-            app:neumorph_shadowColorDark="#131313"
-            app:neumorph_shadowColorLight="@color/color_background"
-            app:neumorph_shadowElevation="10dp"
-            app:neumorph_backgroundColor="#515151"
-            app:neumorph_shapeType="flat"
-            android:src="@drawable/ic_add"
-            android:scaleType="center"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <soup.neumorphism.NeumorphButton
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/fdRecyclerView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            android:text="Add"
+            android:id="@+id/btnAdd"
+            style="@style/neumorph_button_combinations"
+                />
+
+
+<!--        <soup.neumorphism.NeumorphFloatingActionButton-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:id="@+id/fabEdit"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            app:neumorph_shadowColorDark="#131313"-->
+<!--            app:neumorph_shadowColorLight="@color/color_background"-->
+<!--            app:neumorph_shadowElevation="10dp"-->
+<!--            app:neumorph_backgroundColor="#515151"-->
+<!--            app:neumorph_shapeType="flat"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            android:scaleType="center"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            />-->
 
 
 

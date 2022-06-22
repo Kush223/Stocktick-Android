@@ -93,7 +93,7 @@ class DataList : Fragment(R.layout.fragment_fixed_deposits) {
             }
         }
 
-        binding.fabEdit.setOnClickListener{
+        binding.btnAdd.setOnClickListener{
             val action = DataListDirections.actionFixedDepositsToFdDetailsEdit(-1, args.category)
             view.findNavController().navigate(action)
         }
