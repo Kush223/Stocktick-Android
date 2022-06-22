@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var utilsService: UtilsService
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
+
     }
 
     private val topLevelDestinations = setOf(R.id.navigation_mutual_funds,
@@ -52,6 +54,11 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentView(binding.root)
         drawerNavView = binding.navView
         utilsService = UtilsService(this)
+
+        drawerNavView.getHeaderView(0).findViewById<ImageButton>(R.id.btDirectProfileEdit).setOnClickListener{
+            navController.navigate(R.id.editProfile)
+            binding.container.closeDrawer(GravityCompat.START)
+        }
 
 
         FirebaseMessaging.getInstance().subscribeToTopic("all")
