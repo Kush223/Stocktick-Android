@@ -135,7 +135,7 @@ class LoginFragment : Fragment() {
                 val otpPhoneString = "+$ccp-$phone"
                 mTextViewOtpPhoneNumber.text = otpPhoneString
 
-                _binding.phoneCard.visibility = View.INVISIBLE
+                _binding.phoneCard.visibility = View.GONE
 
             } catch (error: Exception) {
                 showToast("Request failed CATCH ERROR LOGIN")
@@ -168,7 +168,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun isEmailValid(email: String): Boolean {
+    private fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
@@ -200,7 +200,7 @@ class LoginFragment : Fragment() {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         } else {
-            _binding.otpCard.visibility = View.INVISIBLE
+            _binding.otpCard.visibility = View.GONE
 
             mCreateAccountLayoutBinding.root.visibility = View.VISIBLE
 
