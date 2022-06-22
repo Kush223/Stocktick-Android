@@ -1,7 +1,5 @@
 package com.example.stocktick.ui.mutual_funds.risk_factor.fragments
 
-import android.app.DownloadManager
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -35,6 +33,8 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
 
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentResultBinding.bind(view)
@@ -60,24 +60,15 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         binding.btRetry.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_resultFragment_to_questionsFragment)
         }
-/*        binding.btDownloadPdf.setOnClickListener{
-            Toast.makeText(requireContext(), "Downloading..", Toast.LENGTH_SHORT).show()
-            viewModel.downloadPdf {
-                if (!it){
-                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }*/
+
+
+
         binding.btDownloadPdf.setOnClickListener{
             viewModel.getDownloadUrl{isSuccessful, url ->
                 if (isSuccessful){
-                    Toast.makeText(requireContext(), "Downloading..", Toast.LENGTH_SHORT).show()
-                    val manager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager?
-                    val uri =
-                        Uri.parse(url)
-                    val request = DownloadManager.Request(uri)
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-                    val reference = manager?.enqueue(request)
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    startActivity(intent)
                 }
                 else Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
 
@@ -131,12 +122,5 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         }
 
     }
-
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        activity?.menuInflater?.inflate(R.menu.logout, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-
 
 }
