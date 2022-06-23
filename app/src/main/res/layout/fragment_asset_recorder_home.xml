@@ -12,34 +12,88 @@
 
         <TextView
             android:id="@+id/tvTotalInvestmentHeader"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="My Total Investments"
+            android:text="Total Asset"
             android:textColor="@color/secondary_text_color"
+
             android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvTotalLiabilityHeader"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTotalInvestmentAmount"
+            android:id="@+id/tvTotalLiabilityHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="-     Total Liability      ="
+            android:textColor="@color/secondary_text_color"
+
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNetWorthHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Net Worth"
+            android:textColor="@color/secondary_text_color"
+
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTotalLiabilityHeader"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        Values-->
+        <TextView
+            android:id="@+id/tvAsset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="100,0000 INR"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTotalInvestmentHeader"
             app:layout_constraintStart_toStartOf="@+id/tvTotalInvestmentHeader"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentHeader" />
+
+        <TextView
+            android:id="@+id/tvLiability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="100,0000 INR"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTotalLiabilityHeader"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalLiabilityHeader"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentHeader" />
+
+        <TextView
+            android:id="@+id/tvNetWorth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="100,0000 INR"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvNetWorthHeader"
+            app:layout_constraintStart_toStartOf="@+id/tvNetWorthHeader"
             app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentHeader" />
         <!--        Asset Card now-->
         <com.example.stocktick.ui.customviews.AssetCard
             android:id="@+id/profileCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:imgsrc="@drawable/ass_personal_details"
             app:layout_constraintEnd_toStartOf="@+id/keyPeopleCard"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentAmount"
+            app:layout_constraintTop_toBottomOf="@+id/tvAsset"
             app:title="Profile Details" />
 
         <com.example.stocktick.ui.customviews.AssetCard
