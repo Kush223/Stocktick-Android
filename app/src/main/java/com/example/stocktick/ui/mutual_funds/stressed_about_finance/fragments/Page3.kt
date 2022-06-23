@@ -57,7 +57,7 @@ class Page3 : Fragment(R.layout.fragment_page3) {
         etDebt = binding.etDebt
 
         pieChart.applyConfig(
-            getConfig(duration = 1500)
+            getConfig(duration = 500)
         )
         pieChart.start()
 
@@ -206,6 +206,7 @@ class Page3 : Fragment(R.layout.fragment_page3) {
             drawText(true)
             textSize(30f)
             startAngle(90f)
+            pieRadius(200f)
             duration(duration)
         }
     }

@@ -68,7 +68,7 @@ class Page2 : Fragment(R.layout.fragment_page2) {
         btNext = binding.btNext
 
         pieChart.applyConfig(
-            getConfig(duration = 1500)
+            getConfig(duration = 500)
         )
         pieChart.start()
 
@@ -227,47 +227,48 @@ class Page2 : Fragment(R.layout.fragment_page2) {
                 SimplePieInfo(
                     emi,
                     Color.parseColor("#FF0000"),
-                    "EMI ${emi.getPercentage()}"
+                    "EMI\n ${emi.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     investmentAmt,
                     Color.parseColor("#0032E5"),
-                    "Investment Amt ${investmentAmt.getPercentage()}"
+                    "Investment\n Amt ${investmentAmt.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     household,
                     Color.parseColor("#EED600"),
-                    "Household ${household.getPercentage()}"
+                    "Household\n ${household.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     lifestyle,
                     Color.parseColor("#04B500"),
-                    "Lifestyle ${lifestyle.getPercentage()}"
+                    "Lifestyle\n ${lifestyle.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     surplus,
                     Color.parseColor("#FC7900"),
-                    "Surplus ${surplus.getPercentage()}"
+                    "Surplus\n ${surplus.getPercentage()}"
                 )
             )
             addData(
                 SimplePieInfo(
                     tax,
                     Color.parseColor("#FF7EFA"),
-                    "Taxes ${tax.getPercentage()}"
+                    "Taxes\n ${tax.getPercentage()}"
                 )
             )
             autoSize(true)
             drawText(true)
             textSize(30f)
+            pieRadius(200f)
 
             duration(duration)
         }
