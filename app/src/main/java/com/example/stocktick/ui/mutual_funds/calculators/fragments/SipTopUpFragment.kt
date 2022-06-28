@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.databinding.SipTopUpCalculatoFragmentLayoutBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
-import kotlin.math.pow
 
 class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout) {
     private lateinit var binding: SipTopUpCalculatoFragmentLayoutBinding
@@ -60,21 +59,38 @@ class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout)
             val x = etMonthlyInvestment.getText().toDouble()
             val sr = etAnnualStepUp.getText().toDouble()
             val r = etExpectedReturnRate.getText().toDouble()
-            val t = etTimePeriod.getText().toDouble()
+            val t = etTimePeriod.getText().toInt()
 
 
 
             //calculation
-
-
+            var monthlyInvestment = x
+            var totalInvestment = 0.0
+            var monthlyReturn = r/(1200.0)
+            var totalReturn = 0.0;
+            for (i in 0 until t){
+                for (i in 1..12){
+                    totalInvestment += monthlyInvestment
+                    totalReturn =( totalReturn + monthlyInvestment)* (1+monthlyReturn)
+                }
+                monthlyInvestment *= 1 + sr/100
+            }
+//            val lastYearMonthlyInvestment = monthlyInvestment/(1+sr/100)
+//            totalReturn-=lastYearMonthlyInvestment
+//            totalInvestment -= lastYearMonthlyInvestment
 
 
 
             //formatting the output
+            val sTotalInvestment = "₹${String.format("%.2f",totalInvestment)}"
+            val sFinalAmount = "₹${String.format("%.2f",totalReturn)}"
+            val sNetProfit = "₹${String.format("%.2f",totalReturn - totalInvestment)}"
 
             //Writing the result the result
 
-
+            tvInvestedAmount.text = sTotalInvestment
+            tvTotalValue.text = sFinalAmount
+            tvEstReturns.text = sNetProfit
 
 
         }
@@ -83,4 +99,5 @@ class SipTopUpFragment : Fragment(R.layout.sip_top_up_calculato_fragment_layout)
         catch (e: NumberFormatException){
         }
     }
+
 }

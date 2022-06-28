@@ -1,16 +1,7 @@
 package com.example.stocktick.utility
 
-import com.anychart.scales.Calendar
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
-import org.junit.Assert.*
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 @RunWith(JUnit4::class)
 class SmsReaderTest{

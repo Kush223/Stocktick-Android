@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:isInfinite="true"
             app:autoScroll="true"
-            app:scrollInterval="5000"
+            app:scrollInterval="2000"
             app:layout_constraintDimensionRatio="1.9">
         </com.asksira.loopingviewpager.LoopingViewPager>
         <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
@@ -379,7 +379,7 @@
             android:layout_height="0dp"
             app:autoScroll="true"
             app:isInfinite="true"
-            app:scrollInterval="3000"
+            app:scrollInterval="2000"
             app:layout_constraintDimensionRatio="1"/>
 
 

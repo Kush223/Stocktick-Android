@@ -89,6 +89,7 @@ class DataList : Fragment(R.layout.fragment_fixed_deposits) {
                         binding.tvEmpty.visibility = View.GONE
                     }
                     adapter.cardDataList = it.toMutableList()
+                    adapter.notifyDataSetChanged()
                 }
             }
         }

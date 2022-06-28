@@ -122,7 +122,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
         }
         binding.cardButton.setOnClickListener {
             val intent =
-                Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.fundzbazar.com/"))
+                Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://fundzbazar.com/Link/8SotIfGShFw"))
             startActivity(intent)
         }
         binding.exploreMore.onButtonClickedListener {

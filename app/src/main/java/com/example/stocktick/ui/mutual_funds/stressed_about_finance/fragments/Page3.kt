@@ -67,12 +67,7 @@ class Page3 : Fragment(R.layout.fragment_page3) {
         etRealState.setText(realState.toString())
         etDebt.setText(debt.toString())
 
-
         autofill()
-
-
-
-
 
         var job: Job? = null
         etGold.onTextChangeListener {
