@@ -19,6 +19,29 @@
         android:visibility="visible"
         tools:context=".auth.LoginFragment">
 
+<!--        Your phone no is safe with us-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Your phone number is safe"
+            android:textColor="@color/secondary_text_color"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/tvPhoneNoSafe"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/tvPhoneNoSafe"
+            app:layout_constraintTop_toTopOf="@+id/tvPhoneNoSafe"
+            app:layout_constraintBottom_toBottomOf="@id/tvPhoneNoSafe"
+            android:src="@drawable/ic_phoneno_shield"
+            android:layout_marginEnd="10dp"
+            app:tint="@color/secondary_text_color"
+            />
+
         <!-- Login/Signup -->
         <LinearLayout
             android:id="@+id/login_canvas1"

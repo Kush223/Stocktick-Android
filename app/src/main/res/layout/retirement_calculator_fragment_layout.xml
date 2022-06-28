@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvCurrentSaving"
-                android:text="1. How old are you?"
+                android:text="1. Current Monthly\nExpenses"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,12 +42,12 @@
                 />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etCurrentSaving"
+                android:id="@+id/etCurrentMonthlyExpense"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:hint="26"
-                app:prefix=""
+                app:hint="000"
+                app:prefix="₹"
                 app:usePrefix="true"
                 app:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvExpenses"
-                android:text="2. How much do you \nspend per month?"
+                android:text="2. Inflation"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,23 +68,23 @@
                 />
 
             <com.example.stocktick.ui.customviews.NeumorphEditText
-                android:id="@+id/etExpenses"
+                android:id="@+id/etInflation"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:hint="25000"
+                app:hint="00"
+                app:prefix="%"
+                app:usePrefix="true"
                 app:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvExpenses"
-                app:layout_constraintBottom_toBottomOf="@+id/tvExpenses"
-                app:prefix="₹"
-                app:usePrefix="true" />
+                app:layout_constraintBottom_toBottomOf="@+id/tvExpenses" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvRetirementType"
-                android:text="3. What kind of \nretirement you want?"
+                android:id="@+id/tvCurrentAge"
+                android:text="3. Current Age"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,62 +93,124 @@
                 android:layout_marginTop="40dp"
                 />
 
-            <soup.neumorphism.NeumorphCardView
-                android:id="@+id/typeCard"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvRetirementType"
-                app:layout_constraintBottom_toBottomOf="@+id/tvRetirementType"
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etCurrentAge"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:neumorph_shadowColorDark="#131313"
-                app:neumorph_shadowColorLight="#333333"
-                app:neumorph_shadowElevation="5dp"
-                app:neumorph_shapeType="flat">
-
-                <Spinner
-                    android:id="@+id/spType"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:backgroundTint="@color/white"
-                    android:dropDownWidth="wrap_content" />
-            </soup.neumorphism.NeumorphCardView>
+                app:hint="00"
+                app:prefix="yrs"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCurrentAge"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCurrentAge" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvSaving"
-                android:text="4. What are your saving\nfor your retirement?"
+                android:id="@+id/tvRetirementAge"
+                android:text="4. Retirement Age"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text_color"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvRetirementType"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentAge"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 />
 
-            <soup.neumorphism.NeumorphCardView
-                android:id="@+id/savingCard"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvSaving"
-                app:layout_constraintBottom_toBottomOf="@+id/tvSaving"
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etRetirementAge"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                app:neumorph_shadowColorDark="#131313"
-                app:neumorph_shadowColorLight="#333333"
-                app:neumorph_shadowElevation="5dp"
-                app:neumorph_shapeType="flat">
+                app:hint="00"
+                app:prefix="yrs"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRetirementAge"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRetirementAge" />
 
-                <Spinner
-                    android:id="@+id/spSaving"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:backgroundTint="@color/white"
-                    android:dropDownWidth="wrap_content" />
-            </soup.neumorphism.NeumorphCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvLifeExpectancy"
+                android:text="5. Life Expectancy"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRetirementAge"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etLifeExpectancy"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="00"
+                app:prefix="yrs"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvLifeExpectancy"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLifeExpectancy" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCurrentInvestment"
+                android:text="6. Current Investment"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLifeExpectancy"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etCurrentInvestment"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="000"
+                app:prefix="₹"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCurrentInvestment"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCurrentInvestment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRateOfReturn"
+                android:text="7. Rate of return"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentInvestment"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                />
+
+            <com.example.stocktick.ui.customviews.NeumorphEditText
+                android:id="@+id/etRateOfReturn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:hint="00"
+                app:prefix="%"
+                app:usePrefix="true"
+                app:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRateOfReturn"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRateOfReturn" />
 
             <soup.neumorphism.NeumorphCardView
                 android:id="@+id/resultCard"
@@ -158,7 +220,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginHorizontal="5dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvSaving"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvRateOfReturn"
                 android:layout_marginTop="40dp"
                 style="@style/neumorph_combinations">
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -181,7 +244,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹11,36,56,234"
+                        android:text="₹0000"
+                        android:id="@+id/tvRetirementCorpus"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"

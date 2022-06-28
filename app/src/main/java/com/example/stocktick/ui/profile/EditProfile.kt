@@ -55,6 +55,8 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).binding.layoutBottomNeumorph.visibility = View.GONE
+
         binding = FragmentEditProfileBinding.bind(view)
         binding.submitBtn.setOnClickListener(this)
         binding.profileImage.setOnClickListener(this)
