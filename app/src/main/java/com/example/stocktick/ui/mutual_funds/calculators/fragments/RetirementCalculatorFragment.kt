@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.stocktick.R
 import com.example.stocktick.databinding.RetirementCalculatorFragmentLayoutBinding
 import com.example.stocktick.ui.customviews.NeumorphEditText
+import com.example.stocktick.utility.Utility
 import java.util.*
 import kotlin.math.pow
 
@@ -90,9 +91,30 @@ class RetirementCalculatorFragment: Fragment(R.layout.retirement_calculator_frag
 
             }
 
-            val sRetirementCorpus = "₹${String.format("%.2f",retirementMoney)}"
-            tvRetirementCorpus.text = sRetirementCorpus
+            val appreciation = initialInvestment * (1 + rateOfReturn / 100).pow(retirementAge - currentAge)
+            val deficitCorpus = retirementMoney - appreciation
 
+            val m  = (retirementAge - currentAge).toInt() * 12 //no of months
+            val mr = rateOfReturn / 12 // monthly return
+            var c = 1.0
+            Utility.loop(m){
+                c = (c * (1 + (mr / 100))) + 1
+            }
+            val s = retirementMoney /  c
+
+
+            val lumpsum = s * m  + initialInvestment
+            val sRetirementCorpus = "₹${String.format("%.2f",retirementMoney)}"
+            val sAppreciation = "₹${String.format("%.2f",appreciation)}"
+            val sDeficitCorpus = "₹${String.format("%.2f",deficitCorpus)}"
+            val sS = "₹${String.format("%.2f",s)}"
+            val sLumpsum = "₹${String.format("%.2f",lumpsum)}"
+
+            tvRetirementCorpus.text = sRetirementCorpus
+            binding.tvAppreciation.text = sAppreciation
+            binding.tvDeficitCorpus.text = sDeficitCorpus
+            binding.tvMonthlyInvestment.text = sS
+            binding.tvLumpsumFundingRequired.text = sLumpsum
 
 
         }
