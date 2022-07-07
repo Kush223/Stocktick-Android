@@ -201,6 +201,28 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+    fun getPage7ImageUrl(
+    onResponse : (url : String?) -> Unit
+    ){
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.getFamilyPhotoUrl(
+                        tokenSharedPreference,
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.body()?.get("img")
+                    )
+                }
+            } catch (error: Exception) {
+
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
 
 
     fun postPage7(
@@ -547,6 +569,101 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun getPage8(onResponse: (
+        isSuccessful: Boolean,
+        page8Dto: AssetData?
+    ) -> Unit)
+    {
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response = RetrofitClientInstance.retrofitService.getQ8(
+                    authToken = tokenSharedPreference
+                )
+                if (response.isSuccessful && response.body()!= null){
+                    withContext(Dispatchers.Main) {
+                        onResponse(
+                            true,
+                            response.body()
+                        )
+                    }
+                }
+                else {
+                    withContext(Dispatchers.Main){
+                        onResponse(
+                            false,
+                            null
+                        )
+                    }
+                }
+            } catch (e: Exception){
+                Log.d(TAG, "getPage8: Exception :${e.localizedMessage}")
+                withContext(Dispatchers.Main) {
+                    onResponse(
+                        false,
+                        null
+                    )
+                }
+            }
+        }
+    }
+
+    fun postPage8(
+        page8Dto: PostAssetData,
+        onResponse: (isSuccessful: Boolean) -> Unit
+    ) {
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.postQ8(
+                        tokenSharedPreference,
+                        page8Dto
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+    fun getPdfUri(
+        onResponse: (isSuccessful: Boolean , uri : String?) -> Unit
+    ) {
+
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                val response =
+                    RetrofitClientInstance.retrofitService.getFinancialPlanningPdfUri(
+                        tokenSharedPreference
+                    )
+                Log.d(TAG, "postUserResponse: $response")
+                if (response.isSuccessful && !response.body().isNullOrEmpty())
+                withContext(Dispatchers.Main){
+                    onResponse(
+                        response.isSuccessful,
+                        response.body()!!["url"]
+                    )
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    onResponse(false, null)
+                }
+                Log.d("ERROR", error.toString())
+            }
+        }
+    }
+
+
+
+
 
 
 

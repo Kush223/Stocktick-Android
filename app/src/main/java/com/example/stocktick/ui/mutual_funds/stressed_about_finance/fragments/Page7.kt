@@ -17,6 +17,7 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.stocktick.R
 import com.example.stocktick.databinding.FragmentPage7Binding
@@ -62,26 +63,39 @@ class Page7 : Fragment(R.layout.fragment_page7) {
         imageView.setOnClickListener{
             openFile()
         }
-        binding.btNext.setOnClickListener{
-            if (uri == null) {
-                Toast.makeText(requireContext(), "Please pick a family photo", Toast.LENGTH_SHORT).show()
 
-            } else {
-                uploadFile(uri!!){
-                    viewModel.postPage7(
-                        page7Dto = Page7Dto(
-                            img = imageUrl ?: ""
-                        )
-                    ){
-                        Toast.makeText(requireContext(), "Success Success", Toast.LENGTH_SHORT).show()
-                    }
-                }
+        loadImage()
+
+
+        binding.btNext.setOnClickListener{
+            viewModel.postPage7(
+                page7Dto = Page7Dto(
+                    img = imageUrl ?: ""
+                )
+            ){
+                view.findNavController().navigate(R.id.action_page7_to_pdfDownloadFragment)
             }
+        }
+        binding.btSkip.setOnClickListener {
+            view.findNavController().navigate(R.id.action_page7_to_pdfDownloadFragment)
+
         }
 
 
 
     }
+
+    private fun loadImage(){
+        viewModel.getPage7ImageUrl {
+            imageUrl = it
+            Log.d(TAG, "loadImage: The uri fetched is $it")
+            if (!it.isNullOrEmpty()){
+                Glide.with(requireContext()).load(it).placeholder(R.mipmap.upload).into(imageView)
+            }
+        }
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,6 +127,9 @@ class Page7 : Fragment(R.layout.fragment_page7) {
             Log.d(TAG, "Result :${intent?.data}")
             uri = intent?.data ?: return@registerForActivityResult
             Glide.with(requireActivity()).load(uri).into(imageView)
+            uploadFile(uri!!){
+
+            }
 
         }
     }
@@ -151,8 +168,6 @@ class Page7 : Fragment(R.layout.fragment_page7) {
 
 
 
-
-
                 val requestBody = tempFile
                     .asRequestBody(requireContext().contentResolver.getType(uri)?.let { it.toMediaTypeOrNull() })
 
@@ -169,7 +184,7 @@ class Page7 : Fragment(R.layout.fragment_page7) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(requireContext(), "Photo uploaded", Toast.LENGTH_SHORT).show()
                     if (response.body() != null && response.body()!!.file != null)
-                        imageUrl = response.body()!!.file!!
+                        imageUrl = response.body()!!.file
 
                     onResponse(true)
 

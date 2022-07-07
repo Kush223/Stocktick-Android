@@ -46,8 +46,8 @@
         android:label="fragment_page4"
         tools:layout="@layout/fragment_page4" >
         <action
-            android:id="@+id/action_page4_to_page5"
-            app:destination="@id/page5" />
+            android:id="@+id/action_page4_to_page4dot1"
+            app:destination="@id/page4dot1" />
     </fragment>
     <fragment
         android:id="@+id/page5"
@@ -71,7 +71,11 @@
         android:id="@+id/page7"
         android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page7"
         android:label="fragment_page7"
-        tools:layout="@layout/fragment_page7" />
+        tools:layout="@layout/fragment_page7" >
+        <action
+            android:id="@+id/action_page7_to_pdfDownloadFragment"
+            app:destination="@id/pdfDownloadFragment" />
+    </fragment>
     <fragment
         android:id="@+id/page6dot1"
         android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page6dot1"
@@ -108,4 +112,18 @@
             android:id="@+id/action_page6dot4_to_page7"
             app:destination="@id/page7" />
     </fragment>
+    <fragment
+        android:id="@+id/page4dot1"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.Page4dot1"
+        android:label="fragment_pge4dot1"
+        tools:layout="@layout/fragment_pge4dot1" >
+        <action
+            android:id="@+id/action_page4dot1_to_page5"
+            app:destination="@id/page5" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfDownloadFragment"
+        android:name="com.example.stocktick.ui.mutual_funds.stressed_about_finance.fragments.PdfDownloadFragment"
+        android:label="fragment_pdf_download"
+        tools:layout="@layout/fragment_pdf_download" />
 </navigation>

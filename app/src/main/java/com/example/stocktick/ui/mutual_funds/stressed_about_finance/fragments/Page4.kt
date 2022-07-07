@@ -127,7 +127,7 @@ class Page4 : Fragment(R.layout.fragment_page4) {
             handleOnClick()
         }
         binding.btSkip.setOnClickListener{
-            view?.findNavController()?.navigate(R.id.action_page4_to_page5)
+            view?.findNavController()?.navigate(R.id.action_page4_to_page4dot1)
         }
 
     }
@@ -141,9 +141,9 @@ class Page4 : Fragment(R.layout.fragment_page4) {
             )
         ){
             if (it){
-                view?.findNavController()?.navigate(R.id.action_page4_to_page5)
+                view?.findNavController()?.navigate(R.id.action_page4_to_page4dot1)
             } else {
-                view?.findNavController()?.navigate(R.id.action_page4_to_page5) //remove it later
+                view?.findNavController()?.navigate(R.id.action_page4_to_page4dot1) //remove it later
                 Toast.makeText(requireContext(), "Something went wrong.\nPlease check your internet connection", Toast.LENGTH_SHORT).show()
             }
         }

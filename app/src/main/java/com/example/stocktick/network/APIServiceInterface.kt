@@ -153,6 +153,11 @@ interface ApiServiceInterface {
         @Body page7Dto: Page7Dto
     ): Response<StandardSuccessResponse>
 
+    @GET("/finantialplanning/finnantial-Q7")
+    suspend fun getFamilyPhotoUrl(
+        @Query("authToken") authToken: String
+    ) : Response<Map<String, String>>
+
     //user profile
     @GET("/get/userinfo")
     suspend fun getUserInfo(
@@ -292,6 +297,24 @@ interface ApiServiceInterface {
     suspend fun getRiskFactorPdf(
         @Query("authToken") authToken: String,
         ) : Response<Map<String, String>>
+
+    //financial planning q8
+    @GET("/finantialplanning/finnantial-Q8")
+    suspend fun getQ8(
+        @Query("authToken") authToken : String
+    ) : Response<AssetData>
+
+    @POST("/finantialplanning/finnantial-Q8")
+    suspend fun postQ8(
+        @Header("authToken") authToken : String,
+        @Body body : PostAssetData
+    ) : Response<StandardSuccessResponse>
+
+    @GET("/finantialplanning/pdf")
+    suspend fun getFinancialPlanningPdfUri(
+        @Query("authToken") authToken: String
+    ) : Response<Map<String, String>>
+
 
 
 }

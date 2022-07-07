@@ -7,9 +7,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import com.example.stocktick.R
 import com.example.stocktick.room_db.AppDatabase
 import com.example.stocktick.utility.Constant
