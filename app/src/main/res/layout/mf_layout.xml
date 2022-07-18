@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:id="@+id/mfIcon"
             android:src="@drawable/mutual_fund_img"
             app:layout_constraintStart_toStartOf="parent"

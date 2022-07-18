@@ -126,9 +126,7 @@ class MutualFundRootFragment : Fragment(R.layout.fragment_mutual_fund_root), Vie
             startActivity(intent)
         }
         binding.exploreMore.onButtonClickedListener {
-            val action =
-                MutualFundRootFragmentDirections.actionNavigationMutualFundsToMfLists2(0)
-            navController.navigate(action)
+            navController.navigate(R.id.action_navigation_mutual_funds_to_exploreMoreMfCategories)
         }
         binding.assetRecorder.onButtonClickedListener{
             navController.navigate(R.id.action_navigation_mutual_funds_to_assetRecorderHome)

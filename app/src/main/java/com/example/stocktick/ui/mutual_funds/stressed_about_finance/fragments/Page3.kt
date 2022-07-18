@@ -220,10 +220,14 @@ class Page3 : Fragment(R.layout.fragment_page3) {
     private fun autofill(){
         viewModel.getPage3{ isSuccessful, page3 ->
             if (isSuccessful && page3!=null){
-                etGold.setText(page3!!.gold.toString())
-                etEquity.setText(page3!!.equity.toString())
-                etRealState.setText(page3!!.estate.toString())
-                etDebt.setText(page3!!.debt.toString())
+                gold = page3!!.gold.toDouble()
+                etGold.setText(gold.toString())
+                equity = page3!!.equity.toDouble()
+                etEquity.setText(equity.toString())
+                realState = page3!!.estate.toDouble()
+                etRealState.setText(realState.toString())
+                debt = page3!!.debt.toDouble()
+                etDebt.setText(debt.toString())
 
             }
 

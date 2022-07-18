@@ -59,7 +59,12 @@ class LoanAdapter(private val loanList: MutableList<LoanItem>, private val conte
             Log.d("ANAM: title ", this.image_url.toString())
             body.binding.loanTitle.text = this.category
             body.binding.loanInterest.text = this.interest
-            body.binding.loanCard.setCardBackgroundColor(Color.parseColor(this.color_code))
+            val color = try {
+                Color.parseColor(this.color_code)
+            } catch (e : NumberFormatException){
+                Color.parseColor("#D0FF82")
+            }
+            body.binding.loanCard.setCardBackgroundColor(color)
             body.binding.loanShortDesc.text = this.short_desc
             Glide.with(context)
                     .load(this.image_url)

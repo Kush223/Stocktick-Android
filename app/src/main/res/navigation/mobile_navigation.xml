@@ -87,6 +87,9 @@
         <action
             android:id="@+id/action_navigation_mutual_funds_to_viewProfile"
             app:destination="@id/viewProfile" />
+        <action
+            android:id="@+id/action_navigation_mutual_funds_to_exploreMoreMfCategories"
+            app:destination="@id/exploreMoreMfCategories" />
     </fragment>
     <fragment
         android:id="@+id/debitCreditFragment"
@@ -209,5 +212,23 @@
         android:name="com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.key_people.KeyPeopleEditFragment"
         android:label="Add/Edit"
         tools:layout="@layout/fragment_key_people_edit" />
+    <fragment
+        android:id="@+id/exploreMoreMfCategories"
+        android:name="com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.ExploreMoreMfCategories"
+        android:label="Mutual Fund Collections"
+        tools:layout="@layout/fragment_explore_more_mf_categories" >
+        <action
+            android:id="@+id/action_exploreMoreMfCategories_to_exploreMoreMutualFundDetails"
+            app:destination="@id/exploreMoreMutualFundDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreMoreMutualFundDetails"
+        android:name="com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.ExploreMoreMutualFundDetails"
+        android:label="Mutual Funds"
+        tools:layout="@layout/fragment_explore_more_mutual_fund_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

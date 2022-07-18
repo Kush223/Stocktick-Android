@@ -21,6 +21,8 @@ import com.example.stocktick.ui.mutual_funds.asset_recorder.static_pages.models.
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.ClickCountModel
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetCategories
 import com.example.stocktick.ui.mutual_funds.discover_mutual_funds.models.network_models.GetDetailsModel
+import com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.models.ExploreMoreMfCategoryModel
+import com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.models.ExploreMoreMfModel
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
 import okhttp3.MultipartBody
@@ -47,7 +49,8 @@ interface ApiServiceInterface {
     @GET("/get/loans/")
     suspend fun getLoans(
         @Header("authToken") authToken: String,
-        @Header("platform") platform: String
+        @Header("platform") platform: String,
+        @Query("platform") qPlatform : String = "M"
     ): Response<List<LoanItem>>
 
 
@@ -314,6 +317,19 @@ interface ApiServiceInterface {
     suspend fun getFinancialPlanningPdfUri(
         @Query("authToken") authToken: String
     ) : Response<Map<String, String>>
+
+
+    //Explore more mutual funds
+    @GET("/discover-mutual-funds/explore-catg/")
+    suspend fun getExploreMoreCategories(
+        @Query("authToken") authToken : String
+    ) : Response<List<ExploreMoreMfCategoryModel>>
+
+    @GET("/discover-mutual-funds/explore-funds/")
+    suspend fun getExploreMoreMutualFund(
+        @Query("authToken") authToken : String,
+        @Query("catg_id") catgId : Int
+    ) : Response<List<ExploreMoreMfModel>>
 
 
 

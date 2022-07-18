@@ -288,12 +288,18 @@ class Page2 : Fragment(R.layout.fragment_page2) {
     private fun autofill(){
         viewModel.getPage2{ isSuccessful, page2 ->
             if (isSuccessful && page2!=null){
-                etInvestAmount.setText(page2!!.invst_amount.toString())
-                etHouseholdExpenses.setText(page2!!.household_expns.toString())
-                etLifestyleExpenses.setText(page2!!.lifestyle_expns.toString())
-                etSurplus.setText(page2!!.surplus.toString())
-                etEmi.setText(page2!!.emi_paid.toString())
-                etTax.setText(page2!!.tax_paid.toString())
+                investmentAmount = page2!!.invst_amount.toDouble()
+                etInvestAmount.setText(investmentAmount.toString())
+                householdExpenses = page2!!.household_expns.toDouble()
+                etHouseholdExpenses.setText(householdExpenses.toString())
+                lifestyleExpenses = page2!!.lifestyle_expns.toDouble()
+                etLifestyleExpenses.setText(lifestyleExpenses.toString())
+                surplus = page2!!.surplus.toDouble()
+                etSurplus.setText(surplus.toString())
+                emi = page2!!.emi_paid.toDouble()
+                etEmi.setText(emi.toString())
+                taxPaid = page2!!.tax_paid.toDouble()
+                etTax.setText(taxPaid.toString())
 
             }
 

@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_background">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:background="@color/color_background">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
         <!--link for aspect ratio: https://stackoverflow.com/questions/43973185/constraintlayout-unable-to-scale-image-to-fit-a-ratio-in-recyclerview-->
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foregroundGravity="center_horizontal"
+            android:layout_marginHorizontal="50dp"
             android:src="@drawable/welcome_screen_illustration"
             app:layout_constraintBottom_toTopOf="@+id/tv_hey_welcome"
-            app:layout_constraintDimensionRatio="10:16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -81,4 +77,3 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
