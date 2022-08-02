@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.14629629629629629" />
+        <entry key="..\:/Codes/Android_Projects/Stocktick/app/src/main/res/drawable/liquidity_home.xml" value="0.25" />
+        <entry key="..\:/Codes/Android_Projects/Stocktick/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Codes/Android_Projects/Stocktick/app/src/main/res/layout/fragment_mutual_fund_root.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/StocktickAndroid/app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/StocktickAndroid/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/StocktickAndroid/app/src/main/res/layout/activity_splash.xml" value="0.1" />

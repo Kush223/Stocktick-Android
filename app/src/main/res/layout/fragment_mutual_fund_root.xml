@@ -160,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:buttonText="Explore More"
-                app:image="@drawable/lazy_man"
+                app:image="@drawable/ic_explore_more_mutual_funds"
                 app:let1="Explore more about"
                 app:let2="Mutual Funds" />
 
@@ -169,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:buttonText="Explore More"
-                app:image="@drawable/lazy_man"
+                app:image="@drawable/ic_asset_recorder"
                 app:let1="Asset"
                 app:let2="Reconciliation" />
 
@@ -178,7 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:buttonText="Explore More"
-                app:image="@drawable/lazy_man"
+                app:image="@drawable/ic_calculate_your_finances_with_us"
                 app:let1="Calculate your"
                 app:let2="finances with us" />
 
