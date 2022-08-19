@@ -25,6 +25,10 @@ import com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.models.Ex
 import com.example.stocktick.ui.mutual_funds.explore_more_mutual_funds.models.ExploreMoreMfModel
 import com.example.stocktick.ui.mutual_funds.risk_factor.models.network_models.*
 import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.*
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.calculator.ChildEducationCalculator
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.calculator.ChildMarriageCalculator
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.calculator.EmergencyFundCalculator
+import com.example.stocktick.ui.mutual_funds.stressed_about_finance.models.network_models.calculator.RetirementCalculator
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
@@ -330,6 +334,31 @@ interface ApiServiceInterface {
         @Query("authToken") authToken : String,
         @Query("catg_id") catgId : Int
     ) : Response<List<ExploreMoreMfModel>>
+
+    //Calculators post request
+    @POST("/finantialplanning/finnantial-ChildMarriage")
+    suspend fun postChildMarriageCalculator(
+        @Query("authToken") authToken : String,
+        @Body body : ChildMarriageCalculator
+    ) : Response<StandardSuccessResponse>
+
+    @POST("/finantialplanning/finnantial-EmergencyFund")
+    suspend fun postEmergencyFundCalculator(
+        @Query("authToken") authToken : String,
+        @Body body : EmergencyFundCalculator
+    ) : Response<StandardSuccessResponse>
+
+    @POST("/finantialplanning/finnantial-ChildEduCalc")
+    suspend fun postChildEducationCalculator(
+        @Query("authToken") authToken : String,
+        @Body body : ChildEducationCalculator
+    ) : Response<StandardSuccessResponse>
+
+    @POST("/finantialplanning/finnantial-RetirementCalc")
+    suspend fun postRetirementCalculator(
+        @Query("authToken") authToken : String,
+        @Body body : RetirementCalculator
+    ) : Response<StandardSuccessResponse>
 
 
 

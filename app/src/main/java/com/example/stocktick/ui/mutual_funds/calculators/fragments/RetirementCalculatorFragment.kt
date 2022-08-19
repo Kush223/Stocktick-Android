@@ -60,7 +60,7 @@ class RetirementCalculatorFragment: Fragment(R.layout.retirement_calculator_frag
     }
     private fun calculate(){
         try {
-            //variables
+            //variables which you get from user input
             val currentMonthlyExpense = etCurrentMonthlyExpenses.getText().toDouble()
             val inflation = etInflation.getText().toDouble()
             val currentAge = etCurrentAge.getText().toDouble()
@@ -68,6 +68,8 @@ class RetirementCalculatorFragment: Fragment(R.layout.retirement_calculator_frag
             val lifeExpectancy = etLifeExpectancy.getText().toInt()
             val initialInvestment = etCurrentInvestment.getText().toDouble()
             val rateOfReturn = etRateOfInterest.getText().toDouble()
+
+            //Here goes the calculation
 
             var monthlyExpenseAtFirstRetirementYear = currentMonthlyExpense * (1 + inflation/100).pow(retirementAge-currentAge)
             println("Then monthly expense :$monthlyExpenseAtFirstRetirementYear")
@@ -97,13 +99,16 @@ class RetirementCalculatorFragment: Fragment(R.layout.retirement_calculator_frag
             val m  = (retirementAge - currentAge).toInt() * 12 //no of months
             val mr = rateOfReturn / 12 // monthly return
             var c = 1.0
-            Utility.loop(m){
+            Utility.loop(m){ //It is just a for loop which runs m times
                 c = (c * (1 + (mr / 100))) + 1
             }
             val s = retirementMoney /  c
 
 
             val lumpsum = s * m  + initialInvestment
+
+
+            //Here I am writing the result
             val sRetirementCorpus = "₹${String.format("%.2f",retirementMoney)}"
             val sAppreciation = "₹${String.format("%.2f",appreciation)}"
             val sDeficitCorpus = "₹${String.format("%.2f",deficitCorpus)}"
