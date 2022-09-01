@@ -360,6 +360,14 @@ interface ApiServiceInterface {
         @Body body : RetirementCalculator
     ) : Response<StandardSuccessResponse>
 
+    //asset recorder pdf
+
+    @GET("/asset-recorder/csv/")
+    suspend fun getAssetRecorderLink(
+        @Query("authToken") authToken : String ,
+
+    ) : Response<Map<String ,String>>
+
 
 
 }
